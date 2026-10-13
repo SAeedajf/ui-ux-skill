@@ -6,13 +6,13 @@ Move `ui-ux-skill` from a documented release candidate toward operational verifi
 ## Constraints
 - Preserve exactly 15 Skills, 124 source rows (118 reviewed, 6 partial), and 14 domains.
 - Codex only; do not run Claude Code tests.
-- Root model policy requires `gpt-6-luna`; do not use another model even if the attachment proposes a fallback.
+- Use a model available in the Codex environment running the evaluation; the repository does not mandate a model. Record the selected model and host details. The 2026-10-13 Luna-only limitation is historical to that run.
 - Do not change the user's persistent model configuration without permission. Back up before any approved edit.
 - A model-driven PASS requires actual invocation trace and evidence. Distinguish `BLOCKED`, `NOT_RUN`, and `NEEDS_REVIEW`.
 - Use standard-library tooling; do not add dependencies or rely on legacy OpenAI Evals.
 
 ## Work plan
-1. Record environment/model/config diagnostics and the exact blocker; do not modify persistent configuration while model policy/permission prevents a safe fix.
+1. Record environment/model/config diagnostics and the exact blocker; do not modify persistent configuration without explicit permission.
 2. Add scenario IDs, separate immutable scenario definitions from JSONL run results, evidence, and summary logs. Validate IDs, statuses, commit SHAs, evidence paths, and PASS requirements.
 3. Add regression tests for the harness first, then implement the deterministic CLI (`validate`, `report`, and result recording).
 4. Build a small self-contained web fixture with product/hero/cards, responsive navigation, Persian RTL, form validation, loading/error states, and a deliberately broken accessibility state. Capture before evidence, repair it, and verify with a local browser and reproducible smoke checks where available.

@@ -1,8 +1,12 @@
 import unittest
-from scripts.run_codex_eval import load_scenarios
+from scripts.run_codex_eval import build_parser, load_scenarios
 
 
 class EvalRunnerTests(unittest.TestCase):
+    def test_model_override_is_optional_so_the_host_can_choose(self):
+        args = build_parser().parse_args(["activation", "--dry-run"])
+        self.assertIsNone(args.model)
+
     def test_activation_runner_has_all_independent_prompt_ids(self):
         rows = load_scenarios("activation")
         self.assertEqual(len(rows), 30)
