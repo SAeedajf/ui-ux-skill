@@ -1,0 +1,16 @@
+{"skill": "ux-discovery", "case": "positive", "prompt": "Create a task flow and information architecture for an existing onboarding journey. Start from these supplied observations and identify what remains unknown.", "expected": "activate", "status": "not_run"}
+{"skill": "ux-discovery", "case": "negative", "prompt": "Change this SQL query to use an index without altering its result.", "expected": "do_not_activate", "status": "not_run"}
+{"skill": "interface-layout", "case": "positive", "prompt": "Improve the hierarchy and spacing of this product detail page using the existing design tokens.", "expected": "activate", "status": "not_run"}
+{"skill": "interface-layout", "case": "negative", "prompt": "Add an OAuth callback route and update the backend session handler.", "expected": "do_not_activate", "status": "not_run"}
+{"skill": "interaction-patterns", "case": "positive", "prompt": "Review this signup form’s validation, loading, error, and recovery states.", "expected": "activate", "status": "not_run"}
+{"skill": "interaction-patterns", "case": "negative", "prompt": "Create a one-off abstract background illustration with no interface elements.", "expected": "do_not_activate", "status": "not_run"}
+{"skill": "design-systems", "case": "positive", "prompt": "Audit these repeated button variants and propose semantic tokens and component guidance.", "expected": "activate", "status": "not_run"}
+{"skill": "design-systems", "case": "negative", "prompt": "Explain how to center one decorative image in a static flyer.", "expected": "do_not_activate", "status": "not_run"}
+{"skill": "responsive-design", "case": "positive", "prompt": "Adapt this desktop dashboard for tablet, narrow mobile, and resizable Android windows.", "expected": "activate", "status": "not_run"}
+{"skill": "responsive-design", "case": "negative", "prompt": "Rename a backend variable without changing any interface behavior.", "expected": "do_not_activate", "status": "not_run"}
+{"skill": "accessibility-inclusive-design", "case": "positive", "prompt": "Review keyboard order, focus, contrast, semantics, and screen reader status announcements.", "expected": "activate", "status": "not_run"}
+{"skill": "accessibility-inclusive-design", "case": "negative", "prompt": "Optimize this database query; no UI is involved.", "expected": "do_not_activate", "status": "not_run"}
+{"skill": "persian-rtl-localization", "case": "positive", "prompt": "Localize this Persian checkout form and check mixed Latin email, phone, and OTP behavior.", "expected": "activate", "status": "not_run"}
+{"skill": "persian-rtl-localization", "case": "negative", "prompt": "Improve Persian prose in an LTR English help article without changing layout or direction.", "expected": "do_not_activate", "status": "not_run"}
+{"skill": "ui-ux-review", "case": "positive", "prompt": "Review the existing screen at the supplied sizes and report prioritized usability and accessibility findings.", "expected": "activate", "status": "not_run"}
+{"skill": "ui-ux-review", "case": "negative", "prompt": "Write a new payment provider adapter; no interface changes or review requested.", "expected": "do_not_activate", "status": "not_run"}
