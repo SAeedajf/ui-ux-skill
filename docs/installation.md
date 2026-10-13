@@ -53,3 +53,5 @@ The installer refuses to overwrite existing skill folders by default. Add `--ove
 - [VS Code Agent Skills](https://code.visualstudio.com/docs/agent-customization/agent-skills)
 
 These hosts share the `SKILL.md` pattern, but activation, supported metadata, user-level install paths, and tool availability may differ.
+
+After installation, use the [AI agent usage guide](agent-usage-guide.md) to choose a small relevant Skill set, invoke Skills for your host, and report evidence without overstating what was tested.

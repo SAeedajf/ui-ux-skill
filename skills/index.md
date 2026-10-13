@@ -21,3 +21,5 @@ The canonical Skills live in `.agents/skills/`. Each can be installed separately
 | `ui-ux-review` | Evidence-based UI/UX inspection and actionable review reports |
 
 Use `ui-ux-review` for a broad audit. For a focused change, invoke the task Skill directly; combine Skills only when the task crosses their boundaries. See [domain coverage](../docs/domain-coverage.csv).
+
+See the [AI agent usage guide](../docs/agent-usage-guide.md) for installation checks, Skill routing, reusable prompts, host-specific invocation, and evidence labels.

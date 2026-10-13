@@ -27,10 +27,13 @@ def load_scenarios(kind: str) -> list[dict]:
     return scenarios
 
 
-def run_scenario(kind: str, scenario: dict, model: str, codex: str = "codex") -> tuple[dict, str, str]:
+def run_scenario(kind: str, scenario: dict, model: str | None = None, codex: str = "codex") -> tuple[dict, str, str]:
     run_id = f"{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}-{scenario['id']}"
     prompt = scenario.get("prompt") or scenario.get("description")
-    command = [codex, "exec", "--ignore-user-config", "--ephemeral", "--json", "--sandbox", "read-only", "--model", model, "-C", str(ROOT), prompt]
+    command = [codex, "exec", "--ignore-user-config", "--ephemeral", "--json", "--sandbox", "read-only"]
+    if model:
+        command.extend(["--model", model])
+    command.extend(["-C", str(ROOT), prompt])
     try:
         completed = subprocess.run(command, cwd=ROOT, text=True, capture_output=True, timeout=180, check=False)
         stdout, stderr, code = completed.stdout, completed.stderr, completed.returncode
@@ -60,7 +63,8 @@ def run_scenario(kind: str, scenario: dict, model: str, codex: str = "codex") ->
         "commit_sha": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
         "timestamp_utc": datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
         "runner": "Codex CLI isolated exec",
-        "model": model,
+        "model": model or "host-default",
+        "model_selection": "explicit" if model else "codex-cli-default",
         "evidence": [str(trace_path.relative_to(ROOT)), str(stderr_path.relative_to(ROOT))],
         "invocation_mode": "unverified",
         "activated_skills": [],
@@ -72,12 +76,17 @@ def run_scenario(kind: str, scenario: dict, model: str, codex: str = "codex") ->
     return result, stdout, stderr
 
 
-def main() -> int:
+def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("kind", choices=("activation", "quality"))
     parser.add_argument("--scenario-id", action="append", help="Run only the selected scenario ID; repeat to select more than one")
-    parser.add_argument("--model", required=True, help="Codex model ID authorized for this evaluation")
+    parser.add_argument("--model", help="Optional Codex model override; by default the isolated Codex CLI run uses its default model")
     parser.add_argument("--dry-run", action="store_true", help="List selected IDs without starting model sessions")
+    return parser
+
+
+def main() -> int:
+    parser = build_parser()
     args = parser.parse_args()
     try:
         scenarios = load_scenarios(args.kind)
