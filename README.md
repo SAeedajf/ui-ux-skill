@@ -25,7 +25,9 @@ Use `python3 scripts/install-skills.py --help` to see selection and overwrite op
 - [Domain coverage](docs/domain-coverage.csv)
 - [Platform adapters](adapters/)
 - [Examples](examples/)
-- [Evaluation scenarios](evals/)
+- [Evaluation scenarios and result status](evals/)
+- [Codex evaluation workflow](docs/evaluation.md)
+- [Operational readiness report](docs/operational-readiness.md)
 - [Contribution and evidence policy](CONTRIBUTING.md)
 
 ## Rights and attribution
@@ -34,4 +36,4 @@ Original repository-authored material is licensed under [CC BY 4.0](LICENSE). Th
 
 ## Status
 
-This is an initial release candidate. The evaluation log records prior and current partial Codex CLI smoke checks, plus the current CLI model-compatibility blocker. The 30 authored activation cases and 19 quality scenarios are evaluation definitions, not host auto-activation results. Seven new Skills received manual positive/negative application checks using Codex subagents; the complete host activation suite remains unrun. Codex CLI model testing is currently blocked by the installed CLI/account model compatibility recorded in `evals/run-log.csv`. Source review is current to 2026-10-13; partially verified and paywalled references are explicitly labeled.
+Operational status is documented in [the readiness report](docs/operational-readiness.md). The current Codex CLI can discover the metadata for all 15 Skills, but automatic activation, quality scoring, and baseline comparison are blocked because `gpt-6-luna` is unsupported by this ChatGPT account. The required task policy does not permit a fallback model. The 30 activation and 19 quality scenarios remain separate from their result ledgers; none is marked PASS. A local web fixture was changed and exercised in the Codex in-app browser, but that manual fixture run is not attributed to Skill invocation. Source review is current to 2026-10-13; partially verified and paywalled references remain labeled.

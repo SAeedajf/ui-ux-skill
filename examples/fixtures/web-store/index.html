@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>فروشگاه خانه‌روشن | چراغ رومیزی آفتاب</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">رفتن به محتوای اصلی</a>
+  <header class="site-header">
+    <a class="brand" href="#top">خانه‌روشن</a>
+    <button class="menu-toggle" type="button" aria-label="باز کردن منوی ناوبری" aria-controls="primary-navigation" aria-expanded="false">☰</button>
+    <nav class="site-nav" id="primary-navigation" aria-label="ناوبری اصلی">
+      <a href="#products">محصولات</a><a href="#story">درباره ما</a><a href="#newsletter">خبرنامه</a>
+    </nav>
+    <button class="cart-button" type="button" id="cart-button">سبد خرید <span id="cart-count" aria-live="polite">۰</span></button>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow">نور گرم برای روزهای آرام</p>
+        <h1>گوشه‌ای برای مکث و آرامش</h1>
+        <p>چراغ‌های دست‌ساز با نور ملایم و طراحی ساده، برای لحظه‌هایی که خانه را خانه‌تر می‌کنند.</p>
+        <a class="button primary" href="#products">دیدن محصولات</a>
+      </div>
+      <div class="hero-art" role="img" aria-label="تصویر گرافیکی چراغ رومیزی زرد"></div>
+    </section>
+
+    <section class="section" id="products">
+      <div class="section-heading"><div><p class="eyebrow">انتخاب این هفته</p><h2>محصولات محبوب</h2></div><a href="#newsletter">دیدن همه</a></div>
+      <div class="product-grid">
+        <article class="product-card"><div class="product-art sun"></div><p class="eyebrow">چراغ رومیزی</p><h3>چراغ آفتاب</h3><p class="price">۲٬۴۸۰٬۰۰۰ تومان</p><button class="button add-button" type="button">افزودن به سبد</button></article>
+        <article class="product-card"><div class="product-art clay"></div><p class="eyebrow">چراغ دیواری</p><h3>چراغ خاک</h3><p class="price">۱٬۹۵۰٬۰۰۰ تومان</p><button class="button add-button" type="button">افزودن به سبد</button></article>
+        <article class="product-card"><div class="product-art olive"></div><p class="eyebrow">چراغ مطالعه</p><h3>چراغ زیتون</h3><p class="price">۳٬۱۲۰٬۰۰۰ تومان</p><button class="button add-button" type="button">افزودن به سبد</button></article>
+      </div>
+    </section>
+
+    <section class="story" id="story"><div><p class="eyebrow">ساخته‌شده با حوصله</p><h2>چیزهای خوب، آرام ساخته می‌شوند.</h2><p>هر چراغ در کارگاه کوچک ما با مواد بادوام ساخته و پیش از ارسال بررسی می‌شود.</p></div><div class="story-mark" aria-hidden="true">✳</div></section>
+
+    <section class="newsletter section" id="newsletter">
+      <div><p class="eyebrow">از خبرهای تازه باخبر شو</p><h2>یک یادداشت کوتاه از کارگاه</h2><p>محصول‌های تازه و داستان ساختشان را گاهی برایت می‌فرستیم.</p></div>
+      <form id="newsletter-form" novalidate>
+        <label for="email">نشانی ایمیل</label>
+        <div class="form-row"><input id="email" name="email" type="email" autocomplete="email" placeholder="name@example.com" aria-describedby="email-hint" aria-invalid="false" required><button id="submit-button" class="button primary" type="submit">عضویت</button></div>
+        <small id="email-hint">هر زمان بخواهی می‌توانی عضویت را لغو کنی.</small>
+        <p id="form-message" class="form-message" role="status" aria-live="polite" aria-atomic="true" hidden></p>
+      </form>
+    </section>
+  </main>
+  <footer><span>خانه‌روشن · ساخته‌شده در تهران</span><span>© ۱۴۰۵</span></footer>
+  <script src="app.js"></script>
+</body>
+</html>
