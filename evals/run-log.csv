@@ -1,1 +1,3 @@
 scenario_id,host,model,date,status,reviewer,notes
+smoke-persian-rtl-codex,Codex CLI,host-configured model (reported gpt-5.6-sol),2026-10-13,partial,manual,"A fictional RTL checkout prompt triggered persian-rtl-localization and returned focused checks for mixed-direction email, phone entry, and OTP. One smoke prompt only; this is not a pass for the authored activation or quality suites."
+smoke-skill-discovery-claude,Claude Code CLI,unavailable,2026-10-13,blocked,manual,"CLI loaded 9 user skills (the 8 repository skills plus one pre-existing skill), confirming discovery. Answer generation stopped before model output with HTTP 401 OAuth access token invalid; activation quality remains unverified."

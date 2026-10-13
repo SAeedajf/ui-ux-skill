@@ -34,4 +34,4 @@ Original repository-authored material is licensed under [CC BY 4.0](LICENSE). Th
 
 ## Status
 
-This is an initial release candidate. Evaluation scenarios are authored, but no model-run activation or output-quality results are claimed until recorded in the evaluation log. Source review is current to 2026-10-13; partially verified and paywalled references are explicitly labeled.
+This is an initial release candidate. The evaluation log records one partial Codex CLI smoke test and one Claude Code discovery check that could not reach model output because of local OAuth authentication. The 16 authored activation cases and 12 quality scenarios have not been run as a suite. Source review is current to 2026-10-13; partially verified and paywalled references are explicitly labeled.
