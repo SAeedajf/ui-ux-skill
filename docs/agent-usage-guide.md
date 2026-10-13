@@ -15,7 +15,14 @@ Use the [installation guide](installation.md) for the host- and version-specific
 | VS Code / GitHub Copilot | Run `python3 scripts/install-skills.py --target .github/skills` and use `/skills` to inspect the available customizations. |
 | Another compatible host | Install the skill folders where that host discovers `SKILL.md`; verify the path and metadata in that host. |
 
-Use `python3 scripts/install-skills.py --list` to see the names and `--help` to inspect install options. Do not copy the same collection into multiple discovery directories unless the host requires it; duplicate copies can make version drift harder to notice. Skills are model-neutral: use the model selected by the user or host when it is available there. The repository does not require a particular model. Discovery and invocation behavior can still vary by host, version, agent mode, and context limits.
+Use `python3 scripts/install-skills.py --list` to see the names and `--help` to inspect install options. If you need user-level Codex installation, install only the relevant Skills, for example:
+
+```sh
+python3 scripts/install-skills.py --target ~/.codex/skills \
+  --skill interface-layout --skill visual-hierarchy
+```
+
+Avoid installing all Skills at both project and user level unless the host requires it. Duplicate discovery copies and a large active Skill set can make descriptions harder to distinguish or shorten them to fit context, as observed in one Codex run. Prefer project-level discovery when you work in this repository; use selective user-level installation when you want those Skills across projects. The example assumes those destinations do not already contain the same folders: the installer refuses collisions by default, and `--overwrite` replaces selected folders rather than pruning unrelated Skills. If your host exposes a Skill picker or reload control, explicitly select the primary Skill and only the needed handoff. Skills are model-neutral: use the model selected by the user or host when it is available there. The repository does not require a particular model. Discovery and invocation behavior can still vary by host, version, agent mode, and context limits.
 
 Discovery means the host can see Skill metadata. It does not show that the model invoked a Skill. A manual invocation confirms the workflow can be requested; it does not count as automatic activation. See [Codex evaluation guidance](evaluation.md) for evidence requirements and the current [readiness report](operational-readiness.md) for platform-specific results.
 
@@ -58,6 +65,34 @@ Do not turn a review into a redesign or treat a recommendation as permission to 
 5. Make only the changes the user requested. When implementation is in scope, derive checks from the acceptance criteria and changed behavior: use static or unit checks for code properties, build checks for packaging, and rendered/runtime checks for behavior in the target state. State which level was run and name unavailable checks. Code inspection alone does not verify the rendered experience; a rendered check alone does not establish usability or conformance.
 6. For each important verification claim, report the artifact, state or viewport and input, criterion, method/tool, and result. Distinguish automated, manual, runtime, and user research evidence. A screenshot, source inspection, or passing automated rule by itself does not prove accessibility, usability, or user success. Report unknowns and blockers plainly.
 
+### Agent operating protocol
+
+Use this short loop for each task:
+
+1. **Route:** Match the user request to one Skill in the index. If the task spans separate decisions, add only the Skill needed for that handoff. A direct user instruction to use a Skill takes precedence over automatic routing.
+2. **Ground:** Inspect the real screen, code, design system, or supplied research. If the evidence is missing, continue with a clearly labeled proposal and name the missing artifact; do not invent observations or user data.
+3. **Decide:** State the user task and the reason for the recommendation. Mark it as a requirement, source-backed claim, platform convention, inference, or design proposal. Cite a source ID only when that source supports the specific claim.
+4. **Act:** Respect the requested scope. Reviews produce findings; recommendations produce options; implementation requests allow changes within stated constraints. Preserve existing behavior and tokens unless the evidence or goal calls for changing them.
+5. **Verify:** Derive checks from the acceptance criteria. For UI behavior, inspect the actual route/state and relevant viewport/input mode. Record what ran and what could not run. Do not convert a static check, mock, screenshot, or model response into usability or accessibility proof.
+6. **Report:** Give the user prioritized findings or changes, evidence and source limits, verification results, and remaining unknowns. Reply in the user's language; for Persian, preserve RTL text while keeping URLs, source IDs, code, and mixed-direction values intact. Stop when the requested outcome is covered; do not add unrelated audits.
+
+If a Skill is not automatically discovered, check the host's configured Skill path and refresh/reopen the project as needed. Then invoke it explicitly using the host's supported syntax. A visible listing proves discovery only; an explicit invocation proves that it can be requested, not that automatic selection works. If the host lacks Skill support, use the relevant `SKILL.md` and reference as ordinary task guidance and state that the host did not activate it.
+
+### Source-claim record
+
+For a recommendation that depends on an external source, keep a compact chain that another agent can check:
+
+```text
+Decision: [what is recommended]
+Claim: [the narrow source-backed statement]
+Source: [registry ID and title/link]
+Evidence class/access: [standard, research, platform, practitioner, inspiration; reviewed/partial/index/paywalled]
+Application: [why it applies to this user, product, and state]
+Limit: [what the source does not establish]
+```
+
+Do not cite the registry as proof that a page or book was fully read. If only the abstract, listing, snippet, or paywalled description was available, qualify the claim or leave it as an unverified hypothesis.
+
 ## 4. Reusable request template
 
 Copy and fill the parts that matter; remove fields that do not apply.
@@ -78,6 +113,22 @@ code, run checks relevant to the changed behavior. List unverified states explic
 ```
 
 For a broad audit, name `ui-ux-review` as the starting point and ask the agent to add focused Skills only for findings that need them. For a narrow task, directly request the relevant Skill (for example, `forms-input` for a form recovery issue). Direct selection is useful for consistency; do not count it as evidence that automatic activation works.
+
+Persian version:
+
+```text
+برای [صفحه، جریان یا مؤلفه] که به کار [وظیفهٔ کاربر] مربوط است، [بازبینی / پیشنهاد / پیاده‌سازی] انجام بده.
+کاربران و زمینه: [چه کسی و در چه شرایطی]
+پلتفرم و اندازه‌ها: [وب / اندروید / Compose و اندازه‌های پشتیبانی‌شده]
+زبان و جهت: [فارسی/انگلیسی، RTL/LTR، متن ترکیبی]
+هدف و محدودیت‌ها: [معیار موفقیت، سیستم موجود، رفتارهایی که باید حفظ شوند]
+شواهد: [مسیر کد، صفحه، تصویر، پژوهش یا «ندارم»]
+محدوده: [فقط بازبینی / فقط پیشنهاد / پیاده‌سازی همین محدوده]
+
+فقط Skillهای لازم را انتخاب کن. مشاهدات، ادعاهای منبع‌دار، فرض‌ها و پیشنهادها را جدا بنویس.
+برای هر بررسی مهم، صفحه/حالت/اندازه، معیار، روش و نتیجه را ثبت کن. موارد بررسی‌نشده را روشن اعلام کن.
+اگر رابط واقعی در دسترس نیست، پیشنهاد را مشاهدهٔ تأییدشده جا نزن.
+```
 
 ## 5. Report template
 
@@ -115,6 +166,8 @@ Use these labels consistently:
 - **Proposed:** a recommendation that has not been implemented or tested.
 - **Verified:** a named acceptance check was executed and passed; state the tool, target, or test conditions.
 - **Unverified / blocked:** the relevant interface, device, account, model, or evidence was unavailable. A blocker is not a pass.
+
+Keep **quality** and **activation** results separate. A good-looking answer does not prove that the host selected a Skill, and a Skill activation trace does not prove that the answer met the task's quality criteria. Mark results `NOT_RUN` when no attempt was made; use `BLOCKED` only when an attempted check could not proceed and record the concrete blocker.
 
 For model-driven evaluations, record the host, version, model if exposed, exact prompt, invocation mode, and trace. Use the user's or host's available model choice; this repository does not prescribe a model. A run proves behavior only for its recorded environment and cannot establish that another host or model will behave the same way.
 

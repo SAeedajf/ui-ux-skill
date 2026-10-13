@@ -4,7 +4,7 @@ import csv, json, re, sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from scripts.eval_harness import validate_all as validate_eval_results
+from scripts.eval_harness import quality_definitions, validate_all as validate_eval_results, validate_domain_quality_refs
 errors=[]
 def fail(msg): errors.append(msg)
 # Skill folders and frontmatter.
@@ -40,6 +40,7 @@ for row in domains:
   if sid not in source_ids: fail(f"{row['domain']}: unknown source ID {sid}")
  for skill in row['primary_skills'].split(';'):
   if skill not in found: fail(f"{row['domain']}: unknown Skill {skill}")
+for error in validate_domain_quality_refs(domains, quality_definitions()): fail(error)
 # Evals.
 with (ROOT/'evals/activation.jsonl').open(encoding='utf-8') as f: evals=[json.loads(x) for x in f if x.strip()]
 for skill in found:
@@ -52,7 +53,7 @@ for error in validate_eval_results(): fail(error)
 # Quality scenario count.
 quality=(ROOT/'evals/quality-scenarios.md').read_text(encoding='utf-8')
 quality_count=len(re.findall(r'^\d+\. \*\*',quality,re.M))
-if quality_count!=19: fail(f'expected 19 quality scenarios, found {quality_count}')
+if quality_count!=len(quality_definitions()): fail(f'quality scenario count mismatch: {quality_count}')
 with (ROOT/'evals/run-log.csv').open(encoding='utf-8',newline='') as f: runs=list(csv.DictReader(f))
 if any(None in row for row in runs): fail('evals/run-log.csv has malformed rows or column counts')
 # Repo docs.
@@ -60,4 +61,4 @@ for path in ['README.md','AGENTS.md','LICENSE','CONTRIBUTING.md','docs/installat
  if not (ROOT/path).is_file(): fail(f'missing {path}')
 if errors:
  print('\n'.join('ERROR: '+e for e in errors));sys.exit(1)
-print(f'OK: {len(found)} skills, {len(sources)} sources ({sum(r["review_status"]=="reviewed" for r in sources)} reviewed / 6 partial), {len(domains)} domains, {len(evals)} activation cases; execution states validated separately')
+print(f'OK: {len(found)} skills, {len(sources)} sources ({sum(r["review_status"]=="reviewed" for r in sources)} reviewed / 6 partial), {len(domains)} domains, {len(evals)} activation cases, {quality_count} quality scenarios; execution states validated separately')

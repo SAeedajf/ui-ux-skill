@@ -26,6 +26,7 @@ Use `python3 scripts/install-skills.py --help` to see selection and overwrite op
 - [Domain coverage](docs/domain-coverage.csv)
 - [Platform adapters](adapters/)
 - [Examples](examples/)
+- [Synthetic layout and design-system decision record](examples/synthetic/layout-and-system.md)
 - [Evaluation scenarios and result status](evals/)
 - [Codex evaluation workflow](docs/evaluation.md)
 - [Operational readiness report](docs/operational-readiness.md)
@@ -37,4 +38,4 @@ Original repository-authored material is licensed under [CC BY 4.0](LICENSE). Th
 
 ## Status
 
-Operational status is documented in [the readiness report](docs/operational-readiness.md). The current Codex CLI can discover the metadata for all 15 Skills. In the recorded 2026-10-13 account run, automatic activation, quality scoring, and baseline comparison were blocked after the CLI rejected `gpt-6-luna`; those records remain `BLOCKED` and none is marked PASS. This is an environment-specific result, not a model restriction in the repository. The evaluation runner uses the Codex CLI's default unless a supported model is explicitly supplied. A local web fixture was changed and exercised in the Codex in-app browser, but that manual fixture run is not attributed to Skill invocation. Source review is current to 2026-10-13; partially verified and paywalled references remain labeled.
+Operational status is documented in [the readiness report](docs/operational-readiness.md). The repository contains 15 model-neutral Skills and a focused AI-agent guide. In a 2026-10-14 Codex CLI 0.144.5 run using the host default, one positive/negative activation pair and two quality cases produced reviewable traces; all four remain `NEEDS_REVIEW` pending independent scoring. Earlier `gpt-6-luna` attempts remain `BLOCKED` for that account/runtime, and the other scenarios have not been rerun. This is an environment-specific result, not a model restriction in the repository. The evaluation runner uses the Codex CLI default unless a model is explicitly supplied. A local web fixture was exercised separately and is not attributed to Skill invocation. Source review is current to 2026-10-13; partially verified and paywalled references remain labeled.

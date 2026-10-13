@@ -1,15 +1,15 @@
 domain,description,primary_skills,source_ids,web_example,android_example,eval_scenario
-foundations,UI/UX foundations,ux-discovery;interface-layout,1;3;10;11;14;15;16;17,web-landing-review.md,android-task-flow.md,scenario_foundations
-color,Color and palettes,color-systems;accessibility-inclusive-design,18;19;20;24;25;26;81,web-landing-review.md,android-task-flow.md,scenario_color
-ethical_persuasion,Ethical persuasion and behavior,ethical-persuasion;ux-discovery;interaction-patterns,27;28;29;33;34;35,web-landing-review.md,android-task-flow.md,scenario_ethics
-layout,"Layout, cards, spacing, hero",interface-layout;responsive-design,36;37;40;41;42,web-landing-review.md,android-task-flow.md,scenario_layout
-product_interaction,Product interaction,interaction-patterns;ux-discovery,43;46;47;48;49,web-landing-review.md,android-task-flow.md,scenario_interaction
-navigation_controls,Buttons and navigation,navigation-controls;interaction-patterns;accessibility-inclusive-design,50;51;52;53;54;55,web-landing-review.md,android-task-flow.md,scenario_navigation
-typography_rtl,"Persian typography, RTL, readability",persian-rtl-localization;accessibility-inclusive-design,56;57;58;62;63;64,web-landing-review.md,android-task-flow.md,scenario_persian_rtl
-responsive,Responsive/adaptive design,responsive-design,65;66;67;72,web-landing-review.md,android-task-flow.md,scenario_responsive
-visual_hierarchy,Visual hierarchy,visual-hierarchy;interface-layout;accessibility-inclusive-design,74;75;76;80,web-landing-review.md,android-task-flow.md,scenario_hierarchy
-accessibility,Accessibility,accessibility-inclusive-design;ui-ux-review,81;82;83;88;89,web-landing-review.md,android-task-flow.md,scenario_accessibility
-design_systems,Design systems and tokens,design-systems,90;91;95;96;97,web-landing-review.md,android-task-flow.md,scenario_design_systems
-information_architecture,Information architecture,information-architecture;ux-discovery;navigation-controls,98;99;100;104;105;106,web-landing-review.md,android-task-flow.md,scenario_ia
-forms,"Forms, errors, validation",forms-input;interaction-patterns;accessibility-inclusive-design;persian-rtl-localization,107;108;109;113;114;115,web-landing-review.md,android-task-flow.md,scenario_forms
-journeys,Customer journey and user flows,journey-mapping;ux-discovery;navigation-controls,116;117;118;119;121;123;124,web-landing-review.md,android-task-flow.md,scenario_journey
+foundations,UI/UX foundations,ux-discovery;interface-layout,1;3;10;11;14;15;16;17,web-landing-review.md,android-task-flow.md,quality-10;quality-11;quality-12;quality-20;quality-21;quality-22
+color,Color and palettes,color-systems;accessibility-inclusive-design,18;19;20;24;25;26;81,web-landing-review.md,android-task-flow.md,quality-01;quality-02;quality-13
+ethical_persuasion,Ethical persuasion and behavior,ethical-persuasion;ux-discovery;interaction-patterns,27;28;29;33;34;35,web-landing-review.md,android-task-flow.md,quality-08;quality-14
+layout,"Layout, cards, spacing, hero",interface-layout;responsive-design,36;37;40;41;42,web-landing-review.md,android-task-flow.md,quality-05;quality-16;quality-20
+product_interaction,Product interaction,interaction-patterns;ux-discovery,43;46;47;48;49,web-landing-review.md,android-task-flow.md,quality-07;quality-15;quality-21
+navigation_controls,Buttons and navigation,navigation-controls;interaction-patterns;accessibility-inclusive-design,50;51;52;53;54;55,web-landing-review.md,android-task-flow.md,quality-15
+typography_rtl,"Persian typography, RTL, readability",persian-rtl-localization;accessibility-inclusive-design,56;57;58;62;63;64,web-landing-review.md,android-task-flow.md,quality-03;quality-04;quality-20
+responsive,Responsive/adaptive design,responsive-design,65;66;67;72,web-landing-review.md,android-task-flow.md,quality-05;quality-20
+visual_hierarchy,Visual hierarchy,visual-hierarchy;interface-layout;accessibility-inclusive-design,74;75;76;80,web-landing-review.md,android-task-flow.md,quality-16;quality-20
+accessibility,Accessibility,accessibility-inclusive-design;ui-ux-review,81;82;83;88;89,web-landing-review.md,android-task-flow.md,quality-06;quality-13;quality-15;quality-23
+design_systems,Design systems and tokens,design-systems,90;91;95;96;97,web-landing-review.md,android-task-flow.md,quality-09;quality-20;quality-23
+information_architecture,Information architecture,information-architecture;ux-discovery;navigation-controls,98;99;100;104;105;106,web-landing-review.md,android-task-flow.md,quality-17;quality-21
+forms,"Forms, errors, validation",forms-input;interaction-patterns;accessibility-inclusive-design;persian-rtl-localization,107;108;109;113;114;115,web-landing-review.md,android-task-flow.md,quality-03;quality-07;quality-18;quality-23
+journeys,Customer journey and user flows,journey-mapping;ux-discovery;navigation-controls,116;117;118;119;121;123;124,web-landing-review.md,android-task-flow.md,quality-19;quality-21

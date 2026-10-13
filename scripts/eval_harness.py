@@ -174,9 +174,29 @@ def quality_definitions() -> set[str]:
     text = (ROOT / "evals/quality-scenarios.md").read_text(encoding="utf-8")
     matches = re.findall(r"^(\d+)\. \*\*(.+?)\*\*", text, re.M)
     ids = {f"quality-{int(number):02d}" for number, _ in matches}
-    if len(matches) != 19 or len(ids) != 19:
-        raise ValueError(f"expected 19 uniquely numbered quality scenarios, found {len(matches)}")
+    expected_numbers = [str(number) for number in range(1, len(matches) + 1)]
+    actual_numbers = [number for number, _ in matches]
+    if not matches or len(ids) != len(matches) or actual_numbers != expected_numbers:
+        raise ValueError("quality scenarios must have unique, sequential numbering starting at 1")
     return ids
+
+
+def validate_domain_quality_refs(domains: list[dict[str, str]], quality_ids: set[str]) -> list[str]:
+    errors: list[str] = []
+    referenced: set[str] = set()
+    for row in domains:
+        domain = row.get("domain", "<unknown>")
+        refs = [item.strip() for item in row.get("eval_scenario", "").split(";") if item.strip()]
+        if not refs:
+            errors.append(f"{domain}: needs at least one quality scenario ID")
+        for scenario_id in refs:
+            if scenario_id not in quality_ids:
+                errors.append(f"{domain}: unknown quality scenario {scenario_id!r}")
+            referenced.add(scenario_id)
+    missing = quality_ids - referenced
+    if missing:
+        errors.append(f"domain coverage does not reference: {', '.join(sorted(missing))}")
+    return errors
 
 
 def validate_all() -> list[str]:
@@ -205,10 +225,18 @@ def report() -> str:
     parts = ["# Evaluation status report", "", "Scenario definitions are not execution evidence. Statuses below come from `evals/results/`.", ""]
     for kind in ("activation", "quality"):
         rows = read_jsonl(ROOT / f"evals/results/{kind}.jsonl")
-        counts = Counter(row.get("status", "INVALID") for row in rows)
+        latest: dict[str, dict[str, Any]] = {}
+        for row in rows:
+            scenario_id = row.get("scenario_id")
+            if not isinstance(scenario_id, str):
+                continue
+            if scenario_id not in latest or str(row.get("timestamp_utc", "")) >= str(latest[scenario_id].get("timestamp_utc", "")):
+                latest[scenario_id] = row
+        counts = Counter(row.get("status", "INVALID") for row in latest.values())
         parts.append(f"## {kind.title()}")
         parts.append("")
         parts.append(", ".join(f"{status}: {counts[status]}" for status in ("PASS", "FAIL", "BLOCKED", "NOT_RUN", "NEEDS_REVIEW") if counts[status]) or "No results recorded.")
+        parts.append(f"Latest recorded state per scenario ({len(latest)} unique scenarios; {len(rows)} total run records).")
         parts.append("")
     return "\n".join(parts)
 

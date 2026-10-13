@@ -3,8 +3,9 @@ import hashlib
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
-from scripts.eval_harness import validate_result_rows
+from scripts.eval_harness import report, validate_domain_quality_refs, validate_result_rows
 
 
 class ResultValidationTests(unittest.TestCase):
@@ -87,6 +88,24 @@ class ResultValidationTests(unittest.TestCase):
         errors = validate_result_rows([row], {row["scenario_id"]}, self.root, "quality", {})
         self.assertTrue(any("does not exist" in error.lower() for error in errors))
         self.assertTrue(any("failed or malformed check" in error.lower() for error in errors))
+
+    def test_domain_map_requires_real_quality_ids_and_complete_coverage(self):
+        domains = [
+            {"domain": "layout", "eval_scenario": "quality-20"},
+            {"domain": "source-grounding", "eval_scenario": "scenario_fake"},
+        ]
+        errors = validate_domain_quality_refs(domains, {"quality-20", "quality-22"})
+        self.assertTrue(any("unknown quality scenario" in error for error in errors))
+        self.assertTrue(any("does not reference" in error for error in errors))
+
+    def test_report_uses_latest_run_per_scenario(self):
+        with patch("scripts.eval_harness.read_jsonl", return_value=[
+            {"scenario_id": "quality-20", "status": "NOT_RUN", "timestamp_utc": "2026-10-13T23:51:00Z"},
+            {"scenario_id": "quality-20", "status": "NEEDS_REVIEW", "timestamp_utc": "2026-10-13T23:53:56Z"},
+        ]):
+            rendered = report()
+        self.assertIn("NEEDS_REVIEW: 1", rendered)
+        self.assertIn("1 unique scenarios; 2 total run records", rendered)
 
 
 if __name__ == "__main__":
