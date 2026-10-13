@@ -86,7 +86,8 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main() -> int:
-    args = build_parser().parse_args()
+    parser = build_parser()
+    args = parser.parse_args()
     try:
         scenarios = load_scenarios(args.kind)
     except (OSError, ValueError) as exc:
