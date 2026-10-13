@@ -1,6 +1,6 @@
 ---
 name: persian-rtl-localization
-description: Use when Persian/RTL or mixed-direction UI, typography, digits, dates, currency, phone, or OTP behavior is in scope.
+description: Use when localizing Persian, RTL, or mixed-direction interfaces.
 ---
 
 # Persian Rtl Localization

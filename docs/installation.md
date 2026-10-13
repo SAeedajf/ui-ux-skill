@@ -4,7 +4,13 @@ The repository keeps one canonical copy of each Skill under `.agents/skills/`. T
 
 ## Codex
 
-Open the repository as a Codex project. Codex discovers workspace skills under `.agents/skills/`. The repo's canonical location can be used directly; no copy is needed. For user-level installation, choose the appropriate personal skill directory for your Codex setup and verify against current Codex documentation.
+Open the repository as a Codex project. Codex discovers workspace skills under `.agents/skills/`. The repo's canonical location can be used directly; no copy is needed. For user-level installation, use `~/.codex/skills`:
+
+```sh
+python3 scripts/install-skills.py --target ~/.codex/skills --all
+```
+
+Verify the installed `SKILL.md` files if you update existing copies. Codex skill invocation still depends on the active model and its available context.
 
 ## Claude Code
 

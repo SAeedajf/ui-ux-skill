@@ -1,6 +1,6 @@
 ---
 name: interface-layout
-description: Use when page hierarchy, color, typography, spacing, cards, or composition needs design or refinement.
+description: Use when refining page layout, spacing, cards, and composition.
 ---
 
 # Interface Layout
@@ -8,8 +8,8 @@ description: Use when page hierarchy, color, typography, spacing, cards, or comp
 ## Workflow
 1. Identify the page purpose, primary task, audience, content priority, existing brand/system, locale, platform, and constraints.
 2. Inspect the current UI and available tokens/assets before proposing changes.
-3. Establish hierarchy from content importance and task sequence; choose spacing, type, color, and composition that support it.
+3. Arrange page regions, grouping, and spacing around the task. Keep semantic content priority with `visual-hierarchy`; use existing color roles and type tokens unless those systems are explicitly in scope.
 4. Explain choices with context: distinguish standard/technical constraints, research, platform convention, and aesthetic preference. Avoid universal color-psychology claims.
 5. Review real content lengths, contrast, responsive states, and interaction affordances.
 
-Load `references/composition.md` for the decision checklist. For combined requests, handle composition here and breakpoints with `responsive-design`; reuse existing tokens and involve `design-systems` only when shared-system changes are needed.
+Load `references/composition.md` for the decision checklist. Use `visual-hierarchy` for scan order and emphasis, `color-systems` for palettes/themes, `responsive-design` for breakpoints, and `design-systems` only when shared tokens or components need to change.

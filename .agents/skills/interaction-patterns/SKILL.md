@@ -1,6 +1,6 @@
 ---
 name: interaction-patterns
-description: Use when navigation, controls, forms, validation, feedback, or recovery states need design or review.
+description: Use when designing control states, feedback, and recovery.
 ---
 
 # Interaction Patterns
@@ -12,4 +12,4 @@ description: Use when navigation, controls, forms, validation, feedback, or reco
 4. Minimize unnecessary steps only when task safety, user control, and data quality remain intact. Do not use deceptive urgency or hidden consent.
 5. Verify keyboard/focus, screen reader names and state, touch targets, loading/empty/error/success cases, and localization.
 
-Read `references/interaction-states.md` for focused patterns. Use `accessibility-inclusive-design` for deeper standards or assistive-technology review, and `responsive-design` when layout modes are in scope.
+Read `references/interaction-states.md` for focused patterns. Use `navigation-controls` for route menus/wayfinding, `forms-input` for field and submission behavior, `ethical-persuasion` for influence or choice architecture, `accessibility-inclusive-design` for deeper standards or assistive-technology review, and `responsive-design` when layout modes are in scope.

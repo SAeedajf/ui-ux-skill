@@ -1,6 +1,6 @@
 ---
 name: responsive-design
-description: Use when layouts or interactions must adapt across viewports, orientation, devices, or window sizes.
+description: Use when adapting UI to viewport, device, or window changes.
 ---
 
 # Responsive Design

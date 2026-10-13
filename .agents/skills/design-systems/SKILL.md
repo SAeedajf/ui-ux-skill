@@ -1,6 +1,6 @@
 ---
 name: design-systems
-description: Use when shared tokens, reusable components, theming, or system-wide consistency needs design or review.
+description: Use when changing shared tokens, components, or theming.
 ---
 
 # Design Systems

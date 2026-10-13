@@ -1,6 +1,6 @@
 ---
 name: accessibility-inclusive-design
-description: Use when checking semantics, keyboard and focus, assistive tech, contrast, motion, touch, or accessibility.
+description: Use when reviewing accessibility semantics, focus, contrast, motion, or assistive tech.
 ---
 
 # Accessibility Inclusive Design

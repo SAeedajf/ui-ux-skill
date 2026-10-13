@@ -1,6 +1,6 @@
 ---
 name: ui-ux-review
-description: Use when auditing an interface for usability, visuals, accessibility, responsive behavior, interactions, localization, or consistency.
+description: Use when auditing an interface for usability, accessibility, or consistency.
 ---
 
 # Ui Ux Review
@@ -12,4 +12,4 @@ description: Use when auditing an interface for usability, visuals, accessibilit
 4. Map findings to applicable standards, research, platform guidance, or clearly labeled design judgment using source IDs. Do not claim conversion impact without relevant measurement.
 5. Provide a concise summary, ordered findings, verified aspects, and explicit unknown/unverified areas.
 
-Use `references/review-template.md`; invoke focused Skills for deeper follow-up.
+Use `references/review-template.md`; select only the focused Skills that match findings: `color-systems`, `ethical-persuasion`, `forms-input`, `information-architecture`, `journey-mapping`, `navigation-controls`, `visual-hierarchy`, or the existing responsive, accessibility, layout, interaction, design-system, and Persian/RTL Skills.

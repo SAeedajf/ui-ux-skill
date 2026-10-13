@@ -1,6 +1,6 @@
 ---
 name: ux-discovery
-description: Use when user goals, research evidence, information architecture, journeys, or task flows need discovery.
+description: Use when clarifying user goals, evidence, or product questions.
 ---
 
 # Ux Discovery
@@ -8,8 +8,8 @@ description: Use when user goals, research evidence, information architecture, j
 ## Workflow
 1. Clarify user goal, audience, context, constraints, current journey, and evidence already available. Separate observed facts from assumptions.
 2. Inspect existing screens, routes, content, and analytics/research artifacts the user supplied; do not invent personas or user research.
-3. Choose the lightest method that resolves the uncertainty: content inventory, task analysis, card sort/tree test plan, journey, or flow.
+3. Choose the lightest method for the unresolved question. Hand off taxonomy and findability to `information-architecture`; use `journey-mapping` for end-to-end experiences and distinguish it from in-product flows.
 4. Show the proposed structure or path, alternatives considered, rationale, assumptions, and open questions.
 5. Define how to validate with representative users or observable behavior.
 
-For evidence boundaries and examples, read `references/discovery.md`. Skip full discovery when the task and evidence are already clear; use `interface-layout` for visual refinement.
+For evidence boundaries and examples, read `references/discovery.md`. Skip full discovery when the task and evidence are already clear; use `interface-layout` for composition, `visual-hierarchy` for scan order, and `forms-input` or `interaction-patterns` for concrete control behavior.

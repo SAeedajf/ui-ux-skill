@@ -20,7 +20,7 @@ for p in sorted(skills.iterdir()):
  if not desc or len(desc.group(1))<40 or not desc.group(1).strip().startswith('Use when '): fail(f'{p.name}: description must start with a specific Use when trigger')
  for ref in re.findall(r'\[[^]]+\]\(([^)]+)\)',text):
   if not ref.startswith(('http://','https://','#')) and not (p/ref).exists(): fail(f'{p.name}: broken link {ref}')
-if len(found)!=8: fail(f'expected 8 Skills, found {len(found)}')
+if len(found)!=15: fail(f'expected 15 Skills, found {len(found)}')
 # Source registry.
 with (ROOT/'docs/source-registry.csv').open(encoding='utf-8',newline='') as f: sources=list(csv.DictReader(f))
 ids=[r['id'] for r in sources]
@@ -44,6 +44,13 @@ for skill in found:
  cases=[x for x in evals if x['skill']==skill]
  if not any(x['case']=='positive' for x in cases) or not any(x['case']=='negative' for x in cases): fail(f'{skill}: needs positive and negative activation evals')
  if any(x.get('status')!='not_run' for x in cases): fail(f'{skill}: authoring must not mark evals run')
+if len(evals)!=30: fail(f'expected 30 activation cases, found {len(evals)}')
+# Quality scenario count.
+quality=(ROOT/'evals/quality-scenarios.md').read_text(encoding='utf-8')
+quality_count=len(re.findall(r'^\d+\. \*\*',quality,re.M))
+if quality_count!=19: fail(f'expected 19 quality scenarios, found {quality_count}')
+with (ROOT/'evals/run-log.csv').open(encoding='utf-8',newline='') as f: runs=list(csv.DictReader(f))
+if any(None in row for row in runs): fail('evals/run-log.csv has malformed rows or column counts')
 # Repo docs.
 for path in ['README.md','AGENTS.md','LICENSE','CONTRIBUTING.md','docs/installation.md','evals/quality-scenarios.md']:
  if not (ROOT/path).is_file(): fail(f'missing {path}')
