@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import sys
@@ -89,6 +90,47 @@ def validate_result_rows(
                 errors.append(f"{label}: activation PASS requires automatic invocation evidence")
             if not isinstance(row.get("trace"), str) or row.get("trace") not in evidence:
                 errors.append(f"{label}: activation PASS requires a trace evidence path")
+            trace_path = (root / row["trace"]).resolve() if isinstance(row.get("trace"), str) else None
+            trace_lines: list[dict[str, Any]] = []
+            if trace_path and trace_path.is_relative_to(root.resolve()) and trace_path.is_file():
+                try:
+                    trace_lines = [json.loads(line) for line in trace_path.read_text(encoding="utf-8").splitlines() if line.strip()]
+                    if any(not isinstance(event, dict) for event in trace_lines):
+                        errors.append(f"{label}: activation trace must contain JSON objects only")
+                except (json.JSONDecodeError, OSError) as exc:
+                    errors.append(f"{label}: activation trace is not readable JSONL: {exc}")
+            if not trace_lines:
+                errors.append(f"{label}: activation PASS requires a non-empty JSONL host trace")
+            review = row.get("activation_review")
+            if not isinstance(review, dict):
+                errors.append(f"{label}: activation PASS requires a human activation_review attestation")
+            else:
+                for field in ("reviewer", "reviewed_at", "evidence_summary"):
+                    if not isinstance(review.get(field), str) or not review[field].strip():
+                        errors.append(f"{label}: activation_review requires non-empty {field}")
+                if not re.fullmatch(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", str(review.get("reviewed_at", ""))):
+                    errors.append(f"{label}: activation_review.reviewed_at must be a UTC timestamp")
+                if review.get("scope") != "whole_trace":
+                    errors.append(f"{label}: activation_review must attest to whole_trace")
+                expected_hash = hashlib.sha256(trace_path.read_bytes()).hexdigest() if trace_path and trace_path.is_file() else None
+                if review.get("trace_sha256") != expected_hash:
+                    errors.append(f"{label}: activation_review trace hash does not match the reviewed trace")
+                observed = review.get("observed_skill_events")
+                if not isinstance(observed, list) or any(not isinstance(event, dict) for event in observed):
+                    errors.append(f"{label}: activation_review.observed_skill_events must be a list of event references")
+                    observed = []
+                for ref in observed:
+                    line_number = ref.get("line")
+                    if not isinstance(line_number, int) or line_number < 1 or line_number > len(trace_lines):
+                        errors.append(f"{label}: activation_review references a missing trace line")
+                    if not isinstance(ref.get("skill"), str) or not ref["skill"].strip():
+                        errors.append(f"{label}: activation_review event reference requires a skill name")
+                if scenario_id in expectations:
+                    target_skill = scenario_id.removeprefix("activation-").rsplit("-", 1)[0]
+                    if expectations[scenario_id] and not any(ref.get("skill") == target_skill for ref in observed):
+                        errors.append(f"{label}: positive activation review must reference the expected Skill event")
+                    if not expectations[scenario_id] and observed:
+                        errors.append(f"{label}: negative activation review must attest that the whole trace has no Skill events")
             activated = row.get("activated_skills")
             if not isinstance(activated, list) or any(not isinstance(name, str) for name in activated):
                 errors.append(f"{label}: activation PASS requires activated_skills as a string list")
