@@ -6,7 +6,7 @@
 - Not inspected:
 
 ## Findings
-For each finding: **priority**, **location/state**, **evidence and source IDs**, **user impact**, **recommended change**, **verification**.
+For each finding: **priority and rationale**, **location/state**, **evidence class and source IDs**, **user impact**, **confidence with rationale**, **recommended change**, **verification**. Label each finding as a normative requirement, platform guidance, research finding, user-reported issue, inference, or design judgment as applicable.
 
 ## Strengths and constraints
 List what supports the task and which existing patterns should be preserved.

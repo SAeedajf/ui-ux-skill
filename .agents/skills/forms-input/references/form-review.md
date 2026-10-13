@@ -10,6 +10,18 @@
 - For submission, show progress, prevent accidental duplicate submission, give a clear result, and provide retry/recovery without losing work when safe.
 - Verify keyboard order, label/error association, focus visibility, screen-reader announcement, zoom, and localized layouts with the actual implementation.
 
+## Recovery state record
+
+For each failure that interrupts the task, record the trigger, visible message, field association, focus destination, retained values by sensitivity, and the next safe action. For network retries or resend actions, verify duplicate-submit/idempotency behavior when the system exposes it.
+
+| Trigger | Error and association | Focus destination | Retained values | Recovery action |
+|---|---|---|---|---|
+| Client validation | State the invalid field and correction | Invalid field or error summary, according to form length | Keep unrelated, non-sensitive values | Correct and resubmit |
+| Server/network error | Explain failure and whether submission may have completed | Summary or retry control | Preserve safe values; avoid repeating irreversible action blindly | Retry, check status, or contact support |
+| OTP expired/incorrect | Identify the code field and expiry/retry condition | Code field or announced summary | Clear expired/secret code only when policy requires; keep safe contact context | Request new code or edit destination |
+
+Treat this as a proposal until the actual form, persistence policy, and platform behavior have been inspected. Record `observed`, `user-reported`, `inferred`, or `proposed` for each entry.
+
 ## Evidence and handoffs
 
 A text description can support a proposed checklist, not verification of an unseen form. Mark each observation as observed, user-reported, inferred, or proposed. Apply platform or locale policy only after confirming it; refer Persian/RTL-specific direction, numerals, and mixed-script behavior to `persian-rtl-localization`.

@@ -10,6 +10,6 @@ description: Use when refining page layout, spacing, cards, and composition.
 2. Inspect the current UI and available tokens/assets before proposing changes.
 3. Arrange page regions, grouping, and spacing around the task. Keep semantic content priority with `visual-hierarchy`; use existing color roles and type tokens unless those systems are explicitly in scope.
 4. Explain choices with context: distinguish standard/technical constraints, research, platform convention, and aesthetic preference. Avoid universal color-psychology claims.
-5. Review real content lengths, contrast, responsive states, and interaction affordances.
+5. Review real content lengths, contrast, responsive states, and interaction affordances. Record the inspected state/viewport, the acceptance criterion, the observed result, and any unverified breakpoint. Treat a hierarchy or spacing proposal as unverified until checked in the rendered interface.
 
 Load `references/composition.md` for the decision checklist. Use `visual-hierarchy` for scan order and emphasis, `color-systems` for palettes/themes, `responsive-design` for breakpoints, and `design-systems` only when shared tokens or components need to change.

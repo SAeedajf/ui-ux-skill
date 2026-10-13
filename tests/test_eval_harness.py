@@ -1,4 +1,5 @@
 import json
+import hashlib
 import tempfile
 import unittest
 from pathlib import Path
@@ -11,7 +12,9 @@ class ResultValidationTests(unittest.TestCase):
         self.tmp = tempfile.TemporaryDirectory()
         self.root = Path(self.tmp.name)
         (self.root / "evals/evidence").mkdir(parents=True)
-        (self.root / "evals/evidence/trace.json").write_text("{}", encoding="utf-8")
+        self.trace = self.root / "evals/evidence/trace.jsonl"
+        self.trace.write_text('{"type":"skill.invoked","skill":"ux-discovery","invocation_mode":"automatic"}\n', encoding="utf-8")
+        trace_hash = hashlib.sha256(self.trace.read_bytes()).hexdigest()
         self.base = {
             "run_id": "run-001",
             "scenario_id": "activation-ux-discovery-positive",
@@ -20,11 +23,19 @@ class ResultValidationTests(unittest.TestCase):
             "timestamp_utc": "2026-10-13T10:00:00Z",
             "runner": "codex-cli",
             "model": "gpt-6-luna",
-            "evidence": ["evals/evidence/trace.json"],
-            "trace": "evals/evidence/trace.json",
+            "evidence": ["evals/evidence/trace.jsonl"],
+            "trace": "evals/evidence/trace.jsonl",
             "checks": [{"name": "expected activation", "passed": True}],
             "invocation_mode": "automatic",
             "activated_skills": ["ux-discovery"],
+            "activation_review": {
+                "reviewer": "reviewer@example.invalid",
+                "reviewed_at": "2026-10-13T10:10:00Z",
+                "trace_sha256": trace_hash,
+                "scope": "whole_trace",
+                "evidence_summary": "The reviewed trace explicitly records automatic skill loading.",
+                "observed_skill_events": [{"line": 1, "skill": "ux-discovery"}],
+            },
         }
 
     def tearDown(self):
@@ -43,6 +54,16 @@ class ResultValidationTests(unittest.TestCase):
         row = {**self.base, "invocation_mode": "manual"}
         errors = validate_result_rows([row], {row["scenario_id"]}, self.root, "activation", {row["scenario_id"]: True})
         self.assertTrue(any("automatic" in error.lower() for error in errors))
+
+    def test_rejects_activation_pass_with_arbitrary_unreviewed_trace(self):
+        row = {**self.base, "activation_review": None}
+        errors = validate_result_rows([row], {row["scenario_id"]}, self.root, "activation", {row["scenario_id"]: True})
+        self.assertTrue(any("review" in error.lower() for error in errors))
+
+    def test_rejects_activation_review_bound_to_different_trace(self):
+        row = {**self.base, "activation_review": {**self.base["activation_review"], "trace_sha256": "0" * 64}}
+        errors = validate_result_rows([row], {row["scenario_id"]}, self.root, "activation", {row["scenario_id"]: True})
+        self.assertTrue(any("hash" in error.lower() for error in errors))
 
     def test_rejects_negative_activation_that_invoked_skill(self):
         sid = "activation-ux-discovery-negative"
