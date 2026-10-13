@@ -3,13 +3,15 @@
 import csv, json, re, sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from scripts.eval_harness import validate_all as validate_eval_results
 errors=[]
 def fail(msg): errors.append(msg)
 # Skill folders and frontmatter.
 skills=ROOT/'.agents/skills'
 found=[]
 for p in sorted(skills.iterdir()):
- if not p.is_dir(): continue
+ if not p.is_dir() or p.name.startswith('.'): continue
  found.append(p.name); f=p/'SKILL.md'
  if not f.is_file(): fail(f'{p.name}: missing SKILL.md'); continue
  text=f.read_text(encoding='utf-8')
@@ -43,8 +45,10 @@ with (ROOT/'evals/activation.jsonl').open(encoding='utf-8') as f: evals=[json.lo
 for skill in found:
  cases=[x for x in evals if x['skill']==skill]
  if not any(x['case']=='positive' for x in cases) or not any(x['case']=='negative' for x in cases): fail(f'{skill}: needs positive and negative activation evals')
- if any(x.get('status')!='not_run' for x in cases): fail(f'{skill}: authoring must not mark evals run')
 if len(evals)!=30: fail(f'expected 30 activation cases, found {len(evals)}')
+eval_ids=[x.get('id') for x in evals]
+if any(not isinstance(x,str) or not x for x in eval_ids) or len(set(eval_ids))!=len(evals): fail('activation definitions need unique stable IDs')
+for error in validate_eval_results(): fail(error)
 # Quality scenario count.
 quality=(ROOT/'evals/quality-scenarios.md').read_text(encoding='utf-8')
 quality_count=len(re.findall(r'^\d+\. \*\*',quality,re.M))
@@ -56,4 +60,4 @@ for path in ['README.md','AGENTS.md','LICENSE','CONTRIBUTING.md','docs/installat
  if not (ROOT/path).is_file(): fail(f'missing {path}')
 if errors:
  print('\n'.join('ERROR: '+e for e in errors));sys.exit(1)
-print(f'OK: {len(found)} skills, {len(sources)} sources ({sum(r["review_status"]=="reviewed" for r in sources)} reviewed / 6 partial), {len(domains)} domains, {len(evals)} activation cases (not run)')
+print(f'OK: {len(found)} skills, {len(sources)} sources ({sum(r["review_status"]=="reviewed" for r in sources)} reviewed / 6 partial), {len(domains)} domains, {len(evals)} activation cases; execution states validated separately')

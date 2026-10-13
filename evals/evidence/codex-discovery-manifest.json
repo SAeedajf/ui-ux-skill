@@ -1,0 +1,26 @@
+{
+  "probe": "codex debug prompt-input",
+  "cli_version": "codex-cli 0.144.5",
+  "timestamp_utc": "2026-10-13T18:11:12Z",
+  "skills_expected": 15,
+  "skills_found_in_prompt_input": [
+    "accessibility-inclusive-design",
+    "color-systems",
+    "design-systems",
+    "ethical-persuasion",
+    "forms-input",
+    "information-architecture",
+    "interaction-patterns",
+    "interface-layout",
+    "journey-mapping",
+    "navigation-controls",
+    "persian-rtl-localization",
+    "responsive-design",
+    "ui-ux-review",
+    "ux-discovery",
+    "visual-hierarchy"
+  ],
+  "all_metadata_present": true,
+  "automatic_selection_proven": false,
+  "raw_prompt_input_committed": false
+}
