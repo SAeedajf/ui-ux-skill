@@ -1,6 +1,6 @@
 ---
 name: persian-rtl-localization
-description: Design, implement, or review Persian/RTL interfaces, including mixed Persian and Latin content. Use when locale direction, Persian copy, numerals, dates, currency, phone/OTP, typography, or RTL iconography matters; never apply RTL to an LTR locale.
+description: Use when an interface includes Persian/RTL content, mixed-direction text, locale-specific numerals, dates, currency, phone/OTP fields, or RTL typography; skip for an LTR-only localization.
 ---
 
 # Persian Rtl Localization

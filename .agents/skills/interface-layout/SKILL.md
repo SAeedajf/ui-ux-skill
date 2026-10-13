@@ -1,6 +1,6 @@
 ---
 name: interface-layout
-description: Design or refine visual hierarchy, color, typography, spacing, cards, hero sections, and page composition. Use for visual structure and style decisions; use responsive-design for viewport adaptation, accessibility-inclusive-design for conformance, and design-systems when shared tokens/components are the main concern.
+description: Use when designing or refining visual hierarchy, color, typography, spacing, cards, hero sections, or page composition; skip when responsive behavior, interaction logic, or shared components are the main task.
 ---
 
 # Interface Layout

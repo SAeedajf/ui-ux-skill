@@ -1,6 +1,6 @@
 ---
 name: ux-discovery
-description: Discover user needs, information structure, journeys, or flows before designing or changing an interface. Use when the task is ambiguous, asks for UX strategy, research synthesis, navigation architecture, journey maps, or user flows; do not use for a purely visual polish request with clear requirements.
+description: Use when a task needs user-goal clarification, UX research synthesis, information architecture, customer journeys, or user flows; skip for a clearly scoped visual polish task.
 ---
 
 # Ux Discovery

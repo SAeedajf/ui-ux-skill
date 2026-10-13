@@ -1,6 +1,6 @@
 ---
 name: design-systems
-description: Create, extend, or audit design tokens, reusable components, documentation, and consistency across a product. Use when a change should scale across multiple screens or teams; avoid introducing a system abstraction for a one-off page without reuse needs.
+description: Use when creating or auditing reusable design tokens, shared components, documentation, theming, or consistency across product screens.
 ---
 
 # Design Systems

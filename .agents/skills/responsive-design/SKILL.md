@@ -1,6 +1,6 @@
 ---
 name: responsive-design
-description: Adapt a web or Android interface across viewport sizes, device classes, orientation, and window configurations. Use for breakpoints, fluid layout, adaptive navigation, foldables, tablets, or desktop support; do not treat a mobile screenshot as proof of responsive behavior.
+description: Use when adapting an interface across viewport sizes, orientation, device classes, resizable windows, tablets, or foldables.
 ---
 
 # Responsive Design

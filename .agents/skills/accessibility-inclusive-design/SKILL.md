@@ -1,6 +1,6 @@
 ---
 name: accessibility-inclusive-design
-description: Plan, implement, or review accessibility and inclusive interaction for a digital interface. Use when checking standards, semantics, keyboard/focus, assistive technology, contrast, motion, touch, or inclusive research; do not claim conformance from visual inspection alone.
+description: Use when a task involves accessibility standards, semantics, keyboard and focus, assistive technology, contrast, motion, touch, or inclusive research.
 ---
 
 # Accessibility Inclusive Design

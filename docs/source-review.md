@@ -27,3 +27,5 @@ Six rows remain explicitly partial:
 Do not describe these six as fully read. Some other commercial or book references also have limited free access; see individual access notes.
 
 Where the reference label includes an author, edition, or date, treat it as catalog metadata and check the linked source before relying on it; pass notes record known limits. The registry records its own review date separately.
+
+`submitted_url` preserves each of the 124 distinct links exactly as supplied. `url` is the verified or corrected canonical URL used for reference; ID 100 retains both the failed supplied URL and the canonical Baymard page identified during review.

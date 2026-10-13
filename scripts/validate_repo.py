@@ -17,7 +17,7 @@ for p in sorted(skills.iterdir()):
  front=text.split('---',2)[1]
  name=re.search(r'^name:\s*(.+)$',front,re.M); desc=re.search(r'^description:\s*(.+)$',front,re.M)
  if not name or name.group(1).strip()!=p.name: fail(f'{p.name}: name must match folder')
- if not desc or len(desc.group(1))<40: fail(f'{p.name}: description must be specific')
+ if not desc or len(desc.group(1))<40 or not desc.group(1).strip().startswith('Use when '): fail(f'{p.name}: description must start with a specific Use when trigger')
  for ref in re.findall(r'\[[^]]+\]\(([^)]+)\)',text):
   if not ref.startswith(('http://','https://','#')) and not (p/ref).exists(): fail(f'{p.name}: broken link {ref}')
 if len(found)!=8: fail(f'expected 8 Skills, found {len(found)}')
@@ -25,6 +25,9 @@ if len(found)!=8: fail(f'expected 8 Skills, found {len(found)}')
 with (ROOT/'docs/source-registry.csv').open(encoding='utf-8',newline='') as f: sources=list(csv.DictReader(f))
 ids=[r['id'] for r in sources]
 if len(sources)!=124 or len(set(ids))!=124 or set(ids)!=set(map(str,range(1,125))): fail('source registry must contain unique IDs 1..124')
+if any(not r.get('submitted_url') or not r.get('url') for r in sources): fail('each source needs submitted_url and reviewed/canonical url')
+if len({r['submitted_url'] for r in sources})!=124: fail('submitted_url must preserve the 124 distinct source links')
+if any(not r.get(k) for r in sources for k in ('pass_1','pass_2','checkpoint_5','review_date')): fail('every source needs two review passes, a five-source checkpoint, and review date')
 if sum(r['review_status']=='partially_verified' for r in sources)!=6: fail('expected six explicitly partial sources')
 source_ids=set(ids)
 # Coverage mapping.

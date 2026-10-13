@@ -1,6 +1,6 @@
 ---
 name: interaction-patterns
-description: Design or review product interactions such as navigation, buttons, forms, validation, errors, loading, empty, success, and recovery states. Use when a user action or system response is involved; defer responsive layout and broad research synthesis to their focused Skills.
+description: Use when a UI task involves user actions, navigation, buttons, forms, validation, feedback, or recovery states.
 ---
 
 # Interaction Patterns
