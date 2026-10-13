@@ -20,6 +20,7 @@ Use `python3 scripts/install-skills.py --help` to see selection and overwrite op
 ## Contents
 
 - [Skill index](skills/index.md)
+- [AI agent usage guide](docs/agent-usage-guide.md)
 - [Installation](docs/installation.md)
 - [Source registry](docs/source-registry.csv)
 - [Domain coverage](docs/domain-coverage.csv)

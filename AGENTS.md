@@ -2,6 +2,8 @@
 
 Use the relevant Skill in `.agents/skills/` for the task. Read its `SKILL.md` first and load only its linked references that fit the current question.
 
+For routing, host setup, prompt templates, and evidence labels, follow [docs/agent-usage-guide.md](docs/agent-usage-guide.md). Choose one primary Skill and add supporting Skills only for actual handoffs; do not load the full collection by default.
+
 - Begin with the user's goal, audience, context, constraints, platform, existing implementation, and success criteria. Inspect the actual repository or interface before prescribing a redesign.
 - Separate requirements and standards from research findings, platform conventions, practitioner guidance, hypotheses, and aesthetic choices. For externally grounded claims, cite the exact source ID from `docs/source-registry.csv` at the decision point; state if only a summary, listing, or paywalled description was reviewed, and do not stretch the claim beyond that evidence.
 - Prefer the smallest useful design change. Preserve working patterns and existing design tokens unless evidence or a stated goal justifies a change. Avoid adding a framework or dependency without need.
