@@ -1,6 +1,6 @@
 ---
 name: design-systems
-description: Use when creating or auditing reusable design tokens, shared components, documentation, theming, or consistency across product screens.
+description: Use when shared tokens, reusable components, theming, or system-wide consistency needs design or review.
 ---
 
 # Design Systems
@@ -12,4 +12,4 @@ description: Use when creating or auditing reusable design tokens, shared compon
 4. Define usage, states, accessibility requirements, responsive behavior, and migration/ownership.
 5. Check representative consumers and document exceptions rather than forcing false uniformity.
 
-Read `references/system-principles.md`; use the registry for standards vs vendor guidance.
+Read `references/system-principles.md`; use the registry for standards vs vendor guidance. Migrate shared components only when repeated need, evidence, and ownership are clear; avoid broad migration without them.

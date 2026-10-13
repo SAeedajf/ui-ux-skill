@@ -1,6 +1,6 @@
 ---
 name: ux-discovery
-description: Use when a task needs user-goal clarification, UX research synthesis, information architecture, customer journeys, or user flows; skip for a clearly scoped visual polish task.
+description: Use when user goals, research evidence, information architecture, journeys, or task flows need discovery.
 ---
 
 # Ux Discovery
@@ -12,4 +12,4 @@ description: Use when a task needs user-goal clarification, UX research synthesi
 4. Show the proposed structure or path, alternatives considered, rationale, assumptions, and open questions.
 5. Define how to validate with representative users or observable behavior.
 
-For evidence boundaries and examples, read `references/discovery.md`.
+For evidence boundaries and examples, read `references/discovery.md`. Skip full discovery when the task and evidence are already clear; use `interface-layout` for visual refinement.

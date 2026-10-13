@@ -1,6 +1,6 @@
 ---
 name: responsive-design
-description: Use when adapting an interface across viewport sizes, orientation, device classes, resizable windows, tablets, or foldables.
+description: Use when layouts or interactions must adapt across viewports, orientation, devices, or window sizes.
 ---
 
 # Responsive Design

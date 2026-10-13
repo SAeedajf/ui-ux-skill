@@ -1,6 +1,6 @@
 ---
 name: interface-layout
-description: Use when designing or refining visual hierarchy, color, typography, spacing, cards, hero sections, or page composition; skip when responsive behavior, interaction logic, or shared components are the main task.
+description: Use when page hierarchy, color, typography, spacing, cards, or composition needs design or refinement.
 ---
 
 # Interface Layout
@@ -12,4 +12,4 @@ description: Use when designing or refining visual hierarchy, color, typography,
 4. Explain choices with context: distinguish standard/technical constraints, research, platform convention, and aesthetic preference. Avoid universal color-psychology claims.
 5. Review real content lengths, contrast, responsive states, and interaction affordances.
 
-Load `references/composition.md` for the decision checklist.
+Load `references/composition.md` for the decision checklist. For combined requests, handle composition here and breakpoints with `responsive-design`; reuse existing tokens and involve `design-systems` only when shared-system changes are needed.

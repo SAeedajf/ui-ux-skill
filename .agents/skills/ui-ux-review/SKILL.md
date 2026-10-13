@@ -1,6 +1,6 @@
 ---
 name: ui-ux-review
-description: Use when auditing or reviewing an existing interface, design, or UI implementation for usability, visual hierarchy, accessibility, responsive behavior, interactions, localization, or consistency.
+description: Use when auditing an interface for usability, visuals, accessibility, responsive behavior, interactions, localization, or consistency.
 ---
 
 # Ui Ux Review

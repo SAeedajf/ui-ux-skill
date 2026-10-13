@@ -1,6 +1,6 @@
 ---
 name: interaction-patterns
-description: Use when a UI task involves user actions, navigation, buttons, forms, validation, feedback, or recovery states.
+description: Use when navigation, controls, forms, validation, feedback, or recovery states need design or review.
 ---
 
 # Interaction Patterns
@@ -12,4 +12,4 @@ description: Use when a UI task involves user actions, navigation, buttons, form
 4. Minimize unnecessary steps only when task safety, user control, and data quality remain intact. Do not use deceptive urgency or hidden consent.
 5. Verify keyboard/focus, screen reader names and state, touch targets, loading/empty/error/success cases, and localization.
 
-Read `references/interaction-states.md` for focused patterns.
+Read `references/interaction-states.md` for focused patterns. Use `accessibility-inclusive-design` for deeper standards or assistive-technology review, and `responsive-design` when layout modes are in scope.

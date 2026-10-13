@@ -1,9 +1,12 @@
 ---
 name: persian-rtl-localization
-description: Use when an interface includes Persian/RTL content, mixed-direction text, locale-specific numerals, dates, currency, phone/OTP fields, or RTL typography; skip for an LTR-only localization.
+description: Use when Persian/RTL or mixed-direction UI, typography, digits, dates, currency, phone, or OTP behavior is in scope.
 ---
 
 # Persian Rtl Localization
+
+## Scope
+Activate when Persian/RTL or mixed-direction behavior in an interface needs design, implementation guidance, or review. Proofreading Persian prose in a standalone document, or copy editing that does not affect interface localization or behavior, is out of scope.
 
 ## Workflow
 1. Confirm locale, direction, script, numeral/calendar/currency rules, text variants, and whether the experience is mixed-direction.
