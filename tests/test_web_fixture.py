@@ -33,6 +33,12 @@ class WebFixtureTests(unittest.TestCase):
         self.assertIn('@media(max-width:760px)', self.css)
         self.assertIn("window.matchMedia('(max-width: 760px)')", self.js)
 
+    def test_escape_closes_mobile_navigation_and_returns_focus(self):
+        self.assertIn("event.key !== 'Escape'", self.js)
+        self.assertIn("navigation.classList.remove('open')", self.js)
+        self.assertIn("menuButton.setAttribute('aria-expanded', 'false')", self.js)
+        self.assertIn('menuButton.focus()', self.js)
+
     def test_loading_error_and_success_recovery_are_defined(self):
         self.assertIn('در حال ثبت…', self.js)
         self.assertIn('دوباره تلاش کن؛ ایمیلت پاک نشده است.', self.js)
