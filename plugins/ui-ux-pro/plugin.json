@@ -1,0 +1,20 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ui-ux-pro",
+  "version": "0.1.0",
+  "description": "Practical, evidence-aware UI/UX workflows for AI agents.",
+  "repository": "https://github.com/SAeedajf/ui-ux-skill",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "ui",
+    "ux",
+    "design",
+    "accessibility",
+    "agent-skills"
+  ],
+  "extensions": {
+    "skills": {
+      "path": "skills"
+    }
+  }
+}

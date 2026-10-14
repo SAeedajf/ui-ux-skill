@@ -14,9 +14,25 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Install pinned packaging validation dependencies
+        run: python3 -m pip install -r requirements-dev.txt
       - name: Validate repository and evaluation ledgers
         run: python3 scripts/validate_repo.py
       - name: Run deterministic regression tests
         run: python3 -m unittest discover -s tests -v
+      - name: Verify generated plugin package
+        run: |
+          python3 scripts/build-plugin.py --check
+          python3 scripts/validate-plugin.py
+      - name: Build deterministic plugin archive
+        run: python3 scripts/build-plugin.py --check --archive
+      - name: Upload plugin ZIP and provenance
+        uses: actions/upload-artifact@v7
+        with:
+          name: ui-ux-pro-0.1.0
+          path: |
+            dist/ui-ux-pro-0.1.0.zip
+            dist/ui-ux-pro-0.1.0.manifest.json
+          if-no-files-found: error
       - name: Generate evaluation status report
         run: python3 scripts/eval_harness.py report
