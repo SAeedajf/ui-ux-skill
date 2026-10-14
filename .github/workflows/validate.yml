@@ -31,10 +31,25 @@ jobs:
       - name: Upload plugin ZIP and provenance
         uses: actions/upload-artifact@v7
         with:
-          name: ui-ux-pro-0.1.0
+          name: ui-ux-pro-0.1.0-phase-04-rc
           path: |
             dist/ui-ux-pro-0.1.0.zip
             dist/ui-ux-pro-0.1.0.manifest.json
+          if-no-files-found: error
+      - name: Finalize and validate Phase 04 report
+        run: >-
+          python3 scripts/validate_phase04_report.py
+          --finalize-run-url "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          --archive dist/ui-ux-pro-0.1.0.zip
+      - name: Upload Phase 04 machine report
+        uses: actions/upload-artifact@v7
+        with:
+          name: ui-ux-pro-phase-04-report
+          path: |
+            docs/plugin/reports/phase-04.json
+            schemas/phase-04-report.schema.json
+            docs/plugin/reports/phase-04-evidence.md
+            docs/plugin/security-and-provenance-review.md
           if-no-files-found: error
       - name: Generate evaluation status report
         run: python3 scripts/eval_harness.py report

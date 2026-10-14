@@ -1,32 +1,64 @@
-# Owner steps: create a private UI/UX Pro plugin
+# Owner-run checks for the existing private ChatGPT plugin
 
-Phase 03 did not access the owner's ChatGPT account or create/install a plugin. Use this guide only when the owner is ready to act in ChatGPT.
+## Current verified state
 
-## Download and verify
+On 2026-10-14, the official Plugin Creator metadata reader returned:
 
-Download the verified archive from [GitHub Actions](https://github.com/SAeedajf/ui-ux-skill/actions/runs/38588593437/artifacts/11906343261):
+- Plugin ID: `plugins_6acfa25d79388191b9861545d52f6d03`
+- Release ID: `pluginrel_6acfa26265f48191b194fe33780fbe70`
+- Name: `ui-ux-pro`; version: `0.1.0`
+- Scope: `USER`; visibility: `PRIVATE`
+- Current release metadata confirms creation only. It does not expose installation in ChatGPT Work, discovery in a conversation, Skill activation, or execution.
+
+Do not recreate, replace, upload a new release, change the audience, or publish this plugin during the checks. Open the existing [private plugin](https://chatgpt.com/plugins/plugins_6acfa25d79388191b9861545d52f6d03) in the intended ChatGPT Work account.
+
+## Owner procedure
+
+1. Confirm the page identifies the exact plugin ID above and Personal/Private scope. If the ID or scope differs, stop and record the screen state.
+2. Check whether it is already installed. If not, install the existing private plugin from this page only. Do not upload the Phase 04 ZIP or choose an update/release action.
+3. Start a fresh Work conversation. Select UI/UX Pro explicitly using the plugin picker/`@` flow and run T01. Record selection and the resulting response separately.
+4. In a separate fresh conversation, leave the plugin unselected and run T02 as an automatic positive activation check. Then run T07 as a negative control. Do not mention a Skill name in the positive prompt.
+5. Run T03–T06 as additional capability checks. Inspect available plugin/Skill status and evidence. If ChatGPT does not show a per-Skill trace, mark individual Skill loading `UNVERIFIED`; a response naming a Skill is not proof that its file was read.
+6. Inspect the installed plugin's Skills list and any legacy/personal Skills with matching IDs. Record duplicates and the visible namespace or path. Do not delete or move any Skill as part of this test.
+
+## Result interpretation
+
+| Observation | Record as |
+|---|---|
+| Plugin page reports Personal/Private; exact ID matches | `CREATED` confirmed |
+| Plugin appears in installed list | `INSTALLED` |
+| Plugin appears in Work's plugin picker | `DISCOVERED` |
+| Explicitly selected T01 runs successfully | `EXPLICITLY_INVOKED`; this alone does not prove automatic activation |
+| Unselected, relevant T02 causes UI/UX behavior and a visible trace confirms the Skill | `ACTIVATED` / `EXECUTED` for that trace only |
+| T07 selects/loads a UI/UX Skill without a UI/UX need | Negative test `FAIL` |
+| No trace is exposed | Skill activation remains `UNVERIFIED`, even if the answer is good |
+
+## Distinguishing installation and execution failures
+
+- If the plugin is absent from the installed list, diagnose `INSTALLATION` first. Record the exact account surface and visible error; do not infer anything about model routing.
+- If installed but absent from the Work picker, diagnose `DISCOVERY` or surface/account eligibility. Record the active workspace/surface and refresh/new-chat behavior.
+- If present and selected but the explicit test has no relevant result, record an `EXECUTION` failure. Preserve the prompt, answer, plugin version, and any visible trace.
+- If explicit invocation works but unselected T02 does not activate, record explicit invocation as successful and automatic activation as failed or unverified, according to the available trace.
+- Keep ChatGPT results separate from Codex CLI discovery and from the existing Plugin Creator metadata.
+
+## Evidence form
+
+For each T01–T07, copy and complete:
 
 ```text
-ui-ux-pro-0.1.0.zip
-SHA-256: 611b8eddaf74821dd2a1dd6a1d8ae576c32e20b4b23db12ec7021aa6ae634c7c
+Test ID:
+Date/time and timezone:
+ChatGPT surface and account/workspace scope:
+Plugin ID / version:
+Installed state:
+Discovered in picker:
+Explicitly selected (yes/no):
+Prompt (exact):
+Observed Skills / trace paths:
+Response or visible error:
+Screenshot, trace, or evidence location:
+Result: PASS / FAIL / BLOCKED / NOT_RUN / NEEDS_REVIEW
+Limitations:
 ```
 
-Verify the checksum before attaching the file. The plugin source is from main commit `819c432a64cee55c2a4d31b406817038c7ab5713`. The CI sidecar records GitHub PR merge commit `96686641dfec26a25d65c88397ebe1a6aad14857`, combining that base with Phase 03 output `f397de44cbb06b38625dfd4682ca798575373214`. The archive contains portable root `plugin.json`, `LICENSE`, 15 skills, and their references.
-
-## Request for Plugin Creator
-
-In ChatGPT Work, install/open `Plugin Creator` if it is available, attach the ZIP, and paste this request:
-
-> Create a **personal, private, skills-only** ChatGPT plugin named UI/UX Pro from the attached `ui-ux-pro-0.1.0.zip`. Preserve plugin ID `ui-ux-pro`, version `0.1.0`, and all 15 Skills with their bundled references. Do not create an MCP server, app, hook, external API dependency, or public/workspace-directory listing. Do not change or omit any Skill. Before saving or installing, show me the target scope and confirm the archive contents. If this ChatGPT surface cannot import the ZIP or cannot create a personal plugin, stop and explain the supported alternative; do not reconstruct it from memory.
-
-This prompt is prepared for the owner; direct ZIP import into a personal Plugin Creator flow was not verified. Do not interpret a generated preview or a saved draft as a completed install.
-
-## Confirm private scope
-
-Before saving, verify the UI identifies the plugin as Personal and not as a Workspace plugin. If ChatGPT only offers a workspace upload control, cancel unless the owner specifically intends that workspace scope. A newly created workspace plugin being private by default does not authorize sharing or directory publication.
-
-After the owner chooses to install, verify the plugin appears in Personal/Installed, open a new Work chat, select it explicitly with `@`, and run the explicit test first. Then run positive and negative cases from `chatgpt-test-cases.md`. Record the exact surface, plugin version, skills observed, response, and available evidence. ChatGPT may not expose a trace that proves which individual Skill file was read; if so, report that limitation.
-
-## Supported fallback: local marketplace in ChatGPT Desktop
-
-If the Work web account cannot import the archive as a personal plugin, the documented local marketplace route is available for the ChatGPT desktop app. Follow [chatgpt-installation.md](chatgpt-installation.md#chatgpt-desktop-local-marketplace-route). This route requires the owner to place files and a marketplace catalog in their own user directories; Phase 03 did not run those commands.
+Do not attach credentials or private user data to the repository. Keep any account screenshots or traces local to the owner unless sanitized before sharing.

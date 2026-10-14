@@ -1,19 +1,35 @@
-# ChatGPT test cases
+# Private ChatGPT acceptance cases
 
-These cases are prepared for an owner-run ChatGPT test. All are **NOT_RUN** in Phase 03 because no ChatGPT account/plugin was accessed. Do not change this status based on Codex discovery or package validation.
+All cases are currently `NOT_RUN`. Plugin Creator metadata confirms that the private user-scoped plugin exists; this does not prove installation, discovery, invocation, or Skill execution. Follow [the existing-plugin owner procedure](chatgpt-personal-plugin.md). Keep each test in a fresh conversation and never infer activation from answer text alone.
 
-For each executed case, record the surface (ChatGPT Work web/Desktop/Mobile), date, plugin version, whether the plugin was selected, observed Skills, response, and any trace or UI evidence. A response that mentions a Skill name is not proof that the Skill file was loaded. If ChatGPT exposes no per-Skill trace, keep activation evidence limited to what is observable.
-
-| Test | Prompt | Expected Skills | Status |
+| Test | Setup and prompt | Expected observation | Status |
 |---|---|---|---|
-| 01 — Persian Mobile UI | «یک صفحه فروشگاهی فارسی برای موبایل دارم. طراحی و ساختار آن را از نظر خوانایی، فاصله‌ها و RTL بررسی کن.» | `persian-rtl-localization`, `interface-layout`, `responsive-design` | NOT_RUN |
-| 02 — Form UX | «فرم ثبت‌نام من خطاهای نامفهوم دارد و کاربران در تکمیل آن مشکل دارند.» | `forms-input`, `accessibility-inclusive-design` | NOT_RUN |
-| 03 — Design System | «می‌خواهم رنگ‌ها، کامپوننت‌ها و Design Tokens بین صفحات سایت یکپارچه شوند.» | `design-systems`, `color-systems` | NOT_RUN |
-| 04 — Information Architecture | «کاربران محصولات را در دسته‌بندی‌های سایت پیدا نمی‌کنند.» | `information-architecture`, `navigation-controls` | NOT_RUN |
-| 05 — Customer Journey | «می‌خواهم مسیر کاربر از ورود به صفحه محصول تا ثبت سفارش بررسی شود.» | `journey-mapping`, `ui-ux-review` | NOT_RUN |
-| 06 — Negative Activation | «یک تابع Python برای مرتب‌سازی اعداد بنویس.» | No UI/UX Skill should be selected without a UI/UX need. | NOT_RUN |
-| 07 — Explicit Invocation | In a fresh Work chat, select `UI/UX Pro` through `@` and ask: «ساختار یک صفحهٔ محصول فارسی را از نظر RTL و دسترسی‌پذیری بررسی کن.» | Explicit plugin selection; likely `persian-rtl-localization`, `ui-ux-review`, and/or `accessibility-inclusive-design` as needed. | NOT_RUN |
+| T01 — Explicit invocation | Select the existing `UI/UX Pro` plugin in a fresh Work chat. Ask: «ساختار یک صفحهٔ محصول فارسی را از نظر RTL و دسترسی‌پذیری بررسی کن.» | Explicit selection is visible; relevant UI/UX guidance is applied. Record any Skill trace. This tests explicit invocation, not automatic activation. | NOT_RUN |
+| T02 — RTL / responsive positive | In a new chat, leave the plugin unselected. Ask: «یک فروشگاه فارسی روی موبایل دارم؛ ریسپانسیو بودن، ترتیب RTL، متن‌های ترکیبی و اسکرول افقی را از روی کد بررسی کن.» | Evidence-based review of viewport behavior, RTL, mixed-direction content, and known limitations. Only mark Skill activation PASS if a trace identifies the loaded packaged Skill. | NOT_RUN |
+| T03 — Forms | «فرم ثبت‌نام فارسی در خطای شماره تلفن پیام مبهمی نشان می‌دهد. اعتبارسنجی، ارتباط خطا با فیلد، نگه‌داشتن مقدار و مدیریت Focus را بررسی کن.» | Concrete form states, error recovery, and focus checks with accessible names/associations. | NOT_RUN |
+| T04 — Accessibility | «این صفحه را از نظر نام کنترل‌ها، کنتراست و پیمایش کامل با کیبورد بررسی کن؛ هر چیزی را که از شواهد نمی‌شود تأیید کرد جدا بگو.» | Findings tied to inspected controls and measured contrast; no blanket conformance claim. | NOT_RUN |
+| T05 — Design system | «توکن‌های رنگ، فاصله و تایپوگرافی این رابط با کامپوننت‌هایش ناهماهنگ است. موارد واقعی را پیدا کن و یک اصلاح کوچک و سازگار پیشنهاد بده.» | Identifies actual tokens/components and a scoped consistent change; preserves working patterns. | NOT_RUN |
+| T06 — Information architecture | «کاربران دسته‌بندی محصولات را پیدا نمی‌کنند. ساختار فعلی و مسیرهای ناوبری را بررسی کن و تغییر پیشنهادی را با شواهد توضیح بده.» | Assessment of labels, grouping, wayfinding, and relevant user task evidence. | NOT_RUN |
+| T07 — Negative control | In a fresh chat with the plugin unselected, ask: «یک تابع Python برای مرتب‌سازی لیست اعداد بنویس.» | No UI/UX Skill should be selected or loaded unless the user adds a UI/UX need. A useful Python answer is expected. | NOT_RUN |
 
-## Duplicate-source check
+## Per-test evidence record
 
-Phase 02 confirmed that Codex exposes both the 15 plugin-prefixed Skills and 15 legacy Skills when both sources are present. This result is not automatically carried over to ChatGPT. To check ChatGPT, inspect Personal Skills and the plugin's own Skills list, then run one implicit and one explicit case. Record whether the same title appears twice, whether the plugin card lists the installed Skills, and whether the model reports or exposes an actual source trace. Keep `DUPLICATE_SKILLS=NEEDS_REVIEW` if the UI/model does not establish precedence.
+```text
+Test ID:
+Date/time and timezone:
+ChatGPT surface and account/workspace scope:
+Plugin ID / version:
+Installed state:
+Discovered in picker:
+Explicitly selected (yes/no):
+Prompt (exact):
+Observed Skills / trace paths:
+Response or visible error:
+Screenshot, trace, or evidence location:
+Result: PASS / FAIL / BLOCKED / NOT_RUN / NEEDS_REVIEW
+Limitations:
+```
+
+## Duplicate Skills check
+
+Compare the plugin's installed Skill inventory with any legacy/personal Skills. Record IDs, namespace/path, and count for each source. If ChatGPT only shows a plugin card or a response without a source trace, discovery may be confirmed but precedence, selection, and activation stay `NEEDS_REVIEW`. Codex's 15 + 15 duplicate discovery result does not establish ChatGPT behavior.
