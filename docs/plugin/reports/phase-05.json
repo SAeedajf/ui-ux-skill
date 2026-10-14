@@ -1,0 +1,391 @@
+{
+  "phase": "05",
+  "title": "Runtime Unblocking & Operational Proof",
+  "status": "PARTIAL",
+  "repository": "https://github.com/SAeedajf/ui-ux-skill",
+  "base_commit": "6c8069d05c7ac147c2c3d83cd88303674f012518",
+  "output_commit": "1cfae8c358267cd415ca8b48c35d81a90d1bd6da",
+  "plugin_version": "0.1.0",
+  "skills_count": 15,
+  "codex_runtime": {
+    "cli_path_selected": "/home/saeed/.local/bin/codex",
+    "selected_cli_version": "0.144.5",
+    "alternate_cli_path": "/home/saeed/.nvm/versions/node/v22.23.1/bin/codex",
+    "alternate_cli_version": "0.153.4",
+    "auth_status": "AUTHENTICATED",
+    "usage_status": "AVAILABLE_AT_SNAPSHOT",
+    "usage_snapshot": {
+      "observed_on": "2026-10-14",
+      "ordinary_usage_allowed": true,
+      "primary_used_percent": 38,
+      "secondary_used_percent": 65,
+      "rate_limit_reached": false
+    },
+    "model_used": null,
+    "config_diagnosis": "CONFIG_ISSUE_DIAGNOSED: PATH resolves to Codex CLI 0.144.5, which rejects the current [agents] table; direct CLI 0.153.4 reads the same config and auth successfully.",
+    "config_repair_status": "NOT_APPLIED: no personal config or PATH change was made; invoke the verified 0.153.4 path or have the owner adjust PATH."
+  },
+  "plugin_discovery": {
+    "environment": "Disposable HOME/CODEX_HOME with no copied credentials",
+    "installed": true,
+    "enabled": true,
+    "version": "0.1.0",
+    "skill_count": 15,
+    "source_paths_verified": true,
+    "discovery_scenarios": {
+      "plugin_only": {
+        "plugin_skills": 15,
+        "legacy_skills": 0
+      },
+      "legacy_only": {
+        "plugin_skills": 0,
+        "legacy_skills": 15
+      },
+      "both": {
+        "plugin_skills": 15,
+        "legacy_skills": 15
+      }
+    }
+  },
+  "fixture": {
+    "baseline_expected_failures": 5,
+    "agent_repair": "BLOCKED",
+    "post_repair_tests": "BLOCKED",
+    "browser_regression": "NOT_RUN"
+  },
+  "chatgpt_plugin": {
+    "plugin_id": "plugins_6acfa25d79388191b9861545d52f6d03",
+    "release_id": "pluginrel_6acfa26265f48191b194fe33780fbe70",
+    "version": "0.1.0",
+    "scope": "USER",
+    "visibility": "PRIVATE",
+    "metadata_status": "CREATED",
+    "work_installation": "BLOCKED",
+    "runtime_tests": "NOT_RUN"
+  },
+  "source_rights_review": {
+    "status": "NEEDS_REVIEW",
+    "matrix": "docs/plugin/source-rights-resolution.md",
+    "human_clearance": "PENDING"
+  },
+  "test_results": [
+    {
+      "id": "O01",
+      "status": "PASS",
+      "test_type": "codex_config_root_cause",
+      "executed_on": "2026-10-14",
+      "method": "Compare PATH-selected CLI 0.144.5 with installed CLI 0.153.4 using the same current config; read the effective agents value type without printing unrelated settings.",
+      "evidence": {
+        "trace": [],
+        "diff": [],
+        "test_after": [],
+        "other": [
+          "docs/plugin/reports/phase-05-evidence.md#codex-cli-configuration-authentication-and-usage"
+        ]
+      },
+      "output": "Old CLI reports AgentRoleToml parse error; 0.153.4 accepts config and login status.",
+      "reason": "Root cause is an older executable selected earlier in PATH; no personal config edit is needed to diagnose it."
+    },
+    {
+      "id": "O02",
+      "status": "PASS",
+      "test_type": "authenticated_runtime_and_usage",
+      "executed_on": "2026-10-14",
+      "method": "Read-only login status using 0.153.4 and one account usage snapshot.",
+      "evidence": {
+        "trace": [],
+        "diff": [],
+        "test_after": [],
+        "other": [
+          "docs/plugin/reports/phase-05-evidence.md#codex-cli-configuration-authentication-and-usage"
+        ]
+      },
+      "output": "Authenticated using ChatGPT; ordinary usage allowed at the snapshot and no rate limit reported.",
+      "reason": "Model calls were not made because the authenticated profile does not have the plugin installed and auth was not copied into the isolated plugin-only profile."
+    },
+    {
+      "id": "O03",
+      "status": "PASS",
+      "test_type": "plugin_only_install_discovery",
+      "executed_on": "2026-10-14",
+      "method": "Install version 0.1.0 from the repo marketplace in disposable CODEX_HOME; inspect plugin list, installed Skill files, and prompt-input in an empty project.",
+      "evidence": {
+        "trace": [],
+        "diff": [],
+        "test_after": [],
+        "other": [
+          "docs/plugin/reports/phase-05-evidence.md#isolated-plugin-install-and-skill-discovery"
+        ]
+      },
+      "output": "installed=true, enabled=true, 15 plugin Skills discovered, 0 legacy entries in Plugin-only context, source path and all 15 cached files verified.",
+      "reason": "This proves isolated installation and discovery only; it does not prove model activation."
+    },
+    {
+      "id": "O04",
+      "status": "BLOCKED",
+      "test_type": "codex_positive_activation",
+      "executed_on": "2026-10-14",
+      "method": "Runtime access boundary check before issuing a model call.",
+      "evidence": {
+        "trace": [],
+        "diff": [],
+        "test_after": [],
+        "other": [
+          "docs/plugin/reports/phase-05-evidence.md#isolated-plugin-install-and-skill-discovery"
+        ]
+      },
+      "output": null,
+      "reason": "The isolated plugin-only CODEX_HOME is not logged in. The authenticated profile lacks this plugin; neither credentials nor personal plugin settings were moved or changed."
+    },
+    {
+      "id": "O05",
+      "status": "BLOCKED",
+      "test_type": "codex_negative_activation",
+      "executed_on": "2026-10-14",
+      "method": "Runtime access boundary check before issuing a model call.",
+      "evidence": {
+        "trace": [],
+        "diff": [],
+        "test_after": [],
+        "other": [
+          "docs/plugin/reports/phase-05-evidence.md#isolated-plugin-install-and-skill-discovery"
+        ]
+      },
+      "output": null,
+      "reason": "No authenticated isolated model trace is available; the negative prompt was not sent."
+    },
+    {
+      "id": "O06",
+      "status": "BLOCKED",
+      "test_type": "agent_fixture_repair",
+      "executed_on": "2026-10-14",
+      "method": "Run the five seeded fixture tests before repair; do not make a manual repair when Agent execution is unavailable.",
+      "evidence": {
+        "trace": [],
+        "diff": [],
+        "test_after": [],
+        "other": [
+          "docs/plugin/reports/phase-05-evidence.md#fixture-baseline-and-repair"
+        ]
+      },
+      "output": null,
+      "reason": "All five seeded tests fail as expected. No authenticated Agent repair, trace, or Agent-authored diff exists."
+    },
+    {
+      "id": "O07",
+      "status": "BLOCKED",
+      "test_type": "post_repair_regression",
+      "executed_on": "2026-10-14",
+      "method": "Check for Agent patch eligibility; no post-repair test was run without an Agent repair.",
+      "evidence": {
+        "trace": [],
+        "diff": [],
+        "test_after": [],
+        "other": [
+          "docs/plugin/reports/phase-05-evidence.md#fixture-baseline-and-repair"
+        ]
+      },
+      "output": null,
+      "reason": "There is no Agent-authored patch to test; baseline failures are not post-repair results."
+    },
+    {
+      "id": "O08",
+      "status": "NEEDS_REVIEW",
+      "test_type": "duplicate_skill_selection_precedence",
+      "executed_on": "2026-10-14",
+      "method": "Repeat Plugin-only, Legacy-only, and combined discovery; hash compare overlapping installed legacy Skill directories with canonical repo sources.",
+      "evidence": {
+        "trace": [],
+        "diff": [],
+        "test_after": [],
+        "other": [
+          "docs/plugin/reports/phase-05-evidence.md#duplicate-skill-review",
+          "docs/plugin/duplicate-skills-migration.md"
+        ]
+      },
+      "output": "15/0, 0/15, and 15/15 Plugin/Legacy discovery; eight personal overlap directories differ in content from current canonical copies.",
+      "reason": "Discovery does not reveal model selection precedence. Content differences make automatic migration unsafe."
+    },
+    {
+      "id": "O09",
+      "status": "PASS",
+      "test_type": "private_chatgpt_plugin_metadata",
+      "executed_on": "2026-10-14",
+      "method": "Read-only Plugin Creator metadata lookup by the exact existing plugin ID.",
+      "evidence": {
+        "trace": [],
+        "diff": [],
+        "test_after": [],
+        "other": [
+          "docs/plugin/reports/phase-05-evidence.md#existing-private-chatgpt-plugin"
+        ]
+      },
+      "output": "Existing release 0.1.0; USER scope and PRIVATE visibility retained.",
+      "reason": "This is current creation metadata only; it does not claim installation or Work runtime."
+    },
+    {
+      "id": "O10",
+      "status": "BLOCKED",
+      "test_type": "chatgpt_work_install_discovery",
+      "executed_on": "2026-10-14",
+      "method": "Check available owner-authenticated Work inspection capability; only read-only plugin metadata is exposed here.",
+      "evidence": {
+        "trace": [],
+        "diff": [],
+        "test_after": [],
+        "other": [
+          "docs/plugin/reports/phase-05-evidence.md#existing-private-chatgpt-plugin"
+        ]
+      },
+      "output": null,
+      "reason": "No permitted API or current Work UI session reports installed/enabled or picker discovery for the exact plugin."
+    },
+    {
+      "id": "O11",
+      "status": "NOT_RUN",
+      "test_type": "chatgpt_positive_activation",
+      "executed_on": null,
+      "method": "Owner-run procedure is documented.",
+      "evidence": {
+        "trace": [],
+        "diff": [],
+        "test_after": [],
+        "other": [
+          "docs/plugin/owner-runtime-acceptance.md#chatgpt-work-existing-private-plugin-only"
+        ]
+      },
+      "output": null,
+      "reason": "No ChatGPT Work conversation or trace was accessed."
+    },
+    {
+      "id": "O12",
+      "status": "NOT_RUN",
+      "test_type": "chatgpt_negative_activation",
+      "executed_on": null,
+      "method": "Owner-run procedure is documented.",
+      "evidence": {
+        "trace": [],
+        "diff": [],
+        "test_after": [],
+        "other": [
+          "docs/plugin/owner-runtime-acceptance.md#chatgpt-work-existing-private-plugin-only"
+        ]
+      },
+      "output": null,
+      "reason": "No unrelated Python request was sent in ChatGPT Work."
+    },
+    {
+      "id": "O13",
+      "status": "NEEDS_REVIEW",
+      "test_type": "source_rights_and_provenance",
+      "executed_on": "2026-10-14",
+      "method": "Reopen seven source URLs, compare current page access with existing Skill claims, inspect reuse language, and record unsupported/premium boundaries.",
+      "evidence": {
+        "trace": [],
+        "diff": [],
+        "test_after": [],
+        "other": [
+          "docs/plugin/source-rights-resolution.md",
+          "docs/plugin/reports/phase-05-evidence.md#source-and-rights-review"
+        ]
+      },
+      "output": "Access and claim limits recorded; no reuse license or human rights clearance inferred.",
+      "reason": "Six source rows remain partially verified; S20 direct-page access remains limited; human rights-holder review is outstanding."
+    },
+    {
+      "id": "O14",
+      "status": "BLOCKED",
+      "test_type": "deterministic_tests_and_ci",
+      "executed_on": null,
+      "method": "CI validation for the Phase 05 branch is pending.",
+      "evidence": {
+        "trace": [],
+        "diff": [],
+        "test_after": [],
+        "other": []
+      },
+      "output": null,
+      "reason": "The current Phase 05 CI run has not completed. CI finalization will record the exact run and commit in its report artifact."
+    },
+    {
+      "id": "O15",
+      "status": "PASS",
+      "test_type": "phase05_report_contract",
+      "executed_on": "2026-10-14",
+      "method": "Validate schema and semantic rules, including PASS evidence, activation traces, repair diffs/post-tests, and NOT_RUN outputs.",
+      "evidence": {
+        "trace": [],
+        "diff": [],
+        "test_after": [],
+        "other": [
+          "schemas/phase-05-report.schema.json",
+          "scripts/validate_phase05_report.py",
+          "docs/plugin/reports/phase-05-evidence.md"
+        ]
+      },
+      "output": "Machine report and evidence contract are implemented.",
+      "reason": "The validator keeps status and proof types separate and is integrated into GitHub Actions."
+    },
+    {
+      "id": "O16",
+      "status": "PASS",
+      "test_type": "scope_and_personal_state_boundary",
+      "executed_on": "2026-10-14",
+      "method": "Review Phase 05 diff and installed-state operations; use only read operations on user config, legacy Skills, and private plugin metadata.",
+      "evidence": {
+        "trace": [],
+        "diff": [],
+        "test_after": [],
+        "other": [
+          "docs/plugin/reports/phase-05-evidence.md#files-and-scope"
+        ]
+      },
+      "output": "No personal config, ChatGPT plugin, legacy directory, public listing, or Claude environment changed.",
+      "reason": "All plugin installation and discovery writes were isolated in disposable temporary CODEX_HOME directories."
+    }
+  ],
+  "open_gates": [
+    "O04",
+    "O05",
+    "O06",
+    "O07",
+    "O08",
+    "O10",
+    "O11",
+    "O12",
+    "O13",
+    "O14"
+  ],
+  "blocked_gates": [
+    "O04",
+    "O05",
+    "O06",
+    "O07",
+    "O10",
+    "O14"
+  ],
+  "needs_review_gates": [
+    "O08",
+    "O13"
+  ],
+  "not_run_gates": [
+    "O11",
+    "O12"
+  ],
+  "ci_status": "PENDING",
+  "ci_run_url": null,
+  "risks": [
+    "The PATH-selected Codex 0.144.5 executable still fails to parse the current agents table; the newer 0.153.4 executable works, but PATH was not changed.",
+    "The authenticated profile does not have ui-ux-pro installed; the isolated plugin profile is not authenticated. Model activation and Agent repair remain blocked.",
+    "Eight matching personal legacy Skills differ from current canonical sources; manual review and backup are required before any migration.",
+    "ChatGPT Work installation, discovery, and activation are not proven by private plugin metadata.",
+    "Human rights clearance for the six partial source records and S20 access limitation remains open."
+  ],
+  "owner_actions": [
+    "For Codex model tests, either authenticate the disposable Plugin-only CODEX_HOME through the official interactive flow with the owner present, or explicitly authorize a reversible install in the authenticated profile. Do not copy auth files.",
+    "After authentication, run the positive and negative Codex smoke prompts and Agent repair in a fresh fixture copy; preserve JSONL privately and run post-repair and browser regressions.",
+    "In the intended ChatGPT Work account, verify the existing PRIVATE plugin installation/picker and run the owner cases; keep private screenshots and raw traces out of this repo.",
+    "Have the maintainer/rightsholder resolve reuse rights for S36, S50, S94, S100, S102, and S109; retain S20's separate access limitation."
+  ],
+  "next_phase_handoff": "Continue Phase 05 only. Base: 6c8069d05c7ac147c2c3d83cd88303674f012518. New branch: codex/ui-ux-plugin-phase-05. Status PARTIAL. CLI config cause is diagnosed: PATH selects 0.144.5; 0.153.4 accepts config and existing ChatGPT auth. Isolated install/discovery passes with 15 Skills and zero legacy entries. Open gates: O04–O08, O10–O14; ChatGPT runtime owner action and rights-holder review remain. Authenticate the isolated Plugin-only CODEX_HOME officially or authorize a reversible user-profile install, then run the two smoke cases and real fixture repair; do not copy auth, change the model, migrate legacy Skills, update the private ChatGPT plugin, merge, publish, or test Claude."
+}
