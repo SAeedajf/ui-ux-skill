@@ -9,9 +9,10 @@ This guide distinguishes a validated portable package from a ChatGPT plugin inst
 - Portable manifest: root `plugin.json`
 - Skills: 15 under `skills/`
 - References: 18 Markdown files under Skill `references/` directories
-- Archive: [`ui-ux-pro-0.1.0.zip`](https://github.com/SAeedajf/ui-ux-skill/actions/runs/38586939721/artifacts/11904964103)
+- Archive: [`ui-ux-pro-0.1.0.zip`](https://github.com/SAeedajf/ui-ux-skill/actions/runs/38588593437/artifacts/11906343261)
 - SHA-256: `611b8eddaf74821dd2a1dd6a1d8ae576c32e20b4b23db12ec7021aa6ae634c7c`
-- Source commit: `819c432a64cee55c2a4d31b406817038c7ab5713`
+- Plugin source/main commit: `819c432a64cee55c2a4d31b406817038c7ab5713`
+- CI provenance commit: `96686641dfec26a25d65c88397ebe1a6aad14857` (GitHub's PR test merge commit; its parents are the main commit above and Phase 03 output commit `f397de44cbb06b38625dfd4682ca798575373214`)
 
 The link is a GitHub Actions artifact from the public repository. It is a downloadable build artifact, not a listing in the Universal Plugin Directory. GitHub retains workflow artifacts for a limited time; if this link expires, download the artifact from a successful, current Actions run or rebuild with `scripts/build-plugin.py --archive`.
 

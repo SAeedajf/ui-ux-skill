@@ -4,14 +4,14 @@ Phase 03 did not access the owner's ChatGPT account or create/install a plugin. 
 
 ## Download and verify
 
-Download the verified archive from [GitHub Actions](https://github.com/SAeedajf/ui-ux-skill/actions/runs/38586939721/artifacts/11904964103):
+Download the verified archive from [GitHub Actions](https://github.com/SAeedajf/ui-ux-skill/actions/runs/38588593437/artifacts/11906343261):
 
 ```text
 ui-ux-pro-0.1.0.zip
 SHA-256: 611b8eddaf74821dd2a1dd6a1d8ae576c32e20b4b23db12ec7021aa6ae634c7c
 ```
 
-Verify the checksum before attaching the file. The current artifact is tied to source commit `819c432a64cee55c2a4d31b406817038c7ab5713` and contains portable root `plugin.json`, `LICENSE`, 15 skills, and their references.
+Verify the checksum before attaching the file. The plugin source is from main commit `819c432a64cee55c2a4d31b406817038c7ab5713`. The CI sidecar records GitHub PR merge commit `96686641dfec26a25d65c88397ebe1a6aad14857`, combining that base with Phase 03 output `f397de44cbb06b38625dfd4682ca798575373214`. The archive contains portable root `plugin.json`, `LICENSE`, 15 skills, and their references.
 
 ## Request for Plugin Creator
 
