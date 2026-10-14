@@ -13,6 +13,13 @@ navigation.addEventListener('click', (event) => {
     menuButton.setAttribute('aria-label', 'باز کردن منوی ناوبری');
   }
 });
+document.addEventListener('keydown', (event) => {
+  if (event.key !== 'Escape' || !navigation.classList.contains('open')) return;
+  navigation.classList.remove('open');
+  menuButton.setAttribute('aria-expanded', 'false');
+  menuButton.setAttribute('aria-label', 'باز کردن منوی ناوبری');
+  menuButton.focus();
+});
 let cartCount = 0;
 document.querySelectorAll('.add-button').forEach((button) => button.addEventListener('click', () => {
   cartCount += 1;
