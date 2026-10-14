@@ -2,6 +2,8 @@
 
 The registry preserves the original 124 references, with two review-pass notes and a checkpoint after each five-reference group. Reviews were completed on 2026-10-13. Use the linked primary page for claims; this registry is a research map, not an endorsement or substitute for reading the source.
 
+`docs/domain-coverage.csv` maps every source ID to its registry domain; related domains may also cross-reference a source. The `source_ids` column is an index, not evidence that each source is equally authoritative or that every method fits every task. For an operational recommendation, use the source's evidence class and access notes and choose the relevant method for the user's actual question.
+
 ## Evidence classes
 
 - `standard_or_specification`: normative text or a published technical specification. Check status/version before calling it normative.

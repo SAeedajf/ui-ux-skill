@@ -3,7 +3,7 @@
 This procedure evaluates the Codex CLI path only. A result applies to its recorded host, CLI version, model, prompt, and invocation mode; it does not prove that another agent host or model will discover or invoke Skills the same way. Scenario definitions are kept separate from the evidence ledger:
 
 - `evals/activation.jsonl` defines 30 positive/negative prompts.
-- `evals/quality-scenarios.md` defines 19 quality cases and measurable acceptance checks.
+- `evals/quality-scenarios.md` defines 24 quality cases and measurable acceptance checks.
 - `evals/results/activation.jsonl` and `evals/results/quality.jsonl` store one record per run.
 - `evals/evidence/` stores Codex JSONL traces and reviewer evidence.
 

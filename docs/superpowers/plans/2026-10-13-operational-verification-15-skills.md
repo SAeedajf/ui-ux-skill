@@ -23,6 +23,6 @@ Move `ui-ux-skill` from a documented release candidate toward operational verifi
 
 ## Interfaces
 - Activation scenario `id` values are stable keys consumed by `evals/results/activation.jsonl`.
-- Quality scenario IDs are stable `quality-01` through `quality-19`, derived from the numbered definitions and consumed by `evals/results/quality.jsonl`.
+- Quality scenario IDs are stable `quality-01` through `quality-24`, derived from the numbered definitions and consumed by `evals/results/quality.jsonl`.
 - Results refer to evidence by repository-relative path and to the exact 40-character commit SHA that was exercised.
 - The operational-readiness report consumes validated results and may grant only the maturity level supported by evidence.

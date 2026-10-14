@@ -4,11 +4,14 @@ The repository keeps one canonical copy of each Skill under `.agents/skills/`. T
 
 ## Codex
 
-Open the repository as a Codex project. Codex discovers workspace skills under `.agents/skills/`. The repo's canonical location can be used directly; no copy is needed. For user-level installation, use `~/.codex/skills`:
+Open the repository as a Codex project. Codex discovers workspace skills under `.agents/skills/`. The repo's canonical location can be used directly; no copy is needed. For user-level installation across projects, prefer only the relevant Skills to keep discovery focused:
 
 ```sh
-python3 scripts/install-skills.py --target ~/.codex/skills --all
+python3 scripts/install-skills.py --target ~/.codex/skills \
+  --skill interface-layout --skill visual-hierarchy
 ```
+
+Use `--all` only when you want the full collection available in every project. The selective example assumes the target folders do not already exist; the installer refuses collisions unless you explicitly use `--overwrite`, which replaces only selected folders. Avoid maintaining duplicate copies at both user and project level unless the host requires them.
 
 Verify the installed `SKILL.md` files if you update existing copies. Codex skill invocation still depends on the active model and its available context.
 
