@@ -16,7 +16,7 @@ Official reference: https://developers.openai.com/codex/config-reference
 Command: `codex exec --ignore-user-config --ephemeral --model gpt-6-luna --json '<harmless interface prompt>'`
 Result: CLI initialized and emitted `thread.started`, then the API returned HTTP 400: `The 'gpt-6-luna' model is not supported when using Codex with a ChatGPT account.` No model response was generated. Skills initialized, and Codex reported that skill descriptions were shortened to fit its context budget while all skill metadata remained visible. This is not activation evidence.
 
-The required policy for this task permits only `gpt-6-luna`; no alternate model was selected.
+Historical run constraint: a task-specific instruction at the time allowed only `gpt-6-luna` for this diagnostic attempt, so no alternate model was selected. This records that one 2026-10-13 environment run; it is not a repository, Skill, or user-level model requirement. The current project guidance is model-neutral: use the model selected by the user or host when available.
 
 ## Discovery metadata probe
 

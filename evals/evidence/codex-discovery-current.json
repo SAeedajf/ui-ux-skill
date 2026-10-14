@@ -1,0 +1,33 @@
+{
+  "probe": "codex-skill-metadata-discovery",
+  "timestamp_utc": "2026-10-14T09:34:42Z",
+  "host": "Codex CLI",
+  "cli_version": "codex-cli 0.144.5",
+  "project_commit": "ff3f49cab5be8a595a7eab53418abdc550b38f8e",
+  "model": "not applicable; prompt-input metadata probe does not invoke a model",
+  "invocation": "codex debug prompt-input with isolated CODEX_HOME",
+  "prompt": "Review a responsive Persian product form and report findings.",
+  "discovered_count": 15,
+  "expected_count": 15,
+  "skills": [
+    "ux-discovery",
+    "journey-mapping",
+    "information-architecture",
+    "interface-layout",
+    "visual-hierarchy",
+    "color-systems",
+    "ethical-persuasion",
+    "interaction-patterns",
+    "forms-input",
+    "navigation-controls",
+    "design-systems",
+    "responsive-design",
+    "accessibility-inclusive-design",
+    "persian-rtl-localization",
+    "ui-ux-review"
+  ],
+  "result": "PASS: all canonical project Skill names appeared in prompt-input metadata",
+  "limits": [
+    "Metadata visibility only; does not prove automatic activation, Skill body loading, output quality, installation into another host, or runtime behavior."
+  ]
+}

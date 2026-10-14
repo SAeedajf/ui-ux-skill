@@ -19,12 +19,12 @@ The source class is a navigation aid, not a quality score. Use `pass_1`, `pass_2
 
 Six rows remain explicitly partial:
 
-- ID 36: official Material Design card page; dynamic rendering limited direct extraction.
-- ID 50: official Material buttons/navigation page; dynamic rendering limited direct extraction.
-- ID 94: Atomic Design first edition confirmed; second-edition publication was not verified.
-- ID 100: supplied Baymard URL failed; canonical page was found, while detailed research is gated.
-- ID 102: Abby Covert book page/full online text identified; original publication year remains unverified.
-- ID 109: Baymard checkout research overview reviewed; premium research details remain gated.
+- ID 36: official Material Design card page still returns only a JavaScript requirement in this review environment; component details remain unverified.
+- ID 50: official Material Design component index still returns only a JavaScript requirement; exact button/navigation guidance remains unverified.
+- ID 94: Brad Frost's official 2025-07-23 post says the second edition is a future goal and the course is an initial step; publication remains unverified as of 2026-10-14.
+- ID 100: supplied Baymard URL failed; the canonical overview was checked on 2026-10-14. It describes ecommerce research and methodology, while the full findings remain Premium content.
+- ID 102: Abby Covert's page confirms the complete online book is available; Google Books confirms the 2014 bibliographic year. Availability does not mean the complete text was read for this review.
+- ID 109: Baymard's current checkout overview and published methodology were checked; detailed research findings remain Premium content.
 
 Do not describe these six as fully read. Some other commercial or book references also have limited free access; see individual access notes.
 
