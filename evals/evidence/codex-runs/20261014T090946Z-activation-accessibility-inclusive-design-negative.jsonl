@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"01a139ac-c655-7df0-a028-aaba26b73af4"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"Please share the query, database engine/version, relevant table schemas and indexes, plus `EXPLAIN`/`EXPLAIN ANALYZE` output. I’ll identify the bottleneck and propose a concrete rewrite or indexing change."}}
+{"type":"turn.completed","usage":{"input_tokens":16830,"cached_input_tokens":9984,"output_tokens":51,"reasoning_output_tokens":0}}
