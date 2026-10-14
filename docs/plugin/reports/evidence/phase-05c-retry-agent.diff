@@ -1,0 +1,137 @@
+diff --git a/app.js b/app.js
+index bccfd09..2e3f2ed 100644
+--- a/app.js
++++ b/app.js
+@@ -1,7 +1,28 @@
+ const trigger = document.querySelector('#menu-trigger');
+ const menu = document.querySelector('#mobile-menu');
+-trigger.addEventListener('click', () => { menu.hidden = !menu.hidden; });
++const phone = document.querySelector('#phone');
++const error = document.querySelector('#error');
++
++function setMenuState(isOpen) {
++  menu.hidden = !isOpen;
++  trigger.setAttribute('aria-expanded', String(isOpen));
++  trigger.setAttribute('aria-label', isOpen ? 'بستن منو' : 'باز کردن منو');
++}
++
++trigger.addEventListener('click', () => {
++  setMenuState(menu.hidden);
++});
++
++document.addEventListener('keydown', event => {
++  if (event.key === 'Escape' && !menu.hidden) {
++    setMenuState(false);
++    trigger.focus();
++  }
++});
++
+ document.querySelector('#contact').addEventListener('submit', event => {
+   event.preventDefault();
+-  document.querySelector('#error').textContent = 'شماره واردشده معتبر نیست';
++  phone.setAttribute('aria-invalid', 'true');
++  error.textContent = 'شماره واردشده معتبر نیست';
++  document.querySelector('#phone').focus();
+ });
+diff --git a/index.html b/index.html
+index 158c396..2345076 100644
+--- a/index.html
++++ b/index.html
+@@ -7,21 +7,23 @@
+   <link rel="stylesheet" href="style.css">
+ </head>
+ <body>
+-  <header>
+-    <button id="menu-trigger" class="icon-button">☰</button>
+-    <nav id="mobile-menu" hidden><a href="#products">محصولات</a></nav>
++  <header class="site-header">
++    <button id="menu-trigger" class="icon-button" type="button" aria-label="باز کردن منو" aria-controls="mobile-menu" aria-expanded="false">☰</button>
++    <nav id="mobile-menu" aria-label="منوی اصلی" hidden><a href="#products">محصولات</a></nav>
+     <h1>فروشگاه نمونه</h1>
+   </header>
+   <main class="page">
+     <section id="products" class="grid">
+-      <article><h2>محصول یک</h2><button class="cart">🛒</button></article>
+-      <article><h2>محصول دو</h2><button class="cart">🛒</button></article>
+-      <article><h2>محصول سه</h2><button class="cart">🛒</button></article>
++      <article><h2>محصول یک</h2><button class="cart" type="button" aria-label="افزودن محصول یک به سبد خرید">🛒</button></article>
++      <article><h2>محصول دو</h2><button class="cart" type="button" aria-label="افزودن محصول دو به سبد خرید">🛒</button></article>
++      <article><h2>محصول سه</h2><button class="cart" type="button" aria-label="افزودن محصول سه به سبد خرید">🛒</button></article>
+     </section>
+-    <form id="contact">
+-      <input id="phone" name="phone" placeholder="شماره تماس">
++    <form id="contact" novalidate>
++      <label for="phone">شماره تماس</label>
++      <p id="phone-hint" class="field-hint">شماره تماس را با کد کشور یا بدون آن وارد کنید.</p>
++      <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" aria-describedby="phone-hint error" aria-invalid="false" placeholder="شماره تماس">
+       <button type="submit">ثبت</button>
+-      <p id="error" class="error" role="alert"></p>
++      <p id="error" class="error" role="alert" aria-live="assertive"></p>
+     </form>
+   </main>
+   <script src="app.js"></script>
+diff --git a/style.css b/style.css
+index f1baff1..58c4498 100644
+--- a/style.css
++++ b/style.css
+@@ -1,5 +1,55 @@
+-body { margin: 0; font-family: sans-serif; }
+-.page { width: 720px; margin: auto; }
+-.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+-.error { color: #9d9d9d; background: #ffffff; }
+-.icon-button { border: 0; }
++* { box-sizing: border-box; }
++
++body { margin: 0; font-family: sans-serif; color: #1f2937; background: #f8fafc; }
++
++.site-header,
++.page {
++  width: min(100% - 2rem, 720px);
++  margin-inline: auto;
++}
++
++.site-header {
++  display: flex;
++  align-items: center;
++  gap: 1rem;
++  padding-block: 1rem;
++}
++
++.site-header h1 { margin: 0; font-size: 1.5rem; }
++
++#mobile-menu { margin-inline-start: auto; }
++
++.page { padding-block-end: 2rem; }
++
++.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
++
++article,
++form {
++  min-width: 0;
++  padding: 1rem;
++  border: 1px solid #cbd5e1;
++  border-radius: .5rem;
++  background: #ffffff;
++}
++
++article h2 { overflow-wrap: anywhere; }
++
++form { display: grid; gap: .75rem; margin-block-start: 1rem; }
++
++input { width: 100%; padding: .6rem .75rem; border: 1px solid #64748b; border-radius: .25rem; }
++
++.field-hint { margin: 0; color: #475569; }
++
++.error { min-height: 1.5em; margin: 0; color: #8b1a1a; background: #ffffff; }
++
++.icon-button { border: 0; padding: .5rem; font-size: 1.25rem; cursor: pointer; }
++
++button:focus-visible,
++a:focus-visible,
++input:focus-visible { outline: 3px solid #0f766e; outline-offset: 2px; }
++
++@media (max-width: 40rem) {
++  .site-header { flex-wrap: wrap; }
++  #mobile-menu { width: 100%; margin-inline-start: 0; }
++  .grid { grid-template-columns: 1fr; }
++}

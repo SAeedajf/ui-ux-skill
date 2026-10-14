@@ -120,5 +120,28 @@ jobs:
             docs/plugin/reports/evidence/phase-05c-fixture-baseline.txt
             schemas/phase-05c-report.schema.json
           if-no-files-found: error
+      - name: Validate Phase 05-C retry report
+        run: python3 scripts/validate_phase05c_retry_report.py
+      - name: Finalize Phase 05-C retry report for this CI run
+        env:
+          PHASE05C_RETRY_OUTPUT_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: >-
+          python3 scripts/validate_phase05c_retry_report.py
+          --finalize-run-url "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          --output-commit "$PHASE05C_RETRY_OUTPUT_COMMIT"
+          --output dist/phase-05c-retry/report.json
+      - name: Upload Phase 05-C retry runtime acceptance evidence
+        uses: actions/upload-artifact@v7
+        with:
+          name: ui-ux-pro-phase-05c-retry-report
+          path: |
+            docs/plugin/reports/phase-05c-retry.md
+            docs/plugin/reports/phase-05c-retry.json
+            docs/plugin/reports/evidence/phase-05c-retry-*.jsonl
+            docs/plugin/reports/evidence/phase-05c-retry-*.txt
+            docs/plugin/reports/evidence/phase-05c-retry-agent.diff
+            schemas/phase-05c-retry-report.schema.json
+            dist/phase-05c-retry/report.json
+          if-no-files-found: error
       - name: Generate evaluation status report
         run: python3 scripts/eval_harness.py report
