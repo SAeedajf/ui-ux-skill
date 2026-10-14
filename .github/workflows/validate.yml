@@ -18,6 +18,8 @@ jobs:
         run: python3 -m pip install -r requirements-dev.txt
       - name: Validate repository and evaluation ledgers
         run: python3 scripts/validate_repo.py
+      - name: Validate plugin marketplace
+        run: python3 scripts/validate_marketplace.py
       - name: Run deterministic regression tests
         run: python3 -m unittest discover -s tests -v
       - name: Verify generated plugin package
