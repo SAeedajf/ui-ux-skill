@@ -6,9 +6,9 @@ layout,"Layout, cards, spacing, hero",interface-layout;responsive-design,36;37;4
 product_interaction,Product interaction,interaction-patterns;ux-discovery,43;46;47;48;49;44;45,web-landing-review.md,android-task-flow.md,quality-07;quality-15;quality-21;quality-24;quality-26
 navigation_controls,Buttons and navigation,navigation-controls;interaction-patterns;accessibility-inclusive-design,50;51;52;53;54;55,web-landing-review.md,android-task-flow.md,quality-15;quality-25;quality-26
 typography_rtl,"Persian typography, RTL, readability",persian-rtl-localization;accessibility-inclusive-design,56;57;58;62;63;64;59;60;61,web-landing-review.md,android-task-flow.md,quality-03;quality-04;quality-20;quality-26
-responsive,Responsive/adaptive design,responsive-design,65;66;67;72;68;69;70;71;73,web-landing-review.md,android-task-flow.md,quality-05;quality-20
+responsive,Responsive/adaptive design,responsive-design,65;66;67;72;68;69;70;71;73,web-landing-review.md,android-task-flow.md,quality-05;quality-20;quality-29
 visual_hierarchy,Visual hierarchy,visual-hierarchy;interface-layout;accessibility-inclusive-design,74;75;76;80;77;78;79,web-landing-review.md,android-task-flow.md,quality-16;quality-20
-accessibility,Accessibility,accessibility-inclusive-design;ui-ux-review,81;82;83;88;89;84;85;86;87,web-landing-review.md,android-task-flow.md,quality-06;quality-13;quality-15;quality-23;quality-26
+accessibility,Accessibility,accessibility-inclusive-design;ui-ux-review,81;82;83;88;89;84;85;86;87,web-landing-review.md,android-task-flow.md,quality-06;quality-13;quality-15;quality-23;quality-26;quality-28
 design_systems,Design systems and tokens,design-systems,90;91;95;96;97;92;93;94,web-landing-review.md,android-task-flow.md,quality-09;quality-20;quality-23
 information_architecture,Information architecture,information-architecture;ux-discovery;navigation-controls,98;99;100;104;105;106;101;102;103,web-landing-review.md,android-task-flow.md,quality-17;quality-21
 forms,"Forms, errors, validation",forms-input;interaction-patterns;accessibility-inclusive-design;persian-rtl-localization,107;108;109;113;114;115;110;111;112,web-landing-review.md,android-task-flow.md,quality-03;quality-07;quality-18;quality-23;quality-26

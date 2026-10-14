@@ -5,6 +5,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from scripts.eval_harness import quality_definitions, validate_all as validate_eval_results, validate_domain_quality_refs, validate_domain_source_refs
+from scripts.source_coverage import source_ids_in_files
 errors=[]
 def fail(msg): errors.append(msg)
 # Skill folders and frontmatter.
@@ -32,6 +33,9 @@ if len({r['submitted_url'] for r in sources})!=124: fail('submitted_url must pre
 if any(not r.get(k) for r in sources for k in ('pass_1','pass_2','checkpoint_5','review_date')): fail('every source needs two review passes, a five-source checkpoint, and review date')
 if sum(r['review_status']=='partially_verified' for r in sources)!=6: fail('expected six explicitly partial sources')
 source_ids=set(ids)
+reference_files=sorted(p for skill_dir in skills.iterdir() for p in skill_dir.glob('references/*.md'))
+unlinked_sources={int(sid) for sid in source_ids}-source_ids_in_files(reference_files,{int(sid) for sid in source_ids})
+if unlinked_sources: fail(f'source registry IDs lack a Skill reference method/decision link: {", ".join(map(str,sorted(unlinked_sources)))}')
 # Coverage mapping.
 with (ROOT/'docs/domain-coverage.csv').open(encoding='utf-8',newline='') as f: domains=list(csv.DictReader(f))
 if len(domains)!=14: fail(f'expected 14 domain rows, found {len(domains)}')

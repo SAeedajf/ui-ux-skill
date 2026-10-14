@@ -15,8 +15,8 @@ class EvalRunnerTests(unittest.TestCase):
 
     def test_quality_runner_has_all_scenario_prompts(self):
         rows = load_scenarios("quality")
-        self.assertEqual(len(rows), 27)
-        self.assertEqual(len({row["id"] for row in rows}), 27)
+        self.assertEqual(len(rows), 29)
+        self.assertEqual(len({row["id"] for row in rows}), 29)
         self.assertTrue(all(row.get("prompt") for row in rows))
 
 
