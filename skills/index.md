@@ -2,6 +2,8 @@
 
 The canonical Skills live in `.agents/skills/`. Each can be installed separately.
 
+For the central purpose, boundary, optional handoffs, versioning, and current evaluation coverage for all 15 Skills, see the [Skill inventory](inventory.md).
+
 | Skill | Use it for |
 |---|---|
 | `ux-discovery` | User goals, research evidence, and unresolved product questions |
