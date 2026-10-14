@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/SAeedajf/ui-ux-skill/blob/main/schemas/phase-05-report.schema.json",
+  "title": "UI/UX Pro Phase 05 runtime acceptance report",
+  "type": "object",
+  "required": [
+    "phase", "title", "status", "repository", "base_commit", "output_commit",
+    "plugin_version", "skills_count", "codex_runtime", "plugin_discovery",
+    "fixture", "chatgpt_plugin", "source_rights_review", "test_results",
+    "open_gates", "blocked_gates", "needs_review_gates", "not_run_gates",
+    "ci_status", "ci_run_url", "risks", "owner_actions", "next_phase_handoff"
+  ],
+  "properties": {
+    "phase": { "const": "05" },
+    "title": { "const": "Runtime Unblocking & Operational Proof" },
+    "status": { "enum": ["PASS", "PARTIAL", "BLOCKED", "FAIL"] },
+    "repository": { "const": "https://github.com/SAeedajf/ui-ux-skill" },
+    "base_commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+    "output_commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+    "plugin_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[0-9A-Za-z.-]+)?$" },
+    "skills_count": { "const": 15 },
+    "codex_runtime": {
+      "type": "object",
+      "required": ["cli_path_selected", "selected_cli_version", "alternate_cli_path", "alternate_cli_version", "auth_status", "usage_status", "usage_snapshot", "model_used", "config_diagnosis", "config_repair_status"],
+      "properties": {
+        "cli_path_selected": { "type": "string", "minLength": 1 },
+        "selected_cli_version": { "type": "string", "minLength": 1 },
+        "alternate_cli_path": { "type": "string", "minLength": 1 },
+        "alternate_cli_version": { "type": "string", "minLength": 1 },
+        "auth_status": { "enum": ["AUTHENTICATED", "AUTH_REQUIRED", "UNKNOWN"] },
+        "usage_status": { "enum": ["AVAILABLE_AT_SNAPSHOT", "LIMIT_REACHED", "UNKNOWN"] },
+        "usage_snapshot": {
+          "type": "object",
+          "required": ["observed_on", "ordinary_usage_allowed", "primary_used_percent", "secondary_used_percent", "rate_limit_reached"],
+          "properties": {
+            "observed_on": { "type": "string", "format": "date" },
+            "ordinary_usage_allowed": { "type": "boolean" },
+            "primary_used_percent": { "type": "integer", "minimum": 0, "maximum": 100 },
+            "secondary_used_percent": { "type": "integer", "minimum": 0, "maximum": 100 },
+            "rate_limit_reached": { "type": "boolean" }
+          },
+          "additionalProperties": false
+        },
+        "model_used": { "type": ["string", "null"] },
+        "config_diagnosis": { "type": "string", "minLength": 1 },
+        "config_repair_status": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "plugin_discovery": {
+      "type": "object",
+      "required": ["environment", "installed", "enabled", "version", "skill_count", "source_paths_verified", "discovery_scenarios"],
+      "properties": {
+        "environment": { "type": "string", "minLength": 1 },
+        "installed": { "type": "boolean" },
+        "enabled": { "type": "boolean" },
+        "version": { "type": "string", "minLength": 1 },
+        "skill_count": { "type": "integer", "minimum": 0 },
+        "source_paths_verified": { "type": "boolean" },
+        "discovery_scenarios": {
+          "type": "object",
+          "required": ["plugin_only", "legacy_only", "both"],
+          "properties": {
+            "plugin_only": { "$ref": "#/$defs/discoveryCount" },
+            "legacy_only": { "$ref": "#/$defs/discoveryCount" },
+            "both": { "$ref": "#/$defs/discoveryCount" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "fixture": {
+      "type": "object",
+      "required": ["baseline_expected_failures", "agent_repair", "post_repair_tests", "browser_regression"],
+      "properties": {
+        "baseline_expected_failures": { "type": "integer", "minimum": 0 },
+        "agent_repair": { "enum": ["PASS", "FAIL", "BLOCKED", "NOT_RUN"] },
+        "post_repair_tests": { "enum": ["PASS", "FAIL", "BLOCKED", "NOT_RUN"] },
+        "browser_regression": { "enum": ["PASS", "FAIL", "BLOCKED", "NOT_RUN"] }
+      },
+      "additionalProperties": false
+    },
+    "chatgpt_plugin": {
+      "type": "object",
+      "required": ["plugin_id", "release_id", "version", "scope", "visibility", "metadata_status", "work_installation", "runtime_tests"],
+      "properties": {
+        "plugin_id": { "type": "string", "minLength": 1 },
+        "release_id": { "type": "string", "minLength": 1 },
+        "version": { "type": "string", "minLength": 1 },
+        "scope": { "const": "USER" },
+        "visibility": { "const": "PRIVATE" },
+        "metadata_status": { "const": "CREATED" },
+        "work_installation": { "enum": ["PASS", "BLOCKED", "UNKNOWN"] },
+        "runtime_tests": { "enum": ["PASS", "FAIL", "BLOCKED", "NOT_RUN"] }
+      },
+      "additionalProperties": false
+    },
+    "source_rights_review": {
+      "type": "object",
+      "required": ["status", "matrix", "human_clearance"],
+      "properties": {
+        "status": { "enum": ["PASS", "NEEDS_REVIEW", "BLOCKED"] },
+        "matrix": { "const": "docs/plugin/source-rights-resolution.md" },
+        "human_clearance": { "enum": ["PENDING", "APPROVED", "NOT_REQUIRED"] }
+      },
+      "additionalProperties": false
+    },
+    "test_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "status", "test_type", "executed_on", "method", "evidence", "output", "reason"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^O[0-9]{2}$" },
+          "status": { "enum": ["PASS", "FAIL", "BLOCKED", "NOT_RUN", "NEEDS_REVIEW"] },
+          "test_type": { "type": "string", "minLength": 1 },
+          "executed_on": { "type": ["string", "null"], "format": "date" },
+          "method": { "type": "string", "minLength": 1 },
+          "evidence": { "$ref": "#/$defs/evidence" },
+          "output": { "type": ["string", "null"] },
+          "reason": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 16,
+      "maxItems": 16
+    },
+    "open_gates": { "type": "array", "items": { "type": "string", "pattern": "^O[0-9]{2}$" }, "uniqueItems": true },
+    "blocked_gates": { "type": "array", "items": { "type": "string", "pattern": "^O[0-9]{2}$" }, "uniqueItems": true },
+    "needs_review_gates": { "type": "array", "items": { "type": "string", "pattern": "^O[0-9]{2}$" }, "uniqueItems": true },
+    "not_run_gates": { "type": "array", "items": { "type": "string", "pattern": "^O[0-9]{2}$" }, "uniqueItems": true },
+    "ci_status": { "enum": ["PENDING", "PASS", "FAIL", "BLOCKED"] },
+    "ci_run_url": { "type": ["string", "null"], "format": "uri" },
+    "risks": { "type": "array", "items": { "type": "string" } },
+    "owner_actions": { "type": "array", "items": { "type": "string" } },
+    "next_phase_handoff": { "type": "string", "minLength": 1, "maxLength": 5000 }
+  },
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "required": ["trace", "diff", "test_after", "other"],
+      "properties": {
+        "trace": { "type": "array", "items": { "type": "string" } },
+        "diff": { "type": "array", "items": { "type": "string" } },
+        "test_after": { "type": "array", "items": { "type": "string" } },
+        "other": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "discoveryCount": {
+      "type": "object",
+      "required": ["plugin_skills", "legacy_skills"],
+      "properties": {
+        "plugin_skills": { "type": "integer", "minimum": 0 },
+        "legacy_skills": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
