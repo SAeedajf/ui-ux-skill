@@ -5,6 +5,8 @@ description: Use when choosing interface palettes, color roles, themes, or contr
 
 # Color Systems
 
+Out of scope: page composition or general interface review when no palette, theme, status-color, or contrast decision is in scope.
+
 Choose colors for a product's content, tasks, brand, locale, platform, and states. A palette is a design decision to validate in context, not a universal behavior formula.
 
 ## Workflow

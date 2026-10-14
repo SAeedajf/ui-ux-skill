@@ -1,7 +1,7 @@
 # System principles
 
 - Inspect existing naming, semantic tokens, theming, component variants, contribution workflow, and adoption before adding abstractions.
-- Use **1, 90–97** for official system examples, token format, and component guidance. The Design Tokens Community Group format is a community group report; do not call it a W3C Recommendation.
+- For platform-specific system examples, use **S90** (Carbon) or **S97** (Android Material) only within their own ecosystems. **S91** is the Design Tokens Community Group's format report: it is not a W3C Standard or Recommendation, and applies to interchange when that need exists. **S92**, **S93**, and **S94** are practitioner books with access/edition limits in the registry; **S95** and **S96** are Figma vendor guidance, not independent evaluation. Check the registry before making a claim from any of these sources.
 - Keep color, typography, spacing, motion, elevation, and shape tokens semantic where teams need theme or platform mapping. Avoid creating tokens for values with no repeated role.
 - Document component purpose, allowed variants, states, responsive behavior, accessibility contract, and exceptions. Measure adoption and drift rather than assuming documentation caused consistency. State the denominator, sampled surfaces/components, revision, and exception rule (for example, shared-token use among audited components); compare only like-for-like samples and label source-only counts as structural evidence, not proof of improved user outcomes.
 - System consistency supports recognition, but product-specific needs may justify a documented exception.

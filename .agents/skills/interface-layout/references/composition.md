@@ -5,3 +5,4 @@
 - Treat a design system's palette and type scale as platform guidance, not a universal law. Color meaning depends on product, locale, contrast, and established convention; never rely on color alone to communicate status.
 - Choose spacing and typography against real content, language, viewport, and density. Test long labels and mixed scripts. Use tokens when the product already has them.
 - Distinguish an aesthetic choice from evidence. Explain the intended effect and how a reviewer can check it.
+- Use [S2 Mobbin](https://mobbin.com/) as a visual pattern library for inspiration only; do not reproduce its screenshots or treat examples as usability evidence. Treat [S8 Google’s Material 3 Expressive research](https://design.google/library/expressive-material-design-google-research) as a product-specific research case, not a universal visual rule or a reason to weaken usability/accessibility.
