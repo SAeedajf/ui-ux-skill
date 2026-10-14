@@ -1,0 +1,83 @@
+{
+  "phase": "04",
+  "title": "Operational Acceptance & Release Candidate",
+  "status": "PARTIAL",
+  "repository": "https://github.com/SAeedajf/ui-ux-skill",
+  "base_commit": "fea6e825306e7dec5162b0bb9fe37ac3129cb36c",
+  "output_commit": "fea6e825306e7dec5162b0bb9fe37ac3129cb36c",
+  "plugin_version": "0.1.0",
+  "private_plugin": {
+    "plugin_id": "plugins_6acfa25d79388191b9861545d52f6d03",
+    "release_id": "pluginrel_6acfa26265f48191b194fe33780fbe70",
+    "status": "CREATED",
+    "scope": "USER",
+    "visibility": "PRIVATE",
+    "version": "0.1.0",
+    "installation_status": "UNVERIFIED"
+  },
+  "skills_count": 15,
+  "codex_installation": "PASS — isolated install and discovery verified; model activation blocked",
+  "codex_activation": "BLOCKED — no authenticated Codex CLI model trace",
+  "chatgpt_installation": "BLOCKED — creation metadata verified; Work install state unavailable",
+  "chatgpt_activation": "NOT_RUN",
+  "duplicate_skills": {
+    "status": "NEEDS_REVIEW",
+    "plugin_only": 15,
+    "legacy_only": 15,
+    "plugin_plus_legacy": 30,
+    "selection_precedence": "UNVERIFIED"
+  },
+  "practical_repair": "BLOCKED — five seeded baseline failures reproduced; Agent repair not run",
+  "baseline_comparison": "PARTIAL — one prior controlled pair; no new run and no statistical claim",
+  "security_audit": "PASS — bounded automated/signature checks; see security-and-provenance-review.md",
+  "license_audit": "NEEDS_REVIEW — six partial source records; clarify S20's access-status notes before relying on full-content claims",
+  "release_candidate": "LOCAL_BUILD_READY_CI_ARTIFACT_PENDING",
+  "test_counts": {
+    "deterministic_unit_tests_passed": 45,
+    "fixture_baseline_expected_failures": 5,
+    "model_smoke_budget": 2,
+    "model_smoke_used": 0,
+    "model_activation_cases_run": 0,
+    "chatgpt_cases_run": 0
+  },
+  "test_results": [
+    {"id":"R01","status":"PASS","test_type":"package_reproducibility","executed_at":"2026-10-14T15:50:00Z","method":"build-plugin.py --check --archive plus plugin validator","evidence":"docs/plugin/reports/phase-04-evidence.md#repository-package-and-fixture-checks","reason":"Deterministic archive matches canonical source and passes portable schema validation."},
+    {"id":"R02","status":"PASS","test_type":"skill_inventory","executed_at":"2026-10-14T15:48:00Z","method":"repository validator and ZIP inventory","evidence":"docs/plugin/reports/phase-04-evidence.md#repository-package-and-fixture-checks","reason":"All 15 canonical Skill directories are present."},
+    {"id":"R03","status":"PASS","test_type":"references","executed_at":"2026-10-14T15:48:00Z","method":"repository and package validators","evidence":"docs/plugin/reports/phase-04-evidence.md#repository-package-and-fixture-checks","reason":"Internal references validate; source registry reports 124 rows with 6 partial."},
+    {"id":"R04","status":"PASS","test_type":"codex_github_install","executed_at":"2026-10-14T15:06:00Z","method":"recheck Phase 02 recorded isolated GitHub marketplace installation evidence","evidence":"docs/plugin/reports/phase-02-evidence.md","reason":"Previously verified installation and discovery are on current main; package source bytes remain unchanged."},
+    {"id":"R05","status":"PASS","test_type":"duplicate_migration_policy","executed_at":"2026-10-14T15:52:12Z","method":"three-scenario isolated Codex discovery plus reversible migration review","evidence":"docs/plugin/duplicate-skills-migration.md","reason":"New installations prefer the Plugin; legacy migration is optional, backed up, diffed, and reversible."},
+    {"id":"R06","status":"BLOCKED","test_type":"model_activation","executed_at":"2026-10-14T15:52:12Z","method":"attempted read-only login status; isolated CLI discovery","evidence":"docs/plugin/reports/phase-04-evidence.md#codex-installdiscovery-and-duplicate-skills","reason":"Isolated CLI is not logged in; current Codex config parse failure prevents an authenticated runtime trace."},
+    {"id":"R07","status":"BLOCKED","test_type":"model_negative_activation","executed_at":"2026-10-14T15:52:12Z","method":"read-only login status and isolated CLI capability check","evidence":"docs/plugin/reports/phase-04-evidence.md#codex-installdiscovery-and-duplicate-skills","reason":"No authenticated model trace is available for the unrelated Python control."},
+    {"id":"R08","status":"BLOCKED","test_type":"agent_ui_repair","executed_at":"2026-10-14T15:45:00Z","method":"run five-test fixture baseline; Agent execution gated on authenticated model","evidence":"docs/plugin/reports/phase-04-evidence.md#repository-package-and-fixture-checks","reason":"All five initial failures reproduced, but no Agent-authored changes or post-repair regression run exist."},
+    {"id":"R09","status":"PASS","test_type":"private_plugin_creation_metadata","executed_at":"2026-10-14T15:47:00Z","method":"official Plugin Creator get_plugin_metadata read-only operation","evidence":"docs/plugin/reports/phase-04-evidence.md#private-chatgpt-plugin-state","reason":"Exact plugin and release IDs, USER scope, PRIVATE visibility, and version 0.1.0 were returned."},
+    {"id":"R10","status":"BLOCKED","test_type":"chatgpt_installation_discovery","executed_at":"2026-10-14T15:47:00Z","method":"capability check via available Plugin Creator metadata operation","evidence":"docs/plugin/reports/phase-04-evidence.md#private-chatgpt-plugin-state","reason":"The available read-only metadata API does not report Work installation or discovery; no Work conversation was accessed."},
+    {"id":"R11","status":"NOT_RUN","test_type":"chatgpt_positive_activation","executed_at":null,"method":"owner-run procedure prepared","evidence":"docs/plugin/chatgpt-test-cases.md#private-chatgpt-acceptance-cases","reason":"No authenticated ChatGPT Work conversation or per-Skill trace was available."},
+    {"id":"R12","status":"NOT_RUN","test_type":"chatgpt_negative_activation","executed_at":null,"method":"owner-run procedure prepared","evidence":"docs/plugin/chatgpt-test-cases.md#private-chatgpt-acceptance-cases","reason":"The unrelated Python negative case has not been run in ChatGPT."},
+    {"id":"R13","status":"PASS","test_type":"package_security_scan","executed_at":"2026-10-14T15:50:00Z","method":"packaging validator, ZIP structure inspection, targeted pattern scan","evidence":"docs/plugin/security-and-provenance-review.md#package-security-checks","reason":"Bounded automated and signature checks passed; limits and human-review boundary are recorded."},
+    {"id":"R14","status":"NEEDS_REVIEW","test_type":"rights_and_source_provenance","executed_at":"2026-10-14T15:46:00Z","method":"review source registry status and package contents","evidence":"docs/plugin/security-and-provenance-review.md#source-and-rights-provenance","reason":"Six rows remain partial; S20's direct-page access limit should stay explicit; human clearance is outstanding."},
+    {"id":"R15","status":"PASS","test_type":"release_candidate_package","executed_at":"2026-10-14T15:50:00Z","method":"deterministic build, ZIP integrity, inventory, SHA-256 and provenance sidecar","evidence":"docs/plugin/reports/phase-04-evidence.md#zip-and-provenance","reason":"Valid 0.1.0 local candidate is built; GitHub artifact upload and final CI are recorded separately in R16."},
+    {"id":"R16","status":"NOT_RUN","test_type":"github_actions","executed_at":null,"method":"current Phase 04 PR workflow","evidence":"docs/plugin/reports/phase-04-evidence.md#github-baseline","reason":"Final Phase 04 PR run has not started; successful current-main CI is not a substitute."},
+    {"id":"R17","status":"PASS","test_type":"machine_report_validation","executed_at":"2026-10-14T15:52:12Z","method":"Phase 04 JSON schema, semantic validator, and five unit tests","evidence":"tests/test_phase04_report.py","reason":"Required gates, evidence fields, status/index consistency, and model-gate trace existence constraints are validated."},
+    {"id":"R18","status":"PASS","test_type":"scope_and_side_effect_review","executed_at":"2026-10-14T15:52:12Z","method":"worktree diff and tool-operation review","evidence":"docs/plugin/reports/phase-04-evidence.md#github-baseline","reason":"No plugin install/update, personal setting change, public submission, merge, Claude run, or paid model call was performed."}
+  ],
+  "open_gates": ["R06","R07","R08","R10","R11","R12","R14","R16"],
+  "blocked_gates": ["R06","R07","R08","R10"],
+  "ci_status": "PENDING",
+  "artifact_url": null,
+  "artifact_sha256": "611b8eddaf74821dd2a1dd6a1d8ae576c32e20b4b23db12ec7021aa6ae634c7c",
+  "risks": [
+    "Codex runtime activation and practical repair require a logged-in model trace.",
+    "ChatGPT plugin creation metadata does not prove Work installation or Skill activation.",
+    "Duplicate catalog selection precedence remains unobservable without an authenticated trace.",
+    "Six source registry entries remain partially verified; S20's direct-access limitation should stay explicit.",
+    "Automated security and provenance checks are not a formal security audit or legal opinion."
+  ],
+  "manual_actions": [
+    "Owner: run Codex positive and negative smoke tests after fixing/authorizing CLI config; do not change model or copy auth state into isolated environments.",
+    "Owner: run the fixture repair request in an authenticated Codex project and retain trace, diff, tests, and browser evidence.",
+    "Owner: install/check the exact existing private ChatGPT plugin and run T01-T07 without updating or sharing it.",
+    "Human maintainer/rightsholder: resolve source rows S36, S50, S94, S100, S102, S109 and keep S20's direct-access limitation explicit before public submission."
+  ],
+  "next_phase": "Owner-run authenticated Codex and existing private ChatGPT acceptance tests; keep Claude out of scope.",
+  "pull_request": null
+}

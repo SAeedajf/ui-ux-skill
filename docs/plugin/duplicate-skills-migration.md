@@ -1,6 +1,16 @@
 # Migrating duplicate legacy Skills
 
-When both the plugin and legacy Skills are discoverable, Codex exposes both namespaces: plugin entries use names such as `ui-ux-pro:interface-layout`; legacy entries use unprefixed names such as `interface-layout`. In the isolated three-scenario probe, Plugin Only produced 15 plugin-prefixed skills, Legacy Only produced 15 unprefixed skills, and Both produced both sets. This proves duplicate discovery, but without an authenticated model trace it does not establish precedence, actual selection, or measurable context cost.
+When both the plugin and legacy Skills are discoverable, Codex exposes both namespaces: plugin entries use names such as `ui-ux-pro:interface-layout`; legacy entries use unprefixed names such as `interface-layout`. The Phase 04 probe repeated the three scenarios with Codex CLI `0.144.5` in separate disposable `HOME`, `CODEX_HOME`, and project roots:
+
+| Scenario | Discovered UI/UX Skills | Source paths | Prompt-input JSON bytes |
+|---|---:|---|---:|
+| Plugin Only | 15 | `<temp>/codex/plugins/cache/ui-ux-pro-marketplace/ui-ux-pro/local/skills/<id>/SKILL.md` | 15,633 |
+| Legacy Only | 15 | `<temp>/project/.agents/skills/<id>/SKILL.md` | 13,763 |
+| Plugin + Legacy | 30 | Both paths above; both namespaces are shown | 18,799 |
+
+The plugin names have the `ui-ux-pro:` prefix; legacy names do not. The serialized prompt-input size is observable, but it is not token usage and does not establish exact model context cost. Codex exposed both catalogs and source paths; it exposed no winner, precedence, or actual model selection. Selection remains `NEEDS_REVIEW`.
+
+The repeated probe used no account credentials. All three isolated environments reported `Not logged in`; the current user's Codex CLI also could not read its configuration, so no activation trace or context-token count was available. The temporary HOME directories were not populated from the user's account.
 
 ## Recommended migration
 
