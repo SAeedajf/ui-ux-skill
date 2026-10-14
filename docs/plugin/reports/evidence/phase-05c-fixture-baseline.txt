@@ -1,0 +1,17 @@
+Temporary fixture copy: /tmp/uiux-phase05c-acceptance/repair-fixture
+Source fixture: tests/fixtures/phase02-rtl-shop/ (unchanged)
+Command: python3 -m unittest -v test_baseline
+Result before Agent repair: Ran 5 tests; FAILED (failures=5)
+
+FAIL test_error_text_contrast_meets_wcag_aa_normal_text
+  AssertionError: contrast 2.7120317074963944 is below 4.5:1.
+FAIL test_form_field_has_associated_label_and_error_description
+  AssertionError: no label associated with input id="phone".
+FAIL test_layout_adapts_without_fixed_width_overflow
+  AssertionError: .page has fixed width: 720px.
+FAIL test_mobile_menu_exposes_state_and_restores_focus_on_escape
+  AssertionError: #menu-trigger has no aria-expanded state.
+FAIL test_product_buttons_have_accessible_names
+  AssertionError: cart button contains only the unnamed cart glyph.
+
+After repair: NOT RUN. Third and final authorized model call ended at the account usage limit before any file edit. No after-state or browser result is claimed.

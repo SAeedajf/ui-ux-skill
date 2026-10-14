@@ -1,0 +1,87 @@
+{
+  "phase": "05-C",
+  "status": "BLOCKED",
+  "base_commit": "3d89041d47c0c3bcd3a6ebb3aec81f74cb7ddc3a",
+  "branch": "codex/ui-ux-plugin-phase-05c",
+  "pull_request": null,
+  "codex_cli": {
+    "version": "0.153.4",
+    "path": "~/.nvm/versions/node/v22.23.1/bin/codex",
+    "auth": "ChatGPT"
+  },
+  "model": {
+    "requested": "gpt-5.6-terra",
+    "actual_identity": "UNVERIFIED",
+    "default_unchanged": true
+  },
+  "install": {
+    "status": "PASS",
+    "version": "0.1.0",
+    "skill_count": 15,
+    "before_plugin_count": 33,
+    "before_marketplace_count": 3
+  },
+  "positive": {
+    "status": "FAIL",
+    "turn_completed": true,
+    "plugin_skill_read": false,
+    "legacy_skills_read": [
+      "ui-ux-review",
+      "persian-rtl-localization",
+      "responsive-design",
+      "accessibility-inclusive-design",
+      "forms-input"
+    ]
+  },
+  "negative": {
+    "status": "PASS",
+    "turn_completed": true,
+    "uiux_skill_read": false,
+    "files_created": false
+  },
+  "fixture": {
+    "baseline_status": "EXPECTED_FAILURES",
+    "tests": 5,
+    "failed": 5,
+    "after_status": "NOT_RUN"
+  },
+  "repair": {
+    "status": "BLOCKED",
+    "diff_created": false,
+    "reason": "The third and final authorized model call ended at the usage limit before a model response or file edit."
+  },
+  "browser": "NOT_RUN",
+  "duplicate_skills": {
+    "legacy_count": 8,
+    "legacy_changed": false,
+    "plugin_precedence_proven": false
+  },
+  "rollback": {
+    "remove_commands_succeeded": true,
+    "cache_absent": true,
+    "inventory_equality": "UNVERIFIED"
+  },
+  "ci": {
+    "status": "PENDING",
+    "run_url": null
+  },
+  "model_calls": {
+    "attempted": 3,
+    "completed": 2,
+    "repair_limit_failure": true,
+    "retry": 0
+  },
+  "evidence": [
+    "docs/plugin/reports/phase-05c-evidence.md",
+    "docs/plugin/reports/evidence/phase-05c-positive.jsonl",
+    "docs/plugin/reports/evidence/phase-05c-negative.jsonl",
+    "docs/plugin/reports/evidence/phase-05c-repair-blocked.jsonl",
+    "docs/plugin/reports/evidence/phase-05c-fixture-baseline.txt"
+  ],
+  "open_gates": [
+    "Actual backend model identity is unverified.",
+    "Positive Plugin skill activation was not proven; actual reads came from Legacy paths.",
+    "No Agent repair diff or post-repair test/browser result exists.",
+    "Full post-rollback inventory equality could not be re-read after the usage limit."
+  ]
+}
