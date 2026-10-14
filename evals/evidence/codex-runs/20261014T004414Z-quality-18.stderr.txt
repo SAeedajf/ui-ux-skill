@@ -1,0 +1,18 @@
+Reading additional input from stdin...
+2026-10-14T00:44:14.954878Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T00:44:14.956890Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T00:44:14.958289Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T00:44:14.958862Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T00:44:14.960224Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T00:44:14.961831Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T00:44:14.964599Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T00:44:14.965942Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T00:44:14.968252Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T00:44:14.973099Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T00:44:14.977577Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T00:44:14.980049Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T00:44:14.981230Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T00:44:15.039297Z ERROR codex_core::session::session: failed to load skill /home/saeed/.agents/skills/wordpress-plugin-store-architect/SKILL.md: missing YAML frontmatter delimited by ---
+2026-10-14T00:44:17.249013Z  WARN codex_core_plugins::remote::remote_installed_plugin_sync: failed to download remote installed plugin bundle remote_plugin_id=plugins_6aa24265df788191a25e7db0cdeca894 plugin=ansight marketplace=openai-curated-remote error=plugin.json name `Ansight` does not match marketplace plugin name `ansight`
+2026-10-14T00:44:33.347104Z  WARN codex_file_watcher: failed to unwatch /home/saeed/.codex/skills/.system: No watch was found. about ["/home/saeed/.codex/skills/.system"]
+2026-10-14T00:44:33.744067Z  WARN codex_core_plugins::manager: failed to warm remote plugin catalog cache error=failed to send remote plugin catalog request to https://chatgpt.com/backend-api/ps/plugins/list: error sending request for url (https://chatgpt.com/backend-api/ps/plugins/list?scope=GLOBAL&limit=200&pageToken=eyJzY29wZSI6IkdMT0JBTCIsIndvcmtzcGFjZV9pZCI6bnVsbCwiY3JlYXRvcl9hY2NvdW50X3VzZXJfaWQiOm51bGwsImNvbGxlY3Rpb24iOm51bGwsImluY2x1ZGVfcmVzdHJpY3RlZF9wbHVnaW5zIjp0cnVlLCJpbmNsdWRlX3VubGlzdGVkX2dsb2JhbF9wbHVnaW5zIjp0cnVlLCJlbGlnaWJsZV9wbGFuX3R5cGUiOiJwbHVzIiwiZW5mb3JjZV9wbGFuX2VsaWdpYmlsaXR5IjpmYWxzZSwicmFua19ieV9wb3B1bGFyaXR5Ijp0cnVlLCJjb250aW51YXRpb24iOnsiZGVwbG95bWVudF90eXBlIjoicHJpbWFyeSIsInF1ZXJ5X2lkIjoicnM0OjIxZDQ4NDJkLTI3ZmEtNDgzYy1iMTQ5LTJmOWE3ZjRhOWMzYjpQV013THY0OjA6bGVhZi01ODRmODgwNS1kZWEwLTQwYmMtOTI2Ny1lYjIyMWYzNjE2YzAiLCJjdXJzb3IiOiJaSDY5ZFhDNGdMdnZlSExwaEpVSzZmamkyTkdqUE5TMEdzVkNwSlZaZ192VU5lRUZjWjVjZGpTNENKZ3BSWlpnYjZpZEFtc29iRG1JRUJuWm1kYXZtaVBGSTJ4cm1lVGtaVXlIRnNQeWdsN05palQzX29kUklCNnJGbm83eVI4SWlYVXplUnhwYkU5Y0hCVkdzcHhSVnZ4RWl3aHJNU25Yb29NMHNNLTc2WkhlOU1GS2tOX0ltdlpBNVFIc0hUMmc1ZXlWY01ObU94UT0ifX0)

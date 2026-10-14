@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"01a137c1-5db6-75d1-b2f7-fc9247b22db7"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"Please paste the SQL query along with the relevant table definitions and existing indexes (`CREATE TABLE` / `CREATE INDEX`). If possible, also include the database engine/version and `EXPLAIN` output. Index usage depends on all four."}}
+{"type":"turn.completed","usage":{"input_tokens":16828,"cached_input_tokens":9984,"output_tokens":51,"reasoning_output_tokens":0}}

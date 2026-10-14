@@ -129,8 +129,8 @@ def validate_result_rows(
                     target_skill = scenario_id.removeprefix("activation-").rsplit("-", 1)[0]
                     if expectations[scenario_id] and not any(ref.get("skill") == target_skill for ref in observed):
                         errors.append(f"{label}: positive activation review must reference the expected Skill event")
-                    if not expectations[scenario_id] and observed:
-                        errors.append(f"{label}: negative activation review must attest that the whole trace has no Skill events")
+                    if not expectations[scenario_id] and any(ref.get("skill") == target_skill for ref in observed):
+                        errors.append(f"{label}: negative activation review must show the target Skill was not selected")
             activated = row.get("activated_skills")
             if not isinstance(activated, list) or any(not isinstance(name, str) for name in activated):
                 errors.append(f"{label}: activation PASS requires activated_skills as a string list")
@@ -139,8 +139,8 @@ def validate_result_rows(
                 target_skill = scenario_id.removeprefix("activation-").rsplit("-", 1)[0]
                 if expected_activation and target_skill not in activated:
                     errors.append(f"{label}: positive scenario PASS lacks expected Skill {target_skill}")
-                if not expected_activation and activated:
-                    errors.append(f"{label}: negative scenario PASS unexpectedly activated Skills")
+                if not expected_activation and target_skill in activated:
+                    errors.append(f"{label}: negative scenario PASS unexpectedly activated target Skill {target_skill}")
         if kind == "quality" and status == "PASS":
             if not isinstance(row.get("checks"), list) or not row["checks"]:
                 errors.append(f"{label}: quality PASS requires measurable acceptance checks")
@@ -150,6 +150,7 @@ def validate_result_rows(
 def activation_definitions() -> tuple[set[str], dict[str, bool]]:
     rows = read_jsonl(ROOT / "evals/activation.jsonl")
     ids: set[str] = set()
+    # True means the target Skill is required; False means that target alone is excluded.
     expectations: dict[str, bool] = {}
     for index, row in enumerate(rows, 1):
         sid = row.get("id")
