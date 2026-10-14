@@ -51,7 +51,7 @@ A higher level requires all evidence listed for that level. Source install/hash 
 ## Results by scenario
 
 - Activation: all 30 latest positive/negative scenarios have Codex traces and observed Skill selections. All remain `NEEDS_REVIEW` pending a separate human whole-trace attestation; this report does not mark activation PASS.
-- Quality: 27 existing scenarios pass their written, measurable criteria; two new source-boundary/adaptive cases await Codex runs. An earlier quality-26 usage-limit failure remains in the historical run ledger and is superseded by the later reviewed run.
+- Quality: 28 scenarios pass their written, measurable criteria; quality-29 is being rerun after correcting a source-ID mismatch in the Android adaptive guidance. An earlier quality-26 usage-limit failure remains in the historical run ledger and is superseded by the later reviewed run.
 - Baseline vs. Skills-enabled: one controlled Codex CLI pair completed; see [comparison method and limits](baseline-comparison.md).
 - Web implementation fixture: static build served and browser-interacted; visual behavior at narrow viewport and screen-reader behavior are still `NEEDS_REVIEW`.
 - Android fixture: no build attempted because the required JDK/SDK toolchain is absent.
