@@ -50,7 +50,7 @@ A higher level requires all evidence listed for that level. Source install/hash 
 
 ## Results by scenario
 
-- Activation: all 30 latest positive/negative scenarios have Codex traces and observed Skill selections. All remain `NEEDS_REVIEW` pending a separate human whole-trace attestation; this report does not mark activation PASS.
+- Activation: all 30 latest positive/negative scenarios have Codex traces and observed Skill selections. All remain `NEEDS_REVIEW` pending a separate human whole-trace attestation; this report does not mark activation PASS. Use the [human-attestation packet](../evals/evidence/activation-human-review.md) to review the paired traces and hashes.
 - Quality: 29 scenarios pass their written, measurable criteria. Quality-29's first exploratory run remains `NEEDS_REVIEW` because it used the pre-correction source mapping; the corrected-source rerun is the passing record. An earlier quality-26 usage-limit failure remains in the historical run ledger and is superseded by the later reviewed run.
 - Baseline vs. Skills-enabled: one controlled Codex CLI pair completed; see [comparison method and limits](baseline-comparison.md).
 - Web implementation fixture: static build served and browser-interacted; visual behavior at narrow viewport and screen-reader behavior are still `NEEDS_REVIEW`.
