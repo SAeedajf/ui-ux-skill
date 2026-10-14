@@ -4,7 +4,7 @@
   "status": "PARTIAL",
   "repository": "https://github.com/SAeedajf/ui-ux-skill",
   "base_commit": "fea6e825306e7dec5162b0bb9fe37ac3129cb36c",
-  "output_commit": "fea6e825306e7dec5162b0bb9fe37ac3129cb36c",
+  "output_commit": "122e0ab5af176bc05e4e19a75bf01180cf2957f8",
   "plugin_version": "0.1.0",
   "private_plugin": {
     "plugin_id": "plugins_6acfa25d79388191b9861545d52f6d03",
@@ -31,7 +31,7 @@
   "baseline_comparison": "PARTIAL — one prior controlled pair; no new run and no statistical claim",
   "security_audit": "PASS — bounded automated/signature checks; see security-and-provenance-review.md",
   "license_audit": "NEEDS_REVIEW — six partial source records; clarify S20's access-status notes before relying on full-content claims",
-  "release_candidate": "LOCAL_BUILD_READY_CI_ARTIFACT_PENDING",
+  "release_candidate": "RELEASE_CANDIDATE_READY",
   "test_counts": {
     "deterministic_unit_tests_passed": 45,
     "fixture_baseline_expected_failures": 5,
@@ -55,15 +55,15 @@
     {"id":"R12","status":"NOT_RUN","test_type":"chatgpt_negative_activation","executed_at":null,"method":"owner-run procedure prepared","evidence":"docs/plugin/chatgpt-test-cases.md#private-chatgpt-acceptance-cases","reason":"The unrelated Python negative case has not been run in ChatGPT."},
     {"id":"R13","status":"PASS","test_type":"package_security_scan","executed_at":"2026-10-14T15:50:00Z","method":"packaging validator, ZIP structure inspection, targeted pattern scan","evidence":"docs/plugin/security-and-provenance-review.md#package-security-checks","reason":"Bounded automated and signature checks passed; limits and human-review boundary are recorded."},
     {"id":"R14","status":"NEEDS_REVIEW","test_type":"rights_and_source_provenance","executed_at":"2026-10-14T15:46:00Z","method":"review source registry status and package contents","evidence":"docs/plugin/security-and-provenance-review.md#source-and-rights-provenance","reason":"Six rows remain partial; S20's direct-page access limit should stay explicit; human clearance is outstanding."},
-    {"id":"R15","status":"PASS","test_type":"release_candidate_package","executed_at":"2026-10-14T15:50:00Z","method":"deterministic build, ZIP integrity, inventory, SHA-256 and provenance sidecar","evidence":"docs/plugin/reports/phase-04-evidence.md#zip-and-provenance","reason":"Valid 0.1.0 local candidate is built; GitHub artifact upload and final CI are recorded separately in R16."},
-    {"id":"R16","status":"NOT_RUN","test_type":"github_actions","executed_at":null,"method":"current Phase 04 PR workflow","evidence":"docs/plugin/reports/phase-04-evidence.md#github-baseline","reason":"Final Phase 04 PR run has not started; successful current-main CI is not a substitute."},
-    {"id":"R17","status":"PASS","test_type":"machine_report_validation","executed_at":"2026-10-14T15:52:12Z","method":"Phase 04 JSON schema, semantic validator, and five unit tests","evidence":"tests/test_phase04_report.py","reason":"Required gates, evidence fields, status/index consistency, and model-gate trace existence constraints are validated."},
+    {"id":"R15","status":"PASS","test_type":"release_candidate_package","executed_at":"2026-10-14T16:00:38Z","method":"deterministic build, ZIP integrity, inventory, SHA-256 and GitHub Actions artifact upload","evidence":"https://github.com/SAeedajf/ui-ux-skill/actions/runs/38594330226/artifacts/11909456276","reason":"Validated 0.1.0 candidate and provenance sidecar are available as a private PR artifact."},
+    {"id":"R16","status":"PASS","test_type":"github_actions","executed_at":"2026-10-14T16:00:41Z","method":"GitHub Actions deterministic-checks job on output commit 122e0ab5af176bc05e4e19a75bf01180cf2957f8","evidence":"https://github.com/SAeedajf/ui-ux-skill/actions/runs/38594330226","reason":"All deterministic checks and RC ZIP upload completed successfully."},
+    {"id":"R17","status":"PASS","test_type":"machine_report_validation","executed_at":"2026-10-14T16:00:38Z","method":"Phase 04 JSON schema, semantic validator, and five unit tests","evidence":"https://github.com/SAeedajf/ui-ux-skill/actions/runs/38594330226/artifacts/11909291301","reason":"Required gates, evidence fields, status/index consistency, and model-gate trace existence constraints are validated."},
     {"id":"R18","status":"PASS","test_type":"scope_and_side_effect_review","executed_at":"2026-10-14T15:52:12Z","method":"worktree diff and tool-operation review","evidence":"docs/plugin/reports/phase-04-evidence.md#github-baseline","reason":"No plugin install/update, personal setting change, public submission, merge, Claude run, or paid model call was performed."}
   ],
-  "open_gates": ["R06","R07","R08","R10","R11","R12","R14","R16"],
+  "open_gates": ["R06","R07","R08","R10","R11","R12","R14"],
   "blocked_gates": ["R06","R07","R08","R10"],
-  "ci_status": "PENDING",
-  "artifact_url": null,
+  "ci_status": "PASS",
+  "artifact_url": "https://github.com/SAeedajf/ui-ux-skill/actions/runs/38594330226/artifacts/11909456276",
   "artifact_sha256": "611b8eddaf74821dd2a1dd6a1d8ae576c32e20b4b23db12ec7021aa6ae634c7c",
   "risks": [
     "Codex runtime activation and practical repair require a logged-in model trace.",
@@ -79,5 +79,5 @@
     "Human maintainer/rightsholder: resolve source rows S36, S50, S94, S100, S102, S109 and keep S20's direct-access limitation explicit before public submission."
   ],
   "next_phase": "Owner-run authenticated Codex and existing private ChatGPT acceptance tests; keep Claude out of scope.",
-  "pull_request": null
+  "pull_request": "https://github.com/SAeedajf/ui-ux-skill/pull/14"
 }

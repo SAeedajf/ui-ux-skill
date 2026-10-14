@@ -71,7 +71,9 @@ This confirms `CREATED` only. The available read-only metadata operation does no
 - The bytes are identical to the Phase 03/main artifact; no Skill or manifest change justified a version bump. Keep `0.1.0`.
 - `ZipFile.testzip()` returned `None`; 35 regular members comprise root `plugin.json`, `LICENSE`, 15 Skill trees, and 18 reference Markdown files. No path traversal or symlink member was found.
 - The generated sidecar identifies source commit `fea6e825306e7dec5162b0bb9fe37ac3129cb36c`, `validation_status=PASS`, the same ZIP hash, and a 35-file inventory.
-- The GitHub Actions job uploads the ZIP, sidecar, and CI-finalized machine report as `ui-ux-pro-0.1.0-phase-04-rc`. It is a private PR CI artifact, not a public release.
+- GitHub Actions run `38594330226` passed on output commit `122e0ab5af176bc05e4e19a75bf01180cf2957f8`. RC artifact `11909456276` is at `https://github.com/SAeedajf/ui-ux-skill/actions/runs/38594330226/artifacts/11909456276`.
+- The CI sidecar records GitHub's PR merge commit `9118ae0dea318f9b984a0fd58ec9bb4d92b98795`; its ZIP hash and 35-file inventory match the local base-commit build. The commit identity is recorded in the sidecar and is not confused with the branch's output commit.
+- The report artifact is `11909291301` from the same run. It contains the CI-finalized `phase-04.json` (CI `PASS`, exact archive hash, and open/blocked model gates retained). These are private PR workflow artifacts, not public releases.
 
 ## Security and rights
 

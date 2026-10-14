@@ -39,7 +39,7 @@ Updated: 2026-10-14. Statuses below separate discovery and creation from install
 | R13 | PASS | Package security checks cover secrets, file types, links, symlinks, traversal, manifest safety, and instruction patterns. | Package validator, inventory, signature scan; limits documented in security review. | CI + maintainer |
 | R14 | NEEDS_REVIEW | Human rights/provenance review resolves the six partial entries and registry inconsistency. | `security-and-provenance-review.md`; no legal opinion claimed. | Human maintainer/rightsholder |
 | R15 | PASS | Traceable 0.1.0 Release Candidate ZIP and SHA-256 are produced without changing package content/version. | CI artifact and provenance sidecar in final report. | CI |
-| R16 | PENDING | GitHub Actions run on final PR commit succeeds. | Filled by CI finalization step and reported in `phase-04.json`. | GitHub Actions |
+| R16 | PASS | GitHub Actions run on output commit succeeds. | Run `38594330226` passed; see the direct CI run and RC artifact link in `reports/phase-04.md`. | GitHub Actions |
 | R17 | PASS | Machine report passes schema and semantic validation; open/blocked lists match gate details. | `validate_phase04_report.py` and tests. | CI |
 | R18 | PASS | No personal settings, plugin state, ChatGPT release, public listing, Claude, or external paid account is changed. | Worktree diff and evidence boundaries. | Repository maintainer |
 
