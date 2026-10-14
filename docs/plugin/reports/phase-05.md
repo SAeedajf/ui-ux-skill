@@ -10,7 +10,7 @@ REPOSITORY: https://github.com/SAeedajf/ui-ux-skill
 
 BASE_COMMIT: `6c8069d05c7ac147c2c3d83cd88303674f012518`
 
-OUTPUT_COMMIT: See the Phase 05 machine report and CI-finalized report artifact for the exact tested commit.
+OUTPUT_COMMIT:  (implementation evidence commit; the CI artifact records the exact tested PR head).
 
 BRANCH: `codex/ui-ux-plugin-phase-05`
 
