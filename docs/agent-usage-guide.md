@@ -15,7 +15,7 @@ For each request, follow this sequence:
 5. **Do and verify the requested work.** For code changes, preserve existing behavior and tokens unless the goal requires a change; check the affected state, viewport, and input method against explicit criteria.
 6. **Report with limits.** Separate observations, user reports, source-backed claims, inferences, and proposals. Name checks that passed and checks that remain unverified. Do not call a screenshot, code scan, or model response user research or conformance evidence.
 
-Keep output inside the request too: do not create a separate image, prototype, canvas, diagram, or other artifact unless the user asked for it or it is necessary to deliver the requested result. A visual idea can be explained in text when a separate artifact is not needed. Do not invoke a tool merely because it is available.
+Keep output inside the request too: a review or recommendation written in chat is not, by itself, a request for a separate image, prototype, canvas, diagram, or file. Use headings, bullets, or a compact table to make the response clear. Create another artifact only when the user requests it, it is necessary to deliver the requested result, or the host has an applicable mandatory instruction; when required, avoid duplicating the same content in multiple places. A visual idea can be explained in text when a separate artifact is not needed. Do not invoke a tool merely because it is available.
 
 Use the user's language in the response. In Persian/RTL work, preserve mixed-direction identifiers, URLs, numbers, and provider-required formats. If a host cannot discover Skills, load the relevant `SKILL.md` manually and describe that as manual use—not automatic activation.
 
