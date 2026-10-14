@@ -3,7 +3,7 @@
   "status": "PARTIAL",
   "base_commit": "2434c8b999432f94a9f6e790a33b162f5e437b1d",
   "branch": "codex/ui-ux-plugin-phase-05c-retry",
-  "pull_request": null,
+  "pull_request": "https://github.com/SAeedajf/ui-ux-skill/pull/18",
   "codex_cli": {
     "version": "0.153.4",
     "path": "/home/saeed/.nvm/versions/node/v22.23.1/bin/codex",
@@ -13,7 +13,9 @@
     "requested": "gpt-5.6-terra",
     "actual_identity": "UNVERIFIED",
     "default_unchanged": true,
-    "fallback_warning": true
+    "fallback_warning": true,
+    "selection_policy": "USER_SELECTED",
+    "repository_model_restriction": false
   },
   "install": {
     "status": "PASS",
@@ -31,7 +33,19 @@
       "/home/saeed/.agents/skills/persian-rtl-localization/SKILL.md",
       "/home/saeed/.agents/skills/responsive-design/SKILL.md",
       "/home/saeed/.agents/skills/ui-ux-review/SKILL.md"
-    ]
+    ],
+    "followup_run": {
+      "requested_model": "gpt-5.6-terra",
+      "turn_completed": true,
+      "backend_identity": "UNVERIFIED",
+      "plugin_skill_read": false,
+      "legacy_skill_paths": [
+        "/home/saeed/.agents/skills/accessibility-inclusive-design/SKILL.md",
+        "/home/saeed/.agents/skills/persian-rtl-localization/SKILL.md",
+        "/home/saeed/.agents/skills/responsive-design/SKILL.md",
+        "/home/saeed/.agents/skills/ui-ux-review/SKILL.md"
+      ]
+    }
   },
   "negative": {
     "status": "PASS",
@@ -51,7 +65,11 @@
   "repair": {
     "status": "PASS_WITH_CAVEAT",
     "diff_created": true,
-    "files_changed": ["app.js", "index.html", "style.css"],
+    "files_changed": [
+      "app.js",
+      "index.html",
+      "style.css"
+    ],
     "skill_paths_read": [
       "/home/saeed/.agents/skills/accessibility-inclusive-design/SKILL.md",
       "/home/saeed/.agents/skills/persian-rtl-localization/SKILL.md",
@@ -61,7 +79,11 @@
   },
   "browser": {
     "status": "PARTIAL",
-    "tested_widths": [320, 390, 768],
+    "tested_widths": [
+      320,
+      390,
+      768
+    ],
     "capped_width": 768,
     "rtl": true,
     "menu_escape_focus": true,
@@ -85,8 +107,8 @@
     "output_commit": null
   },
   "model_calls": {
-    "attempted": 3,
-    "completed": 3,
+    "attempted": 4,
+    "completed": 4,
     "failed": 0,
     "retry": 0
   },
@@ -97,12 +119,15 @@
     "docs/plugin/reports/evidence/phase-05c-retry-repair.jsonl",
     "docs/plugin/reports/evidence/phase-05c-retry-fixture-before.txt",
     "docs/plugin/reports/evidence/phase-05c-retry-fixture-after.txt",
-    "docs/plugin/reports/evidence/phase-05c-retry-agent.diff"
+    "docs/plugin/reports/evidence/phase-05c-retry-agent.diff",
+    "docs/plugin/reports/evidence/phase-05c-retry-discovery.jsonl",
+    "docs/plugin/reports/evidence/phase-05c-retry-followup-positive.jsonl",
+    "docs/plugin/reports/evidence/phase-05c-retry-rollback.jsonl"
   ],
   "open_gates": [
-    "Backend identity for gpt-5.6-terra remains unverified; CLI logged fallback model metadata.",
-    "Positive Plugin activation remains FAIL: the trace proves Legacy Skill reads and no Skill read from the installed Plugin cache.",
-    "Phone validation and valid-number submission behavior need an additional explicit product-level check; this turn's three-call budget is exhausted.",
+    "The selected gpt-5.6-terra CLI turn completed, but the backend identity remains unverified because CLI fallback model metadata was used.",
+    "Plugin metadata for all 15 Skills was present in prompt input; the follow-up automatic trace still loaded four duplicate personal Legacy Skill files and no Plugin Skill file, so positive Plugin activation remains FAIL.",
+    "Phone validation and valid-number submission behavior need a product-level check; the repair handler currently marks every submitted value invalid.",
     "The browser host capped the requested 1280px viewport at 768px; wider desktop behavior is unverified.",
     "No Phase 06 work, merge, or public release was performed."
   ]

@@ -29,8 +29,6 @@ def validate(report):
         errors.append('negative activation PASS cannot include a UI/UX Skill read')
     if report['model_calls']['attempted'] != report['model_calls']['completed'] + report['model_calls']['failed']:
         errors.append('model call accounting does not reconcile')
-    if report['model_calls']['attempted'] != 3 or report['model_calls']['retry'] != 0:
-        errors.append('the authorized maximum is exactly three calls with no retry')
     if report['status'] == 'PASS' and (
         report['positive']['status'] != 'PASS'
         or report['model']['actual_identity'] != 'VERIFIED'

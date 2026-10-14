@@ -3,13 +3,13 @@
 **Status:** `PARTIAL`
 **Base:** `2434c8b999432f94a9f6e790a33b162f5e437b1d`
 **Branch:** `codex/ui-ux-plugin-phase-05c-retry`
-**Pull request:** pending
-**Model calls:** 3 completed responses; no retry
+**Pull request:** https://github.com/SAeedajf/ui-ux-skill/pull/18
+**Model calls:** 4 completed responses; no failed call or retry
 
 ## Environment and temporary install
 
 - Verified CLI: `/home/saeed/.nvm/versions/node/v22.23.1/bin/codex`, version `0.153.4`, authenticated with ChatGPT.
-- The three CLI invocations selected `gpt-5.6-terra`. CLI stderr reported that model metadata was unavailable and fallback metadata was used. The captured trace does not verify the backend model identity. The configured default remains `gpt-6-luna`.
+- Each evaluation uses the model selected by the user or host; the repository does not require a specific model. The four evaluation CLI invocations in this report explicitly selected `gpt-5.6-terra`. CLI stderr reported unknown model metadata and fallback metadata was used, so backend identity is unverified. The configured default remains `gpt-6-luna` and was not changed.
 - Temporary `ui-ux-pro@ui-ux-pro-marketplace` installed as version `0.1.0`; the package contains 15 Skills. Before install: 33 Plugins and 3 marketplaces. Existing personal Skills and the unrelated `uiuxdesigner` Plugin were retained.
 
 ## Positive activation — FAIL
@@ -21,7 +21,14 @@ The supplied Persian RTL store audit completed. The trace shows reads of these p
 - `/home/saeed/.agents/skills/responsive-design/SKILL.md`
 - `/home/saeed/.agents/skills/ui-ux-review/SKILL.md`
 
-No Skill file under the installed Plugin cache appears in the trace. Useful recommendations do not prove Plugin activation, so this gate remains `FAIL`.
+No Skill file under the installed Plugin cache appears in either automatic positive trace. Useful recommendations do not prove Plugin activation, so this gate remains `FAIL`.
+
+
+### Follow-up discovery and positive trace
+
+A read-only `codex debug prompt-input` probe found all 15 namespaced Plugin Skills in the installed Plugin cache. This proves discovery only. A fourth fresh `gpt-5.6-terra` CLI invocation used the same unnamed positive prompt against a copied RTL store. It completed, but again read only the four personal Legacy Skill files listed above; no Plugin `SKILL.md` path was read. The selected backend identity remains unverified. The sanitized probe and trace summary are [`phase-05c-retry-discovery.jsonl`](evidence/phase-05c-retry-discovery.jsonl) and [`phase-05c-retry-followup-positive.jsonl`](evidence/phase-05c-retry-followup-positive.jsonl). Before/after install inventory hashes match after rollback: [`phase-05c-retry-rollback.jsonl`](evidence/phase-05c-retry-rollback.jsonl).
+
+The repository's runner already accepts an optional `--model` and otherwise uses the host default; the AI guide directs agents to use the user's or host's available choice. This run tests only the selected CLI model and does not establish behavior across every model.
 
 ## Negative activation — PASS
 
@@ -47,4 +54,4 @@ There are 8 personal Skill directories whose names overlap this Plugin's Skill s
 
 CI will validate this report and publish a finalized evidence artifact for the exact PR commit. The machine report and sanitized trace summaries are versioned alongside the Agent diff and before/after fixture output.
 
-Open gates: actual backend model identity, Plugin Skill activation, phone validity behavior, and desktop widths wider than 768px. This report does not authorize or perform Phase 06, merge, or public release.
+Open gates: actual backend model identity, Plugin Skill activation, phone validity behavior, and desktop widths wider than 768px. Discovery passed but automatic Plugin activation did not. This report does not authorize or perform Phase 06, merge, or public release.
