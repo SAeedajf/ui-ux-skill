@@ -4,7 +4,7 @@ import csv, json, re, sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from scripts.eval_harness import quality_definitions, validate_all as validate_eval_results, validate_domain_quality_refs
+from scripts.eval_harness import quality_definitions, validate_all as validate_eval_results, validate_domain_quality_refs, validate_domain_source_refs
 errors=[]
 def fail(msg): errors.append(msg)
 # Skill folders and frontmatter.
@@ -40,6 +40,7 @@ for row in domains:
   if sid not in source_ids: fail(f"{row['domain']}: unknown source ID {sid}")
  for skill in row['primary_skills'].split(';'):
   if skill not in found: fail(f"{row['domain']}: unknown Skill {skill}")
+for error in validate_domain_source_refs(domains, source_ids): fail(error)
 for error in validate_domain_quality_refs(domains, quality_definitions()): fail(error)
 # Evals.
 with (ROOT/'evals/activation.jsonl').open(encoding='utf-8') as f: evals=[json.loads(x) for x in f if x.strip()]

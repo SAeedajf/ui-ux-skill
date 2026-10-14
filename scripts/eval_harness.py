@@ -199,6 +199,24 @@ def validate_domain_quality_refs(domains: list[dict[str, str]], quality_ids: set
     return errors
 
 
+def validate_domain_source_refs(domains: list[dict[str, str]], source_ids: set[str]) -> list[str]:
+    errors: list[str] = []
+    mapped: set[str] = set()
+    for row in domains:
+        domain = row.get("domain", "<unknown>")
+        refs = [item.strip() for item in row.get("source_ids", "").split(";") if item.strip()]
+        if not refs:
+            errors.append(f"{domain}: needs at least one source ID")
+        for source_id in refs:
+            if source_id not in source_ids:
+                errors.append(f"{domain}: unknown source ID {source_id!r}")
+            mapped.add(source_id)
+    missing = source_ids - mapped
+    if missing:
+        errors.append(f"domain coverage does not reference source IDs: {', '.join(sorted(missing, key=int))}")
+    return errors
+
+
 def validate_all() -> list[str]:
     errors: list[str] = []
     try:

@@ -5,7 +5,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from scripts.eval_harness import report, validate_domain_quality_refs, validate_result_rows
+from scripts.eval_harness import report, validate_domain_quality_refs, validate_domain_source_refs, validate_result_rows
 
 
 class ResultValidationTests(unittest.TestCase):
@@ -97,6 +97,11 @@ class ResultValidationTests(unittest.TestCase):
         errors = validate_domain_quality_refs(domains, {"quality-20", "quality-22"})
         self.assertTrue(any("unknown quality scenario" in error for error in errors))
         self.assertTrue(any("does not reference" in error for error in errors))
+
+    def test_domain_map_requires_every_source_to_be_mapped(self):
+        domains = [{"domain": "interaction", "source_ids": "43;49"}]
+        errors = validate_domain_source_refs(domains, {"43", "49", "48"})
+        self.assertTrue(any("does not reference source IDs" in error for error in errors))
 
     def test_report_uses_latest_run_per_scenario(self):
         with patch("scripts.eval_harness.read_jsonl", return_value=[
