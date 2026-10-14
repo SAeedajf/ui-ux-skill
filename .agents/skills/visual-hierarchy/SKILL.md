@@ -5,6 +5,8 @@ description: Use when setting content emphasis or scan order.
 
 # Visual Hierarchy
 
+Out of scope: proofreading, backend changes, or visual polish that leaves content priority and scan order unchanged.
+
 Make the most important content and next action easy to find, based on the user's task and the evidence available.
 
 ## Workflow

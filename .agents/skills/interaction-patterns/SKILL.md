@@ -5,6 +5,8 @@ description: Use when designing control states, feedback, and recovery.
 
 # Interaction Patterns
 
+Out of scope: a static content hierarchy or visual-only adjustment with no action, state, feedback, or recovery behavior to decide.
+
 ## Workflow
 1. Trace the user goal from entry to completion, including alternate, error, cancel, and recovery paths.
 2. Inspect existing components, semantics, labels, input constraints, keyboard/touch behavior, and platform conventions.

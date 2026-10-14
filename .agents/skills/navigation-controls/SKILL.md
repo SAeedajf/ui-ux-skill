@@ -5,6 +5,8 @@ description: Use when designing menus, wayfinding, or action buttons.
 
 # Navigation and Controls
 
+Out of scope: form validation or a control's internal state when destinations, wayfinding, menus, and action-vs-link semantics are unchanged; use `forms-input` or `interaction-patterns`.
+
 Help people understand where they are, what a control will do, and how to continue or return.
 
 ## Workflow
@@ -15,3 +17,5 @@ Help people understand where they are, what a control will do, and how to contin
 5. Verify with representative tasks and real routes or prototypes. Record what was inspected and what remains untested.
 
 For pattern boundaries and source notes, see `references/navigation-controls.md`. Hand off component-state logic to `interaction-patterns`, multi-field forms to `forms-input`, and a full keyboard/AT audit to `accessibility-inclusive-design`.
+
+**Navigation output:** state the proposed destinations, labels, current-location cue, and whether each item navigates or acts; include the routes/states inspected and what remains untested.

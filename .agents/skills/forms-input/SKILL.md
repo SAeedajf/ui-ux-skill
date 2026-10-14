@@ -5,6 +5,8 @@ description: Use when designing form fields, validation, or error recovery.
 
 # Forms and Input
 
+Out of scope: static text or page styling when field choice, entry, validation, submission, or recovery behavior is unchanged.
+
 Make it clear what information is needed, why it is needed, how to enter it, and how to recover from a problem.
 
 ## Workflow

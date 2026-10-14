@@ -19,7 +19,7 @@
 
 ## Source map
 
-- **18 Material Design 3 — Color System**: official design-system guidance; use for Material role concepts, not as a universal token mandate. [Source](https://m3.material.io/styles/color/overview)
+- **18 Material Design 3 — Color System**: official design-system guidance; use for Material role concepts, not as a universal token mandate. [Source](https://m3.material.io/styles/color/roles)
 - **19 Adobe Color** and **20 Coolors**: palette exploration tools, not normative standards. Direct access to source 20 was limited during review. [Adobe](https://color.adobe.com/create/color-wheel) · [Coolors](https://coolors.co/)
 - **21–23 color books**: publisher metadata only; full contents were not reviewed. Do not imply otherwise or reproduce protected content.
 - **24 Smashing Magazine** and **26 Nielsen Norman Group**: secondary/practitioner guidance; do not turn associations into universal laws. [Smashing](https://www.smashingmagazine.com/2025/08/psychology-color-ux-design-digital-products/) · [NN/g](https://www.nngroup.com/articles/color-enhance-design/)

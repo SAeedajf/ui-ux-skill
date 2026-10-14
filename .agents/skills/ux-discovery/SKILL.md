@@ -5,6 +5,8 @@ description: Use when clarifying user goals, evidence, or product questions.
 
 # Ux Discovery
 
+Out of scope: implementation-ready changes with a clear user task, settled product decision, and sufficient evidence; proceed with the owning implementation Skill.
+
 ## Workflow
 1. Clarify user goal, audience, context, constraints, current journey, and evidence already available. Separate observed facts from assumptions.
 2. Inspect existing screens, routes, content, and analytics/research artifacts the user supplied; do not invent personas or user research.

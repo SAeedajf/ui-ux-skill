@@ -5,6 +5,8 @@ description: Use when mapping experiences across stages or channels.
 
 # Journey Mapping
 
+Out of scope: a single in-product screen, route, or control change; use `navigation-controls` or `interaction-patterns` unless the question spans stages, touchpoints, or channels.
+
 Choose an experience map that answers the product question, and make its evidence level visible. A map is a synthesis artifact, not proof of behavior by itself.
 
 ## Workflow
@@ -15,3 +17,5 @@ Choose an experience map that answers the product question, and make its evidenc
 5. Prioritize the most consequential uncertainty and define a follow-up validation step. State the evidence and participant limitations, as well as what remains unverified.
 
 For map selection and evidence boundaries, read `references/journey-artifacts.md`. Hand off in-product navigation paths to `navigation-controls`, research planning to `ux-discovery`, and content taxonomy to `information-architecture`.
+
+**Map output:** name the actor and goal, scope and channels, stages/touchpoints, evidence labels, current vs. proposed state, key opportunity, and next validation step. Mark unsupported stages or fields unknown instead of filling gaps.

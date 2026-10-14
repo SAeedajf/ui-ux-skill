@@ -5,6 +5,8 @@ description: Use when influencing conversion, engagement, or user choices.
 
 # Ethical Persuasion
 
+Out of scope: neutral copy, layout, or interaction work that does not influence a user choice or behavior; use the relevant specialist Skill instead.
+
 Support behavior change only when the intended outcome creates clear user value and users keep meaningful choice. Business goals do not justify deception, coercion, or obstruction.
 
 ## Workflow

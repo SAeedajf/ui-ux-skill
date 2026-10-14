@@ -5,6 +5,8 @@ description: Use when auditing an interface for usability, accessibility, or con
 
 # Ui Ux Review
 
+Out of scope: backend-only or code-only work with no user-facing interface question; trace UI outcomes only when they are in the requested review scope.
+
 ## Workflow
 1. Establish scope, user tasks, audience, platforms, locales, target states, constraints, and available evidence.
 2. Inspect the actual interface or code at representative sizes and states; distinguish code inspection, rendered inspection, automated checks, and user testing.
@@ -13,4 +15,4 @@ description: Use when auditing an interface for usability, accessibility, or con
 5. Map findings to applicable standards, research, platform guidance, or clearly labeled design judgment using source IDs. Do not claim conversion impact without relevant measurement.
 6. Provide a concise summary, ordered findings, verified aspects, and explicit unknown/unverified areas.
 
-Use `references/review-template.md`; select only the focused Skills that match findings: `color-systems`, `ethical-persuasion`, `forms-input`, `information-architecture`, `journey-mapping`, `navigation-controls`, `visual-hierarchy`, or the existing responsive, accessibility, layout, interaction, design-system, and Persian/RTL Skills.
+Use `references/review-template.md`. Check the [source registry](../../../docs/source-registry.csv) for source access and applicability before using a source claim. Select only the focused Skills that match findings: `color-systems`, `ethical-persuasion`, `forms-input`, `information-architecture`, `journey-mapping`, `navigation-controls`, `visual-hierarchy`, or the existing responsive, accessibility, layout, interaction, design-system, and Persian/RTL Skills.

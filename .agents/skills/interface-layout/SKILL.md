@@ -5,6 +5,8 @@ description: Use when refining page layout, spacing, cards, and composition.
 
 # Interface Layout
 
+Out of scope: a color-token, shared-component, or interaction-state decision when page composition is not in question; use its owning specialist Skill.
+
 ## Workflow
 1. Identify the page purpose, primary task, audience, content priority, existing brand/system, locale, platform, and constraints.
 2. Inspect the current UI and available tokens/assets before proposing changes.

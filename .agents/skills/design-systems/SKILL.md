@@ -5,6 +5,8 @@ description: Use when changing shared tokens, components, or theming.
 
 # Design Systems
 
+Out of scope: a one-off screen value or component change with no shared token, repeated component, or theming decision.
+
 ## Workflow
 1. Inspect current components, tokens, naming, variants, themes, platform boundaries, and consumers.
 2. Confirm the repeated need and intended semantic contract before adding a token or component.

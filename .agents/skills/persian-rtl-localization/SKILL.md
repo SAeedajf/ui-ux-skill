@@ -6,7 +6,7 @@ description: Use when localizing Persian, RTL, or mixed-direction interfaces.
 # Persian Rtl Localization
 
 ## Scope
-Activate when Persian/RTL or mixed-direction behavior in an interface needs design, implementation guidance, or review. Proofreading Persian prose in a standalone document, or copy editing that does not affect interface localization or behavior, is out of scope.
+Activate when Persian/RTL or mixed-direction behavior in an interface needs design, implementation guidance, or review. Proofreading Persian prose in a standalone document, or copy editing that does not affect interface localization or behavior, is out of scope. For a non-Persian interface with no RTL or mixed-direction requirement, use the relevant UI Skill without this one.
 
 ## Workflow
 1. Confirm locale, direction, script, numeral/calendar/currency rules, text variants, and whether the experience is mixed-direction.

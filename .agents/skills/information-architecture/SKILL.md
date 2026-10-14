@@ -5,6 +5,8 @@ description: Use when structuring and validating product content and labels.
 
 # Information Architecture
 
+Out of scope: menu styling or page spacing when grouping, labels, hierarchy, and findability are already settled; use `navigation-controls` or `interface-layout` for those decisions.
+
 Organize content around user needs and product context. Treat any proposed taxonomy as a hypothesis until validated with representative users or behavior.
 
 ## Workflow
