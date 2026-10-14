@@ -17,6 +17,25 @@ For each request, follow this sequence:
 
 Use the user's language in the response. In Persian/RTL work, preserve mixed-direction identifiers, URLs, numbers, and provider-required formats. If a host cannot discover Skills, load the relevant `SKILL.md` manually and describe that as manual use—not automatic activation.
 
+### One-pass operating loop
+
+Use this compact loop when applying the library. The sections below explain each step and provide the routing map and report format.
+
+```text
+Scope → Route → Read → Inspect → Decide → Act (if requested) → Verify → Report
+```
+
+- **Scope:** Restate the user task, platform, audience, locale, constraints, and whether this is review, recommendation, or implementation. Keep out-of-scope issues as notes, not surprise work.
+- **Route:** Choose one primary Skill for the main decision. Add a specialist only for a distinct question or acceptance check; do not load a Skill just because a keyword appears.
+- **Read:** Read the primary `SKILL.md`, then just the references it points to that could change this decision. Prefer current, first-party standards for platform behavior and use the source registry to check provenance and access limits.
+- **Inspect:** Ground findings in the actual page, code, design file, or captured state. If it is unavailable, distinguish what the user supplied from what you inferred.
+- **Decide:** Convert the task into observable acceptance checks before changing the UI. Keep proposals, assumptions, and source-backed facts labeled.
+- **Act:** Change code only when requested. Preserve existing behavior and design tokens unless the goal requires a change. For multi-Skill work, pass the next Skill only the relevant decisions, constraints, and evidence.
+- **Verify:** Revisit the changed route/state at the target viewport and input mode. Run the narrowest checks that cover the change, then report any unavailable checks without upgrading a partial result to a pass.
+- **Report:** Summarize the scope, Skills used, artifact/state inspected, changes, checks and results, source limits, and remaining unknowns in the user's language.
+
+If the request is review-only, stop after findings and do not edit. If it is implementation, complete the requested changes and applicable checks before reporting. If the artifact is missing, continue only with a clearly labeled proposal when useful; never imply it was observed or tested.
+
 ## 1. Make the Skills available to your host
 
 Use the [installation guide](installation.md) for the host- and version-specific discovery path. The paths below are starting points; verify the current host documentation and confirm the Skill appears in that environment before relying on it.
@@ -69,6 +88,17 @@ Use these rules when deciding which Skill to load:
 6. Stop when the requested outcome and acceptance checks are covered. Do not expand a narrow task into a full audit.
 
 If two Skills seem equally relevant, use the user's explicit request first; otherwise choose the one that owns the main decision and mention the second only if a separate check is actually needed. A Skill is a workflow aid, not a required model, framework, tool, or permission to change scope.
+
+### Combining Skills without overloading the task
+
+Treat each Skill as an owner of one decision, not as a checklist to run in full. A practical sequence for a broad interface task is:
+
+1. Use `ui-ux-review` to inventory observed issues and rank them against the user's task.
+2. Route each in-scope issue to the smallest specialist set—for example `forms-input` for validation, `persian-rtl-localization` for mixed-direction behavior, or `accessibility-inclusive-design` for keyboard and contrast checks.
+3. Use `design-systems` only when the fix changes a shared token, component, or theme; use `responsive-design` when behavior across viewports is in scope.
+4. Implement only the approved scope, then verify each changed behavior against its own acceptance check. Do not report the presence of a Skill in the route as proof that its concern passed.
+
+For handoffs, carry forward a short packet: user goal, applicable constraints, observed state, accepted decisions, open questions, and the next check. Do not copy every source or full Skill body into the next step. If two Skills recommend incompatible changes, surface the conflict and resolve it using the user's goal, existing product constraints, and evidence; do not silently combine contradictory advice.
 
 ### Worked routing examples
 
@@ -201,6 +231,10 @@ Use `user-tested` only for evidence from representative users doing the target t
 - **Other hosts:** follow that host's current documentation. Agent Skills format compatibility does not guarantee identical discovery, context loading, automatic selection, or tool access.
 
 These are host-specific examples, not guarantees for every version or agent mode. Verify the listed Skill and current invocation method in the actual host. A direct/manual invocation shows that the workflow can be requested; it does not prove automatic activation.
+
+### Host-neutral fallback
+
+When Skills are unsupported or discovery fails, open the relevant `SKILL.md` as ordinary project guidance and continue with the same scope and evidence rules. Record whether use was **automatic**, **user-selected**, or **manual fallback**. These are different invocation modes; do not present manual fallback as host discovery or automatic routing evidence. Use only tools actually available in that host, and name the missing runtime or device when it limits verification.
 
 ## 7. Evidence labels for the final report
 
