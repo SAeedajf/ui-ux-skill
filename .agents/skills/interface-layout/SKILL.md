@@ -1,11 +1,11 @@
 ---
 name: interface-layout
-description: Use when refining page layout, spacing, cards, and composition.
+description: Use when refining the layout, spacing, or composition of a product interface page or component.
 ---
 
 # Interface Layout
 
-Out of scope: a color-token, shared-component, or interaction-state decision when page composition is not in question; use its owning specialist Skill.
+Out of scope: print/editorial design, standalone illustration, or decorative graphic composition with no product interface; use an available graphic-design skill instead. Also out of scope: a color-token, shared-component, or interaction-state decision when page composition is not in question; use its owning specialist Skill.
 
 ## Workflow
 1. Identify the page purpose, primary task, audience, content priority, existing brand/system, locale, platform, and constraints.

@@ -30,6 +30,8 @@ ids=[r['id'] for r in sources]
 if len(sources)!=124 or len(set(ids))!=124 or set(ids)!=set(map(str,range(1,125))): fail('source registry must contain unique IDs 1..124')
 if any(not r.get('submitted_url') or not r.get('url') for r in sources): fail('each source needs submitted_url and reviewed/canonical url')
 if len({r['submitted_url'] for r in sources})!=124: fail('submitted_url must preserve the 124 distinct source links')
+allowed_source_pairs={('standard_or_specification','normative_or_consensus'),('research_or_public_service_guidance','research_or_service_guidance'),('official_platform_or_design_system','implementation_guidance'),('book_or_practitioner_publication','practitioner_method'),('practitioner_or_product_guidance','practitioner_guidance'),('commercial_or_visual_inspiration','inspiration_only')}
+if any((r.get('source_class'),r.get('evidence_type')) not in allowed_source_pairs for r in sources): fail('source_class and evidence_type must use a documented matching evidence pair')
 if any(not r.get(k) for r in sources for k in ('pass_1','pass_2','checkpoint_5','review_date')): fail('every source needs two review passes, a five-source checkpoint, and review date')
 if sum(r['review_status']=='partially_verified' for r in sources)!=6: fail('expected six explicitly partial sources')
 source_ids=set(ids)
