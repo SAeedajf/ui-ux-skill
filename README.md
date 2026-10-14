@@ -26,6 +26,7 @@ Use `python3 scripts/install-skills.py --help` to see selection and overwrite op
 - [Domain coverage](docs/domain-coverage.csv)
 - [Platform adapters](adapters/)
 - [Examples](examples/)
+- [Persian storefront fixture and verification record](docs/fixture-ux-validation.md)
 - [Synthetic layout and design-system decision record](examples/synthetic/layout-and-system.md)
 - [Evaluation scenarios and result status](evals/)
 - [Codex evaluation workflow](docs/evaluation.md)
@@ -38,4 +39,4 @@ Original repository-authored material is licensed under [CC BY 4.0](LICENSE). Th
 
 ## Status
 
-Operational status is documented in [the readiness report](docs/operational-readiness.md). The repository contains 15 model-neutral Skills and a focused AI-agent guide. In a 2026-10-14 Codex CLI 0.144.5 run using the host default, an activation pair and quality cases were recorded; the product-interaction quality case passed a separate rubric review after its instructions were refined. The activation pair and two other quality responses remain `NEEDS_REVIEW`; the earlier `gpt-6-luna` attempts remain `BLOCKED` for that account/runtime. This is an environment-specific result, not a model restriction in the repository. The evaluation runner uses the Codex CLI default unless a model is explicitly supplied. A local web fixture was exercised separately and is not attributed to Skill invocation. Source review is current to 2026-10-13; partially verified and paywalled references remain labeled.
+Operational status is documented in [the readiness report](docs/operational-readiness.md). The repository contains 15 model-neutral Skills and an [AI-agent usage guide](docs/agent-usage-guide.md) with a short routing and verification workflow. In Codex CLI 0.144.5 using the host default, all 30 positive/negative activation cases were run for the 15 Skills; trace selections look correct but remain `NEEDS_REVIEW` until a separate human reviewer attests to them. All 24 quality cases passed criterion-level review, including reruns after clarifying layout scope and cross-platform design-system guidance. No Claude test was run in this mission, and the earlier `gpt-6-luna` rejection remains an environment-specific result, not a repository model restriction. The runner uses the Codex CLI default unless a model is explicitly supplied. A local web fixture was exercised separately and is not attributed to Skill activation. Source review is current to 2026-10-13; partially verified and paywalled references remain labeled.

@@ -72,6 +72,27 @@ class ResultValidationTests(unittest.TestCase):
         errors = validate_result_rows([row], {sid}, self.root, "activation", {sid: False})
         self.assertTrue(any("unexpected" in error.lower() or "negative" in error.lower() for error in errors))
 
+    def test_accepts_negative_target_when_neighboring_skill_was_selected(self):
+        sid = "activation-ux-discovery-negative"
+        trace_text = '{"type":"skill.invoked","skill":"information-architecture","invocation_mode":"automatic"}\n'
+        self.trace.write_text(trace_text, encoding="utf-8")
+        trace_hash = hashlib.sha256(self.trace.read_bytes()).hexdigest()
+        row = {
+            **self.base,
+            "scenario_id": sid,
+            "trace": "evals/evidence/trace.jsonl",
+            "evidence": ["evals/evidence/trace.jsonl"],
+            "activated_skills": ["information-architecture"],
+            "activation_review": {
+                **self.base["activation_review"],
+                "trace_sha256": trace_hash,
+                "evidence_summary": "The neighboring information-architecture Skill was selected; ux-discovery was not.",
+                "observed_skill_events": [{"line": 1, "skill": "information-architecture"}],
+            },
+        }
+        errors = validate_result_rows([row], {sid}, self.root, "activation", {sid: False})
+        self.assertEqual(errors, [])
+
     def test_rejects_unknown_status_and_missing_commit(self):
         row = {**self.base, "status": "MAYBE", "commit_sha": "c070660"}
         errors = validate_result_rows([row], {row["scenario_id"]}, self.root, "activation", {row["scenario_id"]: True})

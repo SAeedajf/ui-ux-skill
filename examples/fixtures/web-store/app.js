@@ -35,6 +35,7 @@ form.addEventListener('submit', (event) => {
   if (!email.value || !email.validity.valid) {
     email.setAttribute('aria-invalid', 'true');
     email.setAttribute('aria-describedby', 'email-hint form-message');
+    message.dataset.state = 'error';
     message.textContent = 'لطفاً یک نشانی ایمیل معتبر وارد کن.';
     email.focus();
     return;
@@ -43,12 +44,17 @@ form.addEventListener('submit', (event) => {
   email.setAttribute('aria-describedby', 'email-hint');
   submit.disabled = true;
   submit.textContent = 'در حال ثبت…';
-  message.textContent = '';
+  message.dataset.state = 'pending';
+  message.textContent = 'در حال ثبت عضویت…';
   window.setTimeout(() => {
     submit.disabled = false;
     submit.textContent = 'عضویت';
-    message.textContent = email.value.endsWith('.fail')
-      ? 'ارتباط برقرار نشد. دوباره تلاش کن؛ ایمیلت پاک نشده است.'
-      : 'عضویتت ثبت شد. ممنون!';
+    if (email.value.endsWith('.fail')) {
+      message.dataset.state = 'error';
+      message.textContent = 'ارتباط برقرار نشد. دوباره تلاش کن؛ ایمیلت پاک نشده است.';
+      return;
+    }
+    message.dataset.state = 'success';
+    message.textContent = '✓ عضویتت ثبت شد. ممنون!';
   }, 500);
 });
