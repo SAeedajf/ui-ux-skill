@@ -74,7 +74,6 @@ def manifest_bytes():
         'name': m['plugin_id'], 'version': m['version'], 'description': m['description'],
         'repository': m['repository'], 'license': m['license'],
         'keywords': ['ui', 'ux', 'design', 'accessibility', 'agent-skills'],
-        'extensions': {'skills': {'path': 'skills'}},
     }
     return (json.dumps(manifest, ensure_ascii=False, indent=2) + '\n').encode()
 
@@ -148,7 +147,7 @@ def validate_package(package: Path, expected_source: Path | None = None):
         schema = json.loads(SCHEMA.read_text(encoding='utf-8'))
         jsonschema.Draft202012Validator(schema).validate(manifest)
         if manifest.get('name') != 'ui-ux-pro': errors.append('manifest name must be ui-ux-pro')
-        if manifest.get('extensions', {}).get('skills', {}).get('path') != 'skills': errors.append('manifest must declare skills path')
+        if manifest.get('extensions', {}).get('skills') is not None: errors.append('skills use the fixed root skills/ directory; extensions.skills is not supported')
         seen = set()
         skills_root = package / 'skills'
         for p in package.rglob('*'):
@@ -175,18 +174,21 @@ def validate_package(package: Path, expected_source: Path | None = None):
                     name, desc = front.get('name'), front.get('description')
                     if not isinstance(name,str) or name != directory.name or not re.fullmatch(r'(?!-)(?!.*--)[a-z0-9-]{1,64}(?<!-)',name): errors.append(f'{directory.name}: invalid/mismatched Skill name')
                     if not isinstance(desc,str) or not (1 <= len(desc) <= 1024): errors.append(f'{directory.name}: description must contain 1..1024 chars')
-                    refs = re.findall(r'\[[^]]+\]\(([^)]+)\)', text)
-                    refs += re.findall(r'(?m)^\s*(?:[-*]\s*)?`([^`]+\.(?:md|py|json|csv|txt))`\s*$', text)
-                    for ref in refs:
-                        if ref.startswith(('http://','https://','#','mailto:')): continue
-                        pathpart = ref.split('#',1)[0].split('?',1)[0]
-                        if not pathpart: continue
-                        rel = PurePosixPath(pathpart)
-                        if rel.is_absolute() or '..' in rel.parts or ':' in pathpart or pathpart.startswith(('~','/')):
-                            errors.append(f'{directory.name}: unsafe reference path {ref}'); continue
-                        target = (directory / Path(*rel.parts)).resolve()
-                        if directory.resolve() not in target.parents and target != directory.resolve(): errors.append(f'{directory.name}: reference escapes Skill root: {ref}')
-                        elif not target.exists(): errors.append(f'{directory.name}: broken local reference {ref}')
+                    documents = sorted(directory.rglob('*.md'))
+                    for document in documents:
+                        doc_text = document.read_text(encoding='utf-8')
+                        refs = re.findall(r'\[[^]]+\]\(([^)]+)\)', doc_text)
+                        refs += [ref for ref in re.findall(r'`([^`\n]+\.(?:md|py|json|csv|txt))`', doc_text) if '/' in ref or '\\' in ref]
+                        for ref in refs:
+                            if ref.startswith(('http://','https://','#','mailto:')): continue
+                            pathpart = ref.split('#',1)[0].split('?',1)[0]
+                            if not pathpart: continue
+                            rel = PurePosixPath(pathpart)
+                            if rel.is_absolute() or ':' in pathpart or pathpart.startswith(('~','/')) or '\\' in pathpart:
+                                errors.append(f'{directory.name}: unsafe reference path in {document.relative_to(directory)}: {ref}'); continue
+                            target = (document.parent / Path(*rel.parts)).resolve()
+                            if directory.resolve() not in target.parents and target != directory.resolve(): errors.append(f'{directory.name}: reference escapes Skill root in {document.relative_to(directory)}: {ref}')
+                            elif not target.exists(): errors.append(f'{directory.name}: broken local reference in {document.relative_to(directory)}: {ref}')
                 except (OSError, UnicodeError, ValueError) as exc: errors.append(str(exc))
         if expected_source is not None:
             expected = package_files(expected_source)

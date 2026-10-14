@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>فروشگاه آزمایشی</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <button id="menu-trigger" class="icon-button">☰</button>
+    <nav id="mobile-menu" hidden><a href="#products">محصولات</a></nav>
+    <h1>فروشگاه نمونه</h1>
+  </header>
+  <main class="page">
+    <section id="products" class="grid">
+      <article><h2>محصول یک</h2><button class="cart">🛒</button></article>
+      <article><h2>محصول دو</h2><button class="cart">🛒</button></article>
+      <article><h2>محصول سه</h2><button class="cart">🛒</button></article>
+    </section>
+    <form id="contact">
+      <input id="phone" name="phone" placeholder="شماره تماس">
+      <button type="submit">ثبت</button>
+      <p id="error" class="error" role="alert"></p>
+    </form>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

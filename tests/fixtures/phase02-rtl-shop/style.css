@@ -1,0 +1,5 @@
+body { margin: 0; font-family: sans-serif; }
+.page { width: 720px; margin: auto; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.error { color: #9d9d9d; background: #ffffff; }
+.icon-button { border: 0; }
