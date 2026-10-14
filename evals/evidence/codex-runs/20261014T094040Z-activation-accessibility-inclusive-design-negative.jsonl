@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"01a139c9-1183-7d82-8bcc-f2d413dcb2ac"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"Please paste the query, database engine/version, relevant table schemas and indexes, plus `EXPLAIN`/execution plan output if available. I’ll identify the bottleneck and propose an optimized query and indexing changes."}}
+{"type":"turn.completed","usage":{"input_tokens":16830,"cached_input_tokens":16640,"output_tokens":47,"reasoning_output_tokens":0}}

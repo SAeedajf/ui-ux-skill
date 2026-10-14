@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"01a139c7-1ad3-7d92-97c6-f53759ac3f2a"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"Treat the decorative image as a visual counterweight, not content.\n\nPlace it relative to the flyer’s main text block—often aligned to a shared edge or compositional grid—then adjust it optically until the page feels balanced. Because decorative images can have uneven shapes or visual weight, strict geometric alignment may look wrong; a small offset is acceptable.\n\nKeep it clear of essential text, preserve adequate margins and bleed, and verify the final alignment at actual print size."}}
+{"type":"turn.completed","usage":{"input_tokens":16842,"cached_input_tokens":16640,"output_tokens":143,"reasoning_output_tokens":44}}

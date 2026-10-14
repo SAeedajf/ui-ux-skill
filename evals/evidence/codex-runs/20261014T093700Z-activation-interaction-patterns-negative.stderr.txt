@@ -1,0 +1,40 @@
+Reading additional input from stdin...
+2026-10-14T09:37:00.763674Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T09:37:00.765089Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T09:37:00.770749Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T09:37:00.772633Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T09:37:00.779314Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T09:37:00.784320Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T09:37:00.787294Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T09:37:00.791808Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T09:37:00.803088Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T09:37:00.805085Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T09:37:00.807734Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T09:37:00.818078Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T09:37:00.835743Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T09:37:00.843083Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T09:37:00.844503Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-10-14T09:37:01.014791Z ERROR codex_core::session::session: failed to load skill /home/saeed/.agents/skills/wordpress-plugin-store-architect/SKILL.md: missing YAML frontmatter delimited by ---
+2026-10-14T09:37:02.381851Z  WARN codex_core_plugins::remote::remote_installed_plugin_sync: failed to download remote installed plugin bundle remote_plugin_id=plugins_6aa24265df788191a25e7db0cdeca894 plugin=ansight marketplace=openai-curated-remote error=plugin.json name `Ansight` does not match marketplace plugin name `ansight`
+2026-10-14T09:37:07.429357Z  WARN codex_app_server_client: dropping in-process app-server event because consumer queue is full
+2026-10-14T09:37:07.429410Z  WARN codex_app_server_client: dropping in-process app-server event because consumer queue is full
+2026-10-14T09:37:07.429418Z  WARN codex_app_server_client: dropping in-process app-server event because consumer queue is full
+2026-10-14T09:37:07.429423Z  WARN codex_app_server_client: dropping in-process app-server event because consumer queue is full
+2026-10-14T09:37:07.429428Z  WARN codex_app_server_client: dropping in-process app-server event because consumer queue is full
+2026-10-14T09:37:07.429434Z  WARN codex_app_server_client: dropping in-process app-server event because consumer queue is full
+2026-10-14T09:37:07.429439Z  WARN codex_app_server_client: dropping in-process app-server event because consumer queue is full
+2026-10-14T09:37:07.429443Z  WARN codex_app_server_client: dropping in-process app-server event because consumer queue is full
+2026-10-14T09:37:07.429448Z  WARN codex_app_server_client: dropping in-process app-server event because consumer queue is full
+2026-10-14T09:37:07.429452Z  WARN codex_app_server_client: dropping in-process app-server event because consumer queue is full
+2026-10-14T09:37:07.429457Z  WARN codex_app_server_client: dropping in-process app-server event because consumer queue is full
+2026-10-14T09:37:07.429462Z  WARN codex_app_server_client: dropping in-process app-server event because consumer queue is full
+2026-10-14T09:37:07.429467Z  WARN codex_app_server_client: dropping in-process app-server event because consumer queue is full
+2026-10-14T09:37:07.429471Z  WARN codex_app_server_client: dropping in-process app-server event because consumer queue is full
+2026-10-14T09:37:07.429475Z  WARN codex_app_server_client: dropping in-process app-server event because consumer queue is full
+2026-10-14T09:37:07.429479Z  WARN codex_app_server_client: dropping in-process app-server event because consumer queue is full
+2026-10-14T09:37:07.429485Z  WARN codex_app_server_client: dropping in-process app-server event because consumer queue is full
+2026-10-14T09:37:07.429490Z  WARN codex_app_server_client: dropping in-process app-server event because consumer queue is full
+2026-10-14T09:37:07.429495Z  WARN codex_app_server_client: dropping in-process app-server event because consumer queue is full
+2026-10-14T09:37:07.429500Z  WARN codex_app_server_client: dropping in-process app-server event because consumer queue is full
+2026-10-14T09:37:07.434645Z  WARN codex_exec: in-process app-server event stream lagged; dropped 20 events
+2026-10-14T09:37:20.409773Z  WARN codex_file_watcher: failed to unwatch /home/saeed/.codex/skills/.system: No watch was found. about ["/home/saeed/.codex/skills/.system"]
