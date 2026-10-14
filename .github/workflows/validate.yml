@@ -51,6 +51,16 @@ jobs:
           --finalize-run-url "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
           --output-commit "$PHASE05_OUTPUT_COMMIT"
           --output dist/phase-05/phase-05.json
+      - name: Validate Phase 05-B runtime acceptance report
+        run: python3 scripts/validate_phase05b_report.py
+      - name: Finalize Phase 05-B report for this CI run
+        env:
+          PHASE05B_OUTPUT_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: >-
+          python3 scripts/validate_phase05b_report.py
+          --finalize-run-url "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          --output-commit "$PHASE05B_OUTPUT_COMMIT"
+          --output dist/phase-05b/phase-05b.json
       - name: Upload Phase 04 machine report
         uses: actions/upload-artifact@v7
         with:
@@ -72,6 +82,18 @@ jobs:
             schemas/phase-05-report.schema.json
             docs/plugin/source-rights-resolution.md
             docs/plugin/owner-runtime-acceptance.md
+          if-no-files-found: error
+      - name: Upload Phase 05-B runtime acceptance report
+        uses: actions/upload-artifact@v7
+        with:
+          name: ui-ux-pro-phase-05b-report
+          path: |
+            dist/phase-05b/phase-05b.json
+            docs/plugin/reports/phase-05b.md
+            docs/plugin/reports/phase-05b-evidence.md
+            docs/plugin/reports/evidence/phase-05b-positive-blocked.jsonl
+            docs/plugin/reports/evidence/phase-05b-fixture-baseline.txt
+            schemas/phase-05b-report.schema.json
           if-no-files-found: error
       - name: Generate evaluation status report
         run: python3 scripts/eval_harness.py report

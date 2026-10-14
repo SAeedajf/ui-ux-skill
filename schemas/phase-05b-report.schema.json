@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/SAeedajf/ui-ux-skill/blob/main/schemas/phase-05b-report.schema.json",
+  "title": "UI/UX Pro Phase 05-B Runtime Acceptance Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "phase", "title", "status", "repository", "base_commit", "output_commit",
+    "branch", "pull_request", "codex_cli", "model_id", "auth_method",
+    "auth_status", "plugin_install_method", "plugin_source", "plugin_discovery",
+    "positive_smoke", "negative_smoke", "skills_actually_loaded", "fixture_baseline",
+    "agent_authored_diff", "repair_trace_evidence", "fixture_after", "regression_results", "browser_results",
+    "duplicate_skill_findings", "chatgpt_plugin_status", "chatgpt_runtime_status",
+    "source_rights_status", "model_call_count", "ci_status", "ci_run_url",
+    "ci_output_commit", "ci_checked_at", "test_count", "evidence_paths", "blockers",
+    "owner_action_required", "next_phase_recommendation"
+  ],
+  "properties": {
+    "phase": { "const": "05-B" },
+    "title": { "const": "Authenticated Runtime Acceptance & Real Agent Repair" },
+    "status": { "enum": ["PASS", "PARTIAL", "BLOCKED", "FAIL"] },
+    "repository": { "const": "https://github.com/SAeedajf/ui-ux-skill" },
+    "base_commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+    "output_commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+    "branch": { "type": "string", "minLength": 1 },
+    "pull_request": { "type": ["string", "null"], "format": "uri" },
+    "codex_cli": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "version", "config_model", "account_usage_allowed"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "version": { "type": "string", "minLength": 1 },
+        "config_model": { "type": "string", "minLength": 1 },
+        "account_usage_allowed": { "type": "boolean" }
+      }
+    },
+    "model_id": { "type": ["string", "null"] },
+    "auth_method": { "type": ["string", "null"] },
+    "auth_status": { "type": "string", "minLength": 1 },
+    "plugin_install_method": { "type": "string", "minLength": 1 },
+    "plugin_source": {
+      "type": "object", "additionalProperties": false,
+      "required": ["plugin_id", "version", "source", "manifest_sha256", "archive_sha256"],
+      "properties": {
+        "plugin_id": { "type": "string", "minLength": 1 },
+        "version": { "type": "string", "minLength": 1 },
+        "source": { "type": "string", "minLength": 1 },
+        "manifest_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "archive_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    },
+    "plugin_discovery": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "plugin_skill_count", "plugin_namespace_count", "legacy_overlap_count", "rollback_verified"],
+      "properties": {
+        "status": { "enum": ["PASS", "FAIL", "BLOCKED", "NOT_RUN"] },
+        "plugin_skill_count": { "type": "integer", "minimum": 0 },
+        "plugin_namespace_count": { "type": "integer", "minimum": 0 },
+        "legacy_overlap_count": { "type": "integer", "minimum": 0 },
+        "rollback_verified": { "type": "boolean" }
+      }
+    },
+    "positive_smoke": { "$ref": "#/$defs/modelCase" },
+    "negative_smoke": { "$ref": "#/$defs/modelCase" },
+    "skills_actually_loaded": { "type": "array", "items": { "type": "string" } },
+    "fixture_baseline": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "tests_run", "expected_failures", "evidence"],
+      "properties": {
+        "status": { "enum": ["PASS", "EXPECTED_FAILURES", "FAIL", "NOT_RUN"] },
+        "tests_run": { "type": "integer", "minimum": 0 },
+        "expected_failures": { "type": "integer", "minimum": 0 },
+        "evidence": { "type": "string", "minLength": 1 }
+      }
+    },
+    "agent_authored_diff": {
+      "type": "object", "additionalProperties": false,
+      "required": ["created", "files", "diff_evidence"],
+      "properties": {
+        "created": { "type": "boolean" },
+        "files": { "type": "array", "items": { "type": "string" } },
+        "diff_evidence": { "type": ["string", "null"] }
+      }
+    },
+    "repair_trace_evidence": { "type": ["string", "null"] },
+    "fixture_after": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "tests_run", "passed"],
+      "properties": {
+        "status": { "enum": ["PASS", "FAIL", "BLOCKED", "NOT_RUN"] },
+        "tests_run": { "type": "integer", "minimum": 0 },
+        "passed": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "regression_results": { "type": "string", "minLength": 1 },
+    "browser_results": { "type": "string", "minLength": 1 },
+    "duplicate_skill_findings": { "type": "string", "minLength": 1 },
+    "chatgpt_plugin_status": { "type": "string", "minLength": 1 },
+    "chatgpt_runtime_status": { "enum": ["PASS", "FAIL", "BLOCKED", "NOT_RUN", "UNVERIFIED"] },
+    "source_rights_status": { "type": "string", "minLength": 1 },
+    "model_call_count": {
+      "type": "object", "additionalProperties": false,
+      "required": ["attempted", "accepted", "positive", "negative", "repair", "retry"],
+      "properties": {
+        "attempted": { "type": "integer", "minimum": 0, "maximum": 4 },
+        "accepted": { "type": "integer", "minimum": 0, "maximum": 4 },
+        "positive": { "type": "integer", "minimum": 0, "maximum": 1 },
+        "negative": { "type": "integer", "minimum": 0, "maximum": 1 },
+        "repair": { "type": "integer", "minimum": 0, "maximum": 1 },
+        "retry": { "type": "integer", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "ci_status": { "enum": ["PENDING", "PASS", "FAIL", "BLOCKED"] },
+    "ci_run_url": { "type": ["string", "null"], "format": "uri" },
+    "ci_output_commit": { "type": ["string", "null"], "pattern": "^[0-9a-f]{40}$" },
+    "ci_checked_at": { "type": ["string", "null"], "format": "date-time" },
+    "test_count": { "type": "integer", "minimum": 0 },
+    "evidence_paths": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "blockers": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "owner_action_required": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "next_phase_recommendation": { "type": "string", "minLength": 1 }
+  },
+  "$defs": {
+    "modelCase": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "attempted", "accepted", "trace_evidence", "reason"],
+      "properties": {
+        "status": { "enum": ["PASS", "FAIL", "BLOCKED", "NOT_RUN"] },
+        "attempted": { "type": "boolean" },
+        "accepted": { "type": "boolean" },
+        "trace_evidence": { "type": ["string", "null"] },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

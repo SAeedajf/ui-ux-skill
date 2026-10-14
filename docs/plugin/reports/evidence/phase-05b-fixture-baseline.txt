@@ -1,0 +1,18 @@
+Fixture: tests/fixtures/phase02-rtl-shop (fresh temporary copy)
+Command: python3 -m unittest -v test_baseline
+Result: 5 tests run, 5 failed as expected before any Agent action; exit 1.
+
+Failures:
+- test_error_text_contrast_meets_wcag_aa_normal_text
+- test_form_field_has_associated_label_and_error_description
+- test_layout_adapts_without_fixed_width_overflow
+- test_mobile_menu_exposes_state_and_restores_focus_on_escape
+- test_product_buttons_have_accessible_names
+
+SHA-256 of original copied files:
+app.js       446ffa2b4616b5c6a115119f99302cff5ecf0407ec75f256f6f5c5d26fcf0d66
+index.html   5576670c932e6ff057fa4496763664f550755ee07a016a7f09143821d9467e70
+style.css    abdb58b15673a0109e96b8848cf55c601cb6410d49671a19af377bc683abe7ee
+test_baseline.py ace7e7c98e2a12b173025b84d6eeaf3054daf4c5cbb853749bd9bffa103f6b90
+
+The source fixture in the repository was not modified. No Agent-authored diff or post-repair test exists.
