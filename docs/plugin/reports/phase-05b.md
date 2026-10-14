@@ -12,7 +12,7 @@ OUTPUT_COMMIT: `5a18b097ade439281e9d39b5c6476e84eb2e6ab0` (the plugin/runtime so
 
 BRANCH: `codex/ui-ux-plugin-phase-05b`
 
-PULL_REQUEST: Pending creation.
+PULL_REQUEST: [Draft PR #16](https://github.com/SAeedajf/ui-ux-skill/pull/16).
 
 CODEX_CLI_PATH: User-local Node installation at `~/.nvm/versions/node/v22.23.1/bin/codex`.
 

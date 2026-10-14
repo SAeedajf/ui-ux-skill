@@ -6,7 +6,7 @@
   "base_commit": "5a18b097ade439281e9d39b5c6476e84eb2e6ab0",
   "output_commit": "5a18b097ade439281e9d39b5c6476e84eb2e6ab0",
   "branch": "codex/ui-ux-plugin-phase-05b",
-  "pull_request": null,
+  "pull_request": "https://github.com/SAeedajf/ui-ux-skill/pull/16",
   "codex_cli": {
     "path": "/home/<user>/.nvm/versions/node/v22.23.1/bin/codex",
     "version": "0.153.4",
