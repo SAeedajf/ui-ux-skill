@@ -15,6 +15,8 @@ For each request, follow this sequence:
 5. **Do and verify the requested work.** For code changes, preserve existing behavior and tokens unless the goal requires a change; check the affected state, viewport, and input method against explicit criteria.
 6. **Report with limits.** Separate observations, user reports, source-backed claims, inferences, and proposals. Name checks that passed and checks that remain unverified. Do not call a screenshot, code scan, or model response user research or conformance evidence.
 
+Keep output inside the request too: do not create a separate image, prototype, canvas, diagram, or other artifact unless the user asked for it or it is necessary to deliver the requested result. A visual idea can be explained in text when a separate artifact is not needed. Do not invoke a tool merely because it is available.
+
 Use the user's language in the response. In Persian/RTL work, preserve mixed-direction identifiers, URLs, numbers, and provider-required formats. If a host cannot discover Skills, load the relevant `SKILL.md` manually and describe that as manual use—not automatic activation.
 
 ### One-pass operating loop
@@ -32,6 +34,7 @@ Scope → Route → Read → Inspect → Decide → Act (if requested) → Verif
 - **Trace outcomes:** In a UI review or repair, follow visible in-scope buttons, links, and form controls from their semantic role and target through handlers, state/data changes, and the outcome users see. Distinguish local simulation or volatile state from a real service or persisted result. Report no-op or misleading actions; do not remove an expected action to hide a missing product decision.
 - **Decide:** Convert the task into observable acceptance checks before changing the UI. Keep proposals, assumptions, and source-backed facts labeled.
 - **Act:** Change code only when requested. Preserve existing behavior and design tokens unless the goal requires a change. For multi-Skill work, pass the next Skill only the relevant decisions, constraints, and evidence.
+- **Stay inside the deliverable:** Create only the files and artifacts needed for the requested outcome. Do not add a visual or interactive deliverable to a text-only recommendation unless requested or materially necessary; if necessary, explain its role in the deliverable.
 - **Verify:** Revisit the changed route/state at the target viewport and input mode. Run the narrowest checks that cover the change, then report any unavailable checks without upgrading a partial result to a pass.
 - **Report:** Summarize the scope, Skills used, artifact/state inspected, changes, checks and results, source limits, and remaining unknowns in the user's language.
 
@@ -200,6 +203,16 @@ code, run checks relevant to the changed behavior. List unverified states explic
 ```
 
 For a broad audit, name `ui-ux-review` as the starting point and ask the agent to add focused Skills only for findings that need them. For a narrow task, directly request the relevant Skill (for example, `forms-input` for a form recovery issue). Direct selection is useful for consistency; do not count it as evidence that automatic activation works.
+
+For a fast request, this shorter form is enough:
+
+```text
+Use the smallest relevant UI/UX Skill set to [review / recommend / implement] [specific screen or flow] for [user task].
+Constraints: [platform, locale/direction, must-preserve behavior, viewport if relevant].
+Inspect [artifact/path] and report observed facts separately from assumptions and proposals.
+Make changes only if implementation is requested. Verify the affected state and name anything unverified.
+Do not create extra artifacts unless requested or necessary for this deliverable.
+```
 
 Persian version:
 
