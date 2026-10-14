@@ -1,0 +1,11 @@
+{
+  "plugin_id": "ui-ux-pro",
+  "display_name": "UI/UX Pro",
+  "version": "0.1.0",
+  "description": "Practical, evidence-aware UI/UX workflows for AI agents.",
+  "repository": "https://github.com/SAeedajf/ui-ux-skill",
+  "package_type": "agent-plugin",
+  "agent_plugins_spec": "1.0.0",
+  "license": "CC-BY-4.0",
+  "license_scope": "Repository-authored content only; cited third-party works remain under their own terms."
+}

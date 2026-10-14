@@ -4,3 +4,5 @@ __pycache__/
 
 # Codex may materialize host-owned system Skills alongside repository Skills.
 .agents/skills/.system/
+.venv/
+dist/
