@@ -1,0 +1,7 @@
+Phase 05-D isolated authentication blocker
+
+The user reported that the official Codex device authorization flow was rejected by ChatGPT Security Settings with this message:
+
+“Enable device code sign-in for Codex, Excel, PowerPoint, and Word in ChatGPT Security Settings, then run codex login --device-auth again.”
+
+The login process was stopped. No further authentication attempt, alternate credential, security bypass, or model call was made. The selected model remains gpt-6-luna (high); the Phase 05-D model-call count remains zero. Runtime activation gates D01, D02, and D04-D07 remain blocked/unverified. The quoted message is user-provided evidence, not an independently captured CLI trace.

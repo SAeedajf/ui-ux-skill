@@ -143,5 +143,27 @@ jobs:
             schemas/phase-05c-retry-report.schema.json
             dist/phase-05c-retry/report.json
           if-no-files-found: error
+      - name: Validate Phase 05-D report and evidence
+        run: python3 scripts/validate_phase05d_report.py
+      - name: Finalize Phase 05-D report for this CI run
+        env:
+          PHASE05D_OUTPUT_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: >-
+          python3 scripts/validate_phase05d_report.py
+          --finalize-run-url "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          --output-commit "$PHASE05D_OUTPUT_COMMIT"
+          --output dist/phase-05d/phase-05d.json
+      - name: Upload Phase 05-D plugin-only activation report
+        uses: actions/upload-artifact@v7
+        with:
+          name: ui-ux-pro-phase-05d-report
+          path: |
+            docs/plugin/reports/phase-05d.md
+            docs/plugin/reports/phase-05d-evidence.md
+            docs/plugin/reports/phase-05d.json
+            docs/plugin/reports/evidence/phase-05d-*.json
+            docs/plugin/reports/evidence/phase-05d-*.txt
+            dist/phase-05d/phase-05d.json
+          if-no-files-found: error
       - name: Generate evaluation status report
         run: python3 scripts/eval_harness.py report

@@ -1,0 +1,305 @@
+{
+  "private_user_inventory_policy": "Private absolute paths and descriptions omitted from repository evidence; normalized skill names and duplicate counts retained.",
+  "public_repo_comparison": [
+    {
+      "name": "accessibility-inclusive-design",
+      "plugin_source_sha256": "034cb27590aeb8a846b20193213db6cfb2af4bc4e76f087d6f81cf09145f8f72",
+      "canonical_repo_skill_sha256": "034cb27590aeb8a846b20193213db6cfb2af4bc4e76f087d6f81cf09145f8f72",
+      "repo_source_hash_matches_plugin": true
+    },
+    {
+      "name": "color-systems",
+      "plugin_source_sha256": "3d3a87ce7f05c6ef51991bcd0f1db527313896201bf1ed0f015d88cde730466c",
+      "canonical_repo_skill_sha256": "3d3a87ce7f05c6ef51991bcd0f1db527313896201bf1ed0f015d88cde730466c",
+      "repo_source_hash_matches_plugin": true
+    },
+    {
+      "name": "design-systems",
+      "plugin_source_sha256": "5c57409ecd33dc39857a470f7fde8a67745bcfab1f224a37d7c5602dd62fb145",
+      "canonical_repo_skill_sha256": "5c57409ecd33dc39857a470f7fde8a67745bcfab1f224a37d7c5602dd62fb145",
+      "repo_source_hash_matches_plugin": true
+    },
+    {
+      "name": "ethical-persuasion",
+      "plugin_source_sha256": "596a0fd98f0a5db7ab2d6b940eea61cdc592019954bb414715d8355e3070108d",
+      "canonical_repo_skill_sha256": "596a0fd98f0a5db7ab2d6b940eea61cdc592019954bb414715d8355e3070108d",
+      "repo_source_hash_matches_plugin": true
+    },
+    {
+      "name": "forms-input",
+      "plugin_source_sha256": "13c287e4011c7bb98ff4122786c68403d5e09c46f1d8783e694e9c9587d7ade7",
+      "canonical_repo_skill_sha256": "13c287e4011c7bb98ff4122786c68403d5e09c46f1d8783e694e9c9587d7ade7",
+      "repo_source_hash_matches_plugin": true
+    },
+    {
+      "name": "information-architecture",
+      "plugin_source_sha256": "51b9a2b4e15c946b5df385e3f1be9785a79ee78968c932fd08511d6d16d848b1",
+      "canonical_repo_skill_sha256": "51b9a2b4e15c946b5df385e3f1be9785a79ee78968c932fd08511d6d16d848b1",
+      "repo_source_hash_matches_plugin": true
+    },
+    {
+      "name": "interaction-patterns",
+      "plugin_source_sha256": "99e3c473dc40ee1329e24c320e328e2506d595d556e22b47f5cfeb8771004926",
+      "canonical_repo_skill_sha256": "99e3c473dc40ee1329e24c320e328e2506d595d556e22b47f5cfeb8771004926",
+      "repo_source_hash_matches_plugin": true
+    },
+    {
+      "name": "interface-layout",
+      "plugin_source_sha256": "c11619ce37b15872d2d74d7b89cdfcbd52eebf42c06fb1af67318d361d468e45",
+      "canonical_repo_skill_sha256": "c11619ce37b15872d2d74d7b89cdfcbd52eebf42c06fb1af67318d361d468e45",
+      "repo_source_hash_matches_plugin": true
+    },
+    {
+      "name": "journey-mapping",
+      "plugin_source_sha256": "fa252f4dc37ef791f3cfbc3c5e1ee9010ee4234b7f18ebfacf69345c98a24632",
+      "canonical_repo_skill_sha256": "fa252f4dc37ef791f3cfbc3c5e1ee9010ee4234b7f18ebfacf69345c98a24632",
+      "repo_source_hash_matches_plugin": true
+    },
+    {
+      "name": "navigation-controls",
+      "plugin_source_sha256": "e57ec22f09dc0f878d0a54d66d7d3c6f364a6efa4555111fb7baa72b76a7199d",
+      "canonical_repo_skill_sha256": "e57ec22f09dc0f878d0a54d66d7d3c6f364a6efa4555111fb7baa72b76a7199d",
+      "repo_source_hash_matches_plugin": true
+    },
+    {
+      "name": "persian-rtl-localization",
+      "plugin_source_sha256": "32f788524e2128ce94d7ea6419307a4e745595212482d264c907e2c1cb0f642e",
+      "canonical_repo_skill_sha256": "32f788524e2128ce94d7ea6419307a4e745595212482d264c907e2c1cb0f642e",
+      "repo_source_hash_matches_plugin": true
+    },
+    {
+      "name": "responsive-design",
+      "plugin_source_sha256": "006086aeeba3a8b85dbb6b893535fe1f194ced6019265bc2f6cf6d1e884aa8a6",
+      "canonical_repo_skill_sha256": "006086aeeba3a8b85dbb6b893535fe1f194ced6019265bc2f6cf6d1e884aa8a6",
+      "repo_source_hash_matches_plugin": true
+    },
+    {
+      "name": "ui-ux-review",
+      "plugin_source_sha256": "f7fa31053aa575c40ebc74d42acf11eeacd7c2386ff7c8df9e7a0ac6fe5a97fc",
+      "canonical_repo_skill_sha256": "f7fa31053aa575c40ebc74d42acf11eeacd7c2386ff7c8df9e7a0ac6fe5a97fc",
+      "repo_source_hash_matches_plugin": true
+    },
+    {
+      "name": "ux-discovery",
+      "plugin_source_sha256": "06406d934173cd00381151e78c4fe8bbcc6ce34af30891f17eb55faaac236c99",
+      "canonical_repo_skill_sha256": "06406d934173cd00381151e78c4fe8bbcc6ce34af30891f17eb55faaac236c99",
+      "repo_source_hash_matches_plugin": true
+    },
+    {
+      "name": "visual-hierarchy",
+      "plugin_source_sha256": "6f8f7fffba07051a27dd4246b4c5e7a6ed4d6e4eb81fa4cf45e81212da3a6ab5",
+      "canonical_repo_skill_sha256": "6f8f7fffba07051a27dd4246b4c5e7a6ed4d6e4eb81fa4cf45e81212da3a6ab5",
+      "repo_source_hash_matches_plugin": true
+    }
+  ],
+  "private_user_overlaps": [
+    {
+      "scope": "personal project-skill directory",
+      "absolute_root_omitted": true,
+      "overlapping_skill_names": [
+        "accessibility-inclusive-design",
+        "design-systems",
+        "interaction-patterns",
+        "interface-layout",
+        "persian-rtl-localization",
+        "responsive-design",
+        "ui-ux-review",
+        "ux-discovery"
+      ],
+      "count": 8,
+      "per_skill_comparison": [
+        {
+          "name": "accessibility-inclusive-design",
+          "content_identical_to_plugin": false,
+          "description_identical_to_plugin": false,
+          "legacy_description_chars": 107,
+          "plugin_description_chars": 87
+        },
+        {
+          "name": "design-systems",
+          "content_identical_to_plugin": false,
+          "description_identical_to_plugin": false,
+          "legacy_description_chars": 104,
+          "plugin_description_chars": 56
+        },
+        {
+          "name": "interaction-patterns",
+          "content_identical_to_plugin": false,
+          "description_identical_to_plugin": false,
+          "legacy_description_chars": 101,
+          "plugin_description_chars": 58
+        },
+        {
+          "name": "interface-layout",
+          "content_identical_to_plugin": false,
+          "description_identical_to_plugin": false,
+          "legacy_description_chars": 102,
+          "plugin_description_chars": 95
+        },
+        {
+          "name": "persian-rtl-localization",
+          "content_identical_to_plugin": false,
+          "description_identical_to_plugin": false,
+          "legacy_description_chars": 116,
+          "plugin_description_chars": 64
+        },
+        {
+          "name": "responsive-design",
+          "content_identical_to_plugin": false,
+          "description_identical_to_plugin": false,
+          "legacy_description_chars": 100,
+          "plugin_description_chars": 60
+        },
+        {
+          "name": "ui-ux-review",
+          "content_identical_to_plugin": false,
+          "description_identical_to_plugin": false,
+          "legacy_description_chars": 134,
+          "plugin_description_chars": 76
+        },
+        {
+          "name": "ux-discovery",
+          "content_identical_to_plugin": false,
+          "description_identical_to_plugin": false,
+          "legacy_description_chars": 105,
+          "plugin_description_chars": 63
+        }
+      ],
+      "content_identical_count": 0,
+      "description_identical_count": 0
+    },
+    {
+      "scope": "personal CODEX_HOME skills directory",
+      "absolute_root_omitted": true,
+      "overlapping_skill_names": [
+        "accessibility-inclusive-design",
+        "color-systems",
+        "design-systems",
+        "ethical-persuasion",
+        "forms-input",
+        "information-architecture",
+        "interaction-patterns",
+        "interface-layout",
+        "journey-mapping",
+        "navigation-controls",
+        "persian-rtl-localization",
+        "responsive-design",
+        "ui-ux-review",
+        "ux-discovery",
+        "visual-hierarchy"
+      ],
+      "count": 15,
+      "per_skill_comparison": [
+        {
+          "name": "accessibility-inclusive-design",
+          "content_identical_to_plugin": false,
+          "description_identical_to_plugin": true,
+          "legacy_description_chars": 87,
+          "plugin_description_chars": 87
+        },
+        {
+          "name": "color-systems",
+          "content_identical_to_plugin": false,
+          "description_identical_to_plugin": true,
+          "legacy_description_chars": 71,
+          "plugin_description_chars": 71
+        },
+        {
+          "name": "design-systems",
+          "content_identical_to_plugin": false,
+          "description_identical_to_plugin": true,
+          "legacy_description_chars": 56,
+          "plugin_description_chars": 56
+        },
+        {
+          "name": "ethical-persuasion",
+          "content_identical_to_plugin": false,
+          "description_identical_to_plugin": true,
+          "legacy_description_chars": 61,
+          "plugin_description_chars": 61
+        },
+        {
+          "name": "forms-input",
+          "content_identical_to_plugin": false,
+          "description_identical_to_plugin": true,
+          "legacy_description_chars": 62,
+          "plugin_description_chars": 62
+        },
+        {
+          "name": "information-architecture",
+          "content_identical_to_plugin": false,
+          "description_identical_to_plugin": true,
+          "legacy_description_chars": 63,
+          "plugin_description_chars": 63
+        },
+        {
+          "name": "interaction-patterns",
+          "content_identical_to_plugin": false,
+          "description_identical_to_plugin": true,
+          "legacy_description_chars": 58,
+          "plugin_description_chars": 58
+        },
+        {
+          "name": "interface-layout",
+          "content_identical_to_plugin": false,
+          "description_identical_to_plugin": false,
+          "legacy_description_chars": 63,
+          "plugin_description_chars": 95
+        },
+        {
+          "name": "journey-mapping",
+          "content_identical_to_plugin": false,
+          "description_identical_to_plugin": true,
+          "legacy_description_chars": 55,
+          "plugin_description_chars": 55
+        },
+        {
+          "name": "navigation-controls",
+          "content_identical_to_plugin": false,
+          "description_identical_to_plugin": true,
+          "legacy_description_chars": 56,
+          "plugin_description_chars": 56
+        },
+        {
+          "name": "persian-rtl-localization",
+          "content_identical_to_plugin": false,
+          "description_identical_to_plugin": true,
+          "legacy_description_chars": 64,
+          "plugin_description_chars": 64
+        },
+        {
+          "name": "responsive-design",
+          "content_identical_to_plugin": false,
+          "description_identical_to_plugin": true,
+          "legacy_description_chars": 60,
+          "plugin_description_chars": 60
+        },
+        {
+          "name": "ui-ux-review",
+          "content_identical_to_plugin": false,
+          "description_identical_to_plugin": true,
+          "legacy_description_chars": 76,
+          "plugin_description_chars": 76
+        },
+        {
+          "name": "ux-discovery",
+          "content_identical_to_plugin": false,
+          "description_identical_to_plugin": true,
+          "legacy_description_chars": 63,
+          "plugin_description_chars": 63
+        },
+        {
+          "name": "visual-hierarchy",
+          "content_identical_to_plugin": false,
+          "description_identical_to_plugin": true,
+          "legacy_description_chars": 48,
+          "plugin_description_chars": 48
+        }
+      ],
+      "content_identical_count": 0,
+      "description_identical_count": 14
+    }
+  ],
+  "plugin_skill_count": 15,
+  "repo_canonical_exact_matches": 15
+}

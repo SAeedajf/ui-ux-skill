@@ -1,0 +1,12 @@
+test_accessible_name_error_association_and_live_region (test_browser.PhoneFormBrowserTests.test_accessible_name_error_association_and_live_region) ... ok
+test_duplicate_valid_submission_is_idempotent (test_browser.PhoneFormBrowserTests.test_duplicate_valid_submission_is_idempotent) ... ok
+test_empty_and_invalid_values_show_associated_errors_and_focus (test_browser.PhoneFormBrowserTests.test_empty_and_invalid_values_show_associated_errors_and_focus) ... ok
+test_mobile_menu_escape_closes_and_restores_focus (test_browser.PhoneFormBrowserTests.test_mobile_menu_escape_closes_and_restores_focus) ... ok
+test_recovery_clears_previous_error_and_retains_corrected_value (test_browser.PhoneFormBrowserTests.test_recovery_clears_previous_error_and_retains_corrected_value) ... ok
+test_requested_viewports_report_actual_width_rtl_and_no_overflow (test_browser.PhoneFormBrowserTests.test_requested_viewports_report_actual_width_rtl_and_no_overflow) ... ok
+test_valid_number_succeeds_without_network_submission (test_browser.PhoneFormBrowserTests.test_valid_number_succeeds_without_network_submission) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 8.366s
+
+OK

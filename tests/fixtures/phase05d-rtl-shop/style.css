@@ -1,0 +1,33 @@
+:root {
+  color-scheme: light;
+  font-family: system-ui, sans-serif;
+  color: #20252b;
+  background: #fff;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 0; }
+.site-header { padding: 1rem; border-bottom: 1px solid #d7dce0; }
+.site-header h1 { margin: 0.75rem 0 0; font-size: 1.5rem; }
+.page { width: min(100% - 2rem, 72rem); margin-inline: auto; padding-block: 1.5rem; }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+article, form { min-width: 0; border: 1px solid #d7dce0; border-radius: 0.5rem; padding: 1rem; }
+form { display: grid; gap: 0.75rem; max-width: 34rem; margin-block-start: 2rem; }
+label { font-weight: 700; }
+input { width: 100%; min-height: 2.75rem; padding: 0.5rem 0.75rem; border: 1px solid #606a73; border-radius: 0.25rem; font: inherit; }
+button { min-height: 2.75rem; padding: 0.5rem 0.875rem; font: inherit; cursor: pointer; }
+button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid #165dba; outline-offset: 2px; }
+.icon-button { border: 1px solid #606a73; }
+.error { min-height: 1.5em; margin: 0; color: #8b1e1e; background: #ffffff; }
+.status { min-height: 1.5em; margin: 0; color: #155724; }
+#phone-help { margin: 0; }
+
+@media (max-width: 40rem) {
+  .page { width: min(100% - 1.5rem, 34rem); padding-block: 1rem; }
+  .grid { grid-template-columns: 1fr; gap: 0.75rem; }
+  .site-header h1 { font-size: 1.25rem; }
+}
+
+@media (min-width: 40.01rem) and (max-width: 60rem) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

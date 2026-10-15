@@ -1,0 +1,123 @@
+{
+  "source": "Codex CLI debug prompt-input (read-only; discovery evidence only)",
+  "plugin": {
+    "id": "ui-ux-pro@ui-ux-pro-marketplace",
+    "version": "0.1.0",
+    "expected_skill_count": 15,
+    "cache_path": "<temporary CODEX_HOME>/plugins/cache/ui-ux-pro-marketplace/ui-ux-pro/0.1.0"
+  },
+  "plugin_only_automatic": {
+    "raw_sha256": "d74c22e3fe066d7d17ca91900cb5324dd5fb8fe9d43fb276ca35068d6174a24d",
+    "skill_roots": {
+      "r0": "/tmp/phase05d-plugin-only.L6sGkk/codex-home/skills/.system",
+      "r1": "/tmp/phase05d-plugin-only.L6sGkk/codex-home/plugins/cache/ui-ux-pro-marketplace/ui-ux-pro/0.1.0/skills"
+    },
+    "available_skill_entries": 20,
+    "plugin_skill_entries": 15,
+    "plugin_skill_names": [
+      "ui-ux-pro",
+      "ui-ux-pro",
+      "ui-ux-pro",
+      "ui-ux-pro",
+      "ui-ux-pro",
+      "ui-ux-pro",
+      "ui-ux-pro",
+      "ui-ux-pro",
+      "ui-ux-pro",
+      "ui-ux-pro",
+      "ui-ux-pro",
+      "ui-ux-pro",
+      "ui-ux-pro",
+      "ui-ux-pro",
+      "ui-ux-pro"
+    ],
+    "legacy_repo_skill_entries": 0,
+    "legacy_repo_skill_names": [],
+    "plugin_description_truncation_markers": 0,
+    "plugin_skill_rows": [
+      "- ui-ux-pro:accessibility-inclusive-design: Use when reviewing accessibility semantics, focus, contrast, motion, or assistive tech. (file: r1/accessibility-inclusive-design/SKILL.md)",
+      "- ui-ux-pro:color-systems: Use when choosing interface palettes, color roles, themes, or contrast. (file: r1/color-systems/SKILL.md)",
+      "- ui-ux-pro:design-systems: Use when changing shared tokens, components, or theming. (file: r1/design-systems/SKILL.md)",
+      "- ui-ux-pro:ethical-persuasion: Use when influencing conversion, engagement, or user choices. (file: r1/ethical-persuasion/SKILL.md)",
+      "- ui-ux-pro:forms-input: Use when designing form fields, validation, or error recovery. (file: r1/forms-input/SKILL.md)",
+      "- ui-ux-pro:information-architecture: Use when structuring and validating product content and labels. (file: r1/information-architecture/SKILL.md)",
+      "- ui-ux-pro:interaction-patterns: Use when designing control states, feedback, and recovery. (file: r1/interaction-patterns/SKILL.md)",
+      "- ui-ux-pro:interface-layout: Use when refining the layout, spacing, or composition of a product interface page or component. (file: r1/interface-layout/SKILL.md)",
+      "- ui-ux-pro:journey-mapping: Use when mapping experiences across stages or channels. (file: r1/journey-mapping/SKILL.md)",
+      "- ui-ux-pro:navigation-controls: Use when designing menus, wayfinding, or action buttons. (file: r1/navigation-controls/SKILL.md)",
+      "- ui-ux-pro:persian-rtl-localization: Use when localizing Persian, RTL, or mixed-direction interfaces. (file: r1/persian-rtl-localization/SKILL.md)",
+      "- ui-ux-pro:responsive-design: Use when adapting UI to viewport, device, or window changes. (file: r1/responsive-design/SKILL.md)",
+      "- ui-ux-pro:ui-ux-review: Use when auditing an interface for usability, accessibility, or consistency. (file: r1/ui-ux-review/SKILL.md)",
+      "- ui-ux-pro:ux-discovery: Use when clarifying user goals, evidence, or product questions. (file: r1/ux-discovery/SKILL.md)",
+      "- ui-ux-pro:visual-hierarchy: Use when setting content emphasis or scan order. (file: r1/visual-hierarchy/SKILL.md)"
+    ]
+  },
+  "explicit_prompt_input_from_source_workspace": {
+    "raw_sha256": "61ed19c82421be73ac596282b61f0757bcd1fd77673529ff0c033dec4f27bd61",
+    "skill_roots": {
+      "r0": "/tmp/phase05d-plugin-only.L6sGkk/codex-home/skills/.system",
+      "r1": "/tmp/phase05d-plugin-only.L6sGkk/codex-home/plugins/cache/ui-ux-pro-marketplace/ui-ux-pro/0.1.0/skills",
+      "r2": "/home/saeed/Documents/Codex/2026-10-15/ui-ux-skill-phase-05c-retry/.agents/skills"
+    },
+    "available_skill_entries": 35,
+    "plugin_skill_entries": 15,
+    "plugin_skill_names": [
+      "ui-ux-pro",
+      "ui-ux-pro",
+      "ui-ux-pro",
+      "ui-ux-pro",
+      "ui-ux-pro",
+      "ui-ux-pro",
+      "ui-ux-pro",
+      "ui-ux-pro",
+      "ui-ux-pro",
+      "ui-ux-pro",
+      "ui-ux-pro",
+      "ui-ux-pro",
+      "ui-ux-pro",
+      "ui-ux-pro",
+      "ui-ux-pro"
+    ],
+    "legacy_repo_skill_entries": 15,
+    "legacy_repo_skill_names": [
+      "accessibility-inclusive-design",
+      "color-systems",
+      "design-systems",
+      "ethical-persuasion",
+      "forms-input",
+      "information-architecture",
+      "interaction-patterns",
+      "interface-layout",
+      "journey-mapping",
+      "navigation-controls",
+      "persian-rtl-localization",
+      "responsive-design",
+      "ui-ux-review",
+      "ux-discovery",
+      "visual-hierarchy"
+    ],
+    "plugin_description_truncation_markers": 0,
+    "plugin_skill_rows": [
+      "- ui-ux-pro:accessibility-inclusive-design: Use when reviewing accessibility semantics, focus, contrast, motion, or assistive tech. (file: r1/accessibility-inclusive-design/SKILL.md)",
+      "- ui-ux-pro:color-systems: Use when choosing interface palettes, color roles, themes, or contrast. (file: r1/color-systems/SKILL.md)",
+      "- ui-ux-pro:design-systems: Use when changing shared tokens, components, or theming. (file: r1/design-systems/SKILL.md)",
+      "- ui-ux-pro:ethical-persuasion: Use when influencing conversion, engagement, or user choices. (file: r1/ethical-persuasion/SKILL.md)",
+      "- ui-ux-pro:forms-input: Use when designing form fields, validation, or error recovery. (file: r1/forms-input/SKILL.md)",
+      "- ui-ux-pro:information-architecture: Use when structuring and validating product content and labels. (file: r1/information-architecture/SKILL.md)",
+      "- ui-ux-pro:interaction-patterns: Use when designing control states, feedback, and recovery. (file: r1/interaction-patterns/SKILL.md)",
+      "- ui-ux-pro:interface-layout: Use when refining the layout, spacing, or composition of a product interface page or component. (file: r1/interface-layout/SKILL.md)",
+      "- ui-ux-pro:journey-mapping: Use when mapping experiences across stages or channels. (file: r1/journey-mapping/SKILL.md)",
+      "- ui-ux-pro:navigation-controls: Use when designing menus, wayfinding, or action buttons. (file: r1/navigation-controls/SKILL.md)",
+      "- ui-ux-pro:persian-rtl-localization: Use when localizing Persian, RTL, or mixed-direction interfaces. (file: r1/persian-rtl-localization/SKILL.md)",
+      "- ui-ux-pro:responsive-design: Use when adapting UI to viewport, device, or window changes. (file: r1/responsive-design/SKILL.md)",
+      "- ui-ux-pro:ui-ux-review: Use when auditing an interface for usability, accessibility, or consistency. (file: r1/ui-ux-review/SKILL.md)",
+      "- ui-ux-pro:ux-discovery: Use when clarifying user goals, evidence, or product questions. (file: r1/ux-discovery/SKILL.md)",
+      "- ui-ux-pro:visual-hierarchy: Use when setting content emphasis or scan order. (file: r1/visual-hierarchy/SKILL.md)"
+    ]
+  },
+  "interpretation": {
+    "plugin_only_automatic_discovery": "PASS",
+    "plugin_only_automatic_context_is_model_execution": false,
+    "explicit_prompt_input_includes_project_legacy": true
+  }
+}
