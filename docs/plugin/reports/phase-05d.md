@@ -37,7 +37,7 @@ All five structural checks and seven real-browser behavior checks pass. Firefox 
 | D08 personal Skills unchanged | PASS | No personal Skill or persistent model configuration was edited. |
 | D09 fixture behavior | PASS | 5 structural + 7 browser checks pass; original fixture tests still show five baseline failures. |
 | D10 actual desktop/mobile viewport | PASS | Requested and actual widths match at 320/390/768/1280. |
-| D11 full regression and CI | NOT_RUN | Full repository tests and validators passed locally; branch CI has not run yet. |
+| D11 full regression and CI | PASS | 57 repository tests and local validators passed; [GitHub Actions run 38764660837](https://github.com/SAeedajf/ui-ux-skill/actions/runs/38764660837) passed for commit `f9a1d4384c6b037bbc00ec6efc74ff77332e10aa`. |
 | D12 temporary install rollback | PASS | The disposable Plugin, marketplace entry, and package cache are absent after removal; personal configuration was not touched. See [rollback evidence](evidence/phase-05d-rollback.json). |
 | D13 private ChatGPT Plugin unchanged | PASS | No private ChatGPT Plugin operation was performed. |
 | D14 no merge or release | PASS | No merge, public release, or Phase 06 work performed. |

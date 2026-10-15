@@ -65,14 +65,15 @@
     "D08": "PASS",
     "D09": "PASS",
     "D10": "PASS",
-    "D11": "NOT_RUN",
+    "D11": "PASS",
     "D12": "PASS",
     "D13": "PASS",
     "D14": "PASS"
   },
   "ci": {
-    "status": "PENDING",
-    "run_url": null
+    "status": "PASS",
+    "run_url": "https://github.com/SAeedajf/ui-ux-skill/actions/runs/38764660837",
+    "tested_commit": "f9a1d4384c6b037bbc00ec6efc74ff77332e10aa"
   },
   "evidence": [
     "docs/plugin/reports/phase-05d-evidence.md",
