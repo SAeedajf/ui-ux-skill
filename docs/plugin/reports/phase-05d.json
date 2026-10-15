@@ -1,0 +1,99 @@
+{
+  "phase": "05-D",
+  "status": "BLOCKED",
+  "base_commit": "dbe4ffe24db4a2582533dd567af9f15de342fd79",
+  "output_commit": null,
+  "branch": "codex/ui-ux-plugin-phase-05d",
+  "pull_request": "https://github.com/SAeedajf/ui-ux-skill/pull/19",
+  "model": {
+    "selected_by_user": "gpt-6-luna",
+    "reasoning_effort": "high",
+    "cli_version": "0.153.4",
+    "account_type": "ChatGPT",
+    "backend_identity": "UNVERIFIED",
+    "phase_model_calls": 0,
+    "previous_same_model_rejection": "The 'gpt-6-luna' model is not supported when using Codex with a ChatGPT account.",
+    "isolated_login": "BLOCKED_SECURITY_SETTING"
+  },
+  "plugin": {
+    "id": "ui-ux-pro@ui-ux-pro-marketplace",
+    "version": "0.1.0",
+    "expected_skill_count": 15,
+    "plugin_only_prompt_input_skill_count": 15,
+    "plugin_only_prompt_input_legacy_skill_count": 0,
+    "description_truncation_markers": 0,
+    "explicit_runtime_activation": "NOT_RUN",
+    "automatic_runtime_activation": "NOT_RUN",
+    "combined_runtime_activation": "NOT_RUN"
+  },
+  "duplicates": {
+    "project_personal_skill_overlap_count": 8,
+    "codex_home_skill_overlap_count": 15,
+    "project_personal_content_identical_count": 0,
+    "codex_home_content_identical_count": 0,
+    "plugin_source_equals_repository_skill_count": 15,
+    "priority_claim": "NOT_ESTABLISHED"
+  },
+  "fixture": {
+    "baseline_expected_failures": 5,
+    "structural_tests_passed": 5,
+    "browser_behavior_tests_passed": 7,
+    "test_file_changed": false,
+    "phone_contract": "Trim surrounding whitespace; accept only 09 followed by nine ASCII digits; no international or Persian-digit formats; success is local test status only and sends no data."
+  },
+  "browser": {
+    "status": "PASS",
+    "browser": "Firefox 157.0 (Playwright headless)",
+    "requested_and_actual_viewports": [
+      320,
+      390,
+      768,
+      1280
+    ],
+    "all_rtl": true,
+    "horizontal_overflow": false,
+    "focus_and_error_behavior": "PASS"
+  },
+  "gates": {
+    "D01": "BLOCKED",
+    "D02": "BLOCKED",
+    "D03": "PASS",
+    "D04": "BLOCKED",
+    "D05": "BLOCKED",
+    "D06": "BLOCKED",
+    "D07": "BLOCKED",
+    "D08": "PASS",
+    "D09": "PASS",
+    "D10": "PASS",
+    "D11": "PASS",
+    "D12": "PASS",
+    "D13": "PASS",
+    "D14": "PASS"
+  },
+  "ci": {
+    "status": "PASS",
+    "run_url": "https://github.com/SAeedajf/ui-ux-skill/actions/runs/38764660837",
+    "tested_commit": "f9a1d4384c6b037bbc00ec6efc74ff77332e10aa"
+  },
+  "evidence": [
+    "docs/plugin/reports/phase-05d-evidence.md",
+    "docs/plugin/reports/evidence/phase-05d-browser.json",
+    "docs/plugin/reports/evidence/phase-05d-browser-tests.txt",
+    "docs/plugin/reports/evidence/phase-05d-structural-tests.txt",
+    "docs/plugin/reports/evidence/phase-05d-fixture-baseline.txt",
+    "docs/plugin/reports/evidence/phase-05d-discovery.json",
+    "docs/plugin/reports/evidence/phase-05d-duplicates.json",
+    "docs/plugin/reports/evidence/phase-05d-repo-tests.txt",
+    "docs/plugin/reports/evidence/phase-05d-auth-blocker.txt",
+    "docs/plugin/reports/evidence/phase-05d-rollback.json"
+  ],
+  "next_phase_recommendation": "Runtime activation remains blocked by the account security setting. Do not retry authentication or switch models. Resume only after the account owner enables official device sign-in; then verify the user-selected model without fallback. Do not start Phase 06.",
+  "local_validation": {
+    "repository_tests": "57 passed",
+    "repository_validator": "PASS",
+    "marketplace_validator": "PASS",
+    "plugin_validator": "PASS",
+    "package_check": "PASS",
+    "phase05d_report_validator": "PASS"
+  }
+}

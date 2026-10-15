@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>فروشگاه آزمایشی</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <button id="menu-trigger" class="icon-button" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="باز کردن منو">☰</button>
+    <nav id="mobile-menu" aria-label="منوی اصلی" hidden><a href="#products">محصولات</a></nav>
+    <h1>فروشگاه نمونه</h1>
+  </header>
+  <main class="page">
+    <section id="products" class="grid" aria-label="محصولات">
+      <article><h2>محصول یک</h2><button class="cart" type="button" aria-label="افزودن محصول یک به سبد خرید">🛒</button></article>
+      <article><h2>محصول دو</h2><button class="cart" type="button" aria-label="افزودن محصول دو به سبد خرید">🛒</button></article>
+      <article><h2>محصول سه</h2><button class="cart" type="button" aria-label="افزودن محصول سه به سبد خرید">🛒</button></article>
+    </section>
+    <form id="contact" novalidate>
+      <label for="phone">شماره تماس</label>
+      <p id="phone-help">شماره موبایل داخلی را با ۰۹ و ۹ رقم انگلیسی وارد کنید.</p>
+      <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" aria-describedby="phone-help error" aria-invalid="false">
+      <button type="submit">ثبت آزمایشی</button>
+      <p id="error" class="error" role="alert" aria-live="assertive"></p>
+      <p id="status" class="status" aria-live="polite"></p>
+    </form>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

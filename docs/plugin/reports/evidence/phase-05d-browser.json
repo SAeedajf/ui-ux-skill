@@ -1,0 +1,50 @@
+{
+  "browser": "Firefox",
+  "browserVersion": "157.0",
+  "engine": "Gecko",
+  "headless": true,
+  "tool": "Playwright Python",
+  "requestedViewports": [
+    {
+      "requested": 320,
+      "actual": 320,
+      "actualHeight": 900,
+      "scrollWidth": 320,
+      "clientWidth": 320,
+      "horizontalOverflow": false,
+      "direction": "rtl",
+      "columns": 1
+    },
+    {
+      "requested": 390,
+      "actual": 390,
+      "actualHeight": 900,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "horizontalOverflow": false,
+      "direction": "rtl",
+      "columns": 1
+    },
+    {
+      "requested": 768,
+      "actual": 768,
+      "actualHeight": 900,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "horizontalOverflow": false,
+      "direction": "rtl",
+      "columns": 2
+    },
+    {
+      "requested": 1280,
+      "actual": 1280,
+      "actualHeight": 900,
+      "scrollWidth": 1280,
+      "clientWidth": 1280,
+      "horizontalOverflow": false,
+      "direction": "rtl",
+      "columns": 3
+    }
+  ],
+  "result": "PASS"
+}

@@ -1,0 +1,15 @@
+{
+  "scope": "Disposable CODEX_HOME only",
+  "removed_plugin": "ui-ux-pro@ui-ux-pro-marketplace",
+  "removed_marketplace": "ui-ux-pro-marketplace",
+  "post_rollback_plugin_list": {
+    "installed": [],
+    "available": []
+  },
+  "post_rollback_marketplace_list": {
+    "marketplaces": []
+  },
+  "plugin_cache_exists": false,
+  "personal_codex_home_or_settings_touched": false,
+  "result": "PASS"
+}
