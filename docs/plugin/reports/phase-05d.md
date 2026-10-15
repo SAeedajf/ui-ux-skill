@@ -2,7 +2,8 @@
 
 **Status:** BLOCKED (model runtime acceptance)
 **Base:** `dbe4ffe24db4a2582533dd567af9f15de342fd79`
-**Branch:** `codex/ui-ux-plugin-phase-05d`
+**Branch:** `codex/ui-ux-plugin-phase-05d`  
+**Draft PR:** [#19](https://github.com/SAeedajf/ui-ux-skill/pull/19)
 **Plugin:** `ui-ux-pro@ui-ux-pro-marketplace` `0.1.0`
 
 ## Current result

@@ -4,7 +4,7 @@
   "base_commit": "dbe4ffe24db4a2582533dd567af9f15de342fd79",
   "output_commit": null,
   "branch": "codex/ui-ux-plugin-phase-05d",
-  "pull_request": null,
+  "pull_request": "https://github.com/SAeedajf/ui-ux-skill/pull/19",
   "model": {
     "selected_by_user": "gpt-6-luna",
     "reasoning_effort": "high",
