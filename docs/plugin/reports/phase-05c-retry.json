@@ -10,7 +10,10 @@
     "auth": "ChatGPT"
   },
   "model": {
-    "requested": "gpt-5.6-terra",
+    "requested": [
+      "gpt-5.6-terra",
+      "gpt-6-luna"
+    ],
     "actual_identity": "UNVERIFIED",
     "default_unchanged": true,
     "fallback_warning": true,
@@ -107,9 +110,9 @@
     "output_commit": null
   },
   "model_calls": {
-    "attempted": 4,
+    "attempted": 5,
     "completed": 4,
-    "failed": 0,
+    "failed": 1,
     "retry": 0
   },
   "evidence": [
@@ -122,13 +125,58 @@
     "docs/plugin/reports/evidence/phase-05c-retry-agent.diff",
     "docs/plugin/reports/evidence/phase-05c-retry-discovery.jsonl",
     "docs/plugin/reports/evidence/phase-05c-retry-followup-positive.jsonl",
-    "docs/plugin/reports/evidence/phase-05c-retry-rollback.jsonl"
+    "docs/plugin/reports/evidence/phase-05c-retry-rollback.jsonl",
+    "docs/plugin/reports/evidence/phase-05c-retry-gpt6-luna-blocked.jsonl"
   ],
   "open_gates": [
-    "The selected gpt-5.6-terra CLI turn completed, but the backend identity remains unverified because CLI fallback model metadata was used.",
-    "Plugin metadata for all 15 Skills was present in prompt input; the follow-up automatic trace still loaded four duplicate personal Legacy Skill files and no Plugin Skill file, so positive Plugin activation remains FAIL.",
+    "The selected gpt-5.6-terra CLI turns completed, but backend identity remains unverified because the CLI used fallback model metadata.",
+    "The user-selected gpt-6-luna model was rejected by Codex CLI with a ChatGPT account before a model turn began; no retry was made.",
+    "Plugin metadata for all 15 Skills was present in prompt input; automatic positive traces still loaded four duplicate personal Legacy Skill files and no Plugin Skill file, so Plugin activation remains FAIL.",
     "Phone validation and valid-number submission behavior need a product-level check; the repair handler currently marks every submitted value invalid.",
     "The browser host capped the requested 1280px viewport at 768px; wider desktop behavior is unverified.",
     "No Phase 06 work, merge, or public release was performed."
+  ],
+  "model_runs": [
+    {
+      "model": "gpt-5.6-terra",
+      "scenario": "positive activation, first run",
+      "status": "COMPLETED",
+      "turn_completed": true,
+      "backend_identity": "UNVERIFIED",
+      "automatic_plugin_activation": "FAIL"
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "scenario": "negative activation",
+      "status": "COMPLETED",
+      "turn_completed": true,
+      "backend_identity": "UNVERIFIED",
+      "automatic_plugin_activation": "NOT_RUN"
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "scenario": "fixture repair",
+      "status": "COMPLETED",
+      "turn_completed": true,
+      "backend_identity": "UNVERIFIED",
+      "automatic_plugin_activation": "NOT_RUN"
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "scenario": "positive activation follow-up",
+      "status": "COMPLETED",
+      "turn_completed": true,
+      "backend_identity": "UNVERIFIED",
+      "automatic_plugin_activation": "FAIL"
+    },
+    {
+      "model": "gpt-6-luna",
+      "scenario": "positive activation compatibility probe",
+      "status": "CLI_UNSUPPORTED",
+      "turn_completed": false,
+      "backend_identity": "NOT_REACHED",
+      "automatic_plugin_activation": "NOT_RUN",
+      "detail": "The 'gpt-6-luna' model is not supported when using Codex with a ChatGPT account."
+    }
   ]
 }

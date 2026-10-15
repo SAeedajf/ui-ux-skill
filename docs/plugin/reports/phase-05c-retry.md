@@ -4,7 +4,7 @@
 **Base:** `2434c8b999432f94a9f6e790a33b162f5e437b1d`
 **Branch:** `codex/ui-ux-plugin-phase-05c-retry`
 **Pull request:** https://github.com/SAeedajf/ui-ux-skill/pull/18
-**Model calls:** 4 completed responses; no failed call or retry
+**Model calls:** 5 attempts; 4 completed responses; 1 CLI rejection; no retry
 
 ## Environment and temporary install
 
@@ -26,9 +26,13 @@ No Skill file under the installed Plugin cache appears in either automatic posit
 
 ### Follow-up discovery and positive trace
 
-A read-only `codex debug prompt-input` probe found all 15 namespaced Plugin Skills in the installed Plugin cache. This proves discovery only. A fourth fresh `gpt-5.6-terra` CLI invocation used the same unnamed positive prompt against a copied RTL store. It completed, but again read only the four personal Legacy Skill files listed above; no Plugin `SKILL.md` path was read. The selected backend identity remains unverified. The sanitized probe and trace summary are [`phase-05c-retry-discovery.jsonl`](evidence/phase-05c-retry-discovery.jsonl) and [`phase-05c-retry-followup-positive.jsonl`](evidence/phase-05c-retry-followup-positive.jsonl). Before/after install inventory hashes match after rollback: [`phase-05c-retry-rollback.jsonl`](evidence/phase-05c-retry-rollback.jsonl).
+A read-only `codex debug prompt-input` probe found all 15 namespaced Plugin Skills in the installed Plugin cache. This proves discovery only. A fourth fresh `gpt-5.6-terra` CLI invocation used the same unnamed positive prompt against a copied RTL store. It completed, but again read only the four personal Legacy Skill files listed above; no Plugin `SKILL.md` path was read. The selected backend identity remains unverified. The sanitized probe and trace summary are [`phase-05c-retry-discovery.jsonl`](evidence/phase-05c-retry-discovery.jsonl) and [`phase-05c-retry-followup-positive.jsonl`](evidence/phase-05c-retry-followup-positive.jsonl). Before/after install inventory hashes match after rollback for both installs: [`phase-05c-retry-rollback.jsonl`](evidence/phase-05c-retry-rollback.jsonl).
 
-The repository's runner already accepts an optional `--model` and otherwise uses the host default; the AI guide directs agents to use the user's or host's available choice. This run tests only the selected CLI model and does not establish behavior across every model.
+The repository's runner accepts an optional `--model` and otherwise uses the host default; the AI guide directs agents to use the user's or host's available choice. The run used `gpt-5.6-terra` as explicitly selected. A one-time probe with the user-selected `gpt-6-luna` was rejected before a model turn: `The 'gpt-6-luna' model is not supported when using Codex with a ChatGPT account.` This is a Codex CLI/account compatibility boundary, not a model restriction imposed by the repository. No retry was made. These results do not establish behavior across every model.
+
+### User-selected `gpt-6-luna` CLI compatibility — BLOCKED
+
+The Plugin was installed and prompt-input discovery again exposed all 15 Plugin Skill metadata entries. The CLI invocation selected `gpt-6-luna` and exited before `turn.completed` with the unsupported-model error shown above. Backend identity was not reached and the positive activation check could not run. This attempt is recorded as one CLI rejection, with no retry. The sanitized summary is [`phase-05c-retry-gpt6-luna-blocked.jsonl`](evidence/phase-05c-retry-gpt6-luna-blocked.jsonl).
 
 ## Negative activation — PASS
 
@@ -48,10 +52,10 @@ On the temporary local copy, the rendered page used RTL direction and had no hor
 
 ## Duplicate Skills and rollback
 
-There are 8 personal Skill directories whose names overlap this Plugin's Skill set. The traces identify the Legacy files actually read; no Plugin precedence is proven. Temporary Plugin and Marketplace removal commands succeeded. Plugin-list and marketplace-list snapshots after removal exactly match their pre-install snapshots; the temporary Plugin is absent. No default-model setting or private ChatGPT Plugin was changed.
+There are 8 personal Skill directories whose names overlap this Plugin's Skill set. The traces identify the Legacy files actually read; no Plugin precedence is proven. Temporary Plugin and Marketplace removal commands succeeded. Plugin-list and marketplace-list snapshots after removal exactly match their pre-install snapshots for both the initial test and the `gpt-6-luna` compatibility probe; the temporary Plugin is absent. No default-model setting or private ChatGPT Plugin was changed.
 
 ## CI and open gates
 
 CI will validate this report and publish a finalized evidence artifact for the exact PR commit. The machine report and sanitized trace summaries are versioned alongside the Agent diff and before/after fixture output.
 
-Open gates: actual backend model identity, Plugin Skill activation, phone validity behavior, and desktop widths wider than 768px. Discovery passed but automatic Plugin activation did not. This report does not authorize or perform Phase 06, merge, or public release.
+Open gates: actual backend model identity for successful `gpt-5.6-terra` turns; CLI support and activation under `gpt-6-luna` with this ChatGPT account; automatic Plugin Skill activation; phone validity behavior; and desktop widths wider than 768px. Discovery passed but automatic Plugin activation did not. This report does not authorize or perform Phase 06, merge, or public release.

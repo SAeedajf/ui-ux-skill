@@ -29,6 +29,12 @@ def validate(report):
         errors.append('negative activation PASS cannot include a UI/UX Skill read')
     if report['model_calls']['attempted'] != report['model_calls']['completed'] + report['model_calls']['failed']:
         errors.append('model call accounting does not reconcile')
+    if len(report['model_runs']) != report['model_calls']['attempted']:
+        errors.append('model run records do not match the attempted call count')
+    if sum(bool(run['turn_completed']) for run in report['model_runs']) != report['model_calls']['completed']:
+        errors.append('completed model turns do not match the model run records')
+    if sum(run['status'] in {'CLI_UNSUPPORTED', 'FAILED'} for run in report['model_runs']) != report['model_calls']['failed']:
+        errors.append('failed model runs do not match the model call accounting')
     if report['status'] == 'PASS' and (
         report['positive']['status'] != 'PASS'
         or report['model']['actual_identity'] != 'VERIFIED'
