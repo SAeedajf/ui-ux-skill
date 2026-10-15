@@ -1,0 +1,50 @@
+test_error_text_contrast_meets_wcag_aa_normal_text (test_baseline.FixtureBaselineTests.test_error_text_contrast_meets_wcag_aa_normal_text) ... FAIL
+test_form_field_has_associated_label_and_error_description (test_baseline.FixtureBaselineTests.test_form_field_has_associated_label_and_error_description) ... FAIL
+test_layout_adapts_without_fixed_width_overflow (test_baseline.FixtureBaselineTests.test_layout_adapts_without_fixed_width_overflow) ... FAIL
+test_mobile_menu_exposes_state_and_restores_focus_on_escape (test_baseline.FixtureBaselineTests.test_mobile_menu_exposes_state_and_restores_focus_on_escape) ... FAIL
+test_product_buttons_have_accessible_names (test_baseline.FixtureBaselineTests.test_product_buttons_have_accessible_names) ... FAIL
+
+======================================================================
+FAIL: test_error_text_contrast_meets_wcag_aa_normal_text (test_baseline.FixtureBaselineTests.test_error_text_contrast_meets_wcag_aa_normal_text)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<temporary-fixture>/test_baseline.py", line 56, in test_error_text_contrast_meets_wcag_aa_normal_text
+    self.assertGreaterEqual((max(fg,bg)+.05)/(min(fg,bg)+.05),4.5)
+AssertionError: 2.7120317074963944 not greater than or equal to 4.5
+
+======================================================================
+FAIL: test_form_field_has_associated_label_and_error_description (test_baseline.FixtureBaselineTests.test_form_field_has_associated_label_and_error_description)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<temporary-fixture>/test_baseline.py", line 35, in test_form_field_has_associated_label_and_error_description
+    self.assertRegex(self.html,r'<label[^>]+for=["\']phone["\']')
+AssertionError: Regex didn't match: '<label[^>]+for=["\\\']phone["\\\']' not found in '<!doctype html>\n<html lang="fa" dir="rtl">\n<head>\n  <meta charset="utf-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1">\n  <title>فروشگاه آزمایشی</title>\n  <link rel="stylesheet" href="style.css">\n</head>\n<body>\n  <header>\n    <button id="menu-trigger" class="icon-button">☰</button>\n    <nav id="mobile-menu" hidden><a href="#products">محصولات</a></nav>\n    <h1>فروشگاه نمونه</h1>\n  </header>\n  <main class="page">\n    <section id="products" class="grid">\n      <article><h2>محصول یک</h2><button class="cart">🛒</button></article>\n      <article><h2>محصول دو</h2><button class="cart">🛒</button></article>\n      <article><h2>محصول سه</h2><button class="cart">🛒</button></article>\n    </section>\n    <form id="contact">\n      <input id="phone" name="phone" placeholder="شماره تماس">\n      <button type="submit">ثبت</button>\n      <p id="error" class="error" role="alert"></p>\n    </form>\n  </main>\n  <script src="app.js"></script>\n</body>\n</html>\n'
+
+======================================================================
+FAIL: test_layout_adapts_without_fixed_width_overflow (test_baseline.FixtureBaselineTests.test_layout_adapts_without_fixed_width_overflow)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<temporary-fixture>/test_baseline.py", line 45, in test_layout_adapts_without_fixed_width_overflow
+    self.assertNotRegex(self.css,r'\.page\s*\{[^}]*width:\s*720px')
+AssertionError: Regex matched: '.page { width: 720px' matches '\\.page\\s*\\{[^}]*width:\\s*720px' in 'body { margin: 0; font-family: sans-serif; }\n.page { width: 720px; margin: auto; }\n.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }\n.error { color: #9d9d9d; background: #ffffff; }\n.icon-button { border: 0; }\n'
+
+======================================================================
+FAIL: test_mobile_menu_exposes_state_and_restores_focus_on_escape (test_baseline.FixtureBaselineTests.test_mobile_menu_exposes_state_and_restores_focus_on_escape)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<temporary-fixture>/test_baseline.py", line 40, in test_mobile_menu_exposes_state_and_restores_focus_on_escape
+    self.assertRegex(self.html,r'id=["\']menu-trigger["\'][^>]*aria-expanded=')
+AssertionError: Regex didn't match: 'id=["\\\']menu-trigger["\\\'][^>]*aria-expanded=' not found in '<!doctype html>\n<html lang="fa" dir="rtl">\n<head>\n  <meta charset="utf-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1">\n  <title>فروشگاه آزمایشی</title>\n  <link rel="stylesheet" href="style.css">\n</head>\n<body>\n  <header>\n    <button id="menu-trigger" class="icon-button">☰</button>\n    <nav id="mobile-menu" hidden><a href="#products">محصولات</a></nav>\n    <h1>فروشگاه نمونه</h1>\n  </header>\n  <main class="page">\n    <section id="products" class="grid">\n      <article><h2>محصول یک</h2><button class="cart">🛒</button></article>\n      <article><h2>محصول دو</h2><button class="cart">🛒</button></article>\n      <article><h2>محصول سه</h2><button class="cart">🛒</button></article>\n    </section>\n    <form id="contact">\n      <input id="phone" name="phone" placeholder="شماره تماس">\n      <button type="submit">ثبت</button>\n      <p id="error" class="error" role="alert"></p>\n    </form>\n  </main>\n  <script src="app.js"></script>\n</body>\n</html>\n'
+
+======================================================================
+FAIL: test_product_buttons_have_accessible_names (test_baseline.FixtureBaselineTests.test_product_buttons_have_accessible_names)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<temporary-fixture>/test_baseline.py", line 32, in test_product_buttons_have_accessible_names
+    self.assertFalse(any(b['text']=='🛒' and not b['attrs'].get('aria-label') for b in carts))
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.003s
+
+FAILED (failures=5)

@@ -1,0 +1,182 @@
+{
+  "phase": "05-C retry",
+  "status": "PARTIAL",
+  "base_commit": "2434c8b999432f94a9f6e790a33b162f5e437b1d",
+  "branch": "codex/ui-ux-plugin-phase-05c-retry",
+  "pull_request": "https://github.com/SAeedajf/ui-ux-skill/pull/18",
+  "codex_cli": {
+    "version": "0.153.4",
+    "path": "/home/saeed/.nvm/versions/node/v22.23.1/bin/codex",
+    "auth": "ChatGPT"
+  },
+  "model": {
+    "requested": [
+      "gpt-5.6-terra",
+      "gpt-6-luna"
+    ],
+    "actual_identity": "UNVERIFIED",
+    "default_unchanged": true,
+    "fallback_warning": true,
+    "selection_policy": "USER_SELECTED",
+    "repository_model_restriction": false
+  },
+  "install": {
+    "status": "PASS",
+    "version": "0.1.0",
+    "skill_count": 15,
+    "before_plugin_count": 33,
+    "before_marketplace_count": 3
+  },
+  "positive": {
+    "status": "FAIL",
+    "turn_completed": true,
+    "plugin_skill_read": false,
+    "legacy_skill_paths": [
+      "/home/saeed/.agents/skills/accessibility-inclusive-design/SKILL.md",
+      "/home/saeed/.agents/skills/persian-rtl-localization/SKILL.md",
+      "/home/saeed/.agents/skills/responsive-design/SKILL.md",
+      "/home/saeed/.agents/skills/ui-ux-review/SKILL.md"
+    ],
+    "followup_run": {
+      "requested_model": "gpt-5.6-terra",
+      "turn_completed": true,
+      "backend_identity": "UNVERIFIED",
+      "plugin_skill_read": false,
+      "legacy_skill_paths": [
+        "/home/saeed/.agents/skills/accessibility-inclusive-design/SKILL.md",
+        "/home/saeed/.agents/skills/persian-rtl-localization/SKILL.md",
+        "/home/saeed/.agents/skills/responsive-design/SKILL.md",
+        "/home/saeed/.agents/skills/ui-ux-review/SKILL.md"
+      ]
+    }
+  },
+  "negative": {
+    "status": "PASS",
+    "turn_completed": true,
+    "uiux_skill_read": false,
+    "files_created": true,
+    "unit_tests_passed": 1
+  },
+  "fixture": {
+    "baseline_status": "EXPECTED_FAILURES",
+    "tests": 5,
+    "failed": 5,
+    "after_status": "PASS",
+    "passed": 5,
+    "test_file_unchanged": true
+  },
+  "repair": {
+    "status": "PASS_WITH_CAVEAT",
+    "diff_created": true,
+    "files_changed": [
+      "app.js",
+      "index.html",
+      "style.css"
+    ],
+    "skill_paths_read": [
+      "/home/saeed/.agents/skills/accessibility-inclusive-design/SKILL.md",
+      "/home/saeed/.agents/skills/persian-rtl-localization/SKILL.md",
+      "/home/saeed/.agents/skills/responsive-design/SKILL.md"
+    ],
+    "test_scope_caveat": "All five supplied structural checks pass and the browser confirms the empty-submit error association; phone-format validation and valid-number success behavior were not tested, and the handler currently marks every submitted value invalid."
+  },
+  "browser": {
+    "status": "PARTIAL",
+    "tested_widths": [
+      320,
+      390,
+      768
+    ],
+    "capped_width": 768,
+    "rtl": true,
+    "menu_escape_focus": true,
+    "form_error_association": true,
+    "contrast_ratio": 9.29
+  },
+  "duplicate_skills": {
+    "legacy_count": 8,
+    "read_during_positive": 4,
+    "read_during_repair": 3,
+    "plugin_precedence_proven": false
+  },
+  "rollback": {
+    "remove_commands_succeeded": true,
+    "cache_absent": true,
+    "inventory_equality": true
+  },
+  "ci": {
+    "status": "PENDING",
+    "run_url": null,
+    "output_commit": null
+  },
+  "model_calls": {
+    "attempted": 5,
+    "completed": 4,
+    "failed": 1,
+    "retry": 0
+  },
+  "evidence": [
+    "docs/plugin/reports/phase-05c-retry.md",
+    "docs/plugin/reports/evidence/phase-05c-retry-positive.jsonl",
+    "docs/plugin/reports/evidence/phase-05c-retry-negative.jsonl",
+    "docs/plugin/reports/evidence/phase-05c-retry-repair.jsonl",
+    "docs/plugin/reports/evidence/phase-05c-retry-fixture-before.txt",
+    "docs/plugin/reports/evidence/phase-05c-retry-fixture-after.txt",
+    "docs/plugin/reports/evidence/phase-05c-retry-agent.diff",
+    "docs/plugin/reports/evidence/phase-05c-retry-discovery.jsonl",
+    "docs/plugin/reports/evidence/phase-05c-retry-followup-positive.jsonl",
+    "docs/plugin/reports/evidence/phase-05c-retry-rollback.jsonl",
+    "docs/plugin/reports/evidence/phase-05c-retry-gpt6-luna-blocked.jsonl"
+  ],
+  "open_gates": [
+    "The selected gpt-5.6-terra CLI turns completed, but backend identity remains unverified because the CLI used fallback model metadata.",
+    "The user-selected gpt-6-luna model was rejected by Codex CLI with a ChatGPT account before a model turn began; no retry was made.",
+    "Plugin metadata for all 15 Skills was present in prompt input; automatic positive traces still loaded four duplicate personal Legacy Skill files and no Plugin Skill file, so Plugin activation remains FAIL.",
+    "Phone validation and valid-number submission behavior need a product-level check; the repair handler currently marks every submitted value invalid.",
+    "The browser host capped the requested 1280px viewport at 768px; wider desktop behavior is unverified.",
+    "No Phase 06 work, merge, or public release was performed."
+  ],
+  "model_runs": [
+    {
+      "model": "gpt-5.6-terra",
+      "scenario": "positive activation, first run",
+      "status": "COMPLETED",
+      "turn_completed": true,
+      "backend_identity": "UNVERIFIED",
+      "automatic_plugin_activation": "FAIL"
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "scenario": "negative activation",
+      "status": "COMPLETED",
+      "turn_completed": true,
+      "backend_identity": "UNVERIFIED",
+      "automatic_plugin_activation": "NOT_RUN"
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "scenario": "fixture repair",
+      "status": "COMPLETED",
+      "turn_completed": true,
+      "backend_identity": "UNVERIFIED",
+      "automatic_plugin_activation": "NOT_RUN"
+    },
+    {
+      "model": "gpt-5.6-terra",
+      "scenario": "positive activation follow-up",
+      "status": "COMPLETED",
+      "turn_completed": true,
+      "backend_identity": "UNVERIFIED",
+      "automatic_plugin_activation": "FAIL"
+    },
+    {
+      "model": "gpt-6-luna",
+      "scenario": "positive activation compatibility probe",
+      "status": "CLI_UNSUPPORTED",
+      "turn_completed": false,
+      "backend_identity": "NOT_REACHED",
+      "automatic_plugin_activation": "NOT_RUN",
+      "detail": "The 'gpt-6-luna' model is not supported when using Codex with a ChatGPT account."
+    }
+  ]
+}

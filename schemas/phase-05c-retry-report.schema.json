@@ -1,0 +1,463 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/SAeedajf/ui-ux-skill/blob/main/schemas/phase-05c-retry-report.schema.json",
+  "title": "UI/UX Pro Phase 05-C Retry Runtime Acceptance Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "phase",
+    "status",
+    "base_commit",
+    "branch",
+    "pull_request",
+    "codex_cli",
+    "model",
+    "install",
+    "positive",
+    "negative",
+    "fixture",
+    "repair",
+    "browser",
+    "duplicate_skills",
+    "rollback",
+    "ci",
+    "model_runs",
+    "model_calls",
+    "evidence",
+    "open_gates"
+  ],
+  "properties": {
+    "phase": {
+      "const": "05-C retry"
+    },
+    "status": {
+      "enum": [
+        "PARTIAL",
+        "BLOCKED",
+        "FAIL"
+      ]
+    },
+    "base_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "branch": {
+      "const": "codex/ui-ux-plugin-phase-05c-retry"
+    },
+    "pull_request": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
+    "codex_cli": {
+      "type": "object",
+      "required": [
+        "version",
+        "path",
+        "auth"
+      ],
+      "properties": {
+        "version": {
+          "const": "0.153.4"
+        },
+        "path": {
+          "type": "string"
+        },
+        "auth": {
+          "const": "ChatGPT"
+        }
+      }
+    },
+    "model": {
+      "type": "object",
+      "required": [
+        "requested",
+        "actual_identity",
+        "default_unchanged",
+        "fallback_warning",
+        "selection_policy",
+        "repository_model_restriction"
+      ],
+      "properties": {
+        "requested": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "actual_identity": {
+          "enum": [
+            "VERIFIED",
+            "UNVERIFIED"
+          ]
+        },
+        "default_unchanged": {
+          "const": true
+        },
+        "fallback_warning": {
+          "const": true
+        },
+        "selection_policy": {
+          "const": "USER_SELECTED"
+        },
+        "repository_model_restriction": {
+          "const": false
+        }
+      }
+    },
+    "install": {
+      "type": "object",
+      "required": [
+        "status",
+        "version",
+        "skill_count",
+        "before_plugin_count",
+        "before_marketplace_count"
+      ],
+      "properties": {
+        "status": {
+          "const": "PASS"
+        },
+        "version": {
+          "const": "0.1.0"
+        },
+        "skill_count": {
+          "const": 15
+        },
+        "before_plugin_count": {
+          "const": 33
+        },
+        "before_marketplace_count": {
+          "const": 3
+        }
+      }
+    },
+    "positive": {
+      "type": "object",
+      "required": [
+        "status",
+        "turn_completed",
+        "plugin_skill_read",
+        "legacy_skill_paths"
+      ],
+      "properties": {
+        "status": {
+          "const": "FAIL"
+        },
+        "turn_completed": {
+          "const": true
+        },
+        "plugin_skill_read": {
+          "const": false
+        },
+        "legacy_skill_paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "negative": {
+      "type": "object",
+      "required": [
+        "status",
+        "turn_completed",
+        "uiux_skill_read",
+        "files_created",
+        "unit_tests_passed"
+      ],
+      "properties": {
+        "status": {
+          "const": "PASS"
+        },
+        "turn_completed": {
+          "const": true
+        },
+        "uiux_skill_read": {
+          "const": false
+        },
+        "files_created": {
+          "const": true
+        },
+        "unit_tests_passed": {
+          "const": 1
+        }
+      }
+    },
+    "fixture": {
+      "type": "object",
+      "required": [
+        "baseline_status",
+        "tests",
+        "failed",
+        "after_status",
+        "passed",
+        "test_file_unchanged"
+      ],
+      "properties": {
+        "baseline_status": {
+          "const": "EXPECTED_FAILURES"
+        },
+        "tests": {
+          "const": 5
+        },
+        "failed": {
+          "const": 5
+        },
+        "after_status": {
+          "const": "PASS"
+        },
+        "passed": {
+          "const": 5
+        },
+        "test_file_unchanged": {
+          "const": true
+        }
+      }
+    },
+    "repair": {
+      "type": "object",
+      "required": [
+        "status",
+        "diff_created",
+        "files_changed",
+        "skill_paths_read",
+        "test_scope_caveat"
+      ],
+      "properties": {
+        "status": {
+          "const": "PASS_WITH_CAVEAT"
+        },
+        "diff_created": {
+          "const": true
+        },
+        "files_changed": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "skill_paths_read": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "test_scope_caveat": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "browser": {
+      "type": "object",
+      "required": [
+        "status",
+        "tested_widths",
+        "capped_width",
+        "rtl",
+        "menu_escape_focus",
+        "form_error_association",
+        "contrast_ratio"
+      ],
+      "properties": {
+        "status": {
+          "const": "PARTIAL"
+        },
+        "tested_widths": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "capped_width": {
+          "type": "integer"
+        },
+        "rtl": {
+          "const": true
+        },
+        "menu_escape_focus": {
+          "const": true
+        },
+        "form_error_association": {
+          "const": true
+        },
+        "contrast_ratio": {
+          "type": "number",
+          "minimum": 4.5
+        }
+      }
+    },
+    "duplicate_skills": {
+      "type": "object",
+      "required": [
+        "legacy_count",
+        "read_during_positive",
+        "read_during_repair",
+        "plugin_precedence_proven"
+      ],
+      "properties": {
+        "legacy_count": {
+          "const": 8
+        },
+        "read_during_positive": {
+          "const": 4
+        },
+        "read_during_repair": {
+          "const": 3
+        },
+        "plugin_precedence_proven": {
+          "const": false
+        }
+      }
+    },
+    "rollback": {
+      "type": "object",
+      "required": [
+        "remove_commands_succeeded",
+        "cache_absent",
+        "inventory_equality"
+      ],
+      "properties": {
+        "remove_commands_succeeded": {
+          "const": true
+        },
+        "cache_absent": {
+          "const": true
+        },
+        "inventory_equality": {
+          "const": true
+        }
+      }
+    },
+    "ci": {
+      "type": "object",
+      "required": [
+        "status",
+        "run_url"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "PENDING",
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "run_url": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "output_commit": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{40}$"
+        }
+      }
+    },
+    "model_calls": {
+      "type": "object",
+      "required": [
+        "attempted",
+        "completed",
+        "failed",
+        "retry"
+      ],
+      "properties": {
+        "attempted": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "completed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "failed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "retry": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "open_gates": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "model_runs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "model",
+          "scenario",
+          "status",
+          "turn_completed",
+          "backend_identity"
+        ],
+        "properties": {
+          "model": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scenario": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "enum": [
+              "COMPLETED",
+              "CLI_UNSUPPORTED",
+              "FAILED"
+            ]
+          },
+          "turn_completed": {
+            "type": "boolean"
+          },
+          "backend_identity": {
+            "enum": [
+              "VERIFIED",
+              "UNVERIFIED",
+              "NOT_REACHED"
+            ]
+          },
+          "automatic_plugin_activation": {
+            "enum": [
+              "PASS",
+              "FAIL",
+              "NOT_RUN"
+            ]
+          },
+          "detail": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
