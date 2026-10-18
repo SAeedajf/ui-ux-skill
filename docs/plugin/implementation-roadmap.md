@@ -26,7 +26,7 @@ This roadmap follows Phase 00. It is a proposal, not authorization to start late
 - Verify `codex plugin marketplace add/list`, plugin listing/add/remove, and exact argument syntax against the installed binary.
 - Test both direct repo marketplace and local package installation in a clean environment.
 - Test no duplicate loading when existing `.agents/skills/` are present; document one recommended install path.
-- Run the 30 positive/negative activation cases on the current default model only if host usage permits. Keep automatic traces `NEEDS_REVIEW` until human review, and preserve `BLOCKED` for usage-limit or environment failures.
+- Run the 32 positive/negative activation cases on the user's selected model only if the host can execute it. The original 30 traces remain `NEEDS_REVIEW`; the OTP-specific positive/negative pair is `NOT_RUN`. Keep automatic traces `NEEDS_REVIEW` until human review, and preserve `BLOCKED` for usage-limit or environment failures.
 - Test the desktop UI only as a separate surface; don't infer desktop success from CLI results.
 
 **Exit evidence:** per-surface package/source commit, install location, 15-skill discovery inventory, invocation traces, exact model selection provenance, blocker list.
