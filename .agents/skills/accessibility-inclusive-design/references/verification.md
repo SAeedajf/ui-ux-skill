@@ -20,6 +20,8 @@ Use these as a focused regression set, not as a claim that the whole site or pro
 | Keyboard and focus (2.1.1, 2.1.2, 2.4.7, 2.4.11) | Complete the core task by keyboard without a trap; focus is visible and not entirely hidden by author-created content. | Task steps, browser, focus sequence, overlays/sticky content. |
 | Pointer target size (2.5.8) | In-scope targets meet 24 by 24 CSS px or a documented criterion exception. | Measured target and spacing, viewport, exception if used. |
 
+For form regressions, inspect rendered invalid and corrected states: visible message, programmatic field association, invalid state, focus destination, and announcement behavior. Verify that stateful controls such as password visibility expose their current state. Measure text and control-boundary contrast in relevant focus/error states; source tokens alone do not prove rendered contrast.
+
 Do not mark a whole site conformant from this sample. Run the complete required audit scope and combine automated scans with manual keyboard and assistive-technology checks. Automated results are triage evidence only. For native Android/Compose, record device/API, TalkBack traversal and announcements, font scaling, orientation/window size, and measured touch target; Android's 48 dp recommendation is platform guidance (source ID **89**), not a WCAG criterion.
 
 ## Inclusive research and source use

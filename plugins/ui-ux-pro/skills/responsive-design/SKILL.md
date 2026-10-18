@@ -17,3 +17,5 @@ Out of scope: a fixed-size copy or visual tweak when supported viewport, window,
 Read `references/adaptation.md`. If platform-specific behavior or implementation affects the decision, load only the matching adapter: [web](references/adapters/web.md), [Android](references/adapters/android.md), or [Compose](references/adapters/compose.md). Use `android.md` for native Android guidance and `compose.md` when the implementation specifically uses Jetpack Compose. Keep the recommendation platform-neutral when no platform-specific choice is needed.
 
 **Responsive output:** give a compact mode matrix of the actual constraints, resulting hierarchy/navigation/interaction changes, and states checked. Mark unrendered or unavailable modes unverified.
+
+For browser checks, include requested and actual viewport dimensions. At representative narrow, intermediate, and wide widths, check document overflow and confirm the primary task surface stays within the viewport. A screenshot or passing width is evidence for that state only; list untested widths and browsers.

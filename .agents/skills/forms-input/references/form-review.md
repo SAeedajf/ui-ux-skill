@@ -10,6 +10,15 @@
 - For submission, show progress, prevent accidental duplicate submission, give a clear result, and provide retry/recovery without losing work when safe.
 - Verify keyboard order, label/error association, focus visibility, screen-reader announcement, zoom, and localized layouts with the actual implementation.
 
+## Authentication and demo boundaries
+
+- Treat browser-side validation as input guidance, not proof of identity or authorization.
+- For prototypes without a backend, describe sign-in, registration, recovery, remember-me, and provider actions according to what actually works. Do not show success that implies an account session was created.
+- Trace every visible authentication control—including password visibility, recovery/signup/provider links, and remember-me—to its actual state change or service result. Check accessible toggle state such as `aria-pressed`; when a control is only a placeholder, make the limitation visible and verify it does not imply a completed action.
+- If the specified contract keeps data local, verify submit causes no network request and disclose that behavior in the UI. Do not describe a flow as encrypted or secure without evidence from the actual service and transport.
+- Define email/phone acceptance from an explicit locale/product contract. Test supported digit sets, separators, country prefixes, and valid/invalid lengths; mark rules unknown when no contract exists.
+- Verify empty, invalid, corrected, and repeated-submit states, including focus on the first invalid field, programmatic error association, and safe value retention.
+
 ## Recovery state record
 
 For each failure that interrupts the task, record the trigger, visible message, field association, focus destination, retained values by sensitivity, and the next safe action. For network retries or resend actions, verify duplicate-submit/idempotency behavior when the system exposes it.

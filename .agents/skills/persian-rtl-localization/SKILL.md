@@ -15,4 +15,6 @@ Activate when Persian/RTL or mixed-direction behavior in an interface needs desi
 4. Review navigation/icon direction by meaning; do not mirror universal symbols or media controls automatically. Check input mode, validation, and OTP/phone flow.
 5. Verify mobile widths, zoom/text scaling, focus, screen reader order, contrast, and themes in both the localized and mixed-content states.
 
+For mixed-identity forms, keep the surrounding layout RTL while checking direction and alignment for each value type: email, phone, OTP, URL, and code. Test switching the same field between value types; do not assume `dir="auto"` or its first character will make later mixed values readable. Follow the confirmed locale policy for Persian, Arabic, and Latin digits.
+
 Read `references/persian-rtl-checks.md`; general accessibility requirements still apply.
