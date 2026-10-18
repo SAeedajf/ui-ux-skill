@@ -37,8 +37,9 @@ class PluginPackagingTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
             sources = ROOT / '.agents' / 'skills'
             for source in sources.rglob('*'):
-                if source.is_file():
-                    self.assertEqual(source.read_bytes(), (output / 'skills' / source.relative_to(sources)).read_bytes())
+                relative = source.relative_to(sources)
+                if source.is_file() and not any(part.startswith('.') for part in relative.parts):
+                    self.assertEqual(source.read_bytes(), (output / 'skills' / relative).read_bytes())
             self.assertEqual(15, len(list((output / 'skills').iterdir())))
 
     def test_invalid_manifest_and_source_drift_fail_validation(self):

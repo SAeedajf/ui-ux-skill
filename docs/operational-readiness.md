@@ -4,6 +4,8 @@
 **Baseline exercised:** `c0706603544d881c51e021cb769442d823ecad50`
 **Current verified scope:** Codex only; no Claude test was run during this mission. Earlier historical rows remain in `evals/run-log.csv` and were not repeated.
 
+**Update 2026-10-18:** Added quality-30 from the Persian RTL login prototype review. It is mapped to the forms, RTL, responsive, and accessibility domains with UI review as a supporting Skill. The fixture is not bundled here, so a future run must be given the target project; quality-30 has not been model-evaluated and is recorded `NOT_RUN`.
+
 ## Overall status
 
 All 15 Skills are **DISCOVERABLE** in a fresh Codex `debug prompt-input` probe using an isolated `CODEX_HOME` on commit `ff3f49c`; this confirms metadata visibility, not activation ([probe record](../evals/evidence/codex-discovery-current.json)). On commit `5a674e9`, Codex CLI 0.144.5 using the host default completed all 30 positive/negative activation scenarios. A trace scan confirms the target Skill read in all 15 positives and absent in all 15 negatives; relevant neighboring Skills are recorded and allowed. The latest `ui-ux-review` positive also produces the requested written review without a separate Canvas, and the responsive Android case reads the repository-root `adapters/android.md`. All activation rows remain `NEEDS_REVIEW` until a separate human reviewer attests to the complete traces; no activation PASS is claimed.
@@ -51,7 +53,7 @@ A higher level requires all evidence listed for that level. Source install/hash 
 ## Results by scenario
 
 - Activation: all 30 latest positive/negative scenarios have Codex traces and observed Skill selections. All remain `NEEDS_REVIEW` pending a separate human whole-trace attestation; this report does not mark activation PASS. Use the [human-attestation packet](../evals/evidence/activation-human-review.md) to review the paired traces and hashes.
-- Quality: 29 scenarios pass their written, measurable criteria. Quality-29's first exploratory run remains `NEEDS_REVIEW` because it used the pre-correction source mapping; the corrected-source rerun is the passing record. An earlier quality-26 usage-limit failure remains in the historical run ledger and is superseded by the later reviewed run.
+- Quality: 29 existing scenarios pass their written, measurable criteria; quality-30 is `NOT_RUN`. Quality-29's first exploratory run remains `NEEDS_REVIEW` because it used the pre-correction source mapping; the corrected-source rerun is the passing record. An earlier quality-26 usage-limit failure remains in the historical run ledger and is superseded by the later reviewed run.
 - Baseline vs. Skills-enabled: one controlled Codex CLI pair completed; see [comparison method and limits](baseline-comparison.md).
 - Web implementation fixture: static build served and browser-interacted; visual behavior at narrow viewport and screen-reader behavior are still `NEEDS_REVIEW`.
 - Android fixture: no build attempted because the required JDK/SDK toolchain is absent.

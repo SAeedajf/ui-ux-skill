@@ -17,4 +17,5 @@
 This is a policy capture table, not a locale default. Resolve each row with product, legal, and backend requirements before prescribing behavior.
 - Mirror directional navigation only when the action is directional. Do not mirror logos, clocks, play/pause, or other direction-neutral semantics automatically.
 - Confirm focus and reading order, error association, screen-reader pronunciation, zoom/text scaling, responsive layout, and both light/dark themes. Keep LTR locale behavior intact.
+- For identity inputs, test actual value transitions (email → localized phone → code) in the same field. Record direction and alignment by value type, accepted numeral sets, and the locale's phone/prefix rules; keep the RTL form layout independent from an individual value's LTR reading order.
 - Test punctuation at both edges of mixed RTL/LTR strings, cursor movement, selection, copy/paste, autofill, validation, and the actual numeric keyboard on the target platform.
