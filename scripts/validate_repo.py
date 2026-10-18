@@ -53,7 +53,7 @@ with (ROOT/'evals/activation.jsonl').open(encoding='utf-8') as f: evals=[json.lo
 for skill in found:
  cases=[x for x in evals if x['skill']==skill]
  if not any(x['case']=='positive' for x in cases) or not any(x['case']=='negative' for x in cases): fail(f'{skill}: needs positive and negative activation evals')
-if len(evals)!=30: fail(f'expected 30 activation cases, found {len(evals)}')
+if len(evals)!=32: fail(f'expected 32 activation cases, found {len(evals)}')
 eval_ids=[x.get('id') for x in evals]
 if any(not isinstance(x,str) or not x for x in eval_ids) or len(set(eval_ids))!=len(evals): fail('activation definitions need unique stable IDs')
 for error in validate_eval_results(): fail(error)

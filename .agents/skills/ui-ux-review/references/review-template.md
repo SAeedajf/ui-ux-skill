@@ -3,6 +3,7 @@
 ## Scope and evidence
 - Interface/revision, platform, locale, task, audience, states, viewport/device:
 - Inspected evidence: code / rendered UI / automated tools / manual assistive technology / user research:
+- Skill evidence state when relevant: discovered / file loaded / applied / behavior verified. A file read supports loading only; activation traces, implementation changes, and behavior checks require their own evidence.
 - Not inspected:
 - Baseline and comparison: initial behavior, established root cause (if any), before/after evidence, and regression checks:
 

@@ -15,6 +15,8 @@
 | URLs, email, IDs | Keep identifier syntax intact | Test realistic punctuation and case policy | Preserve canonical identifier rules | Isolate LTR runs and test cursor movement/copy/paste |
 
 This is a policy capture table, not a locale default. Resolve each row with product, legal, and backend requirements before prescribing behavior.
+
+For OTP or other fixed-format values, keep digit normalization separate from parsing and validation: normalize only the documented Persian, Arabic-Indic, or ASCII digits; preserve unsupported characters and excess digits until validation can reject the full value; and accept only product-approved separators. Do not apply a global non-digit-stripping rule to identity, phone, currency, or other inputs. Verify the rendered error and correction path in mixed RTL/LTR context.
 - Mirror directional navigation only when the action is directional. Do not mirror logos, clocks, play/pause, or other direction-neutral semantics automatically.
 - Confirm focus and reading order, error association, screen-reader pronunciation, zoom/text scaling, responsive layout, and both light/dark themes. Keep LTR locale behavior intact.
 - For identity inputs, test actual value transitions (email → localized phone → code) in the same field. Record direction and alignment by value type, accepted numeral sets, and the locale's phone/prefix rules; keep the RTL form layout independent from an individual value's LTR reading order.

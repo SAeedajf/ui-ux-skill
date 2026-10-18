@@ -17,6 +17,7 @@
 - Trace every visible authentication control—including password visibility, recovery/signup/provider links, and remember-me—to its actual state change or service result. Check accessible toggle state such as `aria-pressed`; when a control is only a placeholder, make the limitation visible and verify it does not imply a completed action.
 - If the specified contract keeps data local, verify submit causes no network request and disclose that behavior in the UI. Do not describe a flow as encrypted or secure without evidence from the actual service and transport.
 - Define email/phone acceptance from an explicit locale/product contract. Test supported digit sets, separators, country prefixes, and valid/invalid lengths; mark rules unknown when no contract exists.
+- Separate value normalization, input parsing, and validation. For fixed-length security codes, map only documented digit sets, preserve the complete input, and reject overlong or unsupported characters instead of silently stripping or truncating them. Accept separators only when the product contract names them; test typed and pasted values, invalid-to-valid correction, expiry, and repeated invalid submission.
 - Verify empty, invalid, corrected, and repeated-submit states, including focus on the first invalid field, programmatic error association, and safe value retention.
 
 ## Recovery state record

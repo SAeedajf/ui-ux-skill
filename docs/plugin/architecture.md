@@ -24,7 +24,7 @@ Use the portable root `plugin.json` as the package manifest. Do not add `.codex-
 | Canonical Skills | 15 `SKILL.md` files under `.agents/skills/` |
 | Skill reference files | 15 files under the Skill `references/` directories |
 | Reference registry | 124 rows: 118 reviewed, 6 partially verified |
-| Activation suite | 30 cases; existing results include `NEEDS_REVIEW` and `BLOCKED`, not 30 PASS results |
+| Activation suite | 32 cases; existing results include `NEEDS_REVIEW`, `BLOCKED`, and two OTP prompts `NOT_RUN`, not all PASS results |
 | CI | `.github/workflows/validate.yml` runs `validate_repo.py`, deterministic unit tests, and the eval report |
 | Runtime dependencies | Current validation/build utilities are Python standard-library based; no plugin runtime dependency is needed |
 | Existing plugin package/catalog | No portable plugin manifest or repo marketplace catalog exists at the audited base |

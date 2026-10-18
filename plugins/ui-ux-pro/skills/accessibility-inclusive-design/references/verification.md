@@ -22,6 +22,8 @@ Use these as a focused regression set, not as a claim that the whole site or pro
 
 For form regressions, inspect rendered invalid and corrected states: visible message, programmatic field association, invalid state, focus destination, and announcement behavior. Verify that stateful controls such as password visibility expose their current state. Measure text and control-boundary contrast in relevant focus/error states; source tokens alone do not prove rendered contrast.
 
+Keep evidence methods distinct: an explicitly measured 200% browser zoom or text resize is not established by narrowing the viewport, changing device emulation, or scaling content with CSS. Record how zoom was applied and the effective content viewport. An accessibility tree or DOM snapshot is not screen-reader output; label it supplemental and record assistive-technology name/version and observed announcements only when a real AT session was operated. Static ARIA presence does not verify focus movement, name/state announcements, or error recovery.
+
 Do not mark a whole site conformant from this sample. Run the complete required audit scope and combine automated scans with manual keyboard and assistive-technology checks. Automated results are triage evidence only. For native Android/Compose, record device/API, TalkBack traversal and announcements, font scaling, orientation/window size, and measured touch target; Android's 48 dp recommendation is platform guidance (source ID **89**), not a WCAG criterion.
 
 ## Inclusive research and source use

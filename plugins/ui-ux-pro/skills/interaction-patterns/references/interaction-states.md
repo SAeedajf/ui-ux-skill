@@ -3,6 +3,7 @@
 - Map each control to action, result, validation, and next step. Use semantic controls and preserve keyboard, focus, screen-reader, and touch behavior.
 - For product detail/listing interactions, start with **43–49**; for navigation controls, use **50–55**; for forms, use **107–115**. Registry entries include platform and access notes.
 - Include idle, focused, disabled, loading, success, error, and retry/cancel states when the interaction can reach them. Do not disable a control without explaining why and how to recover.
+- For asynchronous form actions, test stale-response protection when a flow changes, cancellation/cleanup of pending work, duplicate-submit prevention, and restoration after failure. For code resend, verify expiry, cooldown, a fresh logical request, retained destination, and focus/error recovery; do not infer server rate limiting or idempotency from client-only controls.
 - Validate inline when it helps the user fix a problem; preserve entered values after recoverable errors. Avoid arbitrary format rules and destructive clearing.
 - Persuasion should be transparent and reversible. Do not hide costs, force consent, fake scarcity, or obstruct cancellation. Findings in commercial studies may not transfer to a different population or task.
 
