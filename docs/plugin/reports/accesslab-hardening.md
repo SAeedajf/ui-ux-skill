@@ -16,7 +16,7 @@ Canonical Skills and references now distinguish normalization, parsing, and vali
 
 - AccessLab: 76/76 Node tests and 53/53 in-app browser checks passed on the edited local project. Browser checks include a 10-width responsive matrix, paste preservation, repeated invalid submission, correction, successful local demo completion, and narrow error expansion.
 - GitHub fixture: six deterministic `unittest` cases.
-- Source/package parity, marketplace validation, and reproducible 0.1.0 archive: passed locally. GitHub Actions status is pending on the PR's latest head and should be read from the live Checks tab.
+- Source/package parity, marketplace validation, and reproducible 0.1.0 archive: passed locally. GitHub Actions run [39138656263](https://github.com/SAeedajf/ui-ux-skill/actions/runs/39138656263) passed on commit `db499868166da0a03184bf13fb85646c4c9214fb`; use the PR Checks tab for the current head after this report update.
 - Plugin version remains 0.1.0; the changes add guidance and tests without changing installation contracts.
 - Automatic skill activation: `NOT_VERIFIED`. One natural-language OTP positive and one non-UI negative prompt are defined as `NOT_RUN`; no fresh model invocation or trace is claimed.
 - Real 200% browser zoom: `NOT_VERIFIED`; the in-app browser shortcuts left measured `innerWidth=1280`, `devicePixelRatio=1`, and `visualViewport.scale=1` unchanged. A 640×360 reflow check is not zoom evidence.
