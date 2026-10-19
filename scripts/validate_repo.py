@@ -24,6 +24,20 @@ for p in sorted(skills.iterdir()):
  for ref in re.findall(r'\[[^]]+\]\(([^)]+)\)',text):
   if not ref.startswith(('http://','https://','#')) and not (p/ref).exists(): fail(f'{p.name}: broken link {ref}')
 if len(found)!=15: fail(f'expected 15 Skills, found {len(found)}')
+# The role catalog is the cross-Skill routing contract. Keep each Skill represented
+# and ensure its source references stay within the maintained registry.
+role_catalog=ROOT/'skills/roles.md'
+if not role_catalog.is_file():
+ fail('missing skills/roles.md specialist role catalog')
+else:
+ role_text=role_catalog.read_text(encoding='utf-8')
+ for skill in found:
+  if f'`{skill}`' not in role_text: fail(f'specialist role catalog does not define {skill}')
+ for ref in re.findall(r'\[[^]]+\]\(([^)]+)\)',role_text):
+  if not ref.startswith(('http://','https://','#')) and not (role_catalog.parent/ref).exists(): fail(f'specialist role catalog has a broken link: {ref}')
+ for match in re.finditer(r'\bS(\d+)(?:[–-](\d+))?\b',role_text):
+  start=int(match.group(1)); end=int(match.group(2) or start)
+  if start<1 or end<start or end>124: fail(f'specialist role catalog has an invalid source range: {match.group(0)}')
 # Source registry.
 with (ROOT/'docs/source-registry.csv').open(encoding='utf-8',newline='') as f: sources=list(csv.DictReader(f))
 ids=[r['id'] for r in sources]
