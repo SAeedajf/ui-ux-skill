@@ -7,6 +7,35 @@ on:
 permissions:
   contents: read
 jobs:
+  mcp-server-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring
+          tools: composer:v2
+      - name: Install locked MCP runtime dependencies
+        run: composer install --working-dir=mcp-server --no-interaction --prefer-dist --no-dev --classmap-authoritative
+      - name: Validate and test MCP service
+        run: |
+          composer --working-dir=mcp-server validate --no-check-publish
+          composer --working-dir=mcp-server test
+          python3 scripts/test_mcp_http.py
+          find mcp-server/src mcp-server/public mcp-server/tests -name '*.php' -print0 | xargs -0 -n1 php -l
+      - name: Build and verify cPanel deployment bundle
+        run: |
+          python3 scripts/build_mcp_deploy.py
+          python3 scripts/build_mcp_deploy.py --check
+      - name: Upload cPanel bundle and manifest
+        uses: actions/upload-artifact@v7
+        with:
+          name: ui-ux-pro-mcp-0.1.0-cpanel
+          path: |
+            dist/ui-ux-pro-mcp-0.1.0-cpanel.zip
+            dist/ui-ux-pro-mcp-0.1.0-cpanel.manifest.json
+          if-no-files-found: error
   deterministic-checks:
     runs-on: ubuntu-latest
     steps:
