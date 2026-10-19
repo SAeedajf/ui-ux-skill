@@ -22,7 +22,7 @@ def selected_files() -> list[tuple[Path, str]]:
     if not (APP / "vendor" / "autoload.php").is_file():
         raise SystemExit("Missing mcp-server/vendor. Run composer install --working-dir=mcp-server --no-dev first.")
     paths: list[tuple[Path, str]] = []
-    for relative in ("composer.json", "composer.lock", "config.example.php"):
+    for relative in ("composer.json", "composer.lock", "config.example.php", "cpanel-entrypoint.php"):
         path = APP / relative
         if path.is_file():
             paths.append((path, f"{PREFIX}{relative}"))
