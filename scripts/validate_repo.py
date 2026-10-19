@@ -58,15 +58,49 @@ usage_by_id={row.get('id'):row for row in usage_rows}
 if len(usage_rows)!=len(sources) or len(usage_by_id)!=len(sources) or set(usage_by_id)!=set(ids): fail('source implementation audit must contain exactly one row for every source ID')
 registry_by_id={row['id']:row for row in sources}
 if role_catalog.is_file():
+ profile_ids=re.findall(r'^### (R\d{2}) — ',role_text,re.M)
+ expected_profile_ids=[f'R{i:02}' for i in range(1,14)]
+ if profile_ids!=expected_profile_ids: fail('role catalog must define profiles R01 through R13 exactly once and in order')
+ registry_source_ids={int(source_id) for source_id in ids}
+ source_ids_by_profile={profile_id:set() for profile_id in profile_ids}
+ for block in re.split(r'(?=^### R\d{2} — )',role_text,flags=re.M):
+  heading=re.match(r'^### (R\d{2}) — ',block)
+  if not heading: continue
+  profile_id=heading.group(1)
+  assigned=re.search(r'^- \*\*Assigned source IDs \(complete set\):\*\* `([^`]+)`',block,re.M)
+  if not assigned:
+   fail(f'role catalog profile {profile_id} is missing its complete source assignment')
+   continue
+  for token in assigned.group(1).split(','):
+   token=token.strip(); source_range=re.fullmatch(r'(\d+)(?:[–-](\d+))?',token)
+   if not source_range:
+    fail(f'role catalog profile {profile_id} has an invalid source assignment: {token}')
+    continue
+   start=int(source_range.group(1)); end=int(source_range.group(2) or start)
+   assigned_ids=set(range(start,end+1))
+   if start<1 or end<start or not assigned_ids.issubset(registry_source_ids): fail(f'role catalog profile {profile_id} has an out-of-range source assignment: {token}')
+   source_ids_by_profile[profile_id].update(assigned_ids)
  for match in re.finditer(r'\[S(\d+)\s+[^]]*\]\((https?://[^)]+)\)',role_text):
   source=registry_by_id.get(match.group(1))
   if not source or match.group(2) not in {source.get('url'),source.get('submitted_url')}:
    fail(f'specialist role catalog citation does not match source registry: S{match.group(1)}')
+ audit_role_ids={profile_id:set() for profile_id in profile_ids}
+ for row in usage_rows:
+  profile_list=set(filter(None,row.get('professional_role_ids','').split(';')))
+  if not profile_list: fail(f'source implementation audit has no professional role assignment for source {row.get("id")}')
+  for profile_id in profile_list:
+   if profile_id not in audit_role_ids: fail(f'source implementation audit uses unknown professional profile {profile_id} for source {row.get("id")}')
+   else: audit_role_ids[profile_id].add(int(row['id']))
+ if set(int(sid) for sid in ids)!=set().union(*audit_role_ids.values()):
+  fail('professional role assignments must cover every source in the registry')
+ for profile_id in profile_ids:
+  if audit_role_ids.get(profile_id,set())!=source_ids_by_profile.get(profile_id,set()):
+   fail(f'role catalog source assignment does not match the source audit for {profile_id}')
 for sid,row in usage_by_id.items():
  if row.get('submitted_url')!=registry_by_id[sid]['submitted_url']: fail(f'source implementation audit URL does not match registry for ID {sid}')
  if not row.get('domain') or not row.get('primary_skills') or not row.get('primary_skill_reference_paths'): fail(f'source implementation audit missing Skill routing for ID {sid}')
  if row.get('skill_reference_trace') not in {'individually_linked','grouped_id_range'}: fail(f'source implementation audit has unsupported or missing trace state for ID {sid}')
- for key in ('source_role','submitted_scope_fa','role_for_ai','skill_application','review_pass_1','review_pass_2','source_review_notes','review_date','claim_ceiling'):
+ for key in ('source_role','submitted_scope_fa','role_for_ai','professional_role_ids','skill_application','review_pass_1','review_pass_2','source_review_notes','review_date','claim_ceiling'):
   if not row.get(key): fail(f'source implementation audit missing {key} for ID {sid}')
  if row.get('submitted_scope_fa') and 'scope from the original request' not in row.get('role_for_ai','').lower():
   fail(f'source implementation audit role_for_ai must distinguish supplied scope from evidence for ID {sid}')
