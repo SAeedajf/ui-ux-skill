@@ -33,3 +33,9 @@ This report records local implementation evidence separately from reusable Skill
 - The local CLI configuration error prevents confirming installed/enabled plugins or obtaining a runtime activation trace. No settings were edited to work around it. Automatic activation remains `NOT_VERIFIED`, not PASS or FAIL.
 - The main desktop has screen-reader support disabled according to AT-SPI status. An actual spoken interaction would require enabling/starting assistive technology in that session; that was not done. Orca output remains `NOT_VERIFIED`.
 - A fresh browser-harness run now reports 55/55 checks, including text-spacing and landscape-like low-height cases; the local project results record the latest run URL and scope.
+
+## Fresh verification (2026-10-19)
+
+- AccessLab was rerun from the current local source: Node.js v22.23.1 passed 76/76 unit tests; the fresh in-app Chromium harness passed 55/55 across its ten-width matrix. It also passed the WCAG 1.4.12 spacing override and landscape-like low-height simulation. These tests do not establish physical-device rotation or complete WCAG conformance.
+- The UI/UX Pro repository passed `scripts/validate_repo.py`, marketplace validation, plugin integrity validation, deterministic package check, and `python -m unittest discover -s tests -v` (63 tests). The first local attempt was missing `jsonschema`; rerunning with the repository's pinned development dependencies in a temporary virtual environment passed. No repository dependency file or user Python environment was changed.
+- The earlier in-app zoom shortcut attempt did not change the viewport. This does not contradict the separately measured PASS for native Firefox 147.0.4 zoom at 200%; the distinction is recorded in the local AccessLab report.
