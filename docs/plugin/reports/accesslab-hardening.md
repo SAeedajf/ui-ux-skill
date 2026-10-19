@@ -40,3 +40,14 @@ This report records local implementation evidence separately from reusable Skill
 - Fresh keyboard-only OTP check passed with synthetic data: selected OTP using Tab/Space, submitted malformed Persian digits with Enter and observed the recoverable field error, corrected the entire value, and reached the demo-only success state with Enter. The UI explicitly stated that no real session was created.
 - The UI/UX Pro repository passed `scripts/validate_repo.py`, marketplace validation, plugin integrity validation, deterministic package check, and `python -m unittest discover -s tests -v` (63 tests). The first local attempt was missing `jsonschema`; rerunning with the repository's pinned development dependencies in a temporary virtual environment passed. No repository dependency file or user Python environment was changed.
 - The earlier in-app zoom shortcut attempt did not change the viewport. This does not contradict the separately measured PASS for native Firefox 147.0.4 zoom at 200%; the distinction is recorded in the local AccessLab report.
+
+## WCAG 2.2 A/AA audit and follow-up fixes (2026-10-19)
+
+The separate local AccessLab page received a criterion-by-criterion WCAG 2.2 A/AA audit. Its full matrix is in the local `ACCESSIBILITY_AUDIT.md`; the result remains **PARTIAL**, with no full-conformance claim. Four code-level issues were fixed:
+
+- WCAG 2.2.1: the demo OTP's 60-second expiry could not be turned off before requesting a code. A labeled opt-in checkbox now controls it before the OTP step; the local demo defaults to no expiry. A new unit test advances a fake clock by ten seconds and confirms the code can still be submitted.
+- WCAG 2.2.2: the visible countdown text changed every second. It is now static, and a 5.2-second browser assertion confirms the timer/resend labels do not update continuously; one status message announces resend availability.
+- WCAG 2.4.4 semantics: non-navigating help/privacy `#` links became clearly named demo buttons; the brand link targets the local home path.
+- WCAG 3.1.2: “Test Adapter” was translated to Persian in the UI.
+
+After these changes the local demo passed **77 Node tests and 57 browser checks**, with zero failures, including the 10-width matrix. The browser harness version was not available. Keyboard-only use of every newly changed control, full screen-reader output, all-state contrast, 200% zoom through every flow, and physical-device behavior remain unverified. Orca/AT-SPI was not enabled or modified. The source demo remains outside this repository; only reusable guidance, the sanitized fixture, and evidence summary are tracked here.
