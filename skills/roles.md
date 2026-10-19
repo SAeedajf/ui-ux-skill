@@ -129,6 +129,8 @@ The specialist Skills above are decision lanes. These profiles combine those lan
 - **Owns:** turning a vague product request into a focused user problem and deciding whether to research, map, test, or proceed with a bounded hypothesis.
 - **Core Skills:** `ux-discovery`; add `information-architecture` or `journey-mapping` only for those separate decisions.
 - **Deliverable:** problem statement, known/unknown evidence, decision question, options, and smallest useful validation step.
+- **AI workflow:** restate the user decision in one sentence; sort inputs into observed, user-reported, inferred, and missing; choose research only if the missing evidence could change the decision.
+- **Completion check:** the brief names one decision owner, one next action, the evidence needed to change course, and any assumption that remains unverified.
 - **Source anchors:** [S3 NN/g research index](https://www.nngroup.com/), [S10 Baymard research index](https://baymard.com/research-articles), [S124 journey-mapping practitioner survey](https://www.nngroup.com/articles/journey-mapping-how/).
 - **Assigned source IDs (complete set):** `5, 12, 16, 121` — open these rows in the source audit/registry before use.
 - **Boundary:** the organization homepages are indexes; cite a specific article for a detailed research claim. A framing hypothesis is not user evidence.
@@ -139,6 +141,8 @@ The specialist Skills above are decision lanes. These profiles combine those lan
 - **Owns:** choosing a method and participant/task scope that answer the question; preserving accessibility, consent, privacy, and bias considerations in the plan.
 - **Core Skills:** `ux-discovery`; hand off taxonomy validation to `information-architecture` and end-to-end experience evidence to `journey-mapping`.
 - **Deliverable:** research question, method, participant/task criteria, evidence capture, analysis limits, and decision rule.
+- **AI workflow:** translate the decision into a research question; match method and participant/task criteria to that question; define consent, data minimization, capture, analysis, and stop rules before interpreting findings.
+- **Completion check:** a plan specifies the question, participant/task scope, method, consent/capture, analysis, and decision rule; completed findings trace to captured evidence and sample limits. A plan or secondary-source statistic is not target-user behavior.
 - **Source anchors:** [S99 Optimal Workshop research methods](https://www.optimalworkshop.com/), [S105 card sorting vs. tree testing](https://www.nngroup.com/articles/card-sorting-tree-testing-differences/), [S124 practitioner methods survey](https://www.nngroup.com/articles/journey-mapping-how/).
 - **Assigned source IDs (complete set):** `3, 8, 10, 12, 14, 16, 33, 54, 98–106, 116–124` — open these rows in the source audit/registry before use.
 - **Boundary:** a vendor's advertised capability does not establish study validity; a study plan or aggregate statistic does not establish what this product's users did.
@@ -149,6 +153,8 @@ The specialist Skills above are decision lanes. These profiles combine those lan
 - **Owns:** choosing between a journey map, in-product flow, service blueprint, empathy map, or story map and keeping current experience distinct from a proposed future state.
 - **Core Skills:** `journey-mapping`; add `ux-discovery`, `information-architecture`, or `navigation-controls` for distinct research, taxonomy, or route questions.
 - **Deliverable:** actor and goal, boundaries, stages/touchpoints, responsible handoffs, evidence labels, opportunity hypotheses, and follow-up validation.
+- **AI workflow:** set the actor, goal, start/end, channels, and current/future-state boundary; place evidence-backed touchpoints and handoffs; label hypotheses and missing backstage evidence explicitly.
+- **Completion check:** each stage has an owner or a stated unknown, and each proposed opportunity links to evidence or a validation question.
 - **Source anchors:** [S117 Service Design Tools journey map](https://servicedesigntools.org/tools/journey-map), [S118 GOV.UK experience map](https://www.gov.uk/service-manual/user-research/creating-an-experience-map), [S123 journeys vs. flows](https://www.nngroup.com/articles/user-journeys-vs-user-flows/).
 - **Assigned source IDs (complete set):** `116–124` — open these rows in the source audit/registry before use.
 - **Boundary:** maps synthesize evidence and do not prove behavior or causality; never invent backstage facts, emotions, or quotes.
@@ -159,6 +165,8 @@ The specialist Skills above are decision lanes. These profiles combine those lan
 - **Owns:** content inventory, grouping, labels, hierarchy, cross-links, and the method for evaluating findability.
 - **Core Skills:** `information-architecture`; add `navigation-controls` for menu mechanics and `ux-discovery` when audience/task evidence is missing.
 - **Deliverable:** inventory and candidate structure, terminology decisions, task-based test plan, and unresolved assumptions.
+- **AI workflow:** inventory the in-scope content and destinations; group by user task and source terminology; choose card sorting to explore groupings or tree testing to evaluate a proposed structure; test representative findability tasks.
+- **Completion check:** labels and hierarchy can be traced to user tasks or explicitly marked hypotheses, and the validation method tests the actual decision at issue.
 - **Source anchors:** [S98 NN/g information architecture](https://www.nngroup.com/topic/information-architecture/), [S105 card sorting vs. tree testing](https://www.nngroup.com/articles/card-sorting-tree-testing-differences/), [S106 NN/g menu-design checklist](https://www.nngroup.com/articles/menu-design/).
 - **Assigned source IDs (complete set):** `50, 53–55, 98–106` — open these rows in the source audit/registry before use.
 - **Boundary:** card sorting explores possible groupings; tree testing evaluates a proposed hierarchy. Neither alone proves the final taxonomy is preferred or usable in context.
@@ -169,6 +177,8 @@ The specialist Skills above are decision lanes. These profiles combine those lan
 - **Owns:** reducing task friction while preserving accurate product, price, delivery, data-use, and commitment information.
 - **Core Skills:** `forms-input` or `interaction-patterns` for the main decision; add `information-architecture`, `navigation-controls`, `ethical-persuasion`, or `accessibility-inclusive-design` only when those separate issues are present.
 - **Deliverable:** prioritized flow findings, state/recovery requirements, transparent-choice checks, and specific acceptance tests.
+- **AI workflow:** trace product discovery through post-purchase or recovery; inspect product/price/availability/delivery claims, field burden, error recovery, and commitment/exit points; validate commercial-source findings against their access limits and the target market.
+- **Completion check:** the purchase path has no unexamined commitment, price, delivery, or recovery state in scope, and no benchmark is treated as a forecast for this product.
 - **Source anchors:** [S43 Baymard product-page research](https://baymard.com/research/product-page), [S109 Baymard checkout research](https://baymard.com/research/checkout-usability), [S114 phone-field explanation](https://baymard.com/research-articles/explain-phone-number-field), [S115 checkout apply-button research](https://baymard.com/research-articles/checkout-usability-apply-buttons).
 - **Assigned source IDs (complete set):** `10, 29, 35, 43, 47, 49, 55, 100, 109, 113–115` — open these rows in the source audit/registry before use.
 - **Boundary:** Baymard detailed findings may be Premium; do not reproduce unseen findings or infer this product's conversion impact from a benchmark or case study.
@@ -179,6 +189,8 @@ The specialist Skills above are decision lanes. These profiles combine those lan
 - **Owns:** the contract between trigger, system response, visible status, next action, and recovery for each in-scope control.
 - **Core Skills:** `interaction-patterns`; add `forms-input` for field behavior, `navigation-controls` for route behavior, and `accessibility-inclusive-design` for semantics/AT checks.
 - **Deliverable:** state model covering idle, pending, success, error, disabled, retry, and exit where applicable, with outcomes verified against the real implementation.
+- **AI workflow:** for each control, record trigger, precondition, system result, visible feedback, next action, and cancellation/retry path; inspect timing, repeated input, failure, and interruption where relevant.
+- **Completion check:** every in-scope state has an observable outcome and recovery rule; a visual mock or client animation is not treated as proof of a server-side result.
 - **Source anchors:** [S48 NN/g button states](https://www.nngroup.com/articles/button-states-communicate-interaction/), [S52 W3C ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/), [S107 GOV.UK components](https://design-system.service.gov.uk/components/).
 - **Assigned source IDs (complete set):** `46, 48, 50–52, 107–115` — open these rows in the source audit/registry before use.
 - **Boundary:** ARIA patterns are accessibility implementation guidance, not visual design prescriptions. A local animation or mock state does not prove a server-side action.
@@ -189,6 +201,8 @@ The specialist Skills above are decision lanes. These profiles combine those lan
 - **Owns:** translating the user's task and content priority into an interface composition, then checking it in the actual product context.
 - **Core Skills:** choose `interface-layout` for composition, `visual-hierarchy` for ordering, or `color-systems` for semantic palette decisions; add `responsive-design` when layouts change across viewports.
 - **Deliverable:** hierarchy and layout rationale, use of existing design primitives, and representative rendered-state checks.
+- **AI workflow:** inspect the actual screen and task content; set reading/action priority before spacing or decoration; reuse existing primitives; compare representative rendered states and defer separate color, responsive, or system decisions to their owners.
+- **Completion check:** the layout expresses the stated task hierarchy in the rendered artifact without unsupported claims about comprehension or preference.
 - **Source anchors:** [S74 NN/g visual-design principles](https://www.nngroup.com/articles/principles-visual-design/), [S75 Adobe Spectrum attention hierarchy](https://spectrum.adobe.com/foundations/composition/attention-hierarchy), [S76 Android composition guidance](https://developer.android.com/design/ui/mobile/guides/layout-and-content/content-structure).
 - **Assigned source IDs (complete set):** `1–2, 4, 6–8, 11, 18–26, 36–42, 44–45, 57, 59–61, 64, 74–81` — open these rows in the source audit/registry before use.
 - **Boundary:** platform guidelines apply to their named ecosystem; examples and visual conventions do not prove that users understand or prefer this design.
@@ -199,6 +213,8 @@ The specialist Skills above are decision lanes. These profiles combine those lan
 - **Owns:** deciding whether a shared primitive is justified and defining its semantics, variants, accessibility contract, consumers, ownership, and rollout.
 - **Core Skills:** `design-systems`; add `color-systems`, `interface-layout`, or `responsive-design` for separate token, composition, or adaptation decisions.
 - **Deliverable:** documented contract, representative consumers per platform, compatibility risks, migration/rollback plan, and adoption checks.
+- **AI workflow:** confirm a repeated cross-screen need before proposing a shared primitive; define semantics, tokens, variants, states, accessibility contract, owners, and platform scope; check representative consumers and a reversible migration path.
+- **Completion check:** the contract names supported consumers and limits, and a small adoption check can detect regressions or token drift.
 - **Source anchors:** [S90 IBM Carbon](https://carbondesignsystem.com/), [S91 DTCG Design Tokens Format](https://www.designtokens.org/TR/2025.10/format/), [S97 Android Material components](https://developer.android.com/design/ui/mobile/guides/components/material-overview), [S96 Figma workflow guidance](https://www.figma.com/blog/how-to-streamline-your-design-system-workflow-in-figma/).
 - **Assigned source IDs (complete set):** `1, 51, 90–97` — open these rows in the source audit/registry before use.
 - **Boundary:** S91 defines an interchange format, not a design-system method; S96 is vendor guidance and does not independently prove usability or adoption outcomes.
@@ -209,6 +225,8 @@ The specialist Skills above are decision lanes. These profiles combine those lan
 - **Owns:** identifying applicable standards and platform guidance, and verifying the actual UI against the requested scope and user needs.
 - **Core Skills:** `accessibility-inclusive-design`; add `forms-input`, `interaction-patterns`, `color-systems`, `responsive-design`, or `persian-rtl-localization` for concrete specialist states.
 - **Deliverable:** criterion-level findings with route/state, input, tool/device/version, result, impact, remediation, and unverified areas.
+- **AI workflow:** choose the applicable standard/target and criterion; inspect the actual route and state with relevant keyboard, zoom, contrast, semantic, and assistive-technology methods; record automated, manual, and user evidence separately.
+- **Completion check:** every reported criterion has a reproducible method and status (`pass`, `fail`, `not applicable`, or `not verified`); sampled checks are not generalized to the whole product.
 - **Source anchors:** [S81 WCAG 2.2](https://www.w3.org/TR/WCAG22/), [S82 Android accessibility guidance](https://developer.android.com/guide/topics/ui/accessibility/apps), [S89 Compose accessibility codelab](https://developer.android.com/codelabs/jetpack-compose-accessibility).
 - **Assigned source IDs (complete set):** `52, 62–63, 81–89, 107` — open these rows in the source audit/registry before use.
 - **Boundary:** normative WCAG criteria, platform recommendations, automated scans, and manual/user research evidence are different. A sample does not establish whole-product conformance.
@@ -219,6 +237,8 @@ The specialist Skills above are decision lanes. These profiles combine those lan
 - **Owns:** adapting hierarchy, density, navigation, and control behavior to actual available space rather than shrinking a desktop composition.
 - **Core Skills:** `responsive-design`; add `interface-layout`, `design-systems`, or `accessibility-inclusive-design` only for separate concerns.
 - **Deliverable:** supported-mode matrix with real dimensions/device constraints, changed behavior, state coverage, and unverified combinations.
+- **AI workflow:** establish supported viewport/window and input modes; inspect content priority, navigation, reflow, overflow, and control behavior at representative constraints; keep web breakpoints distinct from native adaptive-window guidance.
+- **Completion check:** each claimed mode is tied to a measured viewport/device and rendered state, with unsupported combinations listed as unknown rather than inferred.
 - **Source anchors:** [S65 web.dev responsive design](https://web.dev/learn/design/), [S66 Android adaptive layouts](https://developer.android.com/design/ui/mobile/guides/layout-and-content/adapt-layout), [S67 MDN responsive design](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design), [S72 Android adaptive quality](https://developer.android.com/develop/adaptive-apps/quality-guidelines/adaptive-app-quality).
 - **Assigned source IDs (complete set):** `9, 11, 15, 17, 42, 65–73, 97` — open these rows in the source audit/registry before use.
 - **Boundary:** web breakpoints and Android window/adaptive guidance are not interchangeable. Verify current APIs and report only tested widths/devices.
@@ -229,6 +249,8 @@ The specialist Skills above are decision lanes. These profiles combine those lan
 - **Owns:** locale policy, script/font shaping, logical layout, bidi isolation, content expansion, and localized input behavior without imposing RTL on LTR experiences.
 - **Core Skills:** `persian-rtl-localization`; add `forms-input`, `responsive-design`, and `accessibility-inclusive-design` for the relevant form, viewport, or assistive-technology checks.
 - **Deliverable:** locale decisions and rendered tests using real strings and mixed-direction values across representative states and widths.
+- **AI workflow:** confirm locale and direction per surface; exercise real Persian/Arabic/Latin mixtures, numerals, dates, currency, phone/OTP, URLs, and code; inspect logical layout, bidi isolation, font shaping, focus order, and icon meaning.
+- **Completion check:** representative mixed-direction strings render and remain operable in the tested states; locale policy and untested language/assistive-technology combinations are explicit.
 - **Source anchors:** [S56 W3C Arabic and Persian layout requirements](https://w3c.github.io/alreq/), [S62 W3C inline bidirectional text](https://www.w3.org/International/articles/inline-bidi-markup/index), [S58 Vazirmatn reference](https://github.com/rastikerdar/vazirmatn).
 - **Assigned source IDs (complete set):** `56–64, 114` — open these rows in the source audit/registry before use.
 - **Boundary:** apply language and digit conventions from the confirmed product policy; do not infer Arabic/Persian behavior from generic RTL assumptions or mirror every icon.
@@ -239,6 +261,8 @@ The specialist Skills above are decision lanes. These profiles combine those lan
 - **Owns:** confirming user benefit, informed choice, fair prominence of alternatives, clear commitment/exit terms, and outcome guardrails beyond business conversion.
 - **Core Skills:** `ethical-persuasion`; add `ux-discovery`, `interaction-patterns`, or `journey-mapping` for evidence, choice states, or cross-stage consequences.
 - **Deliverable:** choice-architecture review, user-value evidence, opt-out/reversal checks, follow-up measures, and stop/remediation thresholds.
+- **AI workflow:** map the requested behavior and affected users; inspect prominence and clarity of accept/decline, cost/data/commitment disclosure, exit and reversal; define a user-value measure and guardrails before proposing optimization.
+- **Completion check:** the proposed change preserves informed, reversible choice and has an outcome measure that can reject a conversion gain that harms users.
 - **Source anchors:** [S28 Stanford Fogg Behavior Model](https://behaviordesign.stanford.edu/resources/fogg-behavior-model), [S29 Baymard conversion research](https://baymard.com/blog/knowledge-hub?category=conversion-optimization), [S35 Baymard cart-abandonment guidance](https://baymard.com/blog/reduce-cart-abandonment).
 - **Assigned source IDs (complete set):** `5, 13, 27–35` — open these rows in the source audit/registry before use.
 - **Boundary:** behavioral models and commercial case studies generate hypotheses; they neither guarantee lift nor justify deception, coercion, or hiding a decline/cancel path.
@@ -249,6 +273,8 @@ The specialist Skills above are decision lanes. These profiles combine those lan
 - **Owns:** review scope, evidence separation, impact/confidence ranking, and routing to the smallest set of specialist roles.
 - **Core Skills:** `ui-ux-review`; call in only the specialist profiles required by evidence and acceptance checks.
 - **Deliverable:** prioritized findings with location, observed evidence, user impact, recommendation, concrete verification, and explicit unknowns.
+- **AI workflow:** define routes/states and review limits; inspect the artifact; rank findings by user impact and confidence; attach one focused specialist handoff and a testable acceptance check to each material finding.
+- **Completion check:** each finding has location, evidence class, impact, recommendation, and verification; unknowns remain visible, and review has not silently expanded into implementation.
 - **Source anchors:** [S81 WCAG 2.2](https://www.w3.org/TR/WCAG22/) for applicable normative checks, [S87 WebAIM Million report](https://webaim.org/projects/million/), and the exact topic source selected for each finding. Use [`review-template.md`](../.agents/skills/ui-ux-review/references/review-template.md) and the audit CSV for traceability.
 - **Assigned source IDs (complete set):** `81, 87–88` — open these rows in the source audit/registry before use.
 - **Boundary:** broad review is not permission to redesign or implement. A population report, checklist, screenshot, or code scan is not proof that the target product is usable or conformant.

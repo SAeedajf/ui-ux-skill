@@ -67,6 +67,9 @@ if role_catalog.is_file():
   heading=re.match(r'^### (R\d{2}) — ',block)
   if not heading: continue
   profile_id=heading.group(1)
+  for required_field in ('AI workflow', 'Completion check'):
+   if not re.search(rf'^- \*\*{re.escape(required_field)}:\*\* .+',block,re.M):
+    fail(f'role catalog profile {profile_id} is missing its {required_field.lower()}')
   assigned=re.search(r'^- \*\*Assigned source IDs \(complete set\):\*\* `([^`]+)`',block,re.M)
   if not assigned:
    fail(f'role catalog profile {profile_id} is missing its complete source assignment')
