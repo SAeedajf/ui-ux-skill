@@ -170,7 +170,7 @@ If a Skill is not automatically discovered, check the host's configured Skill pa
 
 ### Route sources by their evidence role
 
-Use [`source-implementation-audit.csv`](source-implementation-audit.csv) to see why each supplied reference is routed to a Skill. Read the matching `source-registry.csv` row before using a source: the audit carries the two review-pass notes and access caveats, while the source URL remains the authority for a new claim.
+Use [`source-implementation-audit.csv`](source-implementation-audit.csv) to see why each supplied reference is routed to a Skill. Start with `role_for_ai`: it connects the user's original topic description, the source's audited role, the routed Skill, and the decision it can inform. `submitted_scope_fa` preserves all 134 Persian topic descriptions from the original request across 124 unique links, including alternate descriptions for repeated links. These descriptions record intended scope; they are not verified source findings. Read the matching `source-registry.csv` row before using a source: the audit carries both review-pass notes and access caveats, while the current linked page remains the authority for a new claim. Respect the row's evidence type, access status, claim ceiling, and usage boundary; do not promote a grouped source-ID trace into proof that an individual recommendation came from that source.
 
 | Source role | Use it for | Do not use it as |
 |---|---|---|

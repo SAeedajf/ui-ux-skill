@@ -47,8 +47,10 @@ for sid,row in usage_by_id.items():
  if row.get('submitted_url')!=registry_by_id[sid]['submitted_url']: fail(f'source implementation audit URL does not match registry for ID {sid}')
  if not row.get('domain') or not row.get('primary_skills') or not row.get('primary_skill_reference_paths'): fail(f'source implementation audit missing Skill routing for ID {sid}')
  if row.get('skill_reference_trace') not in {'individually_linked','grouped_id_range'}: fail(f'source implementation audit has unsupported or missing trace state for ID {sid}')
- for key in ('source_role','skill_application','review_pass_1','review_pass_2','source_review_notes','review_date','claim_ceiling'):
+ for key in ('source_role','submitted_scope_fa','role_for_ai','skill_application','review_pass_1','review_pass_2','source_review_notes','review_date','claim_ceiling'):
   if not row.get(key): fail(f'source implementation audit missing {key} for ID {sid}')
+ if row.get('submitted_scope_fa') and 'scope from the original request' not in row.get('role_for_ai','').lower():
+  fail(f'source implementation audit role_for_ai must distinguish supplied scope from evidence for ID {sid}')
  for key in ('review_pass_1','review_pass_2','source_review_notes','review_date'):
   registry_key={'review_pass_1':'pass_1','review_pass_2':'pass_2','source_review_notes':'notes'}.get(key,key)
   if row.get(key)!=registry_by_id[sid].get(registry_key):
