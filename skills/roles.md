@@ -118,3 +118,128 @@ These are decision-owning roles for a task, not a requirement to load 15 agents 
 ## Routing rule
 
 The role that owns the main unresolved product decision is primary. Add a second role only when it owns a distinct decision or acceptance check; share the evidence packet and explicit handoff, not the full context dump. A role or source link is a routing aid, not evidence that the target interface passed review.
+
+## Cross-functional professional profiles
+
+The specialist Skills above are decision lanes. These profiles combine those lanes into common professional responsibilities. A single model or agent can cover a profile; create separate agents only when the work can be independently reviewed or needs parallel expertise. `Source anchors` link to specific submitted references; they are examples of the role's evidence base, not an exhaustive list. For the full mapping of all 124 links to review notes and Skill references, use the [source implementation audit](../docs/source-implementation-audit.csv) and [source registry](../docs/source-registry.csv). Check each source's registry row for its review result, access, method, date, and claim ceiling before relying on it.
+
+### UX problem-framing lead
+
+- **Activate when:** the user goal, audience, success measure, or evidence is unclear.
+- **Owns:** turning a vague product request into a focused user problem and deciding whether to research, map, test, or proceed with a bounded hypothesis.
+- **Core Skills:** `ux-discovery`; add `information-architecture` or `journey-mapping` only for those separate decisions.
+- **Deliverable:** problem statement, known/unknown evidence, decision question, options, and smallest useful validation step.
+- **Source anchors:** [S3 NN/g research index](https://www.nngroup.com/), [S10 Baymard research index](https://baymard.com/research-articles), [S124 journey-mapping practitioner survey](https://www.nngroup.com/articles/journey-mapping-how/).
+- **Boundary:** the organization homepages are indexes; cite a specific article for a detailed research claim. A framing hypothesis is not user evidence.
+
+### UX researcher and method planner
+
+- **Activate when:** the decision depends on user behavior, comprehension, findability, needs, or a disputed assumption.
+- **Owns:** choosing a method and participant/task scope that answer the question; preserving accessibility, consent, privacy, and bias considerations in the plan.
+- **Core Skills:** `ux-discovery`; hand off taxonomy validation to `information-architecture` and end-to-end experience evidence to `journey-mapping`.
+- **Deliverable:** research question, method, participant/task criteria, evidence capture, analysis limits, and decision rule.
+- **Source anchors:** [S99 Optimal Workshop research methods](https://www.optimalworkshop.com/), [S105 card sorting vs. tree testing](https://www.nngroup.com/articles/card-sorting-tree-testing-differences/), [S124 practitioner methods survey](https://www.nngroup.com/articles/journey-mapping-how/).
+- **Boundary:** a vendor's advertised capability does not establish study validity; a study plan or aggregate statistic does not establish what this product's users did.
+
+### Journey and service designer
+
+- **Activate when:** the user's goal spans stages, channels, service staff, or backstage operations.
+- **Owns:** choosing between a journey map, in-product flow, service blueprint, empathy map, or story map and keeping current experience distinct from a proposed future state.
+- **Core Skills:** `journey-mapping`; add `ux-discovery`, `information-architecture`, or `navigation-controls` for distinct research, taxonomy, or route questions.
+- **Deliverable:** actor and goal, boundaries, stages/touchpoints, responsible handoffs, evidence labels, opportunity hypotheses, and follow-up validation.
+- **Source anchors:** [S117 Service Design Tools journey map](https://servicedesigntools.org/tools/journey-map), [S118 GOV.UK experience map](https://www.gov.uk/service-manual/user-research/creating-an-experience-map), [S123 journeys vs. flows](https://www.nngroup.com/articles/user-journeys-vs-user-flows/).
+- **Boundary:** maps synthesize evidence and do not prove behavior or causality; never invent backstage facts, emotions, or quotes.
+
+### Information architect and content-structure designer
+
+- **Activate when:** people cannot locate, classify, understand, or navigate content, or the taxonomy is changing.
+- **Owns:** content inventory, grouping, labels, hierarchy, cross-links, and the method for evaluating findability.
+- **Core Skills:** `information-architecture`; add `navigation-controls` for menu mechanics and `ux-discovery` when audience/task evidence is missing.
+- **Deliverable:** inventory and candidate structure, terminology decisions, task-based test plan, and unresolved assumptions.
+- **Source anchors:** [S98 NN/g information architecture](https://www.nngroup.com/topic/information-architecture/), [S105 card sorting vs. tree testing](https://www.nngroup.com/articles/card-sorting-tree-testing-differences/), [S106 NN/g menu-design checklist](https://www.nngroup.com/articles/menu-design/).
+- **Boundary:** card sorting explores possible groupings; tree testing evaluates a proposed hierarchy. Neither alone proves the final taxonomy is preferred or usable in context.
+
+### Ecommerce and checkout UX specialist
+
+- **Activate when:** product discovery, product details, category/listing, cart, checkout, or purchase recovery is in scope.
+- **Owns:** reducing task friction while preserving accurate product, price, delivery, data-use, and commitment information.
+- **Core Skills:** `forms-input` or `interaction-patterns` for the main decision; add `information-architecture`, `navigation-controls`, `ethical-persuasion`, or `accessibility-inclusive-design` only when those separate issues are present.
+- **Deliverable:** prioritized flow findings, state/recovery requirements, transparent-choice checks, and specific acceptance tests.
+- **Source anchors:** [S43 Baymard product-page research](https://baymard.com/research/product-page), [S109 Baymard checkout research](https://baymard.com/research/checkout-usability), [S114 phone-field explanation](https://baymard.com/research-articles/explain-phone-number-field), [S115 checkout apply-button research](https://baymard.com/research-articles/checkout-usability-apply-buttons).
+- **Boundary:** Baymard detailed findings may be Premium; do not reproduce unseen findings or infer this product's conversion impact from a benchmark or case study.
+
+### Interaction and state designer
+
+- **Activate when:** users need clear feedback, state transitions, reversibility, retry, or error recovery.
+- **Owns:** the contract between trigger, system response, visible status, next action, and recovery for each in-scope control.
+- **Core Skills:** `interaction-patterns`; add `forms-input` for field behavior, `navigation-controls` for route behavior, and `accessibility-inclusive-design` for semantics/AT checks.
+- **Deliverable:** state model covering idle, pending, success, error, disabled, retry, and exit where applicable, with outcomes verified against the real implementation.
+- **Source anchors:** [S48 NN/g button states](https://www.nngroup.com/articles/button-states-communicate-interaction/), [S52 W3C ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/), [S107 GOV.UK components](https://design-system.service.gov.uk/components/).
+- **Boundary:** ARIA patterns are accessibility implementation guidance, not visual design prescriptions. A local animation or mock state does not prove a server-side action.
+
+### Visual and interface designer
+
+- **Activate when:** a screen needs clearer composition, scan order, spacing, typography, imagery, or visual emphasis.
+- **Owns:** translating the user's task and content priority into an interface composition, then checking it in the actual product context.
+- **Core Skills:** choose `interface-layout` for composition, `visual-hierarchy` for ordering, or `color-systems` for semantic palette decisions; add `responsive-design` when layouts change across viewports.
+- **Deliverable:** hierarchy and layout rationale, use of existing design primitives, and representative rendered-state checks.
+- **Source anchors:** [S74 NN/g visual-design principles](https://www.nngroup.com/articles/principles-visual-design/), [S75 Adobe Spectrum attention hierarchy](https://spectrum.adobe.com/foundations/composition/attention-hierarchy), [S76 Android composition guidance](https://developer.android.com/design/ui/mobile/guides/layout-and-content/content-structure).
+- **Boundary:** platform guidelines apply to their named ecosystem; examples and visual conventions do not prove that users understand or prefer this design.
+
+### Design-system architect and steward
+
+- **Activate when:** multiple screens or products need consistent tokens, components, themes, contribution rules, or migration.
+- **Owns:** deciding whether a shared primitive is justified and defining its semantics, variants, accessibility contract, consumers, ownership, and rollout.
+- **Core Skills:** `design-systems`; add `color-systems`, `interface-layout`, or `responsive-design` for separate token, composition, or adaptation decisions.
+- **Deliverable:** documented contract, representative consumers per platform, compatibility risks, migration/rollback plan, and adoption checks.
+- **Source anchors:** [S90 IBM Carbon](https://carbondesignsystem.com/), [S91 DTCG Design Tokens Format](https://www.designtokens.org/TR/2025.10/format/), [S97 Android Material components](https://developer.android.com/design/ui/mobile/guides/components/material-overview), [S96 Figma workflow guidance](https://www.figma.com/blog/how-to-streamline-your-design-system-workflow-in-figma/).
+- **Boundary:** S91 defines an interchange format, not a design-system method; S96 is vendor guidance and does not independently prove usability or adoption outcomes.
+
+### Accessibility and inclusive-design specialist
+
+- **Activate when:** accessibility criteria, assistive technology, cognitive/physical access, inclusive research, or conformance evidence is requested.
+- **Owns:** identifying applicable standards and platform guidance, and verifying the actual UI against the requested scope and user needs.
+- **Core Skills:** `accessibility-inclusive-design`; add `forms-input`, `interaction-patterns`, `color-systems`, `responsive-design`, or `persian-rtl-localization` for concrete specialist states.
+- **Deliverable:** criterion-level findings with route/state, input, tool/device/version, result, impact, remediation, and unverified areas.
+- **Source anchors:** [S81 WCAG 2.2](https://www.w3.org/TR/WCAG22/), [S82 Android accessibility guidance](https://developer.android.com/guide/topics/ui/accessibility/apps), [S89 Compose accessibility codelab](https://developer.android.com/codelabs/jetpack-compose-accessibility).
+- **Boundary:** normative WCAG criteria, platform recommendations, automated scans, and manual/user research evidence are different. A sample does not establish whole-product conformance.
+
+### Responsive and adaptive product designer
+
+- **Activate when:** supported viewport, window size, orientation, foldable/multi-window posture, or input mode can change content or interaction.
+- **Owns:** adapting hierarchy, density, navigation, and control behavior to actual available space rather than shrinking a desktop composition.
+- **Core Skills:** `responsive-design`; add `interface-layout`, `design-systems`, or `accessibility-inclusive-design` only for separate concerns.
+- **Deliverable:** supported-mode matrix with real dimensions/device constraints, changed behavior, state coverage, and unverified combinations.
+- **Source anchors:** [S65 web.dev responsive design](https://web.dev/learn/design/), [S66 Android adaptive layouts](https://developer.android.com/design/ui/mobile/guides/layout-and-content/adapt-layout), [S67 MDN responsive design](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design), [S72 Android adaptive quality](https://developer.android.com/develop/adaptive-apps/quality-guidelines/adaptive-app-quality).
+- **Boundary:** web breakpoints and Android window/adaptive guidance are not interchangeable. Verify current APIs and report only tested widths/devices.
+
+### Persian, RTL, and mixed-direction localization specialist
+
+- **Activate when:** Persian/RTL content or mixed Arabic, Persian, Latin, numbers, URLs, email, phone, or code values appear in the interface.
+- **Owns:** locale policy, script/font shaping, logical layout, bidi isolation, content expansion, and localized input behavior without imposing RTL on LTR experiences.
+- **Core Skills:** `persian-rtl-localization`; add `forms-input`, `responsive-design`, and `accessibility-inclusive-design` for the relevant form, viewport, or assistive-technology checks.
+- **Deliverable:** locale decisions and rendered tests using real strings and mixed-direction values across representative states and widths.
+- **Source anchors:** [S56 W3C Arabic and Persian layout requirements](https://w3c.github.io/alreq/), [S62 W3C inline bidirectional text](https://www.w3.org/International/articles/inline-bidi-markup/index), [S58 Vazirmatn reference](https://github.com/rastikerdar/vazirmatn).
+- **Boundary:** apply language and digit conventions from the confirmed product policy; do not infer Arabic/Persian behavior from generic RTL assumptions or mirror every icon.
+
+### Ethical behavior and growth specialist
+
+- **Activate when:** a design seeks to influence conversion, engagement, habit, purchase, subscription, renewal, or user choice.
+- **Owns:** confirming user benefit, informed choice, fair prominence of alternatives, clear commitment/exit terms, and outcome guardrails beyond business conversion.
+- **Core Skills:** `ethical-persuasion`; add `ux-discovery`, `interaction-patterns`, or `journey-mapping` for evidence, choice states, or cross-stage consequences.
+- **Deliverable:** choice-architecture review, user-value evidence, opt-out/reversal checks, follow-up measures, and stop/remediation thresholds.
+- **Source anchors:** [S28 Stanford Fogg Behavior Model](https://behaviordesign.stanford.edu/resources/fogg-behavior-model), [S29 Baymard conversion research](https://baymard.com/blog/knowledge-hub?category=conversion-optimization), [S35 Baymard cart-abandonment guidance](https://baymard.com/blog/reduce-cart-abandonment).
+- **Boundary:** behavioral models and commercial case studies generate hypotheses; they neither guarantee lift nor justify deception, coercion, or hiding a decline/cancel path.
+
+### UI/UX quality review lead
+
+- **Activate when:** the user requests a broad audit or needs findings coordinated across multiple UI concerns.
+- **Owns:** review scope, evidence separation, impact/confidence ranking, and routing to the smallest set of specialist roles.
+- **Core Skills:** `ui-ux-review`; call in only the specialist profiles required by evidence and acceptance checks.
+- **Deliverable:** prioritized findings with location, observed evidence, user impact, recommendation, concrete verification, and explicit unknowns.
+- **Source anchors:** [S81 WCAG 2.2](https://www.w3.org/TR/WCAG22/) for applicable normative checks, [S87 WebAIM Million report](https://webaim.org/projects/million/), and the exact topic source selected for each finding. Use [`review-template.md`](../.agents/skills/ui-ux-review/references/review-template.md) and the audit CSV for traceability.
+- **Boundary:** broad review is not permission to redesign or implement. A population report, checklist, screenshot, or code scan is not proof that the target product is usable or conformant.
+
+## Profile selection
+
+Choose a profile by the decision to make, not by job title keywords. For a multi-part request, assign one lead profile and name the additional profile only for a separate acceptance check. Preserve the user-selected model and the host's available model; these profiles describe work, not model restrictions or a mandate to create subagents.

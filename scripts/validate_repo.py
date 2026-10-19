@@ -57,6 +57,11 @@ with (ROOT/'docs/source-implementation-audit.csv').open(encoding='utf-8',newline
 usage_by_id={row.get('id'):row for row in usage_rows}
 if len(usage_rows)!=len(sources) or len(usage_by_id)!=len(sources) or set(usage_by_id)!=set(ids): fail('source implementation audit must contain exactly one row for every source ID')
 registry_by_id={row['id']:row for row in sources}
+if role_catalog.is_file():
+ for match in re.finditer(r'\[S(\d+)\s+[^]]*\]\((https?://[^)]+)\)',role_text):
+  source=registry_by_id.get(match.group(1))
+  if not source or match.group(2) not in {source.get('url'),source.get('submitted_url')}:
+   fail(f'specialist role catalog citation does not match source registry: S{match.group(1)}')
 for sid,row in usage_by_id.items():
  if row.get('submitted_url')!=registry_by_id[sid]['submitted_url']: fail(f'source implementation audit URL does not match registry for ID {sid}')
  if not row.get('domain') or not row.get('primary_skills') or not row.get('primary_skill_reference_paths'): fail(f'source implementation audit missing Skill routing for ID {sid}')
