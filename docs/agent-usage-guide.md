@@ -168,6 +168,21 @@ Use this short loop for each task:
 
 If a Skill is not automatically discovered, check the host's configured Skill path and refresh/reopen the project as needed. Then invoke it explicitly using the host's supported syntax. A visible listing proves discovery only; an explicit invocation proves that it can be requested, not that automatic selection works. If the host lacks Skill support, use the relevant `SKILL.md` and reference as ordinary task guidance and state that the host did not activate it.
 
+### Route sources by their evidence role
+
+Use [`source-implementation-audit.csv`](source-implementation-audit.csv) to see why each supplied reference is routed to a Skill. Read the matching `source-registry.csv` row before using a source: the audit carries the two review-pass notes and access caveats, while the source URL remains the authority for a new claim.
+
+| Source role | Use it for | Do not use it as |
+|---|---|---|
+| Standard or specification | Exact criteria, definitions, and stated conformance conditions; check edition, scope, exceptions, and test method. | A guarantee that the inspected product conforms without testing it. |
+| Official platform or design system | Implementation patterns for the named ecosystem, after checking current documentation. | A universal rule across web, Android, iOS, or another design system. |
+| Research or public-service guidance | Evidence and questions within the described task, population, method, and publication date. | A causal or universal claim beyond the study and its access scope. |
+| Practitioner book or publication | Optional methods when the relevant material was actually available in review. | A fully reviewed method when the registry only records a listing, preview, or table of contents. |
+| Practitioner or product guidance | Candidate practices and hypotheses to test in the target product. | Independent proof of product outcomes or a normative requirement. |
+| Commercial or visual inspiration | Examples of shipped visual patterns and possible design directions. | Evidence of usability, accessibility, or effectiveness. |
+
+When applying a source, first match its subject to the actual decision and the mapped Skill. Then check `skill_reference_trace`: `individually_linked` means the reference is named or linked in a Skill file; `grouped_id_range` means the Skill only routes to a set of IDs. Neither status proves that a specific recommendation came from that source. If the source only has a grouped trace, cite it at the individual decision point before making a source-backed claim. Keep partial and paywalled material within the limits recorded in its row.
+
 ### Source-claim record
 
 For a recommendation that depends on an external source, keep a compact chain that another agent can check:

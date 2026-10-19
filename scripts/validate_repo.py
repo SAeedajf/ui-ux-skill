@@ -47,6 +47,12 @@ for sid,row in usage_by_id.items():
  if row.get('submitted_url')!=registry_by_id[sid]['submitted_url']: fail(f'source implementation audit URL does not match registry for ID {sid}')
  if not row.get('domain') or not row.get('primary_skills') or not row.get('primary_skill_reference_paths'): fail(f'source implementation audit missing Skill routing for ID {sid}')
  if row.get('skill_reference_trace') not in {'individually_linked','grouped_id_range'}: fail(f'source implementation audit has unsupported or missing trace state for ID {sid}')
+ for key in ('source_role','skill_application','review_pass_1','review_pass_2','source_review_notes','review_date','claim_ceiling'):
+  if not row.get(key): fail(f'source implementation audit missing {key} for ID {sid}')
+ for key in ('review_pass_1','review_pass_2','source_review_notes','review_date'):
+  registry_key={'review_pass_1':'pass_1','review_pass_2':'pass_2','source_review_notes':'notes'}.get(key,key)
+  if row.get(key)!=registry_by_id[sid].get(registry_key):
+   fail(f'source implementation audit {key} does not match source registry for ID {sid}')
  for key in ('primary_skill_reference_paths','trace_paths'):
   for relpath in filter(None,row.get(key,'').split(';')):
    if not (ROOT/relpath).is_file(): fail(f'source implementation audit has a broken {key} path for ID {sid}: {relpath}')
