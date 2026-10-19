@@ -31,6 +31,14 @@ if not role_catalog.is_file():
  fail('missing skills/roles.md specialist role catalog')
 else:
  role_text=role_catalog.read_text(encoding='utf-8')
+ specialist_text=role_text.split('## Cross-functional professional profiles',1)[0]
+ specialist_blocks=re.findall(r'^### .+? — `([^`]+)`\n(.*?)(?=^### |^## |\Z)',specialist_text,re.M|re.S)
+ if len(specialist_blocks)!=len(found) or {skill for skill,_ in specialist_blocks}!=set(found):
+  fail('specialist role catalog must define exactly one decision lane for every Skill')
+ for skill,block in specialist_blocks:
+  for required_field in ('Activate when', 'Acceptance check'):
+   if not re.search(rf'^- \*\*{re.escape(required_field)}:\*\* .+',block,re.M):
+    fail(f'specialist role {skill} is missing its {required_field.lower()}')
  for skill in found:
   if f'`{skill}`' not in role_text: fail(f'specialist role catalog does not define {skill}')
  for ref in re.findall(r'\[[^]]+\]\(([^)]+)\)',role_text):

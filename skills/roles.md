@@ -7,21 +7,27 @@ These are decision-owning roles for a task, not a requirement to load 15 agents 
 ### UX discovery lead — `ux-discovery`
 
 - **Owns:** framing the product question, user goal, audience, constraints, known evidence, and the lightest research method that can resolve uncertainty.
+- **Activate when:** the next design or product decision depends on an unclear user goal, audience, unmet need, or evidence gap; skip discovery when the task and available evidence already determine the next step.
 - **Produces:** a decision brief with observations, reports, assumptions, hypotheses, alternatives, and a validation plan.
+- **Acceptance check:** the brief separates observations from assumptions and identifies the smallest evidence-gathering step that could change the decision.
 - **Hands off:** taxonomy/findability to `information-architecture`; cross-stage experiences to `journey-mapping`; settled implementation questions to the owning design Skill.
 - **Source basis:** foundational research and product guidance S1–17 plus relevant topic sources selected from the registry. Start at [`discovery.md`](../.agents/skills/ux-discovery/references/discovery.md); the homepage/index references are not evidence for specific claims.
 
 ### Journey and service mapper — `journey-mapping`
 
 - **Owns:** selecting and constructing an evidence-labeled journey map, in-product flow, service blueprint, empathy map, or story map across the task's time horizon and channels.
+- **Activate when:** the user goal crosses meaningful stages, touchpoints, channels, or service handoffs; use navigation or interaction roles for a single route or control.
 - **Produces:** actor, goal, scope, stages/touchpoints, current vs. proposed state, evidence labels, service handoffs, and the next validation step.
+- **Acceptance check:** the artifact type matches the question, current and proposed states are distinct, unsupported stages stay marked unknown, and the map names a validation step.
 - **Hands off:** user research gaps to `ux-discovery`; content grouping to `information-architecture`; in-product route behavior to `navigation-controls`.
 - **Source basis:** S116–124. Start at [`journey-artifacts.md`](../.agents/skills/journey-mapping/references/journey-artifacts.md); distinguish user journeys from product flows and service maps from assumptions.
 
 ### Information architect — `information-architecture`
 
 - **Owns:** content inventory, grouping, taxonomy, labels, hierarchy, cross-links, and the method for testing findability.
+- **Activate when:** the unresolved question concerns content grouping, labels, taxonomy, hierarchy, or whether people can find an item—not when only menu styling is changing.
 - **Produces:** candidate structures, terminology decisions, method selection, and a task-based validation plan.
+- **Acceptance check:** the selected method tests the actual question: card sorting explores grouping/labels; tree testing checks findability in a proposed structure; their results are not interchanged.
 - **Hands off:** menu mechanics to `navigation-controls`; unresolved audience or task evidence to `ux-discovery`.
 - **Source basis:** S98–106. Start at [`ia-methods.md`](../.agents/skills/information-architecture/references/ia-methods.md); card sorting explores groupings, while tree testing evaluates a proposed hierarchy.
 
@@ -30,28 +36,36 @@ These are decision-owning roles for a task, not a requirement to load 15 agents 
 ### Interface composition designer — `interface-layout`
 
 - **Owns:** page-level composition, grids, spacing, component placement, and how the layout uses existing product primitives.
+- **Activate when:** page regions, grouping, spacing, or component placement need to support a specific task; route token, interaction, or breakpoint decisions to their owners.
 - **Produces:** a layout proposal tied to content, task, actual constraints, and existing tokens/components.
+- **Acceptance check:** the actual content and existing design primitives are represented, and the proposal is checked at a named rendered state and viewport or remains explicitly provisional.
 - **Hands off:** content priority to `visual-hierarchy`; shared primitive changes to `design-systems`; viewport behavior to `responsive-design`.
 - **Source basis:** S1–17 and S36–42, with applicable visual-design material S74–80. Start at [`composition.md`](../.agents/skills/interface-layout/references/composition.md); platform systems are examples for their own ecosystems.
 
 ### Visual hierarchy designer — `visual-hierarchy`
 
 - **Owns:** the intended first, second, and supporting read; emphasis and scan order for a specific user task.
+- **Activate when:** people may miss the key information or next action, or when competing content needs an explicit task-based priority.
 - **Produces:** ranked content/action priorities and the visual cues that express them, checked against reading and focus order.
+- **Acceptance check:** visual order agrees with semantic/keyboard order and does not rely on color alone; claims of user comprehension require task observation or other direct evidence.
 - **Hands off:** spacing and page composition to `interface-layout`; color semantics to `color-systems`; validation of user comprehension to `ux-discovery`.
 - **Source basis:** S74–80. Start at [`hierarchy-audit.md`](../.agents/skills/visual-hierarchy/references/hierarchy-audit.md); design principles and examples are not proof that users noticed or understood the hierarchy.
 
 ### Color and theme specialist — `color-systems`
 
 - **Owns:** semantic color roles, palette/theme relationships, status encoding, and rendered color-pair checks.
+- **Activate when:** color communicates content, action, status, focus, or theme differences, or when a contrast/non-color-encoding question is in scope.
 - **Produces:** semantic role assignments and a tested matrix of relevant foreground/background, state, and theme pairs.
+- **Acceptance check:** recorded rendered pairs meet the selected criterion where applicable, status also has a non-color cue, and untested themes/states remain explicit.
 - **Hands off:** shared token changes to `design-systems`; broader non-color accessibility checks to `accessibility-inclusive-design`.
 - **Source basis:** S18–26 and normative contrast criteria in S81. Start at [`color-decision.md`](../.agents/skills/color-systems/references/color-decision.md); palette generators and color-psychology articles are ideation or hypotheses, not conformance evidence.
 
 ### Design-system steward — `design-systems`
 
 - **Owns:** whether a repeated need merits a shared token/component, its semantic contract, adoption boundaries, and governance/migration plan.
+- **Activate when:** the same evidenced need appears across multiple consumers or a shared token, component, contribution rule, or migration is being considered.
 - **Produces:** token/component contract, supported variants and states, representative consumers, compatibility risks, and staged adoption checks.
+- **Acceptance check:** the repeated need and real representative consumers are named; shared behavior, platform-specific exceptions, owner, and reversible rollout checks are documented.
 - **Hands off:** one-screen composition to `interface-layout`; responsive implementation to `responsive-design`; accessibility contract checks to `accessibility-inclusive-design`.
 - **Source basis:** S90–97. Start at [`system-principles.md`](../.agents/skills/design-systems/references/system-principles.md); DTCG, platform systems, Figma vendor guidance, and practitioner books have different authority and scope.
 
@@ -60,28 +74,36 @@ These are decision-owning roles for a task, not a requirement to load 15 agents 
 ### Interaction designer — `interaction-patterns`
 
 - **Owns:** component behavior, state transitions, feedback, reversibility, and recovery from errors or interrupted tasks.
+- **Activate when:** users need to understand an action's consequence, system status, next step, cancellation, retry, or recovery.
 - **Produces:** a state model that traces each visible control through trigger, system response, and user-visible outcome.
+- **Acceptance check:** each in-scope state has an observable result and a usable recovery/exit path; mock or local feedback is not treated as proof of a remote action.
 - **Hands off:** field entry and validation to `forms-input`; destinations and wayfinding to `navigation-controls`; semantics/AT verification to `accessibility-inclusive-design`.
 - **Source basis:** S43–55 and S107–115. Start at [`interaction-states.md`](../.agents/skills/interaction-patterns/references/interaction-states.md); commercial studies and design-system patterns do not establish behavior in the target product.
 
 ### Forms and input specialist — `forms-input`
 
 - **Owns:** field necessity, labels, input methods, validation timing, data preservation, error recovery, and submission states.
+- **Activate when:** a task collects or edits user data, including validation, consent, sensitive values, authentication-like flows, or submission failures.
 - **Produces:** field contract and valid/invalid/retry/success state checks, including localized and sensitive values.
+- **Acceptance check:** each field has a justified purpose, clear label and error association, preserves valid input on failure, and only claims submission effects verified in the actual service.
 - **Hands off:** general control-state behavior to `interaction-patterns`; Persian/mixed-direction input to `persian-rtl-localization`; assistive-technology checks to `accessibility-inclusive-design`.
 - **Source basis:** S107–115. Start at [`form-review.md`](../.agents/skills/forms-input/references/form-review.md); paid checkout findings, platform examples, and practitioner methods retain their stated access and scope limits.
 
 ### Navigation and controls specialist — `navigation-controls`
 
 - **Owns:** destinations, menu structure, current-location cues, action-vs-link semantics, and the route for continuing or returning.
+- **Activate when:** users need to choose destinations, understand where they are, open/close a menu, or recover from an unclear route.
 - **Produces:** destination/label map plus keyboard, focus, overflow, and dead-end checks.
+- **Acceptance check:** each item is correctly identified as a destination or action, tested tasks have a real route and return path, and keyboard/focus states are included where applicable.
 - **Hands off:** content grouping to `information-architecture`; stateful control behavior to `interaction-patterns`; full keyboard/AT assessment to `accessibility-inclusive-design`.
 - **Source basis:** S50–55 and the IA/journey sources S98–124 when they address routes or user flows. Start at [`navigation-controls.md`](../.agents/skills/navigation-controls/references/navigation-controls.md); ARIA APG describes accessible interaction patterns, not a mandate to use a particular visual design.
 
 ### Ethical behavior designer — `ethical-persuasion`
 
 - **Owns:** whether influence supports a user-valued outcome, preserves informed choice, and gives a usable way to decline, exit, or reverse a commitment.
+- **Activate when:** a design attempts to influence purchase, subscription, renewal, habit, engagement, urgency, or another consequential user choice.
 - **Produces:** a choice-architecture review, user-value evidence needs, guardrails, and outcome/stop measures beyond conversion.
+- **Acceptance check:** decline/no-purchase, price/commitment terms, and exit/reversal are clear and usable; success measures include user outcomes and pre-defined harm guardrails, not conversion alone.
 - **Hands off:** behavior research to `ux-discovery`; states and exits to `interaction-patterns`; multi-step service impact to `journey-mapping`.
 - **Source basis:** S27–35. Start at [`ethical-review.md`](../.agents/skills/ethical-persuasion/references/ethical-review.md); models and case studies generate hypotheses and do not guarantee lift or justify coercion.
 
@@ -90,28 +112,36 @@ These are decision-owning roles for a task, not a requirement to load 15 agents 
 ### Responsive and adaptive design specialist — `responsive-design`
 
 - **Owns:** content and interaction adaptation across actual viewport/window sizes, orientation, input modes, and supported platform constraints.
+- **Activate when:** viewport, window size, orientation, posture, or input mode can change hierarchy, navigation, or interaction.
 - **Produces:** a mode matrix with the changed hierarchy/navigation/interaction and the exact rendered states verified.
+- **Acceptance check:** each claim names actual dimensions/device and tested states; web breakpoints are distinct from native window/adaptive behavior, and unrendered modes remain unverified.
 - **Hands off:** page composition to `interface-layout`; shared responsive primitives to `design-systems`; accessibility states to `accessibility-inclusive-design`.
 - **Source basis:** S36–42 and S65–73. Start at [`adaptation.md`](../.agents/skills/responsive-design/references/adaptation.md); distinguish web breakpoints from Android window/adaptive guidance and verify current platform docs for implementation.
 
 ### Accessibility and inclusive design specialist — `accessibility-inclusive-design`
 
 - **Owns:** applicable standard/target selection and evidence for semantics, keyboard, focus, contrast, reflow, motion, and relevant assistive technology behavior.
+- **Activate when:** a standard, assistive-technology, inclusive-interaction, or accessibility-conformance question is part of the requested scope.
 - **Produces:** criterion-level checks with artifact/state/tool/version and checked, not checked, or not applicable status.
+- **Acceptance check:** every in-scope criterion has a reproducible status and method; automated, manual, user, and unverified evidence are not collapsed into a blanket conformance claim.
 - **Hands off:** fixes to the owning component Skill; keeps automated scans, manual checks, and user research as distinct evidence.
 - **Source basis:** normative S81; platform guidance S82, S83, S89; supporting practice/report sources S84–88. Start at [`verification.md`](../.agents/skills/accessibility-inclusive-design/references/verification.md); no single sample or automated scan establishes whole-product conformance.
 
 ### Persian RTL localization specialist — `persian-rtl-localization`
 
 - **Owns:** locale/direction policy, Persian typography and shaping, bidi isolation, localized values, and RTL behavior without imposing RTL on LTR products.
+- **Activate when:** Persian/Arabic RTL content, mixed-direction strings, or locale-specific form behavior changes layout, text, navigation, or input.
 - **Produces:** locale-specific decisions and mixed-direction checks for real content across widths, input types, focus, and text scaling.
+- **Acceptance check:** confirmed locale rules are applied to real strings and values, direction/layout remain usable across tested states, and no RTL behavior is imposed on unrelated LTR surfaces.
 - **Hands off:** field validation to `forms-input`; layout adaptation to `responsive-design`; assistive-technology checks to `accessibility-inclusive-design`.
 - **Source basis:** S56–64 plus form-related S107–115 when the task includes localized inputs. Start at [`persian-rtl-checks.md`](../.agents/skills/persian-rtl-localization/references/persian-rtl-checks.md); standards, font references, books, and platform typography guidance are not interchangeable.
 
 ### UI/UX review lead — `ui-ux-review`
 
 - **Owns:** broad, in-scope interface inspection; severity/confidence ordering; evidence labeling; and routing each finding to the right specialist.
+- **Activate when:** the request is a broad audit or multiple interface issues need evidence-based prioritization and specialist routing.
 - **Produces:** findings with location, user impact, evidence class, concrete fix, and acceptance check, plus explicit unknowns.
+- **Acceptance check:** every material finding has a reproducible location/state, evidence class, impact, recommendation, and verification; a review does not silently expand into implementation.
 - **Hands off:** specialized decisions to the smallest applicable Skills; does not convert a review into implementation without that request.
 - **Source basis:** S81–89 establish accessibility review sources; select topic-specific sources from the other domains for each finding. Start at [`review-template.md`](../.agents/skills/ui-ux-review/references/review-template.md) and use `docs/source-implementation-audit.csv` to trace a claim to the exact link and Skill reference.
 
