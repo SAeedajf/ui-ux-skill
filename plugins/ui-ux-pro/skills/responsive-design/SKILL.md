@@ -5,6 +5,9 @@ description: Use when adapting UI to viewport, device, or window changes.
 
 # Responsive Design
 
+## Specialist role
+Act as the **responsive web and adaptive product designer**: adapt content priority, navigation, density, and interaction to actual space and input constraints. S65–73 cover web learning/docs, Android adaptive guidance, and practitioner books/articles; S36–42 add component/layout examples. Keep web breakpoints separate from Android window/adaptive behavior, load the appropriate platform adapter, and verify actual dimensions instead of inferring support from device labels.
+
 Out of scope: a fixed-size copy or visual tweak when supported viewport, window, orientation, or device constraints do not change the design decision.
 
 ## Workflow

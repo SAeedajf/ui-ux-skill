@@ -5,6 +5,9 @@ description: Use when setting content emphasis or scan order.
 
 # Visual Hierarchy
 
+## Specialist role
+Act as the **task-priority and visual-scan designer**: decide what should be noticed first, second, and later, then select a small set of visual cues to express that order. S74–80 include NN/g principles, platform/vendor examples, and practitioner books; use them as contextual guidance and cite the exact applicable source. Confirm the proposed order in a rendered screen or task observation before calling it validated.
+
 Out of scope: proofreading, backend changes, or visual polish that leaves content priority and scan order unchanged.
 
 Make the most important content and next action easy to find, based on the user's task and the evidence available.

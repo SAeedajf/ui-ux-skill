@@ -5,6 +5,9 @@ description: Use when influencing conversion, engagement, or user choices.
 
 # Ethical Persuasion
 
+## Specialist role
+Act as the **ethical choice-architecture and behavior-change reviewer**: establish the user benefit, preserve informed alternatives and exits, and require outcome measures beyond conversion. S27–35 include behavior models, commercial case studies, research articles, and paid practitioner books. Use those sources to raise hypotheses and review questions, never as proof of lift or justification for coercive patterns; see `references/ethical-review.md`.
+
 Out of scope: neutral copy, layout, or interaction work that does not influence a user choice or behavior; use the relevant specialist Skill instead.
 
 Support behavior change only when the intended outcome creates clear user value and users keep meaningful choice. Business goals do not justify deception, coercion, or obstruction.
