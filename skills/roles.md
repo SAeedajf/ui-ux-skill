@@ -151,7 +151,7 @@ The role that owns the main unresolved product decision is primary. Add a second
 
 ## Cross-functional professional profiles
 
-The specialist Skills above are decision lanes. These profiles combine those lanes into common professional responsibilities. A single model or agent can cover a profile; create separate agents only when the work can be independently reviewed or needs parallel expertise. `Source anchors` are direct example links. The `Assigned source IDs` list under each profile is its full source-routing set across the 124 submitted links; a source may support multiple roles because the domains overlap. This routing is based on the reviewed source role, original scope, evidence type, and Skill mapping, but does not claim that every assigned source supports every claim in the profile. Use the [source implementation audit](../docs/source-implementation-audit.csv) to inspect each source-to-Skill trace and [source registry](../docs/source-registry.csv) for review, access, method, date, and claim ceiling.
+The specialist Skills above are decision lanes. These profiles combine those lanes into common professional responsibilities. A single model or agent can cover a profile; create separate agents only when the work can be independently reviewed or needs parallel expertise. `Source anchors` are direct example links. The `Assigned source IDs` list under each profile is its full source-routing set across 124 user-supplied and five curated follow-up references; a source may support multiple roles because the domains overlap. Curated sources are separately labeled in the registry and are not presented as user-provided. This routing is based on reviewed source role, supplied or curated scope, evidence type, and Skill mapping, but does not claim that every assigned source supports every claim in the profile. Use the [source implementation audit](../docs/source-implementation-audit.csv) to inspect each source-to-Skill trace and [source registry](../docs/source-registry.csv) for provenance, review, access, method, date, and claim ceiling.
 
 ### R01 — UX problem-framing lead
 
@@ -174,7 +174,7 @@ The specialist Skills above are decision lanes. These profiles combine those lan
 - **AI workflow:** translate the decision into a research question; match method and participant/task criteria to that question; define consent, data minimization, capture, analysis, and stop rules before interpreting findings.
 - **Completion check:** a plan specifies the question, participant/task scope, method, consent/capture, analysis, and decision rule; completed findings trace to captured evidence and sample limits. A plan or secondary-source statistic is not target-user behavior.
 - **Source anchors:** [S99 Optimal Workshop research methods](https://www.optimalworkshop.com/), [S105 card sorting vs. tree testing](https://www.nngroup.com/articles/card-sorting-tree-testing-differences/), [S124 practitioner methods survey](https://www.nngroup.com/articles/journey-mapping-how/).
-- **Assigned source IDs (complete set):** `3, 8, 10, 12, 14, 16, 33, 54, 98–106, 116–124` — open these rows in the source audit/registry before use.
+- **Assigned source IDs (complete set):** `3, 8, 10, 12, 14, 16, 33, 54, 98–106, 116–124, 126` — open these rows in the source audit/registry before use.
 - **Boundary:** a vendor's advertised capability does not establish study validity; a study plan or aggregate statistic does not establish what this product's users did.
 
 ### R03 — Journey and service designer
@@ -198,7 +198,7 @@ The specialist Skills above are decision lanes. These profiles combine those lan
 - **AI workflow:** inventory the in-scope content and destinations; group by user task and source terminology; choose card sorting to explore groupings or tree testing to evaluate a proposed structure; test representative findability tasks.
 - **Completion check:** labels and hierarchy can be traced to user tasks or explicitly marked hypotheses, and the validation method tests the actual decision at issue.
 - **Source anchors:** [S98 NN/g information architecture](https://www.nngroup.com/topic/information-architecture/), [S105 card sorting vs. tree testing](https://www.nngroup.com/articles/card-sorting-tree-testing-differences/), [S106 NN/g menu-design checklist](https://www.nngroup.com/articles/menu-design/).
-- **Assigned source IDs (complete set):** `50, 53–55, 98–106` — open these rows in the source audit/registry before use.
+- **Assigned source IDs (complete set):** `50, 53–55, 98–106, 125` — open these rows in the source audit/registry before use.
 - **Boundary:** card sorting explores possible groupings; tree testing evaluates a proposed hierarchy. Neither alone proves the final taxonomy is preferred or usable in context.
 
 ### R05 — Ecommerce and checkout UX specialist
@@ -222,7 +222,7 @@ The specialist Skills above are decision lanes. These profiles combine those lan
 - **AI workflow:** for each control, record trigger, precondition, system result, visible feedback, next action, and cancellation/retry path; inspect timing, repeated input, failure, and interruption where relevant.
 - **Completion check:** every in-scope state has an observable outcome and recovery rule; a visual mock or client animation is not treated as proof of a server-side result.
 - **Source anchors:** [S48 NN/g button states](https://www.nngroup.com/articles/button-states-communicate-interaction/), [S52 W3C ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/), [S107 GOV.UK components](https://design-system.service.gov.uk/components/).
-- **Assigned source IDs (complete set):** `46, 48, 50–52, 107–115` — open these rows in the source audit/registry before use.
+- **Assigned source IDs (complete set):** `46, 48, 50–52, 107–115, 129` — open these rows in the source audit/registry before use.
 - **Boundary:** ARIA patterns are accessibility implementation guidance, not visual design prescriptions. A local animation or mock state does not prove a server-side action.
 
 ### R07 — Visual and interface designer
@@ -258,7 +258,7 @@ The specialist Skills above are decision lanes. These profiles combine those lan
 - **AI workflow:** choose the applicable standard/target and criterion; inspect the actual route and state with relevant keyboard, zoom, contrast, semantic, and assistive-technology methods; record automated, manual, and user evidence separately.
 - **Completion check:** every reported criterion has a reproducible method and status (`pass`, `fail`, `not applicable`, or `not verified`); sampled checks are not generalized to the whole product.
 - **Source anchors:** [S81 WCAG 2.2](https://www.w3.org/TR/WCAG22/), [S82 Android accessibility guidance](https://developer.android.com/guide/topics/ui/accessibility/apps), [S89 Compose accessibility codelab](https://developer.android.com/codelabs/jetpack-compose-accessibility).
-- **Assigned source IDs (complete set):** `52, 62–63, 81–89, 107` — open these rows in the source audit/registry before use.
+- **Assigned source IDs (complete set):** `52, 62–63, 81–89, 107, 128–129` — open these rows in the source audit/registry before use.
 - **Boundary:** normative WCAG criteria, platform recommendations, automated scans, and manual/user research evidence are different. A sample does not establish whole-product conformance.
 
 ### R10 — Responsive and adaptive product designer
@@ -270,7 +270,7 @@ The specialist Skills above are decision lanes. These profiles combine those lan
 - **AI workflow:** establish supported viewport/window and input modes; inspect content priority, navigation, reflow, overflow, and control behavior at representative constraints; keep web breakpoints distinct from native adaptive-window guidance.
 - **Completion check:** each claimed mode is tied to a measured viewport/device and rendered state, with unsupported combinations listed as unknown rather than inferred.
 - **Source anchors:** [S65 web.dev responsive design](https://web.dev/learn/design/), [S66 Android adaptive layouts](https://developer.android.com/design/ui/mobile/guides/layout-and-content/adapt-layout), [S67 MDN responsive design](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design), [S72 Android adaptive quality](https://developer.android.com/develop/adaptive-apps/quality-guidelines/adaptive-app-quality).
-- **Assigned source IDs (complete set):** `9, 11, 15, 17, 42, 65–73, 97` — open these rows in the source audit/registry before use.
+- **Assigned source IDs (complete set):** `9, 11, 15, 17, 42, 65–73, 97, 127` — open these rows in the source audit/registry before use.
 - **Boundary:** web breakpoints and Android window/adaptive guidance are not interchangeable. Verify current APIs and report only tested widths/devices.
 
 ### R11 — Persian, RTL, and mixed-direction localization specialist
@@ -282,7 +282,7 @@ The specialist Skills above are decision lanes. These profiles combine those lan
 - **AI workflow:** confirm locale and direction per surface; exercise real Persian/Arabic/Latin mixtures, numerals, dates, currency, phone/OTP, URLs, and code; inspect logical layout, bidi isolation, font shaping, focus order, and icon meaning.
 - **Completion check:** representative mixed-direction strings render and remain operable in the tested states; locale policy and untested language/assistive-technology combinations are explicit.
 - **Source anchors:** [S56 W3C Arabic and Persian layout requirements](https://w3c.github.io/alreq/), [S62 W3C inline bidirectional text](https://www.w3.org/International/articles/inline-bidi-markup/index), [S58 Vazirmatn reference](https://github.com/rastikerdar/vazirmatn).
-- **Assigned source IDs (complete set):** `56–64, 114` — open these rows in the source audit/registry before use.
+- **Assigned source IDs (complete set):** `56–64, 114, 129` — open these rows in the source audit/registry before use.
 - **Boundary:** apply language and digit conventions from the confirmed product policy; do not infer Arabic/Persian behavior from generic RTL assumptions or mirror every icon.
 
 ### R12 — Ethical behavior and growth specialist
@@ -306,8 +306,20 @@ The specialist Skills above are decision lanes. These profiles combine those lan
 - **AI workflow:** define routes/states and review limits; inspect the artifact; rank findings by user impact and confidence; attach one focused specialist handoff and a testable acceptance check to each material finding.
 - **Completion check:** each finding has location, evidence class, impact, recommendation, and verification; unknowns remain visible, and review has not silently expanded into implementation.
 - **Source anchors:** [S81 WCAG 2.2](https://www.w3.org/TR/WCAG22/) for applicable normative checks, [S87 WebAIM Million report](https://webaim.org/projects/million/), and the exact topic source selected for each finding. Use [`review-template.md`](../.agents/skills/ui-ux-review/references/review-template.md) and the audit CSV for traceability.
-- **Assigned source IDs (complete set):** `81, 87–88` — open these rows in the source audit/registry before use.
+- **Assigned source IDs (complete set):** `81, 87–88, 128` — open these rows in the source audit/registry before use.
 - **Boundary:** broad review is not permission to redesign or implement. A population report, checklist, screenshot, or code scan is not proof that the target product is usable or conformant.
+
+### R14 — UX content designer and interface writer
+
+- **Activate when:** users cannot understand what content is for, which information belongs on a screen, what a field or action requires, or how an error/status message helps them recover.
+- **Owns:** user-need-led content structure and the clarity, consistency, accessibility, and lifecycle of interface text.
+- **Core Skills:** `information-architecture` for content purpose, grouping, and hierarchy; `forms-input` for labels, instructions, validation, and recovery copy.
+- **Deliverable:** content inventory or message map with user need, location, content format, owner, accessible wording criteria, and unresolved validation questions.
+- **AI workflow:** identify the user task; inspect current content and terminology; separate structural/content decisions from interaction state; draft original language matched to audience and locale; verify labels, instructions, error/status/recovery messages in context; record ownership and validation needs.
+- **Completion check:** each content element has a task purpose and location, important instructions and errors offer a clear next action, wording is checked in the target locale and layout, and unvalidated assumptions are labeled.
+- **Source anchors:** [S125 GOV.UK content design](https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/plan-manage-content/understand-content-design/) and [S129 GOV.UK Design System error message](https://design-system.service.gov.uk/components/error-message/).
+- **Assigned source IDs (complete set):** `125, 129` — open these rows in the source audit/registry before use.
+- **Boundary:** S125 and S129 describe UK public-service/GOV.UK contexts. They do not prove that English wording, GOV.UK component choices, or the same governance fit another service; validate original copy with the target audience, locale, product, and platform.
 
 ## Profile selection
 

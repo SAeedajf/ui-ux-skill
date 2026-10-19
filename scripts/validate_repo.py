@@ -45,13 +45,18 @@ else:
   if not ref.startswith(('http://','https://','#')) and not (role_catalog.parent/ref).exists(): fail(f'specialist role catalog has a broken link: {ref}')
  for match in re.finditer(r'\bS(\d+)(?:[–-](\d+))?\b',role_text):
   start=int(match.group(1)); end=int(match.group(2) or start)
-  if start<1 or end<start or end>124: fail(f'specialist role catalog has an invalid source range: {match.group(0)}')
+  if start<1 or end<start or end>129: fail(f'specialist role catalog has an invalid source range: {match.group(0)}')
 # Source registry.
 with (ROOT/'docs/source-registry.csv').open(encoding='utf-8',newline='') as f: sources=list(csv.DictReader(f))
 ids=[r['id'] for r in sources]
-if len(sources)!=124 or len(set(ids))!=124 or set(ids)!=set(map(str,range(1,125))): fail('source registry must contain unique IDs 1..124')
-if any(not r.get('submitted_url') or not r.get('url') for r in sources): fail('each source needs submitted_url and reviewed/canonical url')
-if len({r['submitted_url'] for r in sources})!=124: fail('submitted_url must preserve the 124 distinct source links')
+if len(sources)!=129 or len(set(ids))!=129 or set(ids)!=set(map(str,range(1,130))): fail('source registry must contain unique IDs 1..129')
+if any(not r.get('url') for r in sources): fail('each source needs a reviewed/canonical url')
+if any(not r.get('source_origin') for r in sources): fail('each source needs an explicit provenance class')
+user_sources=[r for r in sources if r['source_origin']=='user_supplied']
+curated_sources=[r for r in sources if r['source_origin']=='curated_follow_up']
+if len(user_sources)!=124 or len(curated_sources)!=5: fail('expected 124 user-supplied and five curated follow-up sources')
+if any(not r.get('submitted_url') for r in user_sources) or len({r['submitted_url'] for r in user_sources})!=124: fail('submitted_url must preserve all 124 distinct user-supplied source links')
+if any(r.get('submitted_url') for r in curated_sources): fail('curated sources must not be represented as user-submitted')
 allowed_source_pairs={('standard_or_specification','normative_or_consensus'),('research_or_public_service_guidance','research_or_service_guidance'),('official_platform_or_design_system','implementation_guidance'),('book_or_practitioner_publication','practitioner_method'),('practitioner_or_product_guidance','practitioner_guidance'),('commercial_or_visual_inspiration','inspiration_only')}
 if any((r.get('source_class'),r.get('evidence_type')) not in allowed_source_pairs for r in sources): fail('source_class and evidence_type must use a documented matching evidence pair')
 if any(not r.get(k) for r in sources for k in ('pass_1','pass_2','checkpoint_5','review_date')): fail('every source needs two review passes, a five-source checkpoint, and review date')
@@ -67,8 +72,8 @@ if len(usage_rows)!=len(sources) or len(usage_by_id)!=len(sources) or set(usage_
 registry_by_id={row['id']:row for row in sources}
 if role_catalog.is_file():
  profile_ids=re.findall(r'^### (R\d{2}) — ',role_text,re.M)
- expected_profile_ids=[f'R{i:02}' for i in range(1,14)]
- if profile_ids!=expected_profile_ids: fail('role catalog must define profiles R01 through R13 exactly once and in order')
+ expected_profile_ids=[f'R{i:02}' for i in range(1,15)]
+ if profile_ids!=expected_profile_ids: fail('role catalog must define profiles R01 through R14 exactly once and in order')
  registry_source_ids={int(source_id) for source_id in ids}
  source_ids_by_profile={profile_id:set() for profile_id in profile_ids}
  for block in re.split(r'(?=^### R\d{2} — )',role_text,flags=re.M):
@@ -111,10 +116,16 @@ for sid,row in usage_by_id.items():
  if row.get('submitted_url')!=registry_by_id[sid]['submitted_url']: fail(f'source implementation audit URL does not match registry for ID {sid}')
  if not row.get('domain') or not row.get('primary_skills') or not row.get('primary_skill_reference_paths'): fail(f'source implementation audit missing Skill routing for ID {sid}')
  if row.get('skill_reference_trace') not in {'individually_linked','grouped_id_range'}: fail(f'source implementation audit has unsupported or missing trace state for ID {sid}')
- for key in ('source_role','submitted_scope_fa','role_for_ai','professional_role_ids','skill_application','review_pass_1','review_pass_2','source_review_notes','review_date','claim_ceiling'):
+ for key in ('source_role','role_for_ai','professional_role_ids','skill_application','review_pass_1','review_pass_2','source_review_notes','review_date','claim_ceiling','source_origin'):
   if not row.get(key): fail(f'source implementation audit missing {key} for ID {sid}')
- if row.get('submitted_scope_fa') and 'scope from the original request' not in row.get('role_for_ai','').lower():
-  fail(f'source implementation audit role_for_ai must distinguish supplied scope from evidence for ID {sid}')
+ if registry_by_id[sid]['source_origin']=='user_supplied':
+  if not row.get('submitted_scope_fa') or 'scope from the original request' not in row.get('role_for_ai','').lower():
+   fail(f'source implementation audit must preserve and qualify supplied scope for ID {sid}')
+  if row.get('curated_scope_fa'): fail(f'user-supplied source must not have a curated scope note for ID {sid}')
+ else:
+  if row.get('submitted_scope_fa') or not row.get('curated_scope_fa') or 'curated scope note' not in row.get('role_for_ai','').lower():
+   fail(f'curated source must separate editorial scope from user input for ID {sid}')
+ if row.get('source_origin')!=registry_by_id[sid]['source_origin']: fail(f'source implementation audit provenance mismatch for ID {sid}')
  for key in ('review_pass_1','review_pass_2','source_review_notes','review_date'):
   registry_key={'review_pass_1':'pass_1','review_pass_2':'pass_2','source_review_notes':'notes'}.get(key,key)
   if row.get(key)!=registry_by_id[sid].get(registry_key):
@@ -124,7 +135,7 @@ for sid,row in usage_by_id.items():
    if not (ROOT/relpath).is_file(): fail(f'source implementation audit has a broken {key} path for ID {sid}: {relpath}')
 # Coverage mapping.
 with (ROOT/'docs/domain-coverage.csv').open(encoding='utf-8',newline='') as f: domains=list(csv.DictReader(f))
-if len(domains)!=14: fail(f'expected 14 domain rows, found {len(domains)}')
+if len(domains)!=15: fail(f'expected 15 domain rows, found {len(domains)}')
 domains_by_source={}
 for domain_row in domains:
  for source_id in filter(None,domain_row['source_ids'].split(';')):
