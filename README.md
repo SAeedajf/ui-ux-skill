@@ -23,6 +23,8 @@ Use `python3 scripts/install-skills.py --help` to see selection and overwrite op
 - [AI agent usage guide](docs/agent-usage-guide.md)
 - [Installation](docs/installation.md)
 - [Source registry](docs/source-registry.csv)
+- [Source-to-Skill implementation audit](docs/source-implementation-audit.csv)
+- [Source review notes](docs/source-review.md)
 - [Domain coverage](docs/domain-coverage.csv)
 - [Platform adapters](adapters/)
 - [Examples](examples/)

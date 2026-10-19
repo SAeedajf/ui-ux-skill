@@ -2,6 +2,14 @@
 
 The registry preserves the original 124 references, with two review-pass notes and a checkpoint after each five-reference group. The review was updated through 2026-10-14; individual rows retain their own review date. Use the linked primary page for claims; this registry is a research map, not an endorsement or substitute for reading the source.
 
+## Implementation trace audit (2026-10-19)
+
+The original user-supplied source list contains 135 Markdown link occurrences, including 11 repeated links, for 124 unique URLs. All 124 unique URLs match `submitted_url` in this registry; the cross-check found no missing or extra source. An older internal note saying 155 unique URLs is not supported by the original list and is not the registry target.
+
+[`source-implementation-audit.csv`](source-implementation-audit.csv) gives one row per source with its topic domain, routed Skill(s), reference path, evidence/access class, and trace strength. In the Skill reference files, 85 sources are linked or named individually; 39 are included through a grouped source-ID range. Those 39 are discoverable in the mapped domain reference, but the Skill text does not state an individual source-to-recommendation relationship for each one. The audit therefore records a topic-level role and does not claim every recommendation came from every source. For claim-level use, cite the specific source at the decision point and respect its access and evidence limits.
+
+The implementation trace audit does not replace the source-content review recorded below: two-pass notes and five-source checkpoints remain in each registry row, and the six partially verified sources remain partial.
+
 `docs/domain-coverage.csv` maps every source ID to its registry domain; related domains may also cross-reference a source. The `source_ids` column is an index, not evidence that each source is equally authoritative or that every method fits every task. For an operational recommendation, use the source's evidence class and access notes and choose the relevant method for the user's actual question.
 
 ## Evidence classes

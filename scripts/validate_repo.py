@@ -38,14 +38,36 @@ source_ids=set(ids)
 reference_files=sorted(p for skill_dir in skills.iterdir() for p in skill_dir.glob('references/*.md'))
 unlinked_sources={int(sid) for sid in source_ids}-source_ids_in_files(reference_files,{int(sid) for sid in source_ids})
 if unlinked_sources: fail(f'source registry IDs lack a Skill reference method/decision link: {", ".join(map(str,sorted(unlinked_sources)))}')
+# Per-source implementation trace. Keep original submitted links and Skill routing auditable.
+with (ROOT/'docs/source-implementation-audit.csv').open(encoding='utf-8',newline='') as f: usage_rows=list(csv.DictReader(f))
+usage_by_id={row.get('id'):row for row in usage_rows}
+if len(usage_rows)!=len(sources) or len(usage_by_id)!=len(sources) or set(usage_by_id)!=set(ids): fail('source implementation audit must contain exactly one row for every source ID')
+registry_by_id={row['id']:row for row in sources}
+for sid,row in usage_by_id.items():
+ if row.get('submitted_url')!=registry_by_id[sid]['submitted_url']: fail(f'source implementation audit URL does not match registry for ID {sid}')
+ if not row.get('domain') or not row.get('primary_skills') or not row.get('primary_skill_reference_paths'): fail(f'source implementation audit missing Skill routing for ID {sid}')
+ if row.get('skill_reference_trace') not in {'individually_linked','grouped_id_range'}: fail(f'source implementation audit has unsupported or missing trace state for ID {sid}')
+ for key in ('primary_skill_reference_paths','trace_paths'):
+  for relpath in filter(None,row.get(key,'').split(';')):
+   if not (ROOT/relpath).is_file(): fail(f'source implementation audit has a broken {key} path for ID {sid}: {relpath}')
 # Coverage mapping.
 with (ROOT/'docs/domain-coverage.csv').open(encoding='utf-8',newline='') as f: domains=list(csv.DictReader(f))
 if len(domains)!=14: fail(f'expected 14 domain rows, found {len(domains)}')
+domains_by_source={}
+for domain_row in domains:
+ for source_id in filter(None,domain_row['source_ids'].split(';')):
+  domains_by_source.setdefault(source_id,[]).append(domain_row)
 for row in domains:
  for sid in row['source_ids'].split(';'):
   if sid not in source_ids: fail(f"{row['domain']}: unknown source ID {sid}")
  for skill in row['primary_skills'].split(';'):
   if skill not in found: fail(f"{row['domain']}: unknown Skill {skill}")
+for sid,usage in usage_by_id.items():
+ coverage=domains_by_source.get(sid,[])
+ expected_domains={row['domain'] for row in coverage}
+ expected_skills={skill for row in coverage for skill in row['primary_skills'].split(';')}
+ if not coverage or set(filter(None,usage.get('domain','').split(';')))!=expected_domains or set(filter(None,usage.get('primary_skills','').split(';')))!=expected_skills:
+  fail(f'source implementation audit routing does not match domain coverage for ID {sid}')
 for error in validate_domain_source_refs(domains, source_ids): fail(error)
 for error in validate_domain_quality_refs(domains, quality_definitions()): fail(error)
 # Evals.
