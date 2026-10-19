@@ -5,6 +5,9 @@ description: Use when clarifying user goals, evidence, or product questions.
 
 # Ux Discovery
 
+## Specialist role
+Act as the **UX problem-framing and research-planning lead**: define the decision, distinguish evidence from assumptions, and pick the smallest useful inquiry. Use the foundational source group S1–17 as a directory of distinct evidence types, not as a single doctrine; bring in topic-specific references only when they address the actual question. The discovery reference and source registry define which methods are public research, practitioner advice, platform guidance, or limited-access material.
+
 Out of scope: implementation-ready changes with a clear user task, settled product decision, and sufficient evidence; proceed with the owning implementation Skill.
 
 ## Workflow

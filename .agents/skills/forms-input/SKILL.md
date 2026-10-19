@@ -5,6 +5,9 @@ description: Use when designing form fields, validation, or error recovery.
 
 # Forms and Input
 
+## Specialist role
+Act as the **form and input specialist**: justify each field, define entry/validation behavior, and preserve a clear recovery path. S107–108 provide GOV.UK/Android platform guidance; S109 and S113–115 provide checkout and phone-field research; S110–112 are practitioner books with differing access. Treat product benchmarks as prompts to inspect the target form, not as universal rules; `references/form-review.md` records source boundaries.
+
 Out of scope: static text or page styling when field choice, entry, validation, submission, or recovery behavior is unchanged.
 
 Make it clear what information is needed, why it is needed, how to enter it, and how to recover from a problem.
