@@ -1,6 +1,7 @@
 # Accessibility verification
 
 - Confirm the target standard and version. **81** is WCAG 2.2; native Android checks should also use current Android guidance such as **82** and **89**.
+- Use [S128 WCAG-EM 2.0](https://www.w3.org/TR/WCAG-EM/) to plan evaluation scope, explore the product, select representative samples, and report the evaluation method. It is an informative evaluation methodology, not a new normative WCAG success criterion; sampling alone does not establish whole-site conformance.
 - Inspect semantic names/roles/states, keyboard order and focus, contrast, non-color cues, text resizing/reflow, motion preferences, touch target behavior, errors, and status announcements.
 - Combine automated checks with manual keyboard and assistive-technology use. Automated scans cannot establish full conformance or usability.
 - Report evidence as `checked`, `not checked`, or `not applicable`, with tool/device/version where relevant. Do not infer screen-reader behavior from source code alone.
@@ -21,6 +22,8 @@ Use these as a focused regression set, not as a claim that the whole site or pro
 | Pointer target size (2.5.8) | In-scope targets meet 24 by 24 CSS px or a documented criterion exception. | Measured target and spacing, viewport, exception if used. |
 
 For form regressions, inspect rendered invalid and corrected states: visible message, programmatic field association, invalid state, focus destination, and announcement behavior. Verify that stateful controls such as password visibility expose their current state. Measure text and control-boundary contrast in relevant focus/error states; source tokens alone do not prove rendered contrast.
+
+For error-message patterns, S129 can prompt checks for field/service error distinction and field association; verify the actual accessible name, invalid state, focus, announcement, and Persian/RTL presentation independently. The GOV.UK component is an example, not a target implementation or localization proof.
 
 Keep evidence methods distinct: an explicitly measured 200% browser zoom or text resize is not established by narrowing the viewport, changing device emulation, or scaling content with CSS. Record how zoom was applied and the effective content viewport. An accessibility tree or DOM snapshot is not screen-reader output; label it supplemental and record assistive-technology name/version and observed announcements only when a real AT session was operated. Static ARIA presence does not verify focus movement, name/state announcements, or error recovery.
 

@@ -5,6 +5,9 @@ description: Use when changing shared tokens, components, or theming.
 
 # Design Systems
 
+## Specialist role
+Act as the **design-system architect and steward**: decide whether a repeated product need warrants a shared token/component and define its contract, consumers, ownership, and migration path. S90–97 combine platform design systems, the DTCG interchange format, practitioner books, and Figma vendor material. Keep those authorities distinct; an interchange format is not a governance model, and a vendor announcement is not an independent usability result. See `references/system-principles.md`.
+
 Out of scope: a one-off screen value or component change with no shared token, repeated component, or theming decision.
 
 ## Workflow

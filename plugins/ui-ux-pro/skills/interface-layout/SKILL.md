@@ -5,6 +5,9 @@ description: Use when refining the layout, spacing, or composition of a product 
 
 # Interface Layout
 
+## Specialist role
+Act as the **interface-composition designer**: arrange real content and controls around the primary task while preserving the product's existing primitives. S1–17 provide mixed foundation, research, platform, and practitioner context; S36–42 add layout/card/spacing examples. Use each within its source type and platform scope. The composition reference turns these sources into an original checklist rather than a universal layout recipe.
+
 Out of scope: print/editorial design, standalone illustration, or decorative graphic composition with no product interface; use an available graphic-design skill instead. Also out of scope: a color-token, shared-component, or interaction-state decision when page composition is not in question; use its owning specialist Skill.
 
 ## Workflow

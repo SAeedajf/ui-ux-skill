@@ -14,15 +14,40 @@ Canonical Skills and references now distinguish normalization, parsing, and vali
 
 ## Evidence state
 
-- AccessLab: 76/76 Node tests and 53/53 in-app browser checks passed on the edited local project. Browser checks include a 10-width responsive matrix, paste preservation, repeated invalid submission, correction, successful local demo completion, and narrow error expansion.
+- AccessLab: 76/76 Node tests and 55/55 in-app browser checks passed on the edited local project. Browser checks include a 10-width responsive matrix, paste preservation, repeated invalid submission, correction, successful local demo completion, narrow error expansion, WCAG 1.4.12 text-spacing overrides at 320 CSS px, and an 844×390 CSS px landscape-like low-height simulation. The orientation case is a viewport simulation, not physical-device evidence.
 - GitHub fixture: six deterministic `unittest` cases.
-- Source/package parity, marketplace validation, and reproducible 0.1.0 archive: passed locally. GitHub Actions run [39138656263](https://github.com/SAeedajf/ui-ux-skill/actions/runs/39138656263) passed on commit `db499868166da0a03184bf13fb85646c4c9214fb`; use the PR Checks tab for the current head after this report update.
+- Source/package parity, marketplace validation, and reproducible 0.1.0 archive: passed locally. GitHub Actions run [39147860950](https://github.com/SAeedajf/ui-ux-skill/actions/runs/39147860950) passed on main commit `a58aa59438e22402b2da19053f9f6518169dd599`; the previous PR-head run [39142600519](https://github.com/SAeedajf/ui-ux-skill/actions/runs/39142600519) also passed.
 - Plugin version remains 0.1.0; the changes add guidance and tests without changing installation contracts.
-- Automatic skill activation: `NOT_VERIFIED`. One natural-language OTP positive and one non-UI negative prompt are defined as `NOT_RUN`; no fresh model invocation or trace is claimed.
+- Automatic skill activation: `NOT_VERIFIED`. The current local Codex CLI reports `0.144.5`, but `codex login status` and `codex plugin list` stop on a configuration parse error in `[agents]` (boolean `true` received where an `AgentRoleToml` is expected). No model prompt was sent and no plugin activation trace was captured. The user's Codex configuration was inspected read-only and left unchanged; plugin installation/availability in this runtime therefore remains `UNKNOWN`.
 - Real 200% browser zoom: `PASS` in isolated Firefox 147.0.4 on a 1280×720 Xvfb display. Native browser zoom changed the measured CSS viewport from 1280×720 to 640×360 and `devicePixelRatio` to 2. The embedded app had no horizontal overflow; the form stayed within the app viewport and keyboard focus remained visibly outlined. Screenshot and detailed metrics are in the separate AccessLab project, not this repository.
-- Screen-reader output: `NOT_VERIFIED`; Orca is installed, but no spoken output was captured because the current AT-SPI socket was unavailable.
-- Orca output remains `NOT_VERIFIED`: user-session AT-SPI access failed, and an isolated Xvfb/D-Bus run could not activate an AT-SPI remote peer. No spoken output was captured.
+- WCAG 1.4.12 text-spacing override: `PASS` in the browser harness at 320 CSS px while showing a recoverable malformed-OTP error; the full invalid value and error remained visible with no horizontal overflow or clipping. A separate 844×390 CSS px landscape-like simulation kept the focused stage heading in view; it does not establish physical-device rotation behavior.
+- Screen-reader output: `NOT_VERIFIED`. Orca 49.4 and AT-SPI2 2.58.1 are installed. In the current desktop session, AT-SPI reports `IsEnabled=false` and `ScreenReaderEnabled=false`; Orca's application enumeration listed 17 apps but also warned that its expected socket was missing/stale. This is not evidence of speech output. A separate Xvfb/private D-Bus attempt failed to activate an AT-SPI remote peer (`Could not activate remote peer: unit failed`) and listed zero apps. No spoken output was captured, and the desktop session/accessibility settings were not changed.
 - Full WCAG 2.2 AA conformance, physical-device behavior, and real mobile-network performance are not established by these tests.
 - After the OTP helper-copy change, the local UI screenshots were refreshed and visually reviewed with Firefox 147.0.4 at 1280×720 and 390×844 CSS px. The image files and hashes remain in the separate AccessLab project and are not included in this repository. These captures do not demonstrate 200% browser zoom.
 
 This report records local implementation evidence separately from reusable Skill quality and activation evidence. The local AccessLab source is not copied into this repository.
+
+## Latest continuation status (2026-10-18)
+
+- GitHub shows PR #22 merged at `2026-10-18T17:04:01Z` by repository account `SAeedajf`, with merge commit `a58aa59438e22402b2da19053f9f6518169dd599`. This continuation did not issue a merge command. The earlier report's reference to checking the PR Checks tab is historical; current CI must be read from the `main` commit's checks.
+- The local CLI configuration error prevents confirming installed/enabled plugins or obtaining a runtime activation trace. No settings were edited to work around it. Automatic activation remains `NOT_VERIFIED`, not PASS or FAIL.
+- The main desktop has screen-reader support disabled according to AT-SPI status. An actual spoken interaction would require enabling/starting assistive technology in that session; that was not done. Orca output remains `NOT_VERIFIED`.
+- A fresh browser-harness run now reports 55/55 checks, including text-spacing and landscape-like low-height cases; the local project results record the latest run URL and scope.
+
+## Fresh verification (2026-10-19)
+
+- AccessLab was rerun from the current local source: Node.js v22.23.1 passed 76/76 unit tests; the fresh in-app Chromium harness passed 55/55 across its ten-width matrix. It also passed the WCAG 1.4.12 spacing override and landscape-like low-height simulation. These tests do not establish physical-device rotation or complete WCAG conformance.
+- Fresh keyboard-only OTP check passed with synthetic data: selected OTP using Tab/Space, submitted malformed Persian digits with Enter and observed the recoverable field error, corrected the entire value, and reached the demo-only success state with Enter. The UI explicitly stated that no real session was created.
+- The UI/UX Pro repository passed `scripts/validate_repo.py`, marketplace validation, plugin integrity validation, deterministic package check, and `python -m unittest discover -s tests -v` (63 tests). The first local attempt was missing `jsonschema`; rerunning with the repository's pinned development dependencies in a temporary virtual environment passed. No repository dependency file or user Python environment was changed.
+- The earlier in-app zoom shortcut attempt did not change the viewport. This does not contradict the separately measured PASS for native Firefox 147.0.4 zoom at 200%; the distinction is recorded in the local AccessLab report.
+
+## WCAG 2.2 A/AA audit and follow-up fixes (2026-10-19)
+
+The separate local AccessLab page received a criterion-by-criterion WCAG 2.2 A/AA audit. Its full matrix is in the local `ACCESSIBILITY_AUDIT.md`; the result remains **PARTIAL**, with no full-conformance claim. Four code-level issues were fixed:
+
+- WCAG 2.2.1: the demo OTP's 60-second expiry could not be turned off before requesting a code. A labeled opt-in checkbox now controls it before the OTP step; the local demo defaults to no expiry. A new unit test advances a fake clock by ten seconds and confirms the code can still be submitted.
+- WCAG 2.2.2: the visible countdown text changed every second. It is now static, and a 5.2-second browser assertion confirms the timer/resend labels do not update continuously; one status message announces resend availability.
+- WCAG 2.4.4 semantics: non-navigating help/privacy `#` links became clearly named demo buttons; the brand link targets the local home path.
+- WCAG 3.1.2: “Test Adapter” was translated to Persian in the UI.
+
+After these changes the local demo passed **77 Node tests and 57 browser checks**, with zero failures, including the 10-width matrix. The browser harness version was not available. Keyboard-only use of every newly changed control, full screen-reader output, all-state contrast, 200% zoom through every flow, and physical-device behavior remain unverified. Orca/AT-SPI was not enabled or modified. The source demo remains outside this repository; only reusable guidance, the sanitized fixture, and evidence summary are tracked here.

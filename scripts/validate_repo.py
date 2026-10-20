@@ -24,12 +24,39 @@ for p in sorted(skills.iterdir()):
  for ref in re.findall(r'\[[^]]+\]\(([^)]+)\)',text):
   if not ref.startswith(('http://','https://','#')) and not (p/ref).exists(): fail(f'{p.name}: broken link {ref}')
 if len(found)!=15: fail(f'expected 15 Skills, found {len(found)}')
+# The role catalog is the cross-Skill routing contract. Keep each Skill represented
+# and ensure its source references stay within the maintained registry.
+role_catalog=ROOT/'skills/roles.md'
+if not role_catalog.is_file():
+ fail('missing skills/roles.md specialist role catalog')
+else:
+ role_text=role_catalog.read_text(encoding='utf-8')
+ specialist_text=role_text.split('## Cross-functional professional profiles',1)[0]
+ specialist_blocks=re.findall(r'^### .+? — `([^`]+)`\n(.*?)(?=^### |^## |\Z)',specialist_text,re.M|re.S)
+ if len(specialist_blocks)!=len(found) or {skill for skill,_ in specialist_blocks}!=set(found):
+  fail('specialist role catalog must define exactly one decision lane for every Skill')
+ for skill,block in specialist_blocks:
+  for required_field in ('Activate when', 'Acceptance check'):
+   if not re.search(rf'^- \*\*{re.escape(required_field)}:\*\* .+',block,re.M):
+    fail(f'specialist role {skill} is missing its {required_field.lower()}')
+ for skill in found:
+  if f'`{skill}`' not in role_text: fail(f'specialist role catalog does not define {skill}')
+ for ref in re.findall(r'\[[^]]+\]\(([^)]+)\)',role_text):
+  if not ref.startswith(('http://','https://','#')) and not (role_catalog.parent/ref).exists(): fail(f'specialist role catalog has a broken link: {ref}')
+ for match in re.finditer(r'\bS(\d+)(?:[–-](\d+))?\b',role_text):
+  start=int(match.group(1)); end=int(match.group(2) or start)
+  if start<1 or end<start or end>129: fail(f'specialist role catalog has an invalid source range: {match.group(0)}')
 # Source registry.
 with (ROOT/'docs/source-registry.csv').open(encoding='utf-8',newline='') as f: sources=list(csv.DictReader(f))
 ids=[r['id'] for r in sources]
-if len(sources)!=124 or len(set(ids))!=124 or set(ids)!=set(map(str,range(1,125))): fail('source registry must contain unique IDs 1..124')
-if any(not r.get('submitted_url') or not r.get('url') for r in sources): fail('each source needs submitted_url and reviewed/canonical url')
-if len({r['submitted_url'] for r in sources})!=124: fail('submitted_url must preserve the 124 distinct source links')
+if len(sources)!=129 or len(set(ids))!=129 or set(ids)!=set(map(str,range(1,130))): fail('source registry must contain unique IDs 1..129')
+if any(not r.get('url') for r in sources): fail('each source needs a reviewed/canonical url')
+if any(not r.get('source_origin') for r in sources): fail('each source needs an explicit provenance class')
+user_sources=[r for r in sources if r['source_origin']=='user_supplied']
+curated_sources=[r for r in sources if r['source_origin']=='curated_follow_up']
+if len(user_sources)!=124 or len(curated_sources)!=5: fail('expected 124 user-supplied and five curated follow-up sources')
+if any(not r.get('submitted_url') for r in user_sources) or len({r['submitted_url'] for r in user_sources})!=124: fail('submitted_url must preserve all 124 distinct user-supplied source links')
+if any(r.get('submitted_url') for r in curated_sources): fail('curated sources must not be represented as user-submitted')
 allowed_source_pairs={('standard_or_specification','normative_or_consensus'),('research_or_public_service_guidance','research_or_service_guidance'),('official_platform_or_design_system','implementation_guidance'),('book_or_practitioner_publication','practitioner_method'),('practitioner_or_product_guidance','practitioner_guidance'),('commercial_or_visual_inspiration','inspiration_only')}
 if any((r.get('source_class'),r.get('evidence_type')) not in allowed_source_pairs for r in sources): fail('source_class and evidence_type must use a documented matching evidence pair')
 if any(not r.get(k) for r in sources for k in ('pass_1','pass_2','checkpoint_5','review_date')): fail('every source needs two review passes, a five-source checkpoint, and review date')
@@ -38,14 +65,92 @@ source_ids=set(ids)
 reference_files=sorted(p for skill_dir in skills.iterdir() for p in skill_dir.glob('references/*.md'))
 unlinked_sources={int(sid) for sid in source_ids}-source_ids_in_files(reference_files,{int(sid) for sid in source_ids})
 if unlinked_sources: fail(f'source registry IDs lack a Skill reference method/decision link: {", ".join(map(str,sorted(unlinked_sources)))}')
+# Per-source implementation trace. Keep original submitted links and Skill routing auditable.
+with (ROOT/'docs/source-implementation-audit.csv').open(encoding='utf-8',newline='') as f: usage_rows=list(csv.DictReader(f))
+usage_by_id={row.get('id'):row for row in usage_rows}
+if len(usage_rows)!=len(sources) or len(usage_by_id)!=len(sources) or set(usage_by_id)!=set(ids): fail('source implementation audit must contain exactly one row for every source ID')
+registry_by_id={row['id']:row for row in sources}
+if role_catalog.is_file():
+ profile_ids=re.findall(r'^### (R\d{2}) — ',role_text,re.M)
+ expected_profile_ids=[f'R{i:02}' for i in range(1,15)]
+ if profile_ids!=expected_profile_ids: fail('role catalog must define profiles R01 through R14 exactly once and in order')
+ registry_source_ids={int(source_id) for source_id in ids}
+ source_ids_by_profile={profile_id:set() for profile_id in profile_ids}
+ for block in re.split(r'(?=^### R\d{2} — )',role_text,flags=re.M):
+  heading=re.match(r'^### (R\d{2}) — ',block)
+  if not heading: continue
+  profile_id=heading.group(1)
+  for required_field in ('AI workflow', 'Completion check'):
+   if not re.search(rf'^- \*\*{re.escape(required_field)}:\*\* .+',block,re.M):
+    fail(f'role catalog profile {profile_id} is missing its {required_field.lower()}')
+  assigned=re.search(r'^- \*\*Assigned source IDs \(complete set\):\*\* `([^`]+)`',block,re.M)
+  if not assigned:
+   fail(f'role catalog profile {profile_id} is missing its complete source assignment')
+   continue
+  for token in assigned.group(1).split(','):
+   token=token.strip(); source_range=re.fullmatch(r'(\d+)(?:[–-](\d+))?',token)
+   if not source_range:
+    fail(f'role catalog profile {profile_id} has an invalid source assignment: {token}')
+    continue
+   start=int(source_range.group(1)); end=int(source_range.group(2) or start)
+   assigned_ids=set(range(start,end+1))
+   if start<1 or end<start or not assigned_ids.issubset(registry_source_ids): fail(f'role catalog profile {profile_id} has an out-of-range source assignment: {token}')
+   source_ids_by_profile[profile_id].update(assigned_ids)
+ for match in re.finditer(r'\[S(\d+)\s+[^]]*\]\((https?://[^)]+)\)',role_text):
+  source=registry_by_id.get(match.group(1))
+  if not source or match.group(2) not in {source.get('url'),source.get('submitted_url')}:
+   fail(f'specialist role catalog citation does not match source registry: S{match.group(1)}')
+ audit_role_ids={profile_id:set() for profile_id in profile_ids}
+ for row in usage_rows:
+  profile_list=set(filter(None,row.get('professional_role_ids','').split(';')))
+  if not profile_list: fail(f'source implementation audit has no professional role assignment for source {row.get("id")}')
+  for profile_id in profile_list:
+   if profile_id not in audit_role_ids: fail(f'source implementation audit uses unknown professional profile {profile_id} for source {row.get("id")}')
+   else: audit_role_ids[profile_id].add(int(row['id']))
+ if set(int(sid) for sid in ids)!=set().union(*audit_role_ids.values()):
+  fail('professional role assignments must cover every source in the registry')
+ for profile_id in profile_ids:
+  if audit_role_ids.get(profile_id,set())!=source_ids_by_profile.get(profile_id,set()):
+   fail(f'role catalog source assignment does not match the source audit for {profile_id}')
+for sid,row in usage_by_id.items():
+ if row.get('submitted_url')!=registry_by_id[sid]['submitted_url']: fail(f'source implementation audit URL does not match registry for ID {sid}')
+ if not row.get('domain') or not row.get('primary_skills') or not row.get('primary_skill_reference_paths'): fail(f'source implementation audit missing Skill routing for ID {sid}')
+ if row.get('skill_reference_trace') not in {'individually_linked','grouped_id_range'}: fail(f'source implementation audit has unsupported or missing trace state for ID {sid}')
+ for key in ('source_role','role_for_ai','professional_role_ids','skill_application','review_pass_1','review_pass_2','source_review_notes','review_date','claim_ceiling','source_origin'):
+  if not row.get(key): fail(f'source implementation audit missing {key} for ID {sid}')
+ if registry_by_id[sid]['source_origin']=='user_supplied':
+  if not row.get('submitted_scope_fa') or 'scope from the original request' not in row.get('role_for_ai','').lower():
+   fail(f'source implementation audit must preserve and qualify supplied scope for ID {sid}')
+  if row.get('curated_scope_fa'): fail(f'user-supplied source must not have a curated scope note for ID {sid}')
+ else:
+  if row.get('submitted_scope_fa') or not row.get('curated_scope_fa') or 'curated scope note' not in row.get('role_for_ai','').lower():
+   fail(f'curated source must separate editorial scope from user input for ID {sid}')
+ if row.get('source_origin')!=registry_by_id[sid]['source_origin']: fail(f'source implementation audit provenance mismatch for ID {sid}')
+ for key in ('review_pass_1','review_pass_2','source_review_notes','review_date'):
+  registry_key={'review_pass_1':'pass_1','review_pass_2':'pass_2','source_review_notes':'notes'}.get(key,key)
+  if row.get(key)!=registry_by_id[sid].get(registry_key):
+   fail(f'source implementation audit {key} does not match source registry for ID {sid}')
+ for key in ('primary_skill_reference_paths','trace_paths'):
+  for relpath in filter(None,row.get(key,'').split(';')):
+   if not (ROOT/relpath).is_file(): fail(f'source implementation audit has a broken {key} path for ID {sid}: {relpath}')
 # Coverage mapping.
 with (ROOT/'docs/domain-coverage.csv').open(encoding='utf-8',newline='') as f: domains=list(csv.DictReader(f))
-if len(domains)!=14: fail(f'expected 14 domain rows, found {len(domains)}')
+if len(domains)!=15: fail(f'expected 15 domain rows, found {len(domains)}')
+domains_by_source={}
+for domain_row in domains:
+ for source_id in filter(None,domain_row['source_ids'].split(';')):
+  domains_by_source.setdefault(source_id,[]).append(domain_row)
 for row in domains:
  for sid in row['source_ids'].split(';'):
   if sid not in source_ids: fail(f"{row['domain']}: unknown source ID {sid}")
  for skill in row['primary_skills'].split(';'):
   if skill not in found: fail(f"{row['domain']}: unknown Skill {skill}")
+for sid,usage in usage_by_id.items():
+ coverage=domains_by_source.get(sid,[])
+ expected_domains={row['domain'] for row in coverage}
+ expected_skills={skill for row in coverage for skill in row['primary_skills'].split(';')}
+ if not coverage or set(filter(None,usage.get('domain','').split(';')))!=expected_domains or set(filter(None,usage.get('primary_skills','').split(';')))!=expected_skills:
+  fail(f'source implementation audit routing does not match domain coverage for ID {sid}')
 for error in validate_domain_source_refs(domains, source_ids): fail(error)
 for error in validate_domain_quality_refs(domains, quality_definitions()): fail(error)
 # Evals.

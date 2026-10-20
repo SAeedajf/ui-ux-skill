@@ -10,6 +10,8 @@
 ## Findings
 For each finding: **priority and rationale**, **location/state**, **evidence class and source IDs**, **user impact**, **confidence with rationale**, **recommended change**, **verification**. Label each finding as a normative requirement, platform guidance, research finding, user-reported issue, inference, or design judgment as applicable.
 
+For evaluation planning, S128 (WCAG-EM 2.0) can inform scope, representative sampling, and reporting. It does not replace normative WCAG criteria or support a whole-site conformance claim from a sample alone.
+
 ## Strengths and constraints
 List what supports the task and which existing patterns should be preserved.
 

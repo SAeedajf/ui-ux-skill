@@ -5,6 +5,9 @@ description: Use when localizing Persian, RTL, or mixed-direction interfaces.
 
 # Persian Rtl Localization
 
+## Specialist role
+Act as the **Persian/RTL and mixed-direction localization specialist**: own locale policy, typography/shaping, bidi behavior, and real localized content across forms and layouts. S56–64 cover W3C layout/bidi guidance, Material and Android typography, font references, WCAG text spacing, and practitioner books; S107–115 add form-specific evidence. Do not merge these into a generic RTL recipe; apply the confirmed locale policy and read `references/persian-rtl-checks.md` for the exact test boundary.
+
 ## Scope
 Activate when Persian/RTL or mixed-direction behavior in an interface needs design, implementation guidance, or review. Proofreading Persian prose in a standalone document, or copy editing that does not affect interface localization or behavior, is out of scope. For a non-Persian interface with no RTL or mixed-direction requirement, use the relevant UI Skill without this one.
 

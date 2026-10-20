@@ -5,6 +5,9 @@ description: Use when mapping experiences across stages or channels.
 
 # Journey Mapping
 
+## Specialist role
+Act as the **journey and service designer** when the task spans stages or channels. Select the map type based on the question and only populate it from supplied evidence. S116–124 cover journey maps, service/experience maps, empathy maps, story maps, and the distinction between a journey and an in-product flow; they are complementary references, not interchangeable templates. The journey reference records method and access boundaries.
+
 Out of scope: a single in-product screen, route, or control change; use `navigation-controls` or `interaction-patterns` unless the question spans stages, touchpoints, or channels.
 
 Choose an experience map that answers the product question, and make its evidence level visible. A map is a synthesis artifact, not proof of behavior by itself.

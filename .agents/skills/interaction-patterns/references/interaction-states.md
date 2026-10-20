@@ -19,6 +19,8 @@
 
 Starting sources: [S43 Baymard product page research](https://baymard.com/research/product-page), [S44 Atlassian semantic color guidance](https://atlassian.design/foundations/color), [S45 Colin Shanley, *Colour in User Interface Design*](https://play.google.com/store/books/details?id=By7vDwAAQBAJ), [S46 Dan Saffer, *Microinteractions: Designing with Details*](https://www.oreilly.com/library/view/microinteractions-full-color/9781491945957/), [S47 Baymard product page UX](https://baymard.com/research-articles/current-state-ecommerce-product-page-ux), [S48 Nielsen Norman Group button states](https://www.nngroup.com/articles/button-states-communicate-interaction/), and [S49 Baymard product listing UX](https://baymard.com/blog/product-listing-page-plp-ux). Check the source registry for paywall, sample, publication-date, and platform scope before attaching any specific research claim.
 
+For errors, [S129](https://design-system.service.gov.uk/components/error-message/) distinguishes field-level feedback from service-level failures. Use the distinction to define the state and recovery path; retain entered data where safe, and adapt the pattern to the target product rather than copying GOV.UK wording or markup.
+
 When a request explicitly asks to use the reference set, include a compact source-to-decision table so another reviewer can see which method informed which decision and what the source cannot establish. Do not pad a narrow interaction answer with unrelated citations; mark a source as not used when its subject does not affect the task.
 
 | Source | Apply when | Operational method | Limit |

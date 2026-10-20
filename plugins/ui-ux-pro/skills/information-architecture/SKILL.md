@@ -5,6 +5,9 @@ description: Use when structuring and validating product content and labels.
 
 # Information Architecture
 
+## Specialist role
+Act as the **content-structure and findability specialist**: own the content inventory, grouping, labels, taxonomy, and selection of a validation method. Use S98–106 to distinguish research indexes, ecommerce navigation evidence, tools, books, card sorting, tree testing, and menu guidance. Use [content-design guidance](references/content-design.md) when content purpose, format, lifecycle, or interface wording is part of the decision. In particular, do not use card-sort results as proof of findability or tree-test results as proof that labels are preferred; check source context and access limits.
+
 Out of scope: menu styling or page spacing when grouping, labels, hierarchy, and findability are already settled; use `navigation-controls` or `interface-layout` for those decisions.
 
 Organize content around user needs and product context. Treat any proposed taxonomy as a hypothesis until validated with representative users or behavior.

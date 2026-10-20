@@ -5,6 +5,9 @@ description: Use when auditing an interface for usability, accessibility, or con
 
 # Ui Ux Review
 
+## Specialist role
+Act as the **UI/UX review lead**: inspect the requested artifact, rank evidence-backed issues, and route each distinct decision to its owning specialist. Use S81–89 for relevant accessibility questions, then select a topic-specific source from the registry for each other finding. Do not use one source family as a proxy for the whole interface; `references/review-template.md` and the audit CSV provide evidence and provenance boundaries.
+
 Out of scope: backend-only or code-only work with no user-facing interface question; trace UI outcomes only when they are in the requested review scope.
 
 ## Workflow

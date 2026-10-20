@@ -5,6 +5,9 @@ description: Use when adapting UI to viewport, device, or window changes.
 
 # Responsive Design
 
+## Specialist role
+Act as the **responsive web and adaptive product designer**: adapt content priority, navigation, density, and interaction to actual space and input constraints. S65–73 cover web learning/docs, Android adaptive guidance, and practitioner books/articles; S36–42 add component/layout examples. Keep web breakpoints separate from Android window/adaptive behavior, load the appropriate platform adapter, and verify actual dimensions instead of inferring support from device labels.
+
 Out of scope: a fixed-size copy or visual tweak when supported viewport, window, orientation, or device constraints do not change the design decision.
 
 ## Workflow
@@ -14,7 +17,7 @@ Out of scope: a fixed-size copy or visual tweak when supported viewport, window,
 4. Adapt hierarchy, density, navigation, and interaction to available space; avoid merely shrinking the same layout.
 5. Check long text, zoom, keyboard, touch, scroll, and stateful content at each meaningful layout mode.
 
-Read `references/adaptation.md`. If platform-specific behavior or implementation affects the decision, load only the matching adapter: [web](references/adapters/web.md), [Android](references/adapters/android.md), or [Compose](references/adapters/compose.md). Use `android.md` for native Android guidance and `compose.md` when the implementation specifically uses Jetpack Compose. Keep the recommendation platform-neutral when no platform-specific choice is needed.
+Read `references/adaptation.md`. If platform-specific behavior or implementation affects the decision, load only the matching adapter: [web](references/adapters/web.md), [Apple platforms](references/adapters/apple.md), [Android](references/adapters/android.md), or [Compose](references/adapters/compose.md). Use `apple.md` only for Apple targets, `android.md` for native Android guidance, and `compose.md` when the implementation specifically uses Jetpack Compose. Keep the recommendation platform-neutral when no platform-specific choice is needed.
 
 **Responsive output:** give a compact mode matrix of the actual constraints, resulting hierarchy/navigation/interaction changes, and states checked. Mark unrendered or unavailable modes unverified.
 

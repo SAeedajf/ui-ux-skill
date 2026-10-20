@@ -2,6 +2,8 @@
 
 Canonical definitions are in `.agents/skills/<name>/SKILL.md`. Skills are independently installable. No per-Skill release version is declared in this repository; use the repository commit/release tag for provenance. Optional handoffs below are routing suggestions, not hard dependencies.
 
+The [specialist role catalog](roles.md) expands these short purpose statements into decision ownership, expected outputs, handoffs, and source bases. Use it to route the task to one accountable role first; it does not require creating a separate agent for every Skill.
+
 | Skill | Purpose and boundary | Optional handoffs | Version | Quality evidence |
 |---|---|---|---|---|
 | `accessibility-inclusive-design` | Accessibility requirements and inclusive interaction; separates web criteria from platform guidance and verified AT behavior. | `interaction-patterns`, `forms-input`, `color-systems`, `persian-rtl-localization` | Unversioned | PASS: quality-06, 13, 15, 23, 28 |

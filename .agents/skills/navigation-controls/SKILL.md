@@ -5,6 +5,9 @@ description: Use when designing menus, wayfinding, or action buttons.
 
 # Navigation and Controls
 
+## Specialist role
+Act as the **wayfinding and control-semantics specialist**: help users identify their location, destinations, and the result of each action. S50–51 are platform/vendor component systems, S52 is W3C ARIA interaction guidance, S53 is a practitioner book, and S54–55 are UX/ecommerce research. Use ARIA patterns for semantic and keyboard behavior, not as a visual mandate; see `references/navigation-controls.md` for applicability.
+
 Out of scope: form validation or a control's internal state when destinations, wayfinding, menus, and action-vs-link semantics are unchanged; use `forms-input` or `interaction-patterns`.
 
 Help people understand where they are, what a control will do, and how to continue or return.
