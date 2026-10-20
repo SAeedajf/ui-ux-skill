@@ -1,0 +1,24 @@
+{
+    "name": "ui-ux-pro/mcp-server",
+    "description": "Read-only Model Context Protocol server for the UI/UX Pro Agent Skills library.",
+    "type": "project",
+    "license": "CC-BY-4.0",
+    "require": {
+        "php": "^8.1",
+        "ext-mbstring": "*",
+        "mcp/sdk": "0.9.0",
+        "nyholm/psr7": "^1.8",
+        "nyholm/psr7-server": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "UiUxPro\\Mcp\\": "src/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "php tests/run.php"
+    }
+}

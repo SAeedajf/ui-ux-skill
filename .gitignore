@@ -6,3 +6,6 @@ __pycache__/
 .agents/skills/.system/
 .venv/
 dist/
+mcp-server/vendor/
+mcp-server/config.local.php
+mcp-server/var/
