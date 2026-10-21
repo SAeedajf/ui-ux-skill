@@ -50,8 +50,8 @@ Output: `dist/ui-ux-pro-mcp-0.1.0-cpanel.zip` and a SHA-256 file manifest. The Z
 3. Upload and extract the archive into a private directory named `uiux-mcp-private` in the account home. cPanel requires addon-domain document roots to remain under `public_html/`, so create a dedicated document root such as `public_html/uiux-mcp-endpoint/` and copy `ui-ux-pro-mcp/cpanel-entrypoint.php` there as `index.php`. This front controller loads the app from the private folder; the PHP app, `vendor/`, Skills, session data, and config stay outside the web root. If you use a different private path, set `UIUX_MCP_PRIVATE_ROOT` for PHP to its absolute app directory.
 4. Enable AutoSSL for the subdomain and wait for a valid, publicly trusted certificate before enabling client access. Do not use the cPanel self-signed certificate for client configuration.
 5. Copy `config.example.php` to `config.local.php` beside `composer.json`, outside the document root. Set a newly generated long random bearer token; an empty value keeps the service fail-closed. Keep the token in a password manager and enter it into the MCP client through that client's secure configuration UI; never commit it or paste it into an issue/report.
-6. Verify PHP 8.1+ and `mbstring` are enabled for the subdomain. Configure `allowed_hosts` to the exact host (`mcp.possino.ir`), then check `https://mcp.possino.ir/health` and an authenticated MCP `initialize` + `tools/list` from a client.
-7. Store session files in the private account area. Review file ownership and permissions; the public directory should contain only the entry point and any deliberate public assets.
+6. Verify PHP 8.1+ and `mbstring` are enabled for the subdomain. Configure `allowed_hosts` to the exact host (`mcp.possino.ir`), then check `https://mcp.possino.ir/health.php` and an authenticated MCP `initialize` + `tools/list` at `https://mcp.possino.ir/index.php` from a client. These explicit PHP paths work when Apache does not rewrite extensionless paths through the front controller; they avoid requiring changes to an account's existing `.htaccess` rules.
+7. Store session files in the private account area. Review file ownership and permissions; the public directory should contain only the deliberate PHP entry points and any public assets.
 
 The DNS and hosting steps above are instructions, not claims that the live account has been changed. Confirm the subdomain resolves to the intended cPanel account, inspect the active TLS certificate, and run the authenticated remote MCP handshake before calling the hosted server operational.
 
@@ -59,7 +59,7 @@ The DNS and hosting steps above are instructions, not claims that the live accou
 
 In any host that supports remote Streamable HTTP MCP servers, configure:
 
-- Endpoint: `https://mcp.possino.ir/`
+- Endpoint: `https://mcp.possino.ir/index.php` for the cPanel deployment above. A deployment with verified front-controller rewrites may use `https://mcp.possino.ir/`.
 - Transport: Streamable HTTP
 - Authorization: `Bearer <the secret created during deployment>`
 

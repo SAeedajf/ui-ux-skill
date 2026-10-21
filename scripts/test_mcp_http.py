@@ -77,7 +77,7 @@ def main() -> int:
                 if process.poll() is not None:
                     raise AssertionError("PHP development server exited before becoming ready")
                 try:
-                    status, _, health = request(base + "health", token=None)
+                    status, _, health = request(base + "health.php", token=None)
                     if status == 200 and '"status":"ok"' in health:
                         break
                 except (URLError, TimeoutError):
@@ -85,11 +85,19 @@ def main() -> int:
             else:
                 raise AssertionError("MCP HTTP service did not become ready")
 
-            status, headers, initialized = request(base, {
+            status, _, legacy_health = request(base + "health", token=None)
+            assert status == 200 and '"status":"ok"' in legacy_health
+
+            initialize_payload = {
                 "jsonrpc": "2.0", "id": 1, "method": "initialize",
                 "params": {"protocolVersion": "2025-11-25", "capabilities": {},
                            "clientInfo": {"name": "integration-test", "version": "1"}},
-            })
+            }
+            status, _, root_initialized = request(base, initialize_payload)
+            assert status == 200 and '"protocolVersion":"2025-11-25"' in root_initialized
+
+            endpoint = base + "index.php"
+            status, headers, initialized = request(endpoint, initialize_payload)
             session = headers.get("Mcp-Session-Id") or headers.get("mcp-session-id")
             assert status == 200 and session and '"protocolVersion":"2025-11-25"' in initialized
 
@@ -102,12 +110,12 @@ def main() -> int:
                 ("resources/read", {"uri": "uiux://skills/forms-input"}, "name: forms-input"),
             ]
             for index, (method, params, expected) in enumerate(calls, 2):
-                status, _, result = request(base, {"jsonrpc": "2.0", "id": index, "method": method, "params": params}, session=session)
+                status, _, result = request(endpoint, {"jsonrpc": "2.0", "id": index, "method": method, "params": params}, session=session)
                 assert status == 200 and expected in result, (method, result[:300])
-            expect_http_error(base, 401, token=None)
-            expect_http_error(base, 403, origin="https://untrusted.example")
-            expect_http_error(base, 403, host="untrusted.example")
-            print("PASS: initialize, 15-Skill tools, Skill/reference reads, resources, and auth/origin/host rejection")
+            expect_http_error(endpoint, 401, token=None)
+            expect_http_error(endpoint, 403, origin="https://untrusted.example")
+            expect_http_error(endpoint, 403, host="untrusted.example")
+            print("PASS: root and explicit PHP routes, 15-Skill tools, Skill/reference reads, resources, and auth/origin/host rejection")
             return 0
         finally:
             process.terminate()

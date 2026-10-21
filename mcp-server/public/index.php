@@ -29,7 +29,7 @@ if ('GET' === $method && '/health' === $requestPath) {
     echo '{"status":"ok","service":"ui-ux-pro-mcp"}';
     exit;
 }
-if ('/' !== $requestPath) {
+if (!in_array($requestPath, ['/', '/index.php'], true)) {
     http_response_code(404);
     header('Cache-Control: no-store');
     exit;
