@@ -21,7 +21,10 @@ TOKEN = "local-test-token-for-integration"
 
 def request(url: str, payload: dict | None = None, *, session: str | None = None,
             token: str | None = TOKEN, origin: str | None = None, host: str | None = None):
-    headers = {"Accept": "application/json, text/event-stream"}
+    headers = {
+        "Accept": "application/json, text/event-stream",
+        "MCP-Protocol-Version": "2025-11-25",
+    }
     if payload is not None:
         headers["Content-Type"] = "application/json"
     if token is not None:
@@ -100,6 +103,13 @@ def main() -> int:
             status, headers, initialized = request(endpoint, initialize_payload)
             session = headers.get("Mcp-Session-Id") or headers.get("mcp-session-id")
             assert status == 200 and session and '"protocolVersion":"2025-11-25"' in initialized
+
+            status, _, initialized_notice = request(
+                endpoint,
+                {"jsonrpc": "2.0", "method": "notifications/initialized", "params": {}},
+                session=session,
+            )
+            assert status == 202 and not initialized_notice
 
             calls = [
                 ("tools/list", {}, "list_uiux_skills"),

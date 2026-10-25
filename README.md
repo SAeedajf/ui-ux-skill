@@ -17,6 +17,8 @@ Each Skill has a narrow trigger, cross-skill handoffs, source notes, and a posit
 
 For AI clients that support remote MCP, an optional read-only PHP companion service exposes Skill discovery, focused search, Skill/reference reads, and resources over Streamable HTTP. See the [MCP server guide](docs/mcp-server.md) for local checks and the cPanel deployment bundle. The portable Skills package remains usable without this hosted service.
 
+The MCP guide includes two separate host checks: a public DNS/TLS/liveness preflight and an authenticated remote acceptance check for `initialize`, `tools/list`, and an actual Skill read. Neither is evidence that the service is deployed; run them against the intended HTTPS host after deployment.
+
 Use `python3 scripts/install-skills.py --help` to see selection and overwrite options. Each skill can also be copied manually as a folder.
 
 ## Contents
