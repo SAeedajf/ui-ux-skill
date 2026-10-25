@@ -55,6 +55,34 @@ Output: `dist/ui-ux-pro-mcp-0.1.0-cpanel.zip` and a SHA-256 file manifest. The Z
 
 The DNS and hosting steps above are instructions, not claims that the live account has been changed. Confirm the subdomain resolves to the intended cPanel account, inspect the active TLS certificate, and run the authenticated remote MCP handshake before calling the hosted server operational.
 
+### Public endpoint preflight
+
+After the DNS provider has published the record and cPanel has provisioned TLS, run the read-only preflight from a machine outside the hosting account:
+
+```sh
+python3 scripts/check_mcp_endpoint.py https://mcp.example.com/health.php
+```
+
+The command reports DNS resolution, certificate-chain and hostname validation, and the explicit PHP liveness route separately. It does not send a bearer token, follow redirects, change DNS or cPanel settings, or prove MCP authentication. A complete acceptance still requires an authenticated `initialize` and `tools/list` request through the intended MCP client. If DNS fails or cPanel rejects a domain-root change with an XID/domain-ownership error, stop retrying the same change and ask the hosting provider to repair the authoritative DNS or domain/vhost mapping. Do not remove an aliased domain or change its shared document root as a workaround.
+
+When contacting the provider, include the exact test hostname, the target IP shown for the hosting account, the cPanel account name, the intended document root, and the complete XID/error text. Ask them to confirm which DNS zone is authoritative and to correct only the test hostname's record and vhost mapping.
+
+### Authenticated remote acceptance
+
+After the DNS/TLS/liveness preflight passes and the bearer token has been configured on the server, run the read-only acceptance check from outside the hosting account:
+
+```sh
+read -rsp 'MCP bearer token: ' UIUX_MCP_BEARER_TOKEN
+export UIUX_MCP_BEARER_TOKEN
+printf '\n'
+python3 scripts/mcp_remote_acceptance.py https://mcp.example.com/index.php
+unset UIUX_MCP_BEARER_TOKEN
+```
+
+The script requires HTTPS and a token in the environment; it never accepts the token as a command-line argument. It verifies that an unauthenticated initialize is rejected with HTTP 401, performs the authenticated `initialize` and `notifications/initialized` exchange, calls `tools/list`, and reads the `forms-input` Skill. It checks TLS using the operating system's trusted certificate store, carries forward a server-issued session ID, supports JSON and server-sent-event responses, and refuses redirects so the bearer token is not sent to another URL. It does not modify Skills or server configuration; initialization can create a temporary MCP session that expires according to the server's session TTL. A passing run is remote acceptance evidence for this endpoint and this tool path only; it does not prove compatibility with every MCP client or AI model.
+
+The exchange uses MCP protocol version `2025-11-25`, matching the server's current integration contract. MCP Streamable HTTP clients send each JSON-RPC message by POST, advertise both `application/json` and `text/event-stream`, send the negotiated `MCP-Protocol-Version` header, and include the session ID on later requests when the server issues one. See the [versioned Streamable HTTP specification](https://modelcontextprotocol.io/specification/2025-11-25/basic/transports).
+
 ## Client setup
 
 In any host that supports remote Streamable HTTP MCP servers, configure:
