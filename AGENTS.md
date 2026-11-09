@@ -2,7 +2,7 @@
 
 Use the relevant Skill in `.agents/skills/` for the task. Read its `SKILL.md` first and load only its linked references that fit the current question.
 
-For routing, host setup, prompt templates, and evidence labels, follow [docs/agent-usage-guide.md](docs/agent-usage-guide.md). Choose one primary Skill and add supporting Skills only for actual handoffs; do not load the full collection by default.
+For routing, host setup, prompt templates, evidence labels, and performance/architecture requests, follow [docs/agent-usage-guide.md](docs/agent-usage-guide.md). Choose one primary Skill and add supporting Skills only for actual handoffs; do not load the full collection by default.
 
 ## Professional role routing
 

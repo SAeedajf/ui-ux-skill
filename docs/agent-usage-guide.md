@@ -133,6 +133,39 @@ The examples illustrate routing, not universal prescriptions. If the artifact or
 
 Do not turn a review into a redesign or treat a recommendation as permission to implement.
 
+### Performance and architecture requests
+
+Use this section when the user explicitly requests a performance/architecture audit or when a measured performance defect is inside an authorized implementation task. A UI/UX review alone does not authorize backend changes, new services, dependencies, migrations, or infrastructure. Apply only the checks relevant to the actual product, stack, environment, and user task.
+
+Before changing code:
+
+1. Read repository instructions and inspect the current implementation, dependencies, runtime environment, and available build/test/deploy/rollback paths. Identify which layers are actually in scope; do not infer Production, Staging, or local state.
+2. Classify each candidate: **A — present and evidenced as needing correction**; **B — present and supported as healthy**; **C — present but not verifiable with available evidence**; **D — absent and out of scope**; **E — new capability explicitly requested by the owner**. D is not a defect and is not permission to add the capability. Keep C unknown until evidence exists.
+3. Establish a baseline with tools and logs already available: relevant page/API timing, payload and request counts, query count/duration, runtime errors, memory/CPU, or target device/network state. Use the metric that tests the suspected cause. If the environment cannot measure it, report that limit instead of claiming an improvement. Do not install monitoring or profiling infrastructure just to create a baseline.
+4. State the observed symptom, evidence, likely cause, affected users/flows, simplest correction, compatibility/security risks, verification method, and rollback path. Prefer minimum necessary changes. Preserve public API contracts, existing behavior, privacy, authorization, data integrity, accessibility, and business rules.
+5. After a change, compare the same relevant condition to the baseline, run checks for the altered behavior, and inspect the real affected state when available. A successful build or synthetic check alone is not proof of improved user-perceived performance.
+
+#### Conditional performance checklist
+
+These are inspection topics, not a feature backlog. Check an item only when it exists or is part of an explicitly requested new capability; otherwise record `absent/out of scope` or `unrelated`. Do not add a technology because it appears here.
+
+| Area | Inspect only when relevant |
+|---|---|
+| UI loading | Skeleton states; image dimensions, format and responsive variants; lazy loading below the initial viewport (keep likely LCP content eager); API request deduplication/cancellation; debounce or throttle for high-frequency input; route/feature code splitting; script loading order; virtualization for evidenced large lists; optimistic updates with rollback and server truth; font size, weights, format and layout shift. Preserve loading, empty, error and success states, focus, keyboard/touch access and RTL behavior. |
+| Network/API | Pagination for large result sets; parallelism only for independent calls; timeouts, bounded retry/backoff and idempotency for safe operations; streaming only when the current architecture supports it; compression only where the server/runtime supports it; duplicate-action protection for existing submissions and sensitive operations. Preserve API contracts and never claim success before server confirmation for payment, inventory, order or other consequential actions. |
+| Backend/data | N+1 query patterns; unnecessary selected columns; indexes against real query plans and write cost; connection limits and lifecycle; existing background jobs; existing Redis/data cache and invalidation/privacy rules; server/database proximity only when network evidence exists. Do not create jobs, pools, indexes, caches or services without the applicable authorization and rollout plan. |
+| Delivery/platform | Existing CDN behavior; browser cache headers and user-data isolation; existing SSR/prerendering; route-level loading distinct from generic code splitting; existing tracing/metrics; load balancing; real-user performance data; real-device and constrained-network checks. Absence of a CDN, Redis, OpenTelemetry, SSR, worker, or load balancer is not by itself a defect. |
+
+For a comprehensive performance audit that explicitly requests the full inventory, report each of these 31 criteria separately: skeleton loading; image optimization; API request deduplication; debounce/throttle; pagination; CDN; background jobs; N+1 queries; Gzip/Brotli; Redis/data cache; code splitting; API timeouts; streaming; optimistic UI; lazy loading; parallel requests; database indexes; tracing/OpenTelemetry; server/database proximity; SSR/prerendering; third-party script loading; route-level code loading; list virtualization; database column selection; connection management; duplicate-action prevention; browser caching; load balancing; font optimization; real-user performance measurement; real-device/network testing. Use one status per criterion: `present and healthy`, `present and corrected`, `present and needs correction`, `present but evidence insufficient`, `absent/out of scope`, `owner decision required`, or `unrelated to this architecture`. Never imply that all 31 are required for every task.
+
+#### Change authority and safety
+
+- **Low-risk and in scope:** make the smallest reversible correction for an evidenced defect, then verify it.
+- **Owner decision first:** obtain the requested approval before database migrations/index changes in production, public API contract changes, new dependencies, major server settings, background-processing changes, sensitive-cache policy changes, or modifications affecting checkout, payment, orders, inventory, or settlement.
+- **Separate explicit request required:** do not introduce Redis, a CDN, load balancing, microservices, a new monitoring platform, a framework/database/hosting migration, or an unrelated product module as an optimization shortcut.
+
+Never trade security, correctness, compatibility, accessibility, privacy, auditability, or maintainability for apparent speed. For design-only work, report a relevant performance concern as a finding or proposal; do not implement it unless the user asked for implementation.
+
 ## 3. Apply a Skill to the real task
 
 1. Confirm the requested outcome, users, platform, locale, constraints, and whether the user asked for review, recommendations, or code changes.
